@@ -41,3 +41,6 @@
 
 # Meson Build related stuffies
 /builddir
+
+# Per user settings
+settings.json
