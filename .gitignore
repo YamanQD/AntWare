@@ -2,7 +2,6 @@
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
 
@@ -43,3 +42,5 @@
 *.out
 *.app
 
+# Meson Build related stuffies
+/builddir
