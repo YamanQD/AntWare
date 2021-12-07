@@ -15,7 +15,7 @@ sudo apt install libsfml-dev
 sudo apt install rapidjson-dev
 ```
 
-### Using Meson :
+### Building with Meson :
 ```
 meson <your build dir>
 cd <your build dir>

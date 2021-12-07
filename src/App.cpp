@@ -12,6 +12,7 @@ void App::init(int argc, char **argv)
 {
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
+    gladLoadGL();
 }
 void App::terminate()
 {
