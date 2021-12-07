@@ -11,7 +11,8 @@ elif host_machine.system()=='windows'
 endif
 
 sfml_window = dependency('sfml-window')
+glew=dependency('glew')
 sources = src_assembler.stdout().strip().split('\n')
 executable('ant-warrior', sources,
     include_directories: ['include'],
-    dependencies: [sfml_window])
+    dependencies: [sfml_window, glew])

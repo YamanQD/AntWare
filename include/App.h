@@ -1,9 +1,9 @@
 #pragma once
 #include <rapidjson/document.h>
 #include <fstream>
-#include<vector>
-#include<glad/glad.h>
-#include<Window.h>
+#include <vector>
+#include <GL/glew.h>
+#include <Window.h>
 #define APP aw::App::instance()
 namespace aw
 {
