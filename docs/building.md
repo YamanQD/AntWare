@@ -22,4 +22,6 @@ After these steps you should have your executable named ``ant-warrior`` within y
 
 Make a copy of ``settings_example.json`` and modify it for your settings.
 
+Rename your settings file to ``settings.json``.
+
 Place your settings file in your cwd.
