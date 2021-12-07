@@ -8,7 +8,7 @@
             "name": "(debug) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/builddir/ant-warrior",
+            "program": "${workspaceRoot}/build/ant-warrior",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
