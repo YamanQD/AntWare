@@ -3,6 +3,8 @@
 
 ## Mesonbuild
 
+[Official style guide](https://mesonbuild.com/Style-guide.html)
+
 ### Identation
 
 - Use 4 spaces.
