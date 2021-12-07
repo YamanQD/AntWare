@@ -12,5 +12,6 @@ sources = src_assembler.stdout().strip().split('\n')
 
 executable('ant-warrior', sources,
     win_subsystem: 'windows',
+    override_options: ['cpp_std=c++14'],
     include_directories: ['include'],
     dependencies: [sfml_dep, glew_dep, rapidjson_dep])
