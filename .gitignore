@@ -1,11 +1,33 @@
-# ---> VisualStudioCode
+#-------------#
+# Ant Worrior #
+#-------------#
+
+# Per user game settings
+settings.json
+
+#--------------------#
+# Visual Studio Code #
+#--------------------#
+
 .vscode/*
 *.code-workspace
+
+# Recommended extensions
+!.vscode/extensions.json
 
 # Local History for Visual Studio Code
 .history/
 
-# ---> C++
+#-------#
+# Meson #
+#-------#
+
+/builddir
+
+#-----#
+# C++ #
+#-----#
+
 # Prerequisites
 *.d
 
@@ -38,9 +60,3 @@
 *.exe
 *.out
 *.app
-
-# Meson Build related stuffies
-/builddir
-
-# Per user settings
-settings.json
