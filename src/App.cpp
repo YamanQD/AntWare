@@ -11,13 +11,35 @@ App &App::instance()
 void App::init(int argc, char **argv)
 {
     readSettingsFile();
-    
+    WINDOW.init(settings.resHeight, settings.resWidth);
 }
 void App::terminate()
 {
+    WINDOW.terminate();
 }
 void App::loop()
 {
+    while (true)
+    {
+        sf::Event event;
+        while (WINDOW.internal.pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case sf::Event::Closed:
+                terminate();
+                return;
+            case sf::Event::Resized:
+                //TODO
+                break;
+            default:
+                break;
+            }
+            //logic should start here
+            //rendering should start here
+            WINDOW.internal.display();
+        }
+    }
 }
 void App::readSettingsFile()
 {

@@ -1,5 +1,5 @@
 project('ant-warrior', 'cpp',
-    license: 'GPL-3.0-or-later'
+    license: 'GPL-3.0-or-later',
     version : '0.0.1',
     default_options : ['warning_level=3'])
 
