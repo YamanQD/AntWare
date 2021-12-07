@@ -24,7 +24,13 @@ settings.json
 # Meson #
 #-------#
 
+# build directories
+/build
 /builddir
+
+# wrap subprojects
+/subprojects/*
+!/subprojects/*.wrap
 
 #-----#
 # C++ #
