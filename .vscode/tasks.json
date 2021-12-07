@@ -1,16 +1,19 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "meson",
-			"target": "ant-warrior",
-			"mode": "build",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": [],
-			"label": "Meson: Build ant-warrior"
-		}
-	]
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Meson: Build ant-warrior",
+            "type": "shell",
+            "command": "meson compile -C build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "windows": {
+                "problemMatcher": "$msCompile"
+            }
+        }
+    ]
 }
