@@ -3,6 +3,9 @@ project('ant-warrior', ['cpp','c'],
     version: '0.0.1',
     default_options: ['warning_level=3'])
 
+sfml_dep = subproject('sfml').get_variable('sfml_dep')
+rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
+
 if host_machine.system()=='linux'
     src_assembler=run_command('src_assembler.sh')
 elif host_machine.system()=='windows'
@@ -10,8 +13,8 @@ elif host_machine.system()=='windows'
     #OR delete the if condition if you could run the shell script
 endif
 
-sfml_window = dependency('sfml-window')
+# sfml_window = dependency('sfml-window')
 sources = src_assembler.stdout().strip().split('\n')
 executable('ant-warrior', sources,
     include_directories: ['include'],
-    dependencies: [sfml_window])
+    dependencies: [sfml_dep, rapidjson_dep])
