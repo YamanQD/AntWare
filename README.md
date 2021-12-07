@@ -1,5 +1,5 @@
 
-# Ants warrior 🐜⚔
+# Ant warrior 🐜⚔
 
 > **Disclaimer ⚠** This is some bullshit university project.
 
