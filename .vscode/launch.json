@@ -5,7 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(debug) Launch",
+            "name": "(windows) Launch & Debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/ant-warrior.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal"
+        },
+        {
+            "name": "(linux) Launch & Debug",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/ant-warrior",
@@ -24,9 +35,6 @@
                         "ignoreFailures": true
                     }
                 ],
-            },
-            "windows": {
-                //TODO @rami fill in
             }
         }
     ]
