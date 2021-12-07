@@ -9,7 +9,7 @@ rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
 src_assembler=run_command('src_assembler.py')
 
 sources = src_assembler.stdout().strip().split('\n')
-exe = executable('ant-warrior', sources,
+executable('ant-warrior', sources,
     win_subsystem: 'windows',
     include_directories: ['include'],
     dependencies: [sfml_dep, rapidjson_dep])
