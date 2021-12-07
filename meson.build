@@ -6,12 +6,7 @@ project('ant-warrior', ['cpp','c'],
 sfml_dep = subproject('sfml').get_variable('sfml_dep')
 rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
 
-if host_machine.system()=='linux'
-    src_assembler=run_command('src_assembler.sh')
-elif host_machine.system()=='windows'
-    #TODO @rami write your own patch file
-    #OR delete the if condition if you could run the shell script
-endif
+src_assembler=run_command('src_assembler.py')
 
 # sfml_window = dependency('sfml-window')
 sources = src_assembler.stdout().strip().split('\n')
