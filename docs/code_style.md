@@ -11,6 +11,8 @@
 
 - Use `snake_case` wherever possible.
 
+---
+
 ## C++
 
 ### Identation
