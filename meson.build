@@ -5,7 +5,7 @@ project('ant-warrior', ['cpp','c'],
 
 sfml_dep = subproject('sfml').get_variable('sfml_dep')
 rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
-glew_dep = dependency('glew')
+glew_dep = subproject('glew').get_variable('glew_dep')
 
 src_assembler = run_command('src_assembler.py')
 sources = src_assembler.stdout().strip().split('\n')
