@@ -1,0 +1,12 @@
+[wrap-file]
+directory = SFML-2.5.1
+source_url = https://github.com/SFML/SFML/archive/refs/tags/2.5.1.tar.gz
+source_filename = 2.5.1.tar.gz
+source_hash = 438c91a917cc8aa19e82c6f59f8714da353c488584a007d401efac8368e1c785
+patch_filename = sfml_2.5.1-2_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/sfml_2.5.1-2/get_patch
+patch_hash = 2aebe377e4807c82340d4ccec9eefe382b21b00ee98627a25ca52a50cbe974f1
+
+[provide]
+sfml = sfml_dep
+

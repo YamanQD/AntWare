@@ -3,7 +3,22 @@
 
 ## Windows
 
-> TODO: @rami write those
+### Required tools
+
+- [Python 3 (3.10.0 or later)](https://www.python.org/downloads/)
+- [Ninja build](https://ninja-build.org/)
+- Visual Studio with C++ development tools (VS Community 2019 is recommended)
+
+### Instructions
+
+- Make sure `python/python3, pip/pip3, ninja` are available in your PATH.
+- Install meson using pip/pip3 by running `pip install meson` under a command prompt with administrative privileges.
+- Make the `ant-warrior` repository your working directory.
+- Run `meson subprojects download` to fetch dependencies.
+- Run `meson setup build` to setup the build directory.
+- Run `meson build -C build` to compile the project and it's dependencies.
+- Copy `settings_example.json` to `build/settings.json` and modify it accourding to your preferences.
+- Run `ant-warrior.exe`.
 
 ## Linux
 
