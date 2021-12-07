@@ -1,18 +1,21 @@
 
 # Building instructions
 
-## Dependencies :
-
-- [SFML](https://www.sfml-dev.org)
-- [RapidJSON](https://rapidjson.org/)
-
 ## Windows
 
 > TODO: @rami write those
 
 ## Linux
 
-Using Meson :
+### Installing Dependnecies:
+
+#### On Debian-based distros:
+```
+sudo apt install libsfml-dev
+sudo apt install rapidjson-dev
+```
+
+### Using Meson :
 ```
 meson <your build dir>
 cd <your build dir>
