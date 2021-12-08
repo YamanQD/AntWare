@@ -8,8 +8,8 @@ int main(int argc, char **argv)
         APP.loop();
         APP.terminate();
     }
-    catch (exception e)
+    catch (const exception& err)
     {
-        printf("An exception occured %s", e.what());
+        printf("An exception occured: %s", err.what());
     }
 }
