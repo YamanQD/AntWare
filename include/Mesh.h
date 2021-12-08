@@ -19,8 +19,8 @@ namespace aw
         std::vector<glm::vec2> texCoords; //TODO store trasformations in a suitable way
 
     public:
+        Mesh(const char *path);
         Mesh(const char *path, const char *texPath = nullptr);
-        GLuint texture = 0;
-        //TODO draw function, recommended to be implemented by @YamanQD
+        void draw();
     };
 }
