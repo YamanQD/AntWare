@@ -22,5 +22,6 @@ namespace aw
         Mesh(const char *path);
         Mesh(const char *path, const char *texPath = nullptr);
         void draw();
+        GLuint texture = 0;
     };
 }
