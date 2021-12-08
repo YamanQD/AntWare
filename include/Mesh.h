@@ -17,6 +17,7 @@ namespace aw
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
         std::vector<glm::vec2> texCoords; //TODO store trasformations in a suitable way
+        void loadTexture(const char *path);
 
     public:
         Mesh(const char *path);

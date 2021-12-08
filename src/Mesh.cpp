@@ -18,14 +18,7 @@ Mesh::Mesh(const char *path, const char *texPath)
     }
     if (texPath)
     {
-        Image image;
-        if (!image.loadFromFile(path))
-        {
-            throw runtime_error(path); //TODO prettier formatting
-        }
-        int imgHeight = image.getSize().y;
-        int imgWidth = image.getSize().x;
-        const Uint8 *imgData = image.getPixelsPtr();
+        loadTexture(texPath);
     }
     vertices.resize(mesh->mNumVertices);
     for (unsigned i = 0; i < vertices.size(); ++i)
@@ -44,7 +37,17 @@ Mesh::Mesh(const char *path, const char *texPath)
     }
     importer.FreeScene();
 }
-
+void Mesh::loadTexture(const char *path)
+{
+    Image image;
+    if (!image.loadFromFile(path))
+    {
+        throw runtime_error(path); //TODO prettier formatting
+    }
+    int imgHeight = image.getSize().y;
+    int imgWidth = image.getSize().x;
+    const Uint8 *imgData = image.getPixelsPtr();
+}
 void Mesh::draw()
 {
     // TODO Texture mapping
