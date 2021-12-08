@@ -12,8 +12,6 @@ void App::init(int argc, char **argv)
 {
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
-    glewExperimental = true;
-    glewInit();
 }
 void App::terminate()
 {
