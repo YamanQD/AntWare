@@ -3,8 +3,9 @@ using namespace aw;
 using namespace glm;
 using namespace std;
 using namespace Assimp;
+using namespace sf;
 Importer Mesh::importer;
-Mesh::Mesh(const char *path)
+Mesh::Mesh(const char *path, const char *texPath) //TODO create texture if not nullptr
 {
     aiMesh *mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
     vertices.resize(mesh->mNumVertices);
@@ -23,4 +24,11 @@ Mesh::Mesh(const char *path)
             texCoords[i] = {mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y};
     }
     importer.FreeScene();
+}
+Mesh::~Mesh()
+{
+    delete texture;
+}
+Mesh::Texture::Texture(const char* path){
+    
 }
