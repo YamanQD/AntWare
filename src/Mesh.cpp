@@ -24,3 +24,16 @@ Mesh::Mesh(const char *path)
     }
     importer.FreeScene();
 }
+
+void Mesh::draw()
+{
+    // TODO Texture mapping
+    glBegin(GL_TRIANGLES);
+    for (int i = 0; i < vertices.size(); i++)
+    {
+        // glTexCoord2f(texCoords[i].x, texCoords[i].y);
+        glNormal3f(normals[i].x, normals[i].y, normals[i].z);
+        glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
+    }
+    glEnd();
+}

@@ -5,6 +5,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <glm/glm.hpp>
+#include <GL/glew.h>
 namespace aw
 {
     class Mesh
@@ -17,6 +18,6 @@ namespace aw
 
     public:
         Mesh(const char *path);
-        //TODO draw function, recommended to be implemented by @YamanQD
+        void draw();
     };
 }
