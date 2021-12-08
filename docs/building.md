@@ -17,7 +17,7 @@
 - Run `meson subprojects download` to fetch dependencies.
 - Run `meson setup build` to setup the build directory.
 - Run `meson build -C build` to compile the project and it's dependencies.
-- Copy `settings_example.json` to `build/settings.json` and modify it accourding to your preferences.
+- Copy `default_settings.json` to `build/settings.json` and modify it accourding to your preferences.
 - Run `ant-warrior.exe`.
 
 ## Linux
@@ -38,7 +38,7 @@ ninja
 ```
 After these steps you should have your executable named ``ant-warrior`` within your build directory.
 
-Make a copy of ``settings_example.json`` and modify it for your settings.
+Make a copy of ``default_settings.json`` and modify it for your settings.
 
 Rename your settings file to ``settings.json``.
 

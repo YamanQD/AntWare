@@ -45,7 +45,7 @@ void App::readSettingsFile()
 {
     fstream settingsFileStream("./settings.json", ios::in | ios::ate);
     vector<char> fileData;
-    if (settingsFileStream.is_open())
+    if (settingsFileStream.is_open()) //TODO create if not existant
     {
         fileData.resize(settingsFileStream.tellg());
         settingsFileStream.seekg(0, ios::beg);
@@ -55,7 +55,7 @@ void App::readSettingsFile()
     }
     else
     {
-        settingsFileStream = fstream("./settings_example.json", ios::in | ios::ate);
+        settingsFileStream = fstream("./default_settings.json", ios::in | ios::ate);
         if (settingsFileStream.is_open())
         {
             fileData.resize(settingsFileStream.tellg());
