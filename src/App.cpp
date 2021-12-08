@@ -55,8 +55,19 @@ void App::readSettingsFile()
     }
     else
     {
-        //TODO fall back to settings_example.json
-        //If settings_example.json was not found force quit
+        settingsFileStream = fstream("./settings_example.json", ios::in | ios::ate);
+        if (settingsFileStream.is_open())
+        {
+            fileData.resize(settingsFileStream.tellg());
+            settingsFileStream.seekg(0, ios::beg);
+            settingsFileStream.read(fileData.data(), fileData.size());
+            settingsFileStream.flush();
+            settingsFileStream.close();
+        }
+        else
+        {
+            throw runtime_error("No valid settings file was found");
+        }
     }
     Document settingsFileJSON;
     settingsFileJSON.Parse(fileData.data(), fileData.size());

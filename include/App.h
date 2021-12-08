@@ -1,7 +1,8 @@
 #pragma once
-#include <rapidjson/document.h>
 #include <fstream>
 #include <vector>
+#include <exception>
+#include <rapidjson/document.h>
 #include <GL/glew.h>
 #include <Window.h>
 #define APP aw::App::instance()
