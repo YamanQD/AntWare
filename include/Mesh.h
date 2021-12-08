@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <stdexcept>
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
 #include <assimp/scene.h>
@@ -12,20 +13,14 @@ namespace aw
     class Mesh
     {
     private:
-        class Texture
-        {
-        public:
-            GLuint id;
-            Texture(const char *path);
-        };
         static Assimp::Importer importer;
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
         std::vector<glm::vec2> texCoords; //TODO store trasformations in a suitable way
-        Texture *texture = nullptr;
 
     public:
         Mesh(const char *path, const char *texPath = nullptr);
+        GLuint texture = 0;
         //TODO draw function, recommended to be implemented by @YamanQD
     };
 }

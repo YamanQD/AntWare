@@ -5,9 +5,28 @@ using namespace std;
 using namespace Assimp;
 using namespace sf;
 Importer Mesh::importer;
-Mesh::Mesh(const char *path, const char *texPath) //TODO create texture if not nullptr
+Mesh::Mesh(const char *path, const char *texPath)
 {
-    aiMesh *mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
+    aiMesh *mesh;
+    try
+    {
+        mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
+    }
+    catch (exception e)
+    {
+        throw runtime_error(path); //TODO prettier formatting
+    }
+    if (texPath)
+    {
+        Image image;
+        if (!image.loadFromFile(path))
+        {
+            throw runtime_error(path); //TODO prettier formatting
+        }
+        int imgHeight = image.getSize().y;
+        int imgWidth = image.getSize().x;
+        const Uint8 *imgData = image.getPixelsPtr();
+    }
     vertices.resize(mesh->mNumVertices);
     for (unsigned i = 0; i < vertices.size(); ++i)
         vertices[i] = {mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z};
@@ -24,11 +43,4 @@ Mesh::Mesh(const char *path, const char *texPath) //TODO create texture if not n
             texCoords[i] = {mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y};
     }
     importer.FreeScene();
-}
-Mesh::~Mesh()
-{
-    delete texture;
-}
-Mesh::Texture::Texture(const char* path){
-    
 }
