@@ -1,5 +1,6 @@
 #include <App.h>
 using namespace std;
+using namespace aw;
 int main(int argc, char **argv)
 {
     try
@@ -8,7 +9,7 @@ int main(int argc, char **argv)
         APP.loop();
         APP.terminate();
     }
-    catch (const exception& err)
+    catch (const exception &err)
     {
         printf("An exception occured: %s", err.what());
     }

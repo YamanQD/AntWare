@@ -5,6 +5,7 @@
 #include <rapidjson/document.h>
 #include <GL/glew.h>
 #include <Window.h>
+#include <Renderer.h>
 #define APP aw::App::instance()
 namespace aw
 {

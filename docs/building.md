@@ -20,6 +20,8 @@
 - Copy `default_settings.json` to `build/settings.json` and modify it accourding to your preferences.
 - Run `ant-warrior.exe`.
 
+//TODO @rami, update Windows instructions
+
 ## Linux
 
 ### Installing Dependnecies:
@@ -28,6 +30,8 @@
 ```
 sudo apt install libsfml-dev
 sudo apt install rapidjson-dev
+sudo apt install libassimp-dev
+sudo apt install libglm-dev
 ```
 
 ### Building with Meson :

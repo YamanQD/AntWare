@@ -12,9 +12,11 @@ void App::init(int argc, char **argv)
 {
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
+    RENDERER.init();
 }
 void App::terminate()
 {
+    RENDERER.terminate();
     WINDOW.terminate();
 }
 void App::loop()
