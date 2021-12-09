@@ -23,6 +23,9 @@ void App::loop()
 {
     while (true)
     {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glLoadIdentity();
+
         sf::Event event;
         while (WINDOW.internal.pollEvent(event))
         {
@@ -32,13 +35,17 @@ void App::loop()
                 terminate();
                 return;
             case sf::Event::Resized:
-                //TODO
+                // TODO
                 break;
             default:
                 break;
             }
-            //logic should start here
-            //rendering should start here
+
+            // logic should start here
+
+            // rendering should start here
+
+            glFlush();
             WINDOW.internal.display();
         }
     }
@@ -47,7 +54,7 @@ void App::readSettingsFile()
 {
     fstream settingsFileStream("./settings.json", ios::in | ios::ate);
     vector<char> fileData;
-    if (settingsFileStream.is_open()) //TODO create if not existant
+    if (settingsFileStream.is_open()) // TODO create if not existant
     {
         fileData.resize(settingsFileStream.tellg());
         settingsFileStream.seekg(0, ios::beg);
