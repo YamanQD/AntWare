@@ -1,3 +1,4 @@
 {
-    "mesonbuild.buildFolder": "build"
+    "mesonbuild.buildFolder": "build",
+    "C_Cpp.formatting": "clangFormat"
 }

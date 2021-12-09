@@ -7,15 +7,10 @@ using namespace sf;
 Importer Mesh::importer;
 Mesh::Mesh(const char *path, const char *texPath)
 {
-    aiMesh *mesh;
-    try
-    {
-        mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
-    }
-    catch (exception e)
-    {
+    const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate);
+    if (!scene)
         throw runtime_error(path); //TODO prettier formatting
-    }
+    aiMesh *mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
     if (texPath)
     {
         loadTexture(texPath);
