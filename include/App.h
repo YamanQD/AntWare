@@ -6,6 +6,7 @@
 #include <GL/glew.h>
 #include <Window.h>
 #include <Renderer.h>
+#include <Mesh.h>
 #define APP aw::App::instance()
 namespace aw
 {
