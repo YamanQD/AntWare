@@ -6,6 +6,7 @@ project('ant-warrior', 'cpp',
 sfml_dep = subproject('sfml').get_variable('sfml_dep')
 rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
 glew_dep = subproject('glew').get_variable('glew_dep')
+glu_dep=dependency('glu') #TODO your magic, @rami
 if host_machine.system()=='linux'
     assimp_dep=dependency('assimp') #TODO your magic, @rami
 endif
@@ -17,5 +18,6 @@ executable('ant-warrior', sources,
     win_subsystem: 'windows',
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, rapidjson_dep, assimp_dep]) #FIXME Windows builds are not working 
-                                                                   #since Assimp is missing. 
+    dependencies: [sfml_dep, glew_dep,
+                   rapidjson_dep, assimp_dep,glu_dep]) #FIXME Windows builds are not working 
+                                                       #since Assimp is missing. 
