@@ -24,7 +24,7 @@ namespace aw
         GLuint texture;
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
-        std::vector<glm::vec2> texCoords; //TODO store trasformations in a suitable way
+        std::vector<glm::vec2> texCoords; // TODO store trasformations in a suitable way
         std::vector<glm::vec4> colors;
         glm::vec4 uniformColor;
         void loadTexture(const char *path);
