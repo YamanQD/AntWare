@@ -23,8 +23,6 @@ void App::loop()
 {
     while (true)
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glLoadIdentity();
 
         sf::Event event;
         while (WINDOW.internal.pollEvent(event))
@@ -40,14 +38,16 @@ void App::loop()
             default:
                 break;
             }
-
-            // logic should start here
-
-            // rendering should start here
-
-            glFlush();
-            WINDOW.internal.display();
         }
+
+        // logic should start here
+
+        // rendering should start here
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //TODO wrap rendering stuff into RENDERER, LATER
+        glLoadIdentity();
+
+        glFlush();
+        WINDOW.internal.display();
     }
 }
 void App::readSettingsFile()
