@@ -37,13 +37,12 @@ void App::loop()
             default:
                 break;
             }
-
-            // logic should start here
-
-            // rendering should start here
         }
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // logic should start here
+
+        // rendering should start here
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TODO wrap rendering stuff into RENDERER, LATER
         glLoadIdentity();
 
         glFlush();
