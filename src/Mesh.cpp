@@ -22,6 +22,21 @@ Mesh::Mesh(const char *path, const char *texPath)
     vertices.resize(mesh->mNumVertices);
     for (unsigned i = 0; i < vertices.size(); ++i)
         vertices[i] = {mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z};
+    if (mesh->HasFaces())
+    {
+        hasIndices = true;
+        indices.resize(mesh->mNumFaces * 3);
+        for (unsigned i = 0; i < indices.size(); i += 3)
+        {
+            indices[i + 0] = mesh->mFaces[i / 3].mIndices[0];
+            indices[i + 1] = mesh->mFaces[i / 3].mIndices[1];
+            indices[i + 2] = mesh->mFaces[i / 3].mIndices[2];
+        }
+    }
+    else
+    {
+        hasIndices = false;
+    }
     if (mesh->HasVertexColors(0))
     {
         colors.resize(mesh->mNumVertices);
@@ -78,23 +93,24 @@ void Mesh::draw()
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, texture);
     }
-    glBegin(GL_TRIANGLES);
-    for (int i = 0; i < vertices.size(); i++)
+    glBegin(GL_TRIANGLES); // TODO if doesn't have indices, change back to direct rendering
+    for (int i = 0; i < indices.size(); i++)
     {
+        unsigned index = indices[i];
         if (hasUniformColor)
         {
             glColor4f(uniformColor.r, uniformColor.g, uniformColor.b, uniformColor.a);
         }
         else if (hasTexture)
         {
-            glTexCoord2f(texCoords[i].x, texCoords[i].y);
+            glTexCoord2f(texCoords[index].x, texCoords[index].y);
         }
         else
         {
-            glColor4f(colors[i].r, colors[i].g, colors[i].b, colors[i].a);
+            glColor4f(colors[index].r, colors[index].g, colors[index].b, colors[index].a);
         }
-        glNormal3f(normals[i].x, normals[i].y, normals[i].z);
-        glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
+        glNormal3f(normals[index].x, normals[index].y, normals[index].z);
+        glVertex3f(vertices[index].x, vertices[index].y, vertices[index].z);
     }
     glEnd();
     glDisable(GL_TEXTURE_2D);

@@ -20,8 +20,9 @@ namespace aw
     {
     private:
         static Assimp::Importer importer;
-        bool hasTexture, hasUniformColor;
+        bool hasTexture, hasUniformColor, hasIndices;
         GLuint texture;
+        std::vector<unsigned> indices;
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
         std::vector<glm::vec2> texCoords; // TODO store trasformations in a suitable way
