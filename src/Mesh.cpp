@@ -43,7 +43,7 @@ Mesh::Mesh(const char *path, const char *texPath)
     }
     importer.FreeScene();
 }
-Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath):Mesh(path,texPath)
+Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, texPath)
 {
     hasUniformColor = true;
     uniformColor = color;
