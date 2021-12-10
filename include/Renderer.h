@@ -1,6 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 #include <Window.h>
+#include <Camera.h>
 #define RENDERER aw::Renderer::instance()
 namespace aw
 {
@@ -8,6 +9,7 @@ namespace aw
     {
     private:
         Renderer();
+        Camera camera;
 
     public:
         static Renderer &instance();

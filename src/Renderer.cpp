@@ -1,6 +1,8 @@
 #include <Renderer.h>
 using namespace aw;
-Renderer::Renderer() {}
+Renderer::Renderer()
+{
+}
 Renderer &Renderer::instance()
 {
     static Renderer renderer;
@@ -20,7 +22,7 @@ void Renderer::init()
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f, WINDOW.internal.getSize().x / WINDOW.internal.getSize().y, 0.1f, 100.0f);
+    camera = Camera(45.0f, WINDOW.internal.getSize().x / WINDOW.internal.getSize().y);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }

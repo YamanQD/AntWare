@@ -1,4 +1,5 @@
 #pragma once
+#include <GL/glew.h>
 namespace aw
 {
     class Camera
@@ -7,6 +8,7 @@ namespace aw
         float FOV, aspectRatio;
 
     public:
+        Camera();
         Camera(float FOV, float aspectRatio);
         void setFOV(float FOV);
         void setAspectRatio(float aspectRatio);
