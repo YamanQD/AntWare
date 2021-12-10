@@ -9,7 +9,7 @@ Mesh::Mesh(const char *path, const char *texPath)
 {
     const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate);
     if (!scene)
-        throw runtime_error(path); //TODO prettier formatting
+        throw runtime_error(path); // TODO prettier formatting
     aiMesh *mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
     if (texPath)
     {
@@ -54,25 +54,51 @@ void Mesh::loadTexture(const char *path)
     Image image;
     if (!image.loadFromFile(path))
     {
-        throw runtime_error(path); //TODO prettier formatting
+        throw runtime_error(path); // TODO prettier formatting
     }
     hasTexture = true;
     int imgHeight = image.getSize().y;
     int imgWidth = image.getSize().x;
     const Uint8 *imgData = image.getPixelsPtr();
-    //TODO @YamanQD generate texture
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imgWidth, imgHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, imgWidth, imgHeight, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
 }
 void Mesh::draw()
 {
-    // TODO Texture mapping
+    if (hasTexture)
+    {
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < vertices.size(); i++)
     {
-        // glTexCoord2f(texCoords[i].x, texCoords[i].y);
+        if (hasUniformColor)
+        {
+            glColor4f(uniformColor.r, uniformColor.g, uniformColor.b, uniformColor.a);
+        }
+        else if (hasTexture)
+        {
+            glTexCoord2f(texCoords[i].x, texCoords[i].y);
+        }
+        else
+        {
+            glColor4f(colors[i].r, colors[i].g, colors[i].b, colors[i].a);
+        }
         glNormal3f(normals[i].x, normals[i].y, normals[i].z);
         glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
     }
     glEnd();
+    glDisable(GL_TEXTURE_2D);
 }
 bool Mesh::getTexture(GLuint &texture)
 {
