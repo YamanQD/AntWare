@@ -70,6 +70,7 @@ void Mesh::loadTexture(const char *path)
     {
         throw runtime_error(path); // TODO prettier formatting
     }
+    image.flipVertically();
     hasTexture = true;
     int imgHeight = image.getSize().y;
     int imgWidth = image.getSize().x;
