@@ -3,9 +3,11 @@ using namespace aw;
 using namespace glm;
 Transform::Transform(vec3 position, quat rotation, vec3 scale) : position(position),
                                                                  rotation(rotation),
-                                                                 scale(scale)
-{
-}
+                                                                 scaling(scale) {}
+Transform::Transform(vec3 position, vec3 rotation, vec3 scale) : position(position),
+                                                                 rotation(rotation),
+                                                                 scaling(scale) {}
+Transform::Transform() : rotation(1.0f, 0.0f, 0.0f, 0.0f) {}
 vec3 Transform::getPosition()
 {
     return position;
@@ -16,7 +18,21 @@ quat Transform::getRotation()
 }
 vec3 Transform::getScale()
 {
-    return scale;
+    return scaling;
+}
+vec3 Transform::getRotationAxis()
+{
+    float sqrtOneMinWSquered = sqrt(1 - pow(rotation.w, 2));
+    if (sqrtOneMinWSquered == 0.0f)
+        return vec3(1, 0, 0);
+    return vec3(
+        rotation.x / sqrtOneMinWSquered,
+        rotation.y / sqrtOneMinWSquered,
+        rotation.z / sqrtOneMinWSquered);
+}
+float Transform::getRotationAngle()
+{
+    return (2 * acos(rotation.w));
 }
 void Transform::setPosition(vec3 position)
 {
@@ -26,7 +42,48 @@ void Transform::setRotation(quat rotation)
 {
     this->rotation = rotation;
 }
+void Transform::setRotation(vec3 rotation)
+{
+    this->rotation = quat(rotation);
+}
+void Transform::setRotation(vec3 axis, float angle)
+{
+    this->rotation = glm::rotate(quat{1, 0, 0, 0}, angle, axis);
+}
 void Transform::setScale(vec3 scale)
 {
-    this->scale = scale;
+    this->scaling = scale;
+}
+void Transform::translate(vec3 translation)
+{
+    position += translation;
+}
+void Transform::rotate(quat rotation)
+{
+    this->rotation *= rotation;
+}
+void Transform::rotate(vec3 rotation)
+{
+    this->rotation *= quat(rotation);
+}
+void Transform::rotate(vec3 axis, float angle)
+{
+    this->rotation *= glm::rotate(quat{1, 0, 0, 0}, angle, axis);
+}
+void Transform::rotateGlobal(quat rotation)
+{
+    this->rotation = rotation * this->rotation;
+}
+void Transform::rotateGlobal(vec3 rotation)
+{
+    this->rotation = quat(rotation) * this->rotation;
+}
+void Transform::rotateGlobal(vec3 axis, float angle)
+{
+    quat rotation = glm::rotate(quat{1, 0, 0, 0}, angle, axis);
+    this->rotation = rotation * this->rotation;
+}
+void Transform::scale(vec3 scale)
+{
+    scaling += scale;
 }

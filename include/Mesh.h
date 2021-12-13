@@ -25,7 +25,7 @@ namespace aw
         std::vector<unsigned> indices;
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
-        std::vector<glm::vec2> texCoords; // TODO store trasformations in a suitable way
+        std::vector<glm::vec2> texCoords;
         std::vector<glm::vec4> colors;
         glm::vec4 uniformColor;
         void loadTexture(const char *path);
@@ -33,6 +33,7 @@ namespace aw
     public:
         Mesh(const char *path, const char *texPath = nullptr);
         Mesh(const char *path, glm::vec4 color, const char *texPath = nullptr);
+        Mesh(const char *path, glm::vec3 color, const char *texPath = nullptr);
         void draw();
         bool getTexture(GLuint &texture);
         void setTexture(GLuint texture);

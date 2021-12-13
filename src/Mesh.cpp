@@ -63,6 +63,9 @@ Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, 
     hasUniformColor = true;
     uniformColor = color;
 }
+Mesh::Mesh(const char *path, glm::vec3 color, const char *texPath) : Mesh(path,
+                                                                          glm::vec4(color, 1),
+                                                                          texPath) {}
 void Mesh::loadTexture(const char *path)
 {
     Image image;
