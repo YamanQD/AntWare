@@ -39,7 +39,9 @@ Mesh::Mesh(const char *path, const char *texPath)
     }
     if (mesh->HasVertexColors(0))
     {
-        albedo = VERTEX_COLORS;
+        if (albedo != TEXTURE)
+            albedo = VERTEX_COLORS;
+
         colors.resize(mesh->mNumVertices);
         for (unsigned i = 0; i < colors.size(); ++i)
             colors[i] = {mesh->mColors[0][i].r, mesh->mColors[0][i].g,
