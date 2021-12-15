@@ -7,7 +7,6 @@ Transform::Transform(vec3 position, quat rotation, vec3 scale) : position(positi
 Transform::Transform(vec3 position, vec3 rotation, vec3 scale) : position(position),
                                                                  rotation(rotation),
                                                                  scaling(scale) {}
-Transform::Transform() : rotation(1.0f, 0.0f, 0.0f, 0.0f) {}
 vec3 Transform::getPosition()
 {
     return position;

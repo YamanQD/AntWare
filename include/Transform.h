@@ -11,13 +11,12 @@ namespace aw
         glm::vec3 scaling;
 
     public:
-        Transform();
-        Transform(glm::vec3 position,
+        Transform(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
                   glm::quat rotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f),
-                  glm::vec3 scale = {0, 0, 0});
+                  glm::vec3 scale = {0.0f, 0.0f, 0.0f});
         Transform(glm::vec3 position,
                   glm::vec3 rotation,
-                  glm::vec3 scale = {0, 0, 0});
+                  glm::vec3 scale = {0.0f, 0.0f, 0.0f});
         glm::vec3 getPosition();
         glm::quat getRotation();
         glm::vec3 getScale();
