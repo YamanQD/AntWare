@@ -5,7 +5,7 @@ Transform::Transform(vec3 position, quat rotation, vec3 scale) : position(positi
                                                                  rotation(rotation),
                                                                  scaling(scale) {}
 Transform::Transform(vec3 position, vec3 rotation, vec3 scale) : position(position),
-                                                                 rotation(rotation),
+                                                                 rotation(radians(rotation)),
                                                                  scaling(scale) {}
 vec3 Transform::getPosition()
 {
@@ -21,9 +21,9 @@ vec3 Transform::getScale()
 }
 vec3 Transform::getRotationAxis()
 {
-    float sqrtOneMinWSquered = sqrt(1 - pow(rotation.w, 2));
-    if (sqrtOneMinWSquered == 0.0f)
+    if (rotation.w == 0.0f)
         return vec3(1, 0, 0);
+    float sqrtOneMinWSquered = sqrt(1 - pow(rotation.w, 2));
     return vec3(
         rotation.x / sqrtOneMinWSquered,
         rotation.y / sqrtOneMinWSquered,
@@ -31,7 +31,7 @@ vec3 Transform::getRotationAxis()
 }
 float Transform::getRotationAngle()
 {
-    return (2 * acos(rotation.w));
+    return degrees(2 * acos(rotation.w));
 }
 void Transform::setPosition(vec3 position)
 {
@@ -43,10 +43,12 @@ void Transform::setRotation(quat rotation)
 }
 void Transform::setRotation(vec3 rotation)
 {
+    rotation = radians(rotation);
     this->rotation = quat(rotation);
 }
 void Transform::setRotation(vec3 axis, float angle)
 {
+    angle = radians(angle);
     this->rotation = glm::rotate(quat{1, 0, 0, 0}, angle, axis);
 }
 void Transform::setScale(vec3 scale)
@@ -63,10 +65,12 @@ void Transform::rotate(quat rotation)
 }
 void Transform::rotate(vec3 rotation)
 {
+    rotation = radians(rotation);
     this->rotation *= quat(rotation);
 }
 void Transform::rotate(vec3 axis, float angle)
 {
+    angle = radians(angle);
     this->rotation *= glm::rotate(quat{1, 0, 0, 0}, angle, axis);
 }
 void Transform::rotateGlobal(quat rotation)
@@ -75,10 +79,12 @@ void Transform::rotateGlobal(quat rotation)
 }
 void Transform::rotateGlobal(vec3 rotation)
 {
+    rotation = radians(rotation);
     this->rotation = quat(rotation) * this->rotation;
 }
 void Transform::rotateGlobal(vec3 axis, float angle)
 {
+    angle = radians(angle);
     quat rotation = glm::rotate(quat{1, 0, 0, 0}, angle, axis);
     this->rotation = rotation * this->rotation;
 }
