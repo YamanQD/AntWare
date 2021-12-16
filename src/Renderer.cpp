@@ -21,6 +21,15 @@ void Renderer::init()
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
+Camera &Renderer::getCam()
+{
+    return camera;
+}
+void Renderer::resetCam()
+{
+    camera.transform = Transform();
+    camera.update();
+}
 void Renderer::terminate()
 {
 }
