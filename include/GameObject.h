@@ -2,6 +2,7 @@
 #include <memory>
 #include <Mesh.h>
 #include <Transform.h>
+#include <glm/glm.hpp>
 namespace aw
 {
     class GameObject
@@ -19,6 +20,7 @@ namespace aw
         void setParent(GameObject *parent);
         std::shared_ptr<Mesh> getMesh();
         void setMesh(std::shared_ptr<Mesh> mesh);
+        void applyTransform();
         void draw();
         virtual void update() = 0;
     };
