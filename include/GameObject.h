@@ -8,7 +8,7 @@ namespace aw
 {
     class GameObject
     {
-    private:
+    protected:
         std::shared_ptr<Mesh> meshPtr;
         GameObject *parent;
         glm::mat4 transformationMat;
