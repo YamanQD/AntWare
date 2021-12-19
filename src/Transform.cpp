@@ -31,7 +31,12 @@ vec3 Transform::getRotationAxis()
 }
 float Transform::getRotationAngle()
 {
-    return degrees(2 * acos(rotation.w));
+    float angle = degrees(2 * acos(rotation.w));
+    if (angle != angle)
+    {
+        return 0.f;
+    }
+    return clamp(angle, 0.0f, 360.0f);
 }
 void Transform::setPosition(vec3 position)
 {
