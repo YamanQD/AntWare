@@ -59,3 +59,9 @@ void GameObject::fixedUpdate(float deltaTime)
 	transform.translate(appliedVelocity * deltaTime);
 	transform.rotate(appliedAngularVelocity * deltaTime);
 }
+void GameObject::constructAABB(){
+	// TODO
+}
+void GameObject::recalculateAABB(){
+	// TODO
+}

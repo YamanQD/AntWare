@@ -4,6 +4,7 @@
 #include <Mesh.h>
 #include <Transform.h>
 #include <Rigidbody.h>
+#include <AABB.h>
 namespace aw
 {
     class GameObject
@@ -13,9 +14,13 @@ namespace aw
         GameObject *parent;
         glm::mat4 transformationMat;
 
+        void constructAABB();
+        void recalculateAABB();
+
     public:
         Transform transform;
         Rigidbody rigidbody;
+        AABB aabb;
         bool isStatic;
 
         GameObject(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr, bool isStatic = false);
