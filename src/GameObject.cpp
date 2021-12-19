@@ -8,25 +8,29 @@ GameObject::GameObject(shared_ptr<Mesh> mesh, GameObject *parent) : meshPtr(mesh
 GameObject::GameObject(Mesh mesh, GameObject *parent) : meshPtr(make_shared<Mesh>(mesh)),
 														parent(parent) {}
 
-void GameObject::applyTransform()
+mat4 GameObject::applyTransform()
 {
+	mat4 parentMat(1.0f);
 	if (parent != nullptr)
-		parent->applyTransform();
+		parentMat = parent->applyTransform();
 
 	vec3 translation = transform.getPosition();
-	vec3 rotation = transform.getRotationAxis();
-	double angle = transform.getRotationAngle();
 	vec3 scale = transform.getScale();
 
-	glTranslatef(translation.x, translation.y, translation.z);
-	glRotated(angle, rotation.x, rotation.y, rotation.z);
-	glScalef(scale.x, scale.y, scale.z);
+	mat4 transMat = translate(mat4(1.0f), translation);
+	mat4 rotationMat = mat4(transform.getRotation());
+	mat4 scaleMat = glm::scale(mat4(1.0f), scale);
+	
+	mat4 transform = transMat * rotationMat * scaleMat;
+
+	glMultMatrixf(&transform[0][0]);
+	return parentMat * transform;
 }
 
 void GameObject::draw()
 {
 	glPushMatrix();
-	applyTransform();
+	transformationMat = applyTransform();
 	meshPtr->draw();
 	glPopMatrix();
 }

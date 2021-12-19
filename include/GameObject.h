@@ -10,6 +10,7 @@ namespace aw
     private:
         std::shared_ptr<Mesh> meshPtr;
         GameObject *parent;
+        glm::mat4 transformationMat;
 
     public:
         Transform transform;
@@ -20,7 +21,7 @@ namespace aw
         void setParent(GameObject *parent);
         std::shared_ptr<Mesh> getMesh();
         void setMesh(std::shared_ptr<Mesh> mesh);
-        void applyTransform();
+        glm::mat4 applyTransform();
         void draw();
         virtual void update() = 0;
     };
