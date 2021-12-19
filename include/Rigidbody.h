@@ -15,10 +15,10 @@ namespace aw
         int angularLock = 0;
 
     public:
-        glm::vec3 velocity;
-        glm::vec3 angularVelocity;
-        glm::vec3 acceleration;
-        glm::vec3 angularAcceleration;
+        glm::vec3 velocity = {0, 0, 0};
+        glm::vec3 angularVelocity = {0, 0, 0};
+        glm::vec3 acceleration = {0, 0, 0};
+        glm::vec3 angularAcceleration = {0, 0, 0};
         float mass = 1.0f;
         void lockLinear(AXIS axis);
         void lockAngular(AXIS axis);
