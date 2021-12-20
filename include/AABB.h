@@ -11,6 +11,7 @@ namespace aw
     public:
         bool isColliding(const AABB &other);
         bool isColliding(glm::vec3 point);
+        glm::vec3 getCenter();
         friend class GameObject;
     };
 }

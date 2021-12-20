@@ -38,3 +38,9 @@ bool AABB::isColliding(vec3 point)
     }
     return intersectZ && intersectY && intersectX;
 }
+vec3 AABB::getCenter()
+{
+    vec3 corner = {left, down, backward};
+    vec3 oppisite = {right, up, forward};
+    return (corner + oppisite) * 0.5f;
+}
