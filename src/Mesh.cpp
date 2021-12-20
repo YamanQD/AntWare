@@ -160,3 +160,7 @@ void Mesh::setUniformColor(vec4 color)
     albedo = UNIFORM_COLOR;
     uniformColor = color;
 }
+const vector<vec3> &Mesh::getVertices()
+{
+    return vertices;
+}

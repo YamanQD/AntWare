@@ -40,5 +40,6 @@ namespace aw
         void setTexture(GLuint texture);
         bool getUniformColor(glm::vec4 &color);
         void setUniformColor(glm::vec4 color);
+        const std::vector<glm::vec3> &getVertices();
     };
 }

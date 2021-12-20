@@ -1,4 +1,3 @@
-#pragma once
 #include <AABB.h>
 using namespace aw;
 using namespace glm;

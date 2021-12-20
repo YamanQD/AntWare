@@ -5,10 +5,16 @@ using namespace std;
 
 GameObject::GameObject(shared_ptr<Mesh> mesh, GameObject *parent, bool isStatic) : meshPtr(mesh),
 																				   parent(parent),
-																				   isStatic(isStatic) {}
+																				   isStatic(isStatic)
+{
+	constructAABB();
+}
 GameObject::GameObject(Mesh mesh, GameObject *parent, bool isStatic) : meshPtr(make_shared<Mesh>(mesh)),
 																	   parent(parent),
-																	   isStatic(isStatic) {}
+																	   isStatic(isStatic)
+{
+	constructAABB();
+}
 
 mat4 GameObject::applyTransform()
 {
@@ -33,6 +39,7 @@ void GameObject::draw()
 {
 	glPushMatrix();
 	transformationMat = applyTransform();
+	recalculateAABB();
 	meshPtr->draw();
 	glPopMatrix();
 }
@@ -59,9 +66,53 @@ void GameObject::fixedUpdate(float deltaTime)
 	transform.translate(appliedVelocity * deltaTime);
 	transform.rotate(appliedAngularVelocity * deltaTime);
 }
-void GameObject::constructAABB(){
-	// TODO
+void GameObject::constructAABB()
+{
+	auto vertices = meshPtr->getVertices();
+	aabb.backward = vertices[0].z;
+	aabb.forward = vertices[0].z;
+	aabb.down = vertices[0].y;
+	aabb.up = vertices[0].y;
+	aabb.right = vertices[0].x;
+	aabb.left = vertices[0].x;
+	for (unsigned i = 0; i < vertices.size(); ++i)
+	{
+		aabb.backward = glm::min(aabb.backward, vertices[i].z);
+		aabb.forward = glm::max(aabb.forward, vertices[i].z);
+		aabb.down = glm::min(aabb.down, vertices[i].y);
+		aabb.up = glm::max(aabb.up, vertices[i].y);
+		aabb.left = glm::min(aabb.left, vertices[i].x);
+		aabb.right = glm::max(aabb.right, vertices[i].x);
+	}
+	for (unsigned i = 0; i < 8; ++i)
+		aabb.bounds[i] = {0, 0, 0};
+	aabb.bounds[0] = {aabb.right, aabb.up, aabb.forward};
+	aabb.bounds[1] = {aabb.right, aabb.up, aabb.backward};
+	aabb.bounds[2] = {aabb.right, aabb.down, aabb.forward};
+	aabb.bounds[3] = {aabb.right, aabb.down, aabb.backward};
+	for (unsigned i = 4; i < 8; ++i)
+	{
+		aabb.bounds[i] = aabb.bounds[i - 4];
+		aabb.bounds[i].x = aabb.left;
+	}
 }
-void GameObject::recalculateAABB(){
-	// TODO
+void GameObject::recalculateAABB()
+{
+	vec3 transformedBound = transformationMat * vec4(aabb.bounds[0], 1);
+	aabb.backward = transformedBound.z;
+	aabb.forward = transformedBound.z;
+	aabb.down = transformedBound.y;
+	aabb.up = transformedBound.y;
+	aabb.right = transformedBound.x;
+	aabb.left = transformedBound.x;
+	for (unsigned i = 0; i < 8; ++i)
+	{
+		transformedBound = transformationMat * vec4(aabb.bounds[i], 1);
+		aabb.backward = glm::min(aabb.backward, transformedBound.z);
+		aabb.forward = glm::max(aabb.forward, transformedBound.z);
+		aabb.down = glm::min(aabb.down, transformedBound.y);
+		aabb.up = glm::max(aabb.up, transformedBound.y);
+		aabb.left = glm::min(aabb.left, transformedBound.x);
+		aabb.right = glm::max(aabb.right, transformedBound.x);
+	}
 }

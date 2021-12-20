@@ -6,6 +6,7 @@ namespace aw
     {
     private:
         float up, down, right, left, forward, backward;
+        glm::vec3 bounds[8];
 
     public:
         bool isColliding(const AABB &other);
