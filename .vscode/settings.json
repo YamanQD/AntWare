@@ -1,4 +1,7 @@
 {
     "mesonbuild.buildFolder": "build",
-    "C_Cpp.formatting": "clangFormat"
+    "C_Cpp.formatting": "clangFormat",
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
 }

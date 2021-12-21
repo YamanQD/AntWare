@@ -1,7 +1,6 @@
 #include <Renderer.h>
 using namespace aw;
-Renderer::Renderer() : camera(45.0f,
-                              (float)WINDOW.internal.getSize().x / (float)WINDOW.internal.getSize().y)
+Renderer::Renderer()
 {
 }
 Renderer &Renderer::instance()
@@ -20,15 +19,6 @@ void Renderer::init()
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-}
-Camera &Renderer::getCam()
-{
-    return camera;
-}
-void Renderer::resetCam()
-{
-    camera.transform = Transform();
-    camera.update();
 }
 void Renderer::terminate()
 {

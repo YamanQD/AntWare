@@ -17,14 +17,6 @@ void Rigidbody::unlockAngular(AXIS axis)
 {
     angularLock ^= axis;
 }
-int Rigidbody::getAngularLock()
-{
-    return angularLock;
-}
-int Rigidbody::getLinearLock()
-{
-    return linearLock;
-}
 bool Rigidbody::isLinearLocked(AXIS axis)
 {
     return linearLock & axis;

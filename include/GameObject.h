@@ -32,6 +32,7 @@ namespace aw
         glm::mat4 applyTransform();
         void draw();
         void fixedUpdate(float deltaTime);
+        virtual void start() = 0;
         virtual void update() = 0;
     };
 }

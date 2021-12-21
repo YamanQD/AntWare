@@ -1,0 +1,106 @@
+{
+    "camera": {
+        "fov": 45.0,
+        "transform": {
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "velocity": [
+                0,
+                0,
+                0
+            ],
+            "angularVelocity": [
+                0,
+                0,
+                0
+            ],
+            "acceleration": [
+                0,
+                0,
+                0
+            ],
+            "angularAcceleration": [
+                0,
+                0,
+                0
+            ],
+            "mass": 1.0,
+            "linearLock": 0,
+            "angularLock": 0
+        }
+    },
+    "meshes": [
+        {
+            "path": "./Assets/Cube.glb",
+            "material": {},
+            "albedo": 0,
+            "texture": "./Assets/tex.png"
+        }
+    ],
+    "lights": [],
+    "gameobjects": [
+        {
+            "class": 0,
+            "parent": null,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    -5
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "static": false,
+            "mesh": 0,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        }
+    ]
+}

@@ -1,7 +1,8 @@
 #include <Camera.h>
 using namespace aw;
 using namespace glm;
-Camera::Camera(float FOV, float aspectRatio) : FOV(FOV), aspectRatio(aspectRatio)
+float Camera::aspectRatio;
+Camera::Camera(float FOV) : FOV(FOV)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
