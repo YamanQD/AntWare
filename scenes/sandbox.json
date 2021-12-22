@@ -48,12 +48,22 @@
         {
             "path": "./Assets/Cube.glb",
             "material": {},
-            "color":[1,0,0,1]
+            "color": [
+                1,
+                0,
+                0,
+                1
+            ]
         },
         {
-            "path": "./Assets/Plane.glb",
+            "path": "./Assets/Plain.glb",
             "material": {},
-            "color":[1,1,1,1]
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "lights": [],
@@ -124,7 +134,6 @@
                 ]
             },
             "mesh": 1
-            
         }
     ]
 }
