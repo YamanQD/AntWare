@@ -4,6 +4,7 @@ using namespace glm;
 float Camera::aspectRatio;
 Camera::Camera(float FOV) : FOV(FOV)
 {
+    aspectRatio = (float)WINDOW.internal.getSize().x / (float)WINDOW.internal.getSize().y;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glew.h>
+#include <Window.h>
 #include <Transform.h>
 #include <Rigidbody.h>
 namespace aw
