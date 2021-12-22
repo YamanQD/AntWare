@@ -59,6 +59,10 @@ void Transform::translate(vec3 translation)
 {
     position += mat3(getRotation()) * translation;
 }
+void Transform::translateGlobal(vec3 translation)
+{
+    position += translation;
+}
 void Transform::rotate(qua<double> rotation)
 {
     this->rotation *= rotation;

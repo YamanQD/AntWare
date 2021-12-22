@@ -28,6 +28,7 @@ namespace aw
         void setRotation(glm::vec3 axis, float angle);
         void setScale(glm::vec3 scale);
         void translate(glm::vec3 translation);
+        void translateGlobal(glm::vec3 translation);
         void rotate(glm::qua<double> rotation);
         void rotate(glm::vec3 rotation);
         void rotate(glm::vec3 axis, float angle);
