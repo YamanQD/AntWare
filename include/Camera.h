@@ -15,7 +15,6 @@ namespace aw
     public:
         Transform transform;
         Rigidbody rigidbody;
-        GameObject *parent = nullptr;
 
         Camera(float FOV);
         void setFOV(float FOV);
