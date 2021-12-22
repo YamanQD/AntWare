@@ -5,8 +5,13 @@
 #include <GameObject.h>
 #include <Camera.h>
 #include <DummyGO.h>
+#include <StaticGO.h>
 namespace aw
 {
+    enum CLASSES
+    {
+        STATICGO = 1
+    };
     class Scene
     {
     public:

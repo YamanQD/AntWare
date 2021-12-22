@@ -78,21 +78,34 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             int parentIndex = array[i]["parent"].GetInt();
             parent = gameObjects[parentIndex];
         }
-        bool isStatic = array[i]["static"].GetBool();
         int meshIndex = array[i]["mesh"].GetInt();
         shared_ptr<Mesh> mesh = meshes[meshIndex];
+        bool isStatic = true;
+        if (array[i].HasMember("rigidbody"))
+        {
+            isStatic = false;
+        }
         GameObject *gameObject;
         switch (classType)
         {
         case 0:
             gameObject = new DummyGO(*mesh, parent);
             break;
-
+        case 1:
+            gameObject = new StaticGO(mesh, parent);
+            break;
         default:
+            printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
+                   i);
+            gameObject = new StaticGO(mesh, parent);
             break;
         }
+        gameObject->isStatic = isStatic;
         gameObject->transform = parseTransform(array[i]["transform"].GetObject());
-        gameObject->rigidbody = parseRigidbody(array[i]["rigidbody"].GetObject());
+        if (!isStatic)
+        {
+            gameObject->rigidbody = parseRigidbody(array[i]["rigidbody"].GetObject());
+        }
         gameObjects.push_back(gameObject);
     }
     return gameObjects;

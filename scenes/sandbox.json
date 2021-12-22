@@ -59,7 +59,7 @@
     "lights": [],
     "gameobjects": [
         {
-            "class": 0,
+            "class": 1,
             "transform": {
                 "position": [
                     0,
@@ -77,7 +77,6 @@
                     1
                 ]
             },
-            "static": false,
             "mesh": 0,
             "rigidbody": {
                 "velocity": [
@@ -124,33 +123,8 @@
                     1
                 ]
             },
-            "static": false,
-            "mesh": 1,
-            "rigidbody": {
-                "velocity": [
-                    0,
-                    0,
-                    0
-                ],
-                "angularVelocity": [
-                    0,
-                    0,
-                    0
-                ],
-                "acceleration": [
-                    0,
-                    0,
-                    0
-                ],
-                "angularAcceleration": [
-                    0,
-                    0,
-                    0
-                ],
-                "mass": 1.0,
-                "linearLock": 0,
-                "angularLock": 0
-            }
+            "mesh": 1
+            
         }
     ]
 }

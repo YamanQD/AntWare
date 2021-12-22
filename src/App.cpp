@@ -14,6 +14,7 @@ void App::init(int argc, char **argv)
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
     currentScene = new Scene(argv[1]);
+    start();
 }
 void App::terminate()
 {
@@ -53,6 +54,13 @@ void App::update()
     for (unsigned i = 0; i < currentScene->gameObjects.size(); ++i)
     {
         currentScene->gameObjects[i]->update();
+    }
+}
+void App::start()
+{
+    for (unsigned i = 0; i < currentScene->gameObjects.size(); ++i)
+    {
+        currentScene->gameObjects[i]->start();
     }
 }
 void App::readSettingsFile()

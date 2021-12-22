@@ -23,6 +23,7 @@ namespace aw
         } settings;
 
         App();
+        void start();
         void update();
         void readSettingsFile();
 
