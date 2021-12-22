@@ -4,9 +4,13 @@
 #include <exception>
 #include <rapidjson/document.h>
 #include <GL/glew.h>
+#include <SFML/System/Clock.hpp>
 #include <Window.h>
 #include <Renderer.h>
 #include <Mesh.h>
+#include <Transform.h>
+#include <Physics.h>
+#include <Scene.h>
 #define APP aw::App::instance()
 namespace aw
 {
@@ -19,7 +23,10 @@ namespace aw
         } settings;
 
         App();
+        void update();
         void readSettingsFile();
+
+        Scene *currentScene;
 
     public:
         static App &instance();

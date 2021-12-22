@@ -1,5 +1,6 @@
 #pragma once
 #include <GameObject.h>
+#include<Scene.h>
 #define PHYSICS aw::Physics::instance()
 namespace aw
 {
@@ -10,6 +11,7 @@ namespace aw
 
     public:
         static Physics &instance();
+        void apply(Scene *scene, float deltaTime);
         void resolveCollision(GameObject *one, GameObject *two); // For testing purposes
     };
 }

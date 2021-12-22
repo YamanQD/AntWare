@@ -81,7 +81,7 @@
             "mesh": 0,
             "rigidbody": {
                 "velocity": [
-                    0,
+                    1,
                     0,
                     0
                 ],

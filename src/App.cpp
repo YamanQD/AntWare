@@ -13,14 +13,18 @@ void App::init(int argc, char **argv)
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
+    currentScene = new Scene(argv[1]);
 }
 void App::terminate()
 {
     RENDERER.terminate();
     WINDOW.terminate();
+    delete currentScene;
 }
 void App::loop()
 {
+    sf::Clock clock;
+    float deltaTime = 0.0f;
     while (true)
     {
         sf::Event event;
@@ -38,22 +42,24 @@ void App::loop()
                 break;
             }
         }
-
-        // logic should start here
-
-        // rendering should start here
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // TODO wrap rendering stuff into RENDERER, LATER
-        glLoadIdentity();
-
-        glFlush();
-        WINDOW.internal.display();
+        PHYSICS.apply(currentScene, deltaTime);
+        update();
+        RENDERER.renderScene(currentScene);
+        deltaTime = clock.restart().asSeconds();
+    }
+}
+void App::update()
+{
+    for (unsigned i = 0; i < currentScene->gameObjects.size(); ++i)
+    {
+        currentScene->gameObjects[i]->update();
     }
 }
 void App::readSettingsFile()
 {
     fstream settingsFileStream("./settings.json", ios::in | ios::ate);
     vector<char> fileData;
-    if (settingsFileStream.is_open()) // TODO create if not existant
+    if (settingsFileStream.is_open())
     {
         fileData.resize(settingsFileStream.tellg());
         settingsFileStream.seekg(0, ios::beg);

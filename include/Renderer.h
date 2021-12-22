@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <Window.h>
 #include <Camera.h>
+#include <Scene.h>
 #define RENDERER aw::Renderer::instance()
 namespace aw
 {
@@ -13,6 +14,7 @@ namespace aw
     public:
         static Renderer &instance();
         void init();
+        void renderScene(Scene *scene);
         void terminate();
     };
 }

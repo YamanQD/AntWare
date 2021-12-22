@@ -20,6 +20,18 @@ void Renderer::init()
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
+void Renderer::renderScene(Scene *scene)
+{
+    scene->camera.update();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
+    {
+        scene->gameObjects[i]->draw();
+    }
+    glFlush();
+    WINDOW.internal.display();
+}
 void Renderer::terminate()
 {
 }
