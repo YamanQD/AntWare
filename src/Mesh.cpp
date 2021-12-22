@@ -11,6 +11,7 @@ Mesh::Mesh(const char *path, const char *texPath)
     if (!scene)
         throw runtime_error(path); // TODO prettier formatting
     aiMesh *mesh = importer.ReadFile(path, aiProcess_Triangulate)->mMeshes[0];
+    hasUniformColor = false;
     if (texPath)
     {
         loadTexture(texPath);

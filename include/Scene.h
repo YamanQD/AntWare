@@ -4,6 +4,7 @@
 #include <rapidjson/document.h>
 #include <GameObject.h>
 #include <Camera.h>
+#include <DummyGO.h>
 namespace aw
 {
     class Scene

@@ -48,7 +48,6 @@
         {
             "path": "./Assets/Cube.glb",
             "material": {},
-            "albedo": 0,
             "texture": "./Assets/tex.png"
         }
     ],
@@ -56,7 +55,6 @@
     "gameobjects": [
         {
             "class": 0,
-            "parent": null,
             "transform": {
                 "position": [
                     0,
