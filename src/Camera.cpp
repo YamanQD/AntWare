@@ -30,6 +30,9 @@ void Camera::setAspectRatio(float aspectRatio)
 }
 void Camera::update()
 {
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
     vec3 camPos = transform.getPosition();
     vec3 camDir = vec3(0, 0, -1);
     vec3 camUp = vec3(0, 1, 0);
@@ -37,9 +40,35 @@ void Camera::update()
     camDir = rotationMat * camDir;
     camUp = rotationMat * camUp;
     vec3 lookedAt = camDir + camPos;
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+
+    mat4 parentMat(1.0f);
+
+    if (parent)
+    {
+        parent->applyTransform(); // TODO test
+    }
+
     gluLookAt(camPos.x, camPos.y, camPos.z,
               lookedAt.x, lookedAt.y, lookedAt.z,
               camUp.x, camUp.y, camUp.z);
+}
+void Camera::fixedUpdate(float deltaTime){
+	rigidbody.velocity += rigidbody.acceleration * deltaTime;
+	rigidbody.angularVelocity += rigidbody.angularAcceleration * deltaTime;
+	vec3 appliedVelocity = rigidbody.velocity;
+	vec3 appliedAngularVelocity = rigidbody.angularVelocity;
+	if (rigidbody.isLinearLocked(AXIS::x))
+		appliedVelocity.x = 0;
+	if (rigidbody.isLinearLocked(AXIS::y))
+		appliedVelocity.y = 0;
+	if (rigidbody.isLinearLocked(AXIS::z))
+		appliedVelocity.z = 0;
+	if (rigidbody.isAngularLocked(AXIS::x))
+		appliedAngularVelocity.x = 0;
+	if (rigidbody.isAngularLocked(AXIS::y))
+		appliedAngularVelocity.y = 0;
+	if (rigidbody.isAngularLocked(AXIS::z))
+		appliedAngularVelocity.z = 0;
+	transform.translate(appliedVelocity * deltaTime);
+	transform.rotate(appliedAngularVelocity * deltaTime);
 }

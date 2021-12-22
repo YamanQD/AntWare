@@ -5,7 +5,7 @@
             "position": [
                 0,
                 0,
-                0
+                10
             ],
             "rotation": [
                 0,
@@ -22,7 +22,7 @@
             "velocity": [
                 0,
                 0,
-                0
+                1
             ],
             "angularVelocity": [
                 0,

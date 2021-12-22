@@ -12,6 +12,7 @@ void Physics::resolveCollision(GameObject *one, GameObject *two)
 }
 void Physics::apply(Scene *scene, float deltaTime)
 {
+    scene->camera.fixedUpdate(deltaTime);
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         scene->gameObjects[i]->fixedUpdate(deltaTime);

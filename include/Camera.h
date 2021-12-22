@@ -3,6 +3,7 @@
 #include <Window.h>
 #include <Transform.h>
 #include <Rigidbody.h>
+#include <GameObject.h>
 namespace aw
 {
     class Camera
@@ -14,11 +15,13 @@ namespace aw
     public:
         Transform transform;
         Rigidbody rigidbody;
+        GameObject *parent = nullptr;
 
         Camera(float FOV);
         void setFOV(float FOV);
         void setAspectRatio(float aspectRatio);
         //Call to update camera matrices
         void update();
+        void fixedUpdate(float deltaTime);
     };
 }
