@@ -24,7 +24,6 @@ void Renderer::renderScene(Scene *scene)
 {
     scene->camera.update();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         scene->gameObjects[i]->draw();
