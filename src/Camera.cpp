@@ -10,29 +10,22 @@ Camera::Camera(float FOV) : FOV(FOV)
 
     gluPerspective(FOV, aspectRatio, 0.1f, 100.0f);
 
-    glPushMatrix();
-
     glMatrixMode(GL_MODELVIEW);
 }
 void Camera::setFOV(float FOV)
 {
     this->FOV = FOV;
     glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
     glLoadIdentity();
     gluPerspective(FOV, aspectRatio, 0.1f, 100.0f);
-    glPushMatrix();
     update();
 }
 void Camera::setAspectRatio(float aspectRatio)
 {
     this->aspectRatio = aspectRatio;
     glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glPopMatrix();
     glLoadIdentity();
     gluPerspective(FOV, aspectRatio, 0.1f, 100.0f);
-    glPushMatrix();
     update();
 }
 void Camera::update()
@@ -44,11 +37,9 @@ void Camera::update()
     camDir = rotationMat * camDir;
     camUp = rotationMat * camUp;
     vec3 lookedAt = camDir + camPos;
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glPushMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     gluLookAt(camPos.x, camPos.y, camPos.z,
               lookedAt.x, lookedAt.y, lookedAt.z,
               camUp.x, camUp.y, camUp.z);
-    glMatrixMode(GL_MODELVIEW);
 }
