@@ -88,10 +88,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
         GameObject *gameObject;
         switch (classType)
         {
-        case 0:
-            gameObject = new DummyGO(*mesh, parent);
-            break;
-        case 1:
+        case CLASSES::STATICGO:
             gameObject = new StaticGO(mesh, parent);
             break;
         default:
