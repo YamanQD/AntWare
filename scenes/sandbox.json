@@ -48,12 +48,12 @@
         {
             "path": "./Assets/Cube.glb",
             "material": {},
-            "color":[1,1,1,1]
+            "color":[1,0,0,1]
         },
         {
-            "path": "./Assets/Cube.glb",
+            "path": "./Assets/Plane.glb",
             "material": {},
-            "color":[1,0,0,1]
+            "color":[1,1,1,1]
         }
     ],
     "lights": [],
@@ -108,9 +108,9 @@
             "class": 1,
             "transform": {
                 "position": [
-                    3,
                     0,
-                    -5
+                    -1,
+                    0
                 ],
                 "rotation": [
                     0,
@@ -118,9 +118,9 @@
                     0
                 ],
                 "scale": [
-                    1,
-                    1,
-                    1
+                    10,
+                    10,
+                    10
                 ]
             },
             "mesh": 1
