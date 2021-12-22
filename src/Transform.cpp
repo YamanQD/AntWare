@@ -57,7 +57,7 @@ void Transform::setScale(vec3 scale)
 }
 void Transform::translate(vec3 translation)
 {
-    position += translation;
+    position += mat3(getRotation()) * translation;
 }
 void Transform::rotate(qua<double> rotation)
 {
