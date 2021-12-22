@@ -41,13 +41,6 @@ void Camera::update()
     camUp = rotationMat * camUp;
     vec3 lookedAt = camDir + camPos;
 
-    mat4 parentMat(1.0f);
-
-    if (parent)
-    {
-        parent->applyTransform(); // TODO test
-    }
-
     gluLookAt(camPos.x, camPos.y, camPos.z,
               lookedAt.x, lookedAt.y, lookedAt.z,
               camUp.x, camUp.y, camUp.z);
