@@ -18,6 +18,7 @@ namespace aw
 		bool enabled;
 		LightType type;
 		glm::vec4 ambient, diffuse, specular;
+		glm::vec3 direction;
 		float angle;
 
 	public:

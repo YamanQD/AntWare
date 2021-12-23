@@ -16,6 +16,7 @@ Light::Light(
 						  angle(180.0f)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
+	update();
 	glEnable(GL_LIGHT0 + id);
 }
 Light::Light(
@@ -31,13 +32,16 @@ Light::Light(
 				   ambient(ambient),
 				   diffuse(diffuse),
 				   specular(specular),
-				   angle(angle / 2.0f)
+				   angle(angle / 2.0f),
+				   direction(direction)
 {
 	if (angle > 360.0f || angle < 0.0f)
 		throw "Light angle must be between 0 and 360 degrees.";
 
 	transform = Transform(position, direction, vec3(1, 1, 1));
+	update();
 	glEnable(GL_LIGHT0 + id);
+	glMaterialfv()
 }
 Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction)
 {
@@ -50,7 +54,9 @@ Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specul
 		this->diffuse = diffuse;
 		this->specular = specular;
 		this->type = DIRECTIONAL;
+		this->direction = direction;
 		transform = Transform(vec3(0, 0, 0), direction, vec3(1, 1, 1));
+		update();
 		glEnable(GL_LIGHT0 + id);
 	}
 	else
@@ -62,7 +68,7 @@ void Light::update()
 {
 	if (type == DIRECTIONAL)
 	{
-		GLfloat light_direction[] = {transform.getRotationAxis().x, transform.getRotationAxis().y, transform.getRotationAxis().z, 0.0f};
+		GLfloat light_direction[] = {-direction.x, -direction.y, -direction.z, 0.0f};
 		glLightfv(GL_LIGHT0 + id, GL_POSITION, light_direction);
 	}
 	else
@@ -72,7 +78,7 @@ void Light::update()
 	}
 	if (type == SPOT)
 	{
-		GLfloat light_direction[] = {transform.getRotationAxis().x, transform.getRotationAxis().y, transform.getRotationAxis().z, 0.0f};
+		GLfloat light_direction[] = {direction.x, direction.y, direction.z, 0.0f};
 		glLightfv(GL_LIGHT0 + id, GL_SPOT_DIRECTION, light_direction);
 		glLightf(GL_LIGHT0 + id, GL_SPOT_CUTOFF, angle);
 	}
