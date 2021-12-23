@@ -16,6 +16,7 @@ Light::Light(
 						  angle(360.0f)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
+	glEnable(GL_LIGHT0 + id);
 }
 Light::Light(
 	unsigned id,
@@ -36,6 +37,7 @@ Light::Light(
 		throw "Light angle must be between 0 and 360 degrees.";
 
 	transform = Transform(position, direction, vec3(1, 1, 1));
+	glEnable(GL_LIGHT0 + id);
 }
 Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction)
 {
@@ -49,6 +51,7 @@ Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specul
 		this->specular = specular;
 		this->type = DIRECTIONAL;
 		transform = Transform(vec3(0, 0, 0), direction, vec3(1, 1, 1));
+		glEnable(GL_LIGHT0 + id);
 	}
 	else
 	{
