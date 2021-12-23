@@ -9,7 +9,7 @@ Light::Light(
 	glm::vec4 specular,
 	glm::vec3 position) : id(id),
 						  enabled(true),
-						  isDirectional(false),
+						  type(POINT),
 						  ambient(ambient),
 						  diffuse(diffuse),
 						  specular(specular),
@@ -26,7 +26,7 @@ Light::Light(
 	glm::vec3 direction,
 	float angle) : id(id),
 				   enabled(true),
-				   isDirectional(false),
+				   type(SPOT),
 				   ambient(ambient),
 				   diffuse(diffuse),
 				   specular(specular),
@@ -37,23 +37,27 @@ Light::Light(
 
 	transform = Transform(position, direction, vec3(1, 1, 1));
 }
-Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, bool isDirectional, glm::vec3 direction)
+Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction)
 {
-	if (!isDirectional)
+	if (type == POINT)
 		Light(id, ambient, diffuse, specular, direction);
-	else
+	else if (type == DIRECTIONAL)
 	{
 		this->id = id;
 		this->ambient = ambient;
 		this->diffuse = diffuse;
 		this->specular = specular;
-		this->isDirectional = true;
+		this->type = DIRECTIONAL;
 		transform = Transform(vec3(0, 0, 0), direction, vec3(1, 1, 1));
+	}
+	else
+	{
+		throw "Incorrect use of Light constructor with LightType::SPOT.";
 	}
 }
 void Light::update()
 {
-	if (isDirectional)
+	if (type == DIRECTIONAL)
 	{
 		GLfloat light_direction[] = {transform.getRotationAxis().x, transform.getRotationAxis().y, transform.getRotationAxis().z, 0.0f};
 		glLightfv(GL_LIGHT0 + id, GL_POSITION, light_direction);
