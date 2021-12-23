@@ -13,7 +13,7 @@ Light::Light(
 						  ambient(ambient),
 						  diffuse(diffuse),
 						  specular(specular),
-						  angle(360.0f)
+						  angle(180.0f)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
 	glEnable(GL_LIGHT0 + id);
@@ -31,7 +31,7 @@ Light::Light(
 				   ambient(ambient),
 				   diffuse(diffuse),
 				   specular(specular),
-				   angle(angle)
+				   angle(angle / 2.0f)
 {
 	if (angle > 360.0f || angle < 0.0f)
 		throw "Light angle must be between 0 and 360 degrees.";
@@ -69,6 +69,12 @@ void Light::update()
 	{
 		GLfloat light_position[] = {transform.getPosition().x, transform.getPosition().y, transform.getPosition().z, 1.0f};
 		glLightfv(GL_LIGHT0 + id, GL_POSITION, light_position);
+	}
+	if (type == SPOT)
+	{
+		GLfloat light_direction[] = {transform.getRotationAxis().x, transform.getRotationAxis().y, transform.getRotationAxis().z, 0.0f};
+		glLightfv(GL_LIGHT0 + id, GL_SPOT_DIRECTION, light_direction);
+		glLightf(GL_LIGHT0 + id, GL_SPOT_CUTOFF, angle);
 	}
 	GLfloat light_ambient[] = {ambient.r, ambient.g, ambient.b, ambient.a};
 	GLfloat light_diffuse[] = {diffuse.r, diffuse.g, diffuse.b, diffuse.a};
