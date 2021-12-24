@@ -4,15 +4,15 @@ using namespace glm;
 using namespace std;
 
 GameObject::GameObject(shared_ptr<Mesh> mesh, GameObject *parent, bool isStatic) : meshPtr(mesh),
-																				   parent(parent),
 																				   isStatic(isStatic)
 {
+	setParent(parent);
 	constructAABB();
 }
 GameObject::GameObject(Mesh mesh, GameObject *parent, bool isStatic) : meshPtr(make_shared<Mesh>(mesh)),
-																	   parent(parent),
 																	   isStatic(isStatic)
 {
+	setParent(parent);
 	constructAABB();
 }
 
@@ -115,4 +115,22 @@ void GameObject::recalculateAABB()
 		aabb.left = glm::min(aabb.left, transformedBound.x);
 		aabb.right = glm::max(aabb.right, transformedBound.x);
 	}
+}
+GameObject *GameObject::getParent()
+{
+	return parent;
+}
+void GameObject::setParent(GameObject *gameObject)
+{
+	parent = gameObject;
+	if (parent)
+		parent->addChild(this);
+}
+void GameObject::addChild(GameObject *child)
+{
+	children.push_back(child);
+}
+vector<GameObject *> GameObject::getChildren()
+{
+	return children;
 }
