@@ -41,7 +41,6 @@ Light::Light(
 	transform = Transform(position, direction, vec3(1, 1, 1));
 	update();
 	glEnable(GL_LIGHT0 + id);
-	glMaterialfv()
 }
 Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction)
 {
