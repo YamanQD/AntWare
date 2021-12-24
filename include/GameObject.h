@@ -12,6 +12,7 @@ namespace aw
     protected:
         std::shared_ptr<Mesh> meshPtr;
         GameObject *parent;
+        std::vector<GameObject *> children;
         glm::mat4 transformationMat;
 
         void constructAABB();
@@ -32,6 +33,8 @@ namespace aw
         glm::mat4 applyTransform();
         void draw();
         void fixedUpdate(float deltaTime);
+        void addChild(GameObject *gameObject);
+        std::vector<GameObject *> getChildren();
         virtual void start() = 0;
         virtual void update() = 0;
     };
