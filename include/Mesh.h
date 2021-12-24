@@ -11,18 +11,11 @@
 #include <Material.h>
 namespace aw
 {
-    enum albedoOptions
-    {
-        TEXTURE,
-        VERTEX_COLORS,
-        UNIFORM_COLOR
-    };
     class Mesh
     {
     private:
         static Assimp::Importer importer;
         bool hasTexture, hasUniformColor, hasIndices;
-        albedoOptions albedo;
         GLuint texture;
         std::vector<unsigned> indices;
         std::vector<glm::vec3> vertices;

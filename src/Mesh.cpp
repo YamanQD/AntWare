@@ -40,9 +40,6 @@ Mesh::Mesh(const char *path, const char *texPath)
     }
     if (mesh->HasVertexColors(0))
     {
-        if (albedo != TEXTURE)
-            albedo = VERTEX_COLORS;
-
         colors.resize(mesh->mNumVertices);
         for (unsigned i = 0; i < colors.size(); ++i)
             colors[i] = {mesh->mColors[0][i].r, mesh->mColors[0][i].g,
@@ -65,7 +62,6 @@ Mesh::Mesh(const char *path, const char *texPath)
 Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, texPath)
 {
     hasUniformColor = true;
-    albedo = UNIFORM_COLOR;
     uniformColor = color;
 }
 Mesh::Mesh(const char *path, glm::vec3 color, const char *texPath) : Mesh(path,
@@ -84,7 +80,6 @@ void Mesh::loadTexture(const char *path)
     }
     image.flipVertically();
     hasTexture = true;
-    albedo = TEXTURE;
     int imgHeight = image.getSize().y;
     int imgWidth = image.getSize().x;
     const Uint8 *imgData = image.getPixelsPtr();
@@ -102,9 +97,8 @@ void Mesh::loadTexture(const char *path)
 }
 void Mesh::draw()
 {
-    if (albedo == TEXTURE)
+    if (hasTexture)
     {
-        glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, texture);
     }
 
@@ -116,18 +110,20 @@ void Mesh::draw()
     {
         unsigned index = hasIndices ? indices[i] : i;
 
-        switch (albedo)
+        if (hasTexture)
         {
-        case TEXTURE:
             glTexCoord2f(texCoords[index].x, texCoords[index].y);
-            break;
-        case UNIFORM_COLOR:
+        }
+        else if (hasUniformColor)
+        {
             glColor4f(uniformColor.r, uniformColor.g, uniformColor.b, uniformColor.a);
-            break;
-        case VERTEX_COLORS:
+        }
+        else if (colors.size() > 0)
+        {
             glColor4f(colors[index].r, colors[index].g, colors[index].b, colors[index].a);
-            break;
-        default:
+        }
+        else
+        {
             glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         }
 
@@ -135,7 +131,7 @@ void Mesh::draw()
         glVertex3f(vertices[index].x, vertices[index].y, vertices[index].z);
     }
     glEnd();
-    glDisable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 bool Mesh::getTexture(GLuint &texture)
 {
@@ -149,7 +145,6 @@ bool Mesh::getTexture(GLuint &texture)
 void Mesh::setTexture(GLuint texture)
 {
     hasTexture = true;
-    albedo = TEXTURE;
     this->texture = texture;
 }
 bool Mesh::getUniformColor(vec4 &color)
@@ -164,7 +159,6 @@ bool Mesh::getUniformColor(vec4 &color)
 void Mesh::setUniformColor(vec4 color)
 {
     hasUniformColor = true;
-    albedo = UNIFORM_COLOR;
     uniformColor = color;
 }
 const vector<vec3> &Mesh::getVertices()
