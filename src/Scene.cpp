@@ -50,14 +50,14 @@ static inline Mesh parseMesh(GenericObject<false, Value> object)
 {
     const char *path = object["path"].GetString();
     const char *texturePath = nullptr;
-    Material *material = nullptr;
+    Material material;
     if (object.HasMember("texture"))
     {
         texturePath = object["texture"].GetString();
     }
     if (object.HasMember("material"))
     {
-        material = new Material(parseMaterial(object["material"].GetObject()));
+        material = Material(parseMaterial(object["material"].GetObject()));
         return Mesh(path, material, texturePath);
     }
     if (object.HasMember("color"))

@@ -11,6 +11,7 @@ namespace aw
 
 	public:
 		Material(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess);
+		Material();
 		void setAmbient(glm::vec4 ambient);
 		void setDiffuse(glm::vec4 diffuse);
 		void setSpecular(glm::vec4 specular);
