@@ -7,13 +7,15 @@ Light::Light(
 	glm::vec4 ambient,
 	glm::vec4 diffuse,
 	glm::vec4 specular,
-	glm::vec3 position) : id(id),
+	glm::vec3 position,
+	GameObject *parent) : id(id),
 						  enabled(true),
 						  type(POINT),
 						  ambient(ambient),
 						  diffuse(diffuse),
 						  specular(specular),
-						  angle(180.0f)
+						  angle(180.0f),
+						  parent(parent)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
 	update();
@@ -26,14 +28,16 @@ Light::Light(
 	glm::vec4 specular,
 	glm::vec3 position,
 	glm::vec3 direction,
-	float angle) : id(id),
-				   enabled(true),
-				   type(SPOT),
-				   ambient(ambient),
-				   diffuse(diffuse),
-				   specular(specular),
-				   angle(angle / 2.0f),
-				   direction(direction)
+	float angle,
+	GameObject *parent) : id(id),
+						  enabled(true),
+						  type(SPOT),
+						  ambient(ambient),
+						  diffuse(diffuse),
+						  specular(specular),
+						  angle(angle / 2.0f),
+						  direction(direction),
+						  parent(parent)
 {
 	if (angle > 360.0f || angle < 0.0f)
 		throw "Light angle must be between 0 and 360 degrees.";
@@ -42,10 +46,10 @@ Light::Light(
 	update();
 	glEnable(GL_LIGHT0 + id);
 }
-Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction)
+Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction, GameObject *parent) : parent(parent)
 {
 	if (type == POINT)
-		Light(id, ambient, diffuse, specular, direction);
+		*this = Light(id, ambient, diffuse, specular, direction, parent);
 	else if (type == DIRECTIONAL)
 	{
 		this->id = id;
@@ -65,6 +69,11 @@ Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specul
 }
 void Light::update()
 {
+	glPushMatrix();
+	if (parent)
+	{
+		parent->applyTransform();
+	}
 	if (type == DIRECTIONAL)
 	{
 		GLfloat light_direction[] = {-direction.x, -direction.y, -direction.z, 0.0f};
@@ -87,4 +96,9 @@ void Light::update()
 	glLightfv(GL_LIGHT0 + id, GL_AMBIENT, light_ambient);
 	glLightfv(GL_LIGHT0 + id, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0 + id, GL_SPECULAR, light_specular);
+	glPopMatrix();
+}
+Light::~Light()
+{
+	glDisable(GL_LIGHT0 + id);
 }
