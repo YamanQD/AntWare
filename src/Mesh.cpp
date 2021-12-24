@@ -71,6 +71,24 @@ Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, 
 Mesh::Mesh(const char *path, glm::vec3 color, const char *texPath) : Mesh(path,
                                                                           glm::vec4(color, 1),
                                                                           texPath) {}
+Mesh::Mesh(const char *path, Material *material, const char *texPath) : Mesh(path, texPath)
+{
+    if (material != nullptr)
+    {
+        this->material = material;
+    }
+}
+Mesh::~Mesh()
+{
+    if (albedo == TEXTURE)
+    {
+        glDeleteTextures(1, &texture);
+    }
+    if (material != nullptr)
+    {
+        delete material;
+    }
+}
 void Mesh::loadTexture(const char *path)
 {
     Image image;
@@ -102,6 +120,10 @@ void Mesh::draw()
     {
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, texture);
+    }
+    if (material != nullptr)
+    {
+        material->apply();
     }
 
     glBegin(GL_TRIANGLES);
