@@ -48,12 +48,8 @@
         {
             "path": "./Assets/Cube.glb",
             "material": {},
-            "color": [
-                1,
-                0,
-                0,
-                1
-            ]
+            "texture":"./Assets/tex.png"
+            
         },
         {
             "path": "./Assets/Plane.glb",
@@ -68,10 +64,10 @@
     ],
     "lights": [
         {
-            "class": 0,
+            "class": 1,
             "position": [
                 0,
-                3,
+                0,
                 0
             ],
             "ambient": [
@@ -96,8 +92,7 @@
                 0,
                 -1,
                 0
-            ],
-            "parent":0
+            ]
         }
     ],
     "gameobjects": [
@@ -149,7 +144,6 @@
         },
         {
             "class": 1,
-            "parent": 0,
             "transform": {
                 "position": [
                     0,

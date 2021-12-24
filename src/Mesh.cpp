@@ -80,10 +80,6 @@ Mesh::Mesh(const char *path, Material *material, const char *texPath) : Mesh(pat
 }
 Mesh::~Mesh()
 {
-    if (albedo == TEXTURE)
-    {
-        glDeleteTextures(1, &texture);
-    }
     if (material != nullptr)
     {
         delete material;

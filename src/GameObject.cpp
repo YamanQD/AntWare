@@ -134,3 +134,7 @@ vector<GameObject *> GameObject::getChildren()
 {
 	return children;
 }
+void GameObject::setMesh(shared_ptr<Mesh> mesh)
+{
+	this->meshPtr = mesh;
+}
