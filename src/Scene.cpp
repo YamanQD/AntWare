@@ -107,6 +107,49 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
     }
     return gameObjects;
 }
+static inline vector<Light> parseLights(GenericArray<false, Value> array, const vector<GameObject *> gameObjects)
+{
+    vector<Light> lights;
+    for (unsigned i = 0; i < array.Size(); ++i)
+    {
+        int classType = array[i]["class"].GetInt();
+        vec4 ambient = parseVec4(array[i]["ambient"].GetArray());
+        vec4 diffuse = parseVec4(array[i]["diffuse"].GetArray());
+        vec4 specular = parseVec4(array[i]["specular"].GetArray());
+        GameObject *parent = nullptr;
+        if (array[i].HasMember("parent"))
+        {
+            parent = gameObjects[array[i]["parent"].GetInt()];
+        }
+        vec3 position, direction;
+        float angle;
+        switch (classType)
+        {
+        case LightType::POINT:
+            position = parseVec(array[i]["position"].GetArray());
+            lights.push_back(Light(i, ambient, diffuse, specular, position, parent));
+            glEnable(GL_LIGHT0 + i);
+            break;
+        case LightType::DIRECTIONAL:
+            direction = parseVec(array[i]["direction"].GetArray());
+            lights.push_back(Light(i, ambient, diffuse, specular, LightType::DIRECTIONAL, direction, parent));
+            glEnable(GL_LIGHT0 + i);
+            break;
+        case LightType::SPOT:
+            position = parseVec(array[i]["position"].GetArray());
+            direction = parseVec(array[i]["direction"].GetArray());
+            angle = array[i]["angle"].GetFloat();
+            lights.push_back(Light(i, ambient, diffuse, specular, position, direction, angle, parent));
+            glEnable(GL_LIGHT0 + i); //FIXME not working
+            break;
+        default:
+            printf("Unknown lightType %d, ignoring light", i);
+            i--;
+            break;
+        }
+    }
+    return lights;
+}
 Scene::Scene(const char *path) : camera(45.0f)
 {
     fstream sceneStream(path, ios::ate | ios::in);
@@ -129,6 +172,7 @@ Scene::Scene(const char *path) : camera(45.0f)
     parseCamera(json["camera"].GetObject(), camera);
     auto meshes = parseMeshes(json["meshes"].GetArray());
     gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes);
+    lights = parseLights(json["lights"].GetArray(), gameObjects);
 }
 Scene::~Scene()
 {
