@@ -38,13 +38,27 @@ static inline void parseCamera(GenericObject<false, Value> object, Camera &camer
     camera.transform = parseTransform(object["transform"].GetObject());
     camera.rigidbody = parseRigidbody(object["rigidbody"].GetObject());
 }
+static inline Material parseMaterial(GenericObject<false, Value> object)
+{
+    vec4 ambient = parseVec4(object["ambient"].GetArray());
+    vec4 diffuse = parseVec4(object["diffuse"].GetArray());
+    vec4 specular = parseVec4(object["specular"].GetArray());
+    float shininess = object["shininess"].GetFloat();
+    return Material(ambient, diffuse, specular, shininess);
+}
 static inline Mesh parseMesh(GenericObject<false, Value> object)
 {
     const char *path = object["path"].GetString();
     const char *texturePath = nullptr;
+    Material *material = nullptr;
     if (object.HasMember("texture"))
     {
         texturePath = object["texture"].GetString();
+    }
+    if (object.HasMember("material"))
+    {
+        material = new Material(parseMaterial(object["material"].GetObject()));
+        return Mesh(path, material, texturePath);
     }
     if (object.HasMember("color"))
     {
