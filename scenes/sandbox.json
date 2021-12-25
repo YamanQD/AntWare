@@ -165,7 +165,7 @@
             "mesh": 0,
             "rigidbody": {
                 "velocity": [
-                    1,
+                    0,
                     0,
                     0
                 ],
@@ -211,12 +211,13 @@
             "mesh": 1
         },
         {
+            "tag":"player's base",
             "class": 2,
             "transform": {
                 "position": [
                     0,
                     0,
-                    0
+                    -3
                 ],
                 "rotation": [
                     0,

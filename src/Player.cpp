@@ -15,6 +15,7 @@ void Player::start()
 void Player::update()
 {
     rigidbody.velocity = {0, 0, 0};
+    rigidbody.angularVelocity = {0, 0, 0};
     if (Keyboard::isKeyPressed(Keyboard::W))
     {
         rigidbody.velocity.z -= 1;
@@ -34,4 +35,12 @@ void Player::update()
     if (length(rigidbody.velocity) > 0)
         rigidbody.velocity = normalize(rigidbody.velocity);
     rigidbody.velocity *= speed;
+
+    auto mousePos = Mouse::getPosition(WINDOW.internal);
+    vec2 mouseDelta = {mousePos.x, mousePos.y};
+    if (length(mouseDelta) > 0)
+        mouseDelta = normalize(mouseDelta);
+    mouseDelta *= mouseSenstivity; // TODO hide cursoe
+    rigidbody.angularVelocity = {mouseDelta.y, mouseDelta.x, 0};
+    Mouse::setPosition(Vector2i{0, 0}, WINDOW.internal);
 }
