@@ -37,10 +37,10 @@ void Player::update()
     rigidbody.velocity *= speed;
 
     auto mousePos = Mouse::getPosition(WINDOW.internal);
-    vec2 mouseDelta = {mousePos.x, mousePos.y};
+    vec2 mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
     if (length(mouseDelta) > 0)
         mouseDelta = normalize(mouseDelta);
-    mouseDelta *= mouseSenstivity; // TODO hide cursoe
+    mouseDelta *= -mouseSenstivity; // TODO hide cursoe
     rigidbody.angularVelocity = {mouseDelta.y, mouseDelta.x, 0};
-    Mouse::setPosition(Vector2i{0, 0}, WINDOW.internal);
+    Mouse::setPosition(Vector2i{WINDOW.internal.getSize().x / 2.0f, WINDOW.internal.getSize().y / 2.0f}, WINDOW.internal);
 }
