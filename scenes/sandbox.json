@@ -211,11 +211,11 @@
             "mesh": 1
         },
         {
-            "class": 1,
+            "class": 2,
             "transform": {
                 "position": [
                     0,
-                    -0.5,
+                    0,
                     0
                 ],
                 "rotation": [
@@ -229,7 +229,7 @@
                     1
                 ]
             },
-            "mesh": 2
+            "mesh": 4
         },{
             "class": 1,
             "transform": {
@@ -253,7 +253,6 @@
             "parent":2
         },{
             "class": 1,
-            "parent":2,
             "transform": {
                 "position": [
                     0,
@@ -271,7 +270,8 @@
                     1
                 ]
             },
-            "mesh": 4
+            "mesh": 2,
+            "parent":2
         }
     ]
 }

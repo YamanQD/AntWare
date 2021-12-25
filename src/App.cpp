@@ -55,6 +55,8 @@ void App::update()
     {
         currentScene->gameObjects[i]->update();
     }
+    currentScene->camera.transform = currentScene->gameObjects[2]->transform;
+    currentScene->camera.transform.translate({0, 0.5f, 0});
 }
 void App::start()
 {

@@ -5,12 +5,14 @@
 #include <GameObject.h>
 #include <Camera.h>
 #include <StaticGO.h>
+#include <Player.h>
 #include <Light.h>
 namespace aw
 {
     enum CLASSES
     {
-        STATICGO = 1
+        STATICGO = 1,
+        PLAYER = 2
     };
     class Scene
     {
