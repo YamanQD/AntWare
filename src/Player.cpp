@@ -11,7 +11,7 @@ void Player::start()
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
-    speed = 2.0f;
+    speed = 5.0f;
 }
 void Player::update()
 {

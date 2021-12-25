@@ -46,8 +46,14 @@
     },
     "meshes": [
         {
-            "path": "./Assets/Cube.glb",
-            "color":[1,1,1,1]
+            "path": "./Assets/Ant.glb",
+            "texture": "Assets/ant_material_BaseColor.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         },
         {
             "path": "./Assets/Plane.glb",
@@ -81,7 +87,7 @@
         },
         {
             "path": "Assets/Gun.glb",
-            "texture":"Assets/FN57_D.png",
+            "texture": "Assets/FN57_D.png",
             "color": [
                 1,
                 1,
@@ -91,16 +97,17 @@
         },
         {
             "path": "Assets/Hands.glb",
-            "texture":"Assets/Hand_D.png",
+            "texture": "Assets/Hand_D.png",
             "color": [
                 1,
                 1,
                 1,
                 1
             ]
-        },{
+        },
+        {
             "path": "Assets/Glove.glb",
-            "texture":"Assets/Glove_D.png",
+            "texture": "Assets/Glove_D.png",
             "color": [
                 1,
                 1,
@@ -111,7 +118,7 @@
     ],
     "lights": [
         {
-            "class": 1,
+            "class": 0,
             "position": [
                 0,
                 0,
@@ -138,7 +145,7 @@
             "direction": [
                 0,
                 -1,
-                0
+                -1
             ]
         }
     ],
@@ -148,12 +155,12 @@
             "transform": {
                 "position": [
                     0,
-                    0,
+                    -1,
                     -5
                 ],
                 "rotation": [
                     0,
-                    0,
+                    180,
                     0
                 ],
                 "scale": [
@@ -211,7 +218,7 @@
             "mesh": 1
         },
         {
-            "tag":"player's base",
+            "tag": "player's base",
             "class": 2,
             "transform": {
                 "position": [
@@ -231,7 +238,8 @@
                 ]
             },
             "mesh": 4
-        },{
+        },
+        {
             "class": 1,
             "transform": {
                 "position": [
@@ -251,8 +259,9 @@
                 ]
             },
             "mesh": 3,
-            "parent":2
-        },{
+            "parent": 2
+        },
+        {
             "class": 1,
             "transform": {
                 "position": [
@@ -272,7 +281,7 @@
                 ]
             },
             "mesh": 2,
-            "parent":2
+            "parent": 2
         }
     ]
 }
