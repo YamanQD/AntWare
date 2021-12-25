@@ -49,16 +49,12 @@ void GameObject::fixedUpdate(float deltaTime)
 		return;
 	rigidbody.velocity += rigidbody.acceleration * deltaTime;
 	rigidbody.angularVelocity += rigidbody.angularAcceleration * deltaTime;
-	vec3 appliedVelocity = rigidbody.velocity;
-	vec3 appliedAngularVelocity = rigidbody.angularVelocity;
+	vec3 appliedVelocity = mat3(transform.getRotation()) * rigidbody.velocity;
+	vec3 appliedAngularVelocity = mat3(transform.getRotation()) * rigidbody.angularVelocity;
 	if (rigidbody.isLinearLocked(AXIS::x))
 		appliedVelocity.x = 0;
 	if (rigidbody.isLinearLocked(AXIS::y))
-	{
-		vec3 global = mat3(transform.getRotation()) * appliedVelocity;
-		global.y = 0;
-		appliedVelocity = inverse(mat3(transform.getRotation())) * global; // TODO apply locks in Transform
-	}
+		appliedVelocity.y = 0;
 	if (rigidbody.isLinearLocked(AXIS::z))
 		appliedVelocity.z = 0;
 	if (rigidbody.isAngularLocked(AXIS::x))
@@ -67,8 +63,8 @@ void GameObject::fixedUpdate(float deltaTime)
 		appliedAngularVelocity.y = 0;
 	if (rigidbody.isAngularLocked(AXIS::z))
 		appliedAngularVelocity.z = 0;
-	transform.translate(appliedVelocity * deltaTime);
-	transform.rotate(appliedAngularVelocity * deltaTime);
+	transform.translateGlobal(appliedVelocity * deltaTime);
+	transform.rotateGlobal(appliedAngularVelocity * deltaTime);
 }
 void GameObject::constructAABB()
 {

@@ -10,6 +10,7 @@ void Player::start()
 {
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
+    rigidbody.lockAngular(AXIS::z);
     speed = 2.0f;
 }
 void Player::update()
@@ -37,10 +38,17 @@ void Player::update()
     rigidbody.velocity *= speed;
 
     auto mousePos = Mouse::getPosition(WINDOW.internal);
-    vec2 mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
+    mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
     if (length(mouseDelta) > 0)
         mouseDelta = normalize(mouseDelta);
-    mouseDelta *= -mouseSenstivity; // TODO hide cursoe
-    rigidbody.angularVelocity = {mouseDelta.y, mouseDelta.x, 0};
+    mouseDelta *= -mouseSenstivity;
     Mouse::setPosition(Vector2i{WINDOW.internal.getSize().x / 2.0f, WINDOW.internal.getSize().y / 2.0f}, WINDOW.internal);
+}
+void Player::fixedUpdate(float deltaTime)
+{
+    GameObject::fixedUpdate(deltaTime);
+    eularAngles.x += mouseDelta.y * deltaTime;
+    eularAngles.y += mouseDelta.x * deltaTime;
+    eularAngles.x = glm::clamp<float>(eularAngles.x, -60.0f, 80.0f);
+    transform.setRotation(eularAngles);
 }

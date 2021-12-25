@@ -32,7 +32,7 @@ namespace aw
         void setMesh(std::shared_ptr<Mesh> mesh);
         glm::mat4 applyTransform();
         void draw();
-        void fixedUpdate(float deltaTime);
+        virtual void fixedUpdate(float deltaTime);
         void addChild(GameObject *gameObject);
         std::vector<GameObject *> getChildren();
         virtual void start() = 0;

@@ -15,6 +15,7 @@ void Window::init(int height, int width)
     ctxSettings.minorVersion = 5;
     ctxSettings.stencilBits = 0;
     internal.create(sf::VideoMode(width, height), "Ant-Warrior", sf::Style::Default, ctxSettings);
+    internal.setMouseCursorVisible(false);
 }
 void Window::terminate()
 {
