@@ -5,7 +5,7 @@
             "position": [
                 0,
                 0,
-                10
+                0
             ],
             "rotation": [
                 0,
@@ -47,15 +47,15 @@
     "meshes": [
         {
             "path": "./Assets/Cube.glb",
-            "texture":"./Assets/tex.png"
+            "color":[1,1,1,1]
         },
         {
             "path": "./Assets/Plane.glb",
             "material": {
                 "ambient": [
-                    0.1,
-                    0.1,
-                    0.1,
+                    1.0,
+                    1.0,
+                    1.0,
                     1.0
                 ],
                 "diffuse": [
@@ -72,6 +72,35 @@
                 ],
                 "shininess": 2.0
             },
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Gun.glb",
+            "texture":"Assets/FN57_D.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Hands.glb",
+            "texture":"Assets/Hand_D.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },{
+            "path": "Assets/Glove.glb",
+            "texture":"Assets/Glove_D.png",
             "color": [
                 1,
                 1,
@@ -95,15 +124,15 @@
                 1
             ],
             "diffuse": [
-                0.6,
-                0.6,
-                0.6,
+                1.0,
+                1.0,
+                1.0,
                 1
             ],
             "specular": [
-                0.3,
-                0.3,
-                0.3,
+                1.0,
+                1.0,
+                1.0,
                 1
             ],
             "direction": [
@@ -180,6 +209,69 @@
                 ]
             },
             "mesh": 1
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -0.5,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 2
+        },{
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 3,
+            "parent":2
+        },{
+            "class": 1,
+            "parent":2,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 4
         }
     ]
 }
