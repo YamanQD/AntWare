@@ -54,7 +54,11 @@ void GameObject::fixedUpdate(float deltaTime)
 	if (rigidbody.isLinearLocked(AXIS::x))
 		appliedVelocity.x = 0;
 	if (rigidbody.isLinearLocked(AXIS::y))
-		appliedVelocity.y = 0;
+	{
+		vec3 global = mat3(transform.getRotation()) * appliedVelocity;
+		global.y = 0;
+		appliedVelocity = inverse(mat3(transform.getRotation())) * global; // TODO apply locks in Transform
+	}
 	if (rigidbody.isLinearLocked(AXIS::z))
 		appliedVelocity.z = 0;
 	if (rigidbody.isAngularLocked(AXIS::x))
