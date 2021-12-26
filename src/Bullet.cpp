@@ -8,7 +8,16 @@ Bullet::Bullet(shared_ptr<Mesh> mesh, GameObject *parent, vec3 projectVec) : Gam
 }
 void Bullet::start()
 {
+    timer.restart();
 }
 void Bullet::update()
 {
+}
+bool Bullet::timeOut()
+{
+    if (timer.getElapsedTime().asSeconds() >= lifeSpan)
+    {
+        return true;
+    }
+    return false;
 }

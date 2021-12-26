@@ -6,9 +6,9 @@ namespace aw
     {
     private:
         float up, down, right, left, forward, backward;
-        glm::vec3 bounds[8];
 
     public:
+        glm::vec3 bounds[8];
         bool isColliding(const AABB &other);
         bool isColliding(glm::vec3 point);
         glm::vec3 getCenter();

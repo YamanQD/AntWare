@@ -201,3 +201,7 @@ Scene::~Scene()
         delete gameObjects[i];
     }
 }
+void Scene::destroyGameObject(int index)
+{
+    gameObjects.erase(gameObjects.begin() + index);
+}

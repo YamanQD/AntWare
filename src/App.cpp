@@ -61,6 +61,23 @@ void App::update()
     }
     currentScene->camera.transform = currentScene->gameObjects[0]->transform;
     currentScene->camera.transform.translate({0, 0.5f, 0});
+
+    auto player = ((Player *)(currentScene->gameObjects[0])); // TODO hold in class
+    auto bullets = player->bullets;
+    for (unsigned i = 0; i < currentScene->gameObjects.size(); ++i)
+    {
+        if (currentScene->gameObjects[i]->getClass() == 3)
+        {
+            for (unsigned j = 0; j < bullets.size(); ++j)
+            {
+                if (currentScene->gameObjects[i]->aabb.isColliding(bullets[j].transform.getPosition()))
+                {
+                    currentScene->destroyGameObject(i); // TODO hp
+                    player->destroyBullet(i);
+                }
+            }
+        }
+    }
 }
 void App::start()
 {
