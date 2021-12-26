@@ -114,6 +114,15 @@
                 1,
                 1
             ]
+        },
+        {
+            "path": "Assets/Bullet.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "lights": [
@@ -151,7 +160,75 @@
     ],
     "gameobjects": [
         {
+            "tag": "player's base",
+            "class": 2,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    1
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 4
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 3,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "tag": "gun",
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 2,
+            "parent": 0
+        },
+        {
             "class": 3,
+            "tag": "an ant",
             "transform": {
                 "position": [
                     0,
@@ -218,29 +295,8 @@
             "mesh": 1
         },
         {
-            "tag": "player's base",
-            "class": 2,
-            "transform": {
-                "position": [
-                    0,
-                    0,
-                    -3
-                ],
-                "rotation": [
-                    0,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ]
-            },
-            "mesh": 4
-        },
-        {
             "class": 1,
+            "mesh": 5,
             "transform": {
                 "position": [
                     0,
@@ -257,31 +313,7 @@
                     1,
                     1
                 ]
-            },
-            "mesh": 3,
-            "parent": 2
-        },
-        {
-            "class": 1,
-            "transform": {
-                "position": [
-                    0,
-                    0,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ]
-            },
-            "mesh": 2,
-            "parent": 2
+            }
         }
     ]
 }
