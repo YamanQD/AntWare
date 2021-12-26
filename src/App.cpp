@@ -73,7 +73,9 @@ void App::update()
                 if (currentScene->gameObjects[i]->aabb.isColliding(bullets[j].transform.getPosition()))
                 {
                     currentScene->destroyGameObject(i); // TODO hp
-                    player->destroyBullet(i);
+                    player->destroyBullet(j);
+                    i--;
+                    j--;
                 }
             }
         }
