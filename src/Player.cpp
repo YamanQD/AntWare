@@ -106,5 +106,6 @@ void Player::draw()
 }
 void Player::destroyBullet(int index)
 {
-    bullets.erase(bullets.begin() + index);
+    if (index < bullets.size())
+        bullets.erase(bullets.begin() + index);
 }
