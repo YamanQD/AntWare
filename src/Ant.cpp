@@ -17,3 +17,13 @@ Ant::Ant(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, f
 }
 void Ant::start() {}
 void Ant::update() {}
+void Ant::damage(unsigned amount)
+{
+    hp -= amount;
+    if (hp < 0)
+        hp = 0;
+}
+unsigned Ant::getHp()
+{
+    return hp;
+}
