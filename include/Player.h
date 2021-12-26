@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <SFML/Audio.hpp>
 #include <Window.h>
 #include <GameObject.h>
 #include <Bullet.h>
@@ -13,6 +14,10 @@ namespace aw
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
+        sf::SoundBuffer gunShotSoundBuffer;
+        sf::SoundBuffer footstepsSoundBuffer;
+        sf::Sound gunShotSound;
+        sf::Sound footstepsSound;
 
     public:
         std::vector<Bullet> bullets;

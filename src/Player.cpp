@@ -5,6 +5,21 @@ using namespace sf;
 using namespace glm;
 Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false, 2)
 {
+    if (!gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav"))
+        throw "Error loading gunshot.wav";
+    if (!footstepsSoundBuffer.loadFromFile("Assets/Audio/playerFootsteps.ogg"))
+        throw "Error loading playerFootsteps.wav";
+
+    gunShotSound.setBuffer(gunShotSoundBuffer);
+    footstepsSound.setBuffer(footstepsSoundBuffer);
+    footstepsSound.setLoop(true);
+}
+static inline bool isMoving()
+{
+    return (Keyboard::isKeyPressed(Keyboard::A) ||
+            Keyboard::isKeyPressed(Keyboard::S) ||
+            Keyboard::isKeyPressed(Keyboard::D) ||
+            Keyboard::isKeyPressed(Keyboard::W));
 }
 void Player::start()
 {
@@ -33,6 +48,17 @@ void Player::update()
     {
         rigidbody.velocity.x -= 1;
     }
+
+    if (isMoving())
+    {
+        if (footstepsSound.getStatus() != sf::Sound::Playing)
+            footstepsSound.play();
+    }
+    else
+    {
+        footstepsSound.pause();
+    }
+
     if (length(rigidbody.velocity) > 0)
         rigidbody.velocity = normalize(rigidbody.velocity);
     rigidbody.velocity *= speed;
@@ -56,6 +82,7 @@ void Player::fixedUpdate(float deltaTime)
 }
 void Player::dispatchBullet()
 {
+    gunShotSound.play();
     bullets.push_back(Bullet(bulletMesh, nullptr, vec3(0, 0, -1)));
     bullets[bullets.size() - 1].transform = transform;
     bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
