@@ -23,7 +23,6 @@ namespace aw
         std::vector<glm::vec2> texCoords;
         std::vector<glm::vec4> colors;
         glm::vec4 uniformColor;
-        //Material material;
         void loadTexture(const char *path);
 
     public:
