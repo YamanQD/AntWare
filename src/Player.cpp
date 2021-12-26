@@ -23,7 +23,7 @@ static inline bool isMoving()
 }
 void Player::start()
 {
-    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Bullet.glb", {1, 1, 1}));
+    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", {1, 1, 1}));
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
