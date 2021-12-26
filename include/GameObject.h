@@ -12,6 +12,7 @@ namespace aw
     protected:
         std::shared_ptr<Mesh> meshPtr;
         GameObject *parent;
+        Material material;
         std::vector<GameObject *> children;
         glm::mat4 transformationMat;
         int classType;
@@ -25,8 +26,8 @@ namespace aw
         AABB aabb;
         bool isStatic;
 
-        GameObject(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr, bool isStatic = false, int type = 1);
-        GameObject(Mesh mesh, GameObject *parent = nullptr, bool isStatic = false, int type = 1);
+        GameObject(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr, bool isStatic = false, int type = 1);
+        GameObject(Mesh mesh, Material material, GameObject *parent = nullptr, bool isStatic = false, int type = 1);
         GameObject *getParent();
         void setParent(GameObject *parent);
         std::shared_ptr<Mesh> getMesh();

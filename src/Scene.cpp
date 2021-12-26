@@ -46,19 +46,22 @@ static inline Material parseMaterial(GenericObject<false, Value> object)
     float shininess = object["shininess"].GetFloat();
     return Material(ambient, diffuse, specular, shininess);
 }
+static inline vector<Material> parseMaterials(GenericArray<false, Value> array)
+{
+    vector<Material> materials;
+    for (unsigned i = 0; i < array.Size(); ++i)
+    {
+        materials.push_back(parseMaterial(array[i].GetObject()));
+    }
+    return materials;
+}
 static inline Mesh parseMesh(GenericObject<false, Value> object)
 {
     const char *path = object["path"].GetString();
     const char *texturePath = nullptr;
-    Material material;
     if (object.HasMember("texture"))
     {
         texturePath = object["texture"].GetString();
-    }
-    if (object.HasMember("material"))
-    {
-        material = Material(parseMaterial(object["material"].GetObject()));
-        return Mesh(path, material, texturePath);
     }
     if (object.HasMember("color"))
     {
@@ -80,7 +83,8 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
     return meshes;
 }
 static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> array,
-                                                    const vector<shared_ptr<Mesh>> &meshes)
+                                                    const vector<shared_ptr<Mesh>> &meshes,
+                                                    const vector<Material> &materials)
 {
     vector<GameObject *> gameObjects;
     for (unsigned i = 0; i < array.Size(); ++i)
@@ -99,22 +103,27 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
         {
             isStatic = false;
         }
+        Material material;
+        if (array[i].HasMember("material"))
+        {
+            material = materials[array[i]["material"].GetInt()];
+        }
         GameObject *gameObject;
         switch (classType)
         {
         case CLASSES::STATICGO:
-            gameObject = new StaticGO(mesh, parent);
+            gameObject = new StaticGO(mesh, material, parent);
             break;
         case CLASSES::PLAYER:
-            gameObject = new Player(mesh, parent);
+            gameObject = new Player(mesh, material, parent);
             break;
         case CLASSES::ANT:
-            gameObject = new Ant(mesh, parent);
+            gameObject = new Ant(mesh, material, parent);
             break;
         default:
             printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
                    i);
-            gameObject = new StaticGO(mesh, parent);
+            gameObject = new StaticGO(mesh, material, parent);
             break;
         }
         gameObject->isStatic = isStatic;
@@ -190,8 +199,9 @@ Scene::Scene(const char *path) : camera(45.0f)
     Document json;
     json.Parse(fileData.data(), fileData.size());
     parseCamera(json["camera"].GetObject(), camera);
+    auto materials = parseMaterials(json["materials"].GetArray());
     auto meshes = parseMeshes(json["meshes"].GetArray());
-    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes);
+    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
 }
 Scene::~Scene()

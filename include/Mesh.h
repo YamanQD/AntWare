@@ -23,12 +23,11 @@ namespace aw
         std::vector<glm::vec2> texCoords;
         std::vector<glm::vec4> colors;
         glm::vec4 uniformColor;
-        Material material;
+        //Material material;
         void loadTexture(const char *path);
 
     public:
         Mesh(const char *path, const char *texPath = nullptr);
-        Mesh(const char *path, Material material, const char *texPath = nullptr);
         Mesh(const char *path, glm::vec4 color, const char *texPath = nullptr);
         Mesh(const char *path, glm::vec3 color, const char *texPath = nullptr);
         void draw();

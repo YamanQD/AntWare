@@ -2,7 +2,7 @@
 using namespace aw;
 using namespace std;
 using namespace glm;
-Bullet::Bullet(shared_ptr<Mesh> mesh, GameObject *parent, vec3 projectVec) : GameObject(mesh, parent, false)
+Bullet::Bullet(shared_ptr<Mesh> mesh,Material material, GameObject *parent, vec3 projectVec) : GameObject(mesh,material, parent, false)
 {
     rigidbody.velocity = normalize(projectVec) * speed;
 }

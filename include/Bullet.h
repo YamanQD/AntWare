@@ -11,7 +11,7 @@ namespace aw
         float speed = 20.0f;
 
     public:
-        Bullet(std::shared_ptr<Mesh> mesh, GameObject *parent, glm::vec3 projectVec);
+        Bullet(std::shared_ptr<Mesh> mesh,Material material, GameObject *parent, glm::vec3 projectVec);
         void start() override;
         void update() override;
         bool timeOut();

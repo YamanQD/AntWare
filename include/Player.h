@@ -23,7 +23,7 @@ namespace aw
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
 
-        Player(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr);
+        Player(std::shared_ptr<Mesh> mesh,Material material, GameObject *parent = nullptr);
         void start() override;
         void update() override;
         void fixedUpdate(float deltaTime) override;

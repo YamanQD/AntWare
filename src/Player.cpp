@@ -3,7 +3,7 @@ using namespace aw;
 using namespace std;
 using namespace sf;
 using namespace glm;
-Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false, 2)
+Player::Player(shared_ptr<Mesh> mesh,Material material, GameObject *parent) : GameObject(mesh,material, parent, false, 2)
 {
     if (!gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav"))
         throw "Error loading gunshot.wav";
@@ -93,7 +93,7 @@ void Player::fixedUpdate(float deltaTime)
 void Player::dispatchBullet()
 {
     gunShotSound.play();
-    bullets.push_back(Bullet(bulletMesh, nullptr, vec3(0, 0, -1)));
+    bullets.push_back(Bullet(bulletMesh,Material(), nullptr, vec3(0, 0, -1))); // TODO custom mat
     bullets[bullets.size() - 1].transform = transform;
     bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
 }

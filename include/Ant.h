@@ -7,7 +7,7 @@ namespace aw
         unsigned hp = 4;
 
     public:
-        Ant(std::shared_ptr<Mesh> mesh, GameObject *parent);
+        Ant(std::shared_ptr<Mesh> mesh,Material material, GameObject *parent);
         void start() override;
         void update() override;
         void damage(unsigned amount);

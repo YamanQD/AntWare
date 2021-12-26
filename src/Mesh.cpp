@@ -67,10 +67,6 @@ Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, 
 Mesh::Mesh(const char *path, glm::vec3 color, const char *texPath) : Mesh(path,
                                                                           glm::vec4(color, 1),
                                                                           texPath) {}
-Mesh::Mesh(const char *path, Material material, const char *texPath) : Mesh(path, texPath)
-{
-    this->material = material;
-}
 void Mesh::loadTexture(const char *path)
 {
     Image image;
@@ -101,8 +97,6 @@ void Mesh::draw()
     {
         glBindTexture(GL_TEXTURE_2D, texture);
     }
-
-    material.apply();
 
     glBegin(GL_TRIANGLES);
     unsigned size = hasIndices ? indices.size() : vertices.size();

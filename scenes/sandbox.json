@@ -57,27 +57,6 @@
         },
         {
             "path": "./Assets/Models/Plane.glb",
-            "material": {
-                "ambient": [
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0
-                ],
-                "diffuse": [
-                    0.6,
-                    0.6,
-                    0.6,
-                    1.0
-                ],
-                "specular": [
-                    0.3,
-                    0.3,
-                    0.3,
-                    1.0
-                ],
-                "shininess": 2.0
-            },
             "color": [
                 1,
                 1,
@@ -156,6 +135,29 @@
                 -1,
                 -1
             ]
+        }
+    ],
+    "materials": [
+        {
+            "ambient": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "diffuse": [
+                0.6,
+                0.6,
+                0.6,
+                1.0
+            ],
+            "specular": [
+                0.3,
+                0.3,
+                0.3,
+                1.0
+            ],
+            "shininess": 2.0
         }
     ],
     "gameobjects": [
@@ -339,7 +341,8 @@
                     1
                 ]
             },
-            "mesh": 1
+            "mesh": 1,
+            "material": 0
         },
         {
             "class": 1,
