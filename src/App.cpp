@@ -43,6 +43,13 @@ void App::loop()
                 if (event.mouseButton.button == sf::Mouse::Left)
                     ((Player *)(currentScene->gameObjects[0]))->dispatchBullet();
                 break;
+            case sf::Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::Escape)
+                {
+                    terminate();
+                    return;
+                }
+
             default:
                 break;
             }
@@ -64,13 +71,13 @@ void App::update()
 
     auto player = ((Player *)(currentScene->gameObjects[0])); // TODO hold in class
     auto bullets = player->bullets;
-    for (unsigned i = 0; i < currentScene->gameObjects.size(); ++i)
+    for (auto i = currentScene->gameObjects.begin(); i < currentScene->gameObjects.end(); ++i)
     {
-        if (currentScene->gameObjects[i]->getClass() == 3)
+        if ((*i)->getClass() == 3)
         {
-            for (unsigned j = 0; j < bullets.size(); ++j)
+            for (auto j = bullets.begin(); j < bullets.end(); ++j)
             {
-                if (currentScene->gameObjects[i]->aabb.isColliding(bullets[j].transform.getPosition()))
+                if ((*i)->aabb.isColliding(j->transform.getPosition()))
                 {
                     currentScene->destroyGameObject(i); // TODO hp
                     player->destroyBullet(j);
