@@ -7,8 +7,8 @@ namespace aw
 {
     class Player : public GameObject
     {
-        float speed = 1.0f;
-        float mouseSenstivity = 300.0f;
+        float speed = 10.0f;
+        float mouseSenstivity = 15.0f;
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec2 mouseDelta;
 

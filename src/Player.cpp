@@ -3,7 +3,7 @@ using namespace aw;
 using namespace std;
 using namespace sf;
 using namespace glm;
-Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false,2)
+Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false, 2)
 {
 }
 void Player::start()
@@ -11,7 +11,6 @@ void Player::start()
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
-    speed = 5.0f;
 }
 void Player::update()
 {
@@ -39,8 +38,6 @@ void Player::update()
 
     auto mousePos = Mouse::getPosition(WINDOW.internal);
     mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
-    if (length(mouseDelta) > 0)
-        mouseDelta = normalize(mouseDelta);
     mouseDelta *= -mouseSenstivity;
     Mouse::setPosition(Vector2i{WINDOW.internal.getSize().x / 2.0f, WINDOW.internal.getSize().y / 2.0f}, WINDOW.internal);
 }
