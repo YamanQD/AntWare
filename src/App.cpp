@@ -43,6 +43,12 @@ void App::loop()
                 if (event.mouseButton.button == sf::Mouse::Left)
                     ((Player *)(currentScene->gameObjects[0]))->dispatchBullet();
                 break;
+            case sf::Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::Escape)
+                {
+                    terminate();
+                    return;
+                }
             default:
                 break;
             }
