@@ -21,6 +21,8 @@ void Renderer::init()
     glEnable(GL_TEXTURE_2D);
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 void Renderer::renderScene(Scene *scene)
 {
