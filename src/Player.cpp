@@ -67,13 +67,14 @@ void Player::update()
     mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
     mouseDelta *= -mouseSenstivity;
     Mouse::setPosition(Vector2i{WINDOW.internal.getSize().x / 2.0f, WINDOW.internal.getSize().y / 2.0f}, WINDOW.internal);
-
-    for (unsigned i = 0; i < bullets.size(); ++i)
+    auto bulletsSize = bullets.size();
+    for (unsigned i = 0; i < bulletsSize; ++i)
     {
         if (bullets[i].timeOut())
         {
             destroyBullet(i);
-            i--;
+            --i;
+            --bulletsSize;
         }
     }
 }
