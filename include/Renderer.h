@@ -3,6 +3,7 @@
 #include <Window.h>
 #include <Camera.h>
 #include <Scene.h>
+#include <HUD.h>
 #define RENDERER aw::Renderer::instance()
 namespace aw
 {

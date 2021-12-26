@@ -36,6 +36,7 @@ void Renderer::renderScene(Scene *scene)
     {
         scene->gameObjects[i]->draw();
     }
+    HUD.draw();
     glFlush();
     WINDOW.internal.display();
 }
