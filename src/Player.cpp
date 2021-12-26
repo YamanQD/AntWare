@@ -8,9 +8,11 @@ Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, par
 }
 void Player::start()
 {
+    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Bullet.glb", {1, 1, 1}));
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
+    dispatchBullet(); // TODO remove, dispatch on mouse button
 }
 void Player::update()
 {
@@ -48,4 +50,22 @@ void Player::fixedUpdate(float deltaTime)
     eularAngles.y += mouseDelta.x * deltaTime;
     eularAngles.x = glm::clamp<float>(eularAngles.x, -60.0f, 80.0f);
     transform.setRotation(eularAngles);
+    for (unsigned i = 0; i < bullets.size(); ++i)
+    {
+        bullets[i].fixedUpdate(deltaTime);
+    }
+}
+void Player::dispatchBullet()
+{
+    bullets.push_back(Bullet(bulletMesh, nullptr, mat3(transform.getRotation()) * vec3(0, 0, -1)));
+    bullets[bullets.size() - 1].transform = transform;
+    bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
+}
+void Player::draw()
+{
+    GameObject::draw();
+    for (unsigned i = 0; i < bullets.size(); ++i)
+    {
+        bullets[i].draw();
+    }
 }
