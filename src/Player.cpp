@@ -109,3 +109,8 @@ void Player::destroyBullet(int index)
 {
     bullets.erase(bullets.begin() + index);
 }
+bool Player::damage(float amount)
+{
+    hp -= amount;
+    return hp <= 0.0f;
+}

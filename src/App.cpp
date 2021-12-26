@@ -93,6 +93,16 @@ void App::update()
                     --bulletsSize;
                 }
             }
+
+            if (currentScene->gameObjects[i]->aabb.isColliding(currentScene->gameObjects[0]->aabb) &&
+                getTime() > 2.0f)
+            {
+                if (getTime() - player->timeSinceDamage > 1.0f)
+                {
+                    player->damage(1.0f);
+                    player->timeSinceDamage = getTime();
+                }
+            }
         }
     }
 }
@@ -102,6 +112,11 @@ void App::start()
     {
         currentScene->gameObjects[i]->start();
     }
+    timeSinceStart.restart();
+}
+float App::getTime()
+{
+    return timeSinceStart.getElapsedTime().asSeconds();
 }
 void App::readSettingsFile()
 {

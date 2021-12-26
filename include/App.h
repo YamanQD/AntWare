@@ -29,6 +29,7 @@ namespace aw
         void update();
         void readSettingsFile();
 
+        sf::Clock timeSinceStart;
         Scene *currentScene;
 
     public:
@@ -36,5 +37,6 @@ namespace aw
         void init(int argc, char **argv);
         void loop();
         void terminate();
+        float getTime();
     };
 }

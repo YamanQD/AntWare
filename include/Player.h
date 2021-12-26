@@ -9,6 +9,7 @@ namespace aw
 {
     class Player : public GameObject
     {
+
         float speed = 10.0f;
         float mouseSenstivity = 15.0f;
         glm::vec3 eularAngles = {0, 0, 0};
@@ -19,6 +20,8 @@ namespace aw
 
     public:
         std::vector<Bullet> bullets;
+        float timeSinceDamage = 0.0f;
+        float hp = 10.0f;
 
         Player(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr);
         void start() override;
@@ -27,5 +30,6 @@ namespace aw
         void draw() override;
         void dispatchBullet();
         void destroyBullet(int index);
+        bool damage(float amount);
     };
 }
