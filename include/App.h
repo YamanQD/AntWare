@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <exception>
+#include <random>
 #include <rapidjson/document.h>
 #include <GL/glew.h>
 #include <SFML/System/Clock.hpp>

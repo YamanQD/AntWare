@@ -10,6 +10,7 @@ App &App::instance()
 }
 void App::init(int argc, char **argv)
 {
+    srandom(time(nullptr));
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
