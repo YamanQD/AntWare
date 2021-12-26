@@ -11,6 +11,7 @@
 #include <Transform.h>
 #include <Physics.h>
 #include <Scene.h>
+#include <Player.h>
 #define APP aw::App::instance()
 namespace aw
 {

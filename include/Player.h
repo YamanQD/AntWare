@@ -13,7 +13,6 @@ namespace aw
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
-        void dispatchBullet();
 
     public:
         std::vector<Bullet> bullets;
@@ -23,5 +22,6 @@ namespace aw
         void update() override;
         void fixedUpdate(float deltaTime) override;
         void draw() override;
+        void dispatchBullet();
     };
 }

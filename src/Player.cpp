@@ -12,7 +12,6 @@ void Player::start()
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
-    dispatchBullet(); // TODO remove, dispatch on mouse button
 }
 void Player::update()
 {
@@ -57,7 +56,7 @@ void Player::fixedUpdate(float deltaTime)
 }
 void Player::dispatchBullet()
 {
-    bullets.push_back(Bullet(bulletMesh, nullptr, mat3(transform.getRotation()) * vec3(0, 0, -1)));
+    bullets.push_back(Bullet(bulletMesh, nullptr, vec3(0, 0, -1)));
     bullets[bullets.size() - 1].transform = transform;
     bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
 }

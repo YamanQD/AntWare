@@ -5,7 +5,7 @@ namespace aw
     class Bullet : public GameObject
     {
     private:
-        float speed = 0.1f;
+        float speed = 20.0f;
 
     public:
         Bullet(std::shared_ptr<Mesh> mesh, GameObject *parent, glm::vec3 projectVec);

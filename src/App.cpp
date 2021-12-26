@@ -39,6 +39,10 @@ void App::loop()
             case sf::Event::Resized:
                 // TODO
                 break;
+            case sf::Event::MouseButtonReleased:
+                if (event.mouseButton.button == sf::Mouse::Left)
+                    ((Player *)(currentScene->gameObjects[0]))->dispatchBullet();
+                break;
             default:
                 break;
             }
