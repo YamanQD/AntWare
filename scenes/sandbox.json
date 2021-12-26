@@ -151,7 +151,7 @@
     ],
     "gameobjects": [
         {
-            "class": 1,
+            "class": 3,
             "transform": {
                 "position": [
                     0,

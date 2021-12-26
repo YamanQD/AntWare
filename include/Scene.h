@@ -6,13 +6,15 @@
 #include <Camera.h>
 #include <StaticGO.h>
 #include <Player.h>
+#include <Ant.h>
 #include <Light.h>
 namespace aw
 {
     enum CLASSES
     {
         STATICGO = 1,
-        PLAYER = 2
+        PLAYER = 2,
+        ANT = 3
     };
     class Scene
     {

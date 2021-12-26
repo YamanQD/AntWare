@@ -108,6 +108,9 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
         case CLASSES::PLAYER:
             gameObject = new Player(mesh, parent);
             break;
+        case CLASSES::ANT:
+            gameObject = new Ant(mesh, parent);
+            break;
         default:
             printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
                    i);
