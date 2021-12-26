@@ -23,5 +23,6 @@ namespace aw
         void fixedUpdate(float deltaTime) override;
         void draw() override;
         void dispatchBullet();
+        void destroyBullet(int index);
     };
 }

@@ -24,5 +24,6 @@ namespace aw
         std::vector<GameObject *> gameObjects;
         std::vector<Light> lights;
         Camera camera;
+        void destroyGameObject(int index);
     };
 }

@@ -36,6 +36,7 @@ namespace aw
         virtual void fixedUpdate(float deltaTime);
         void addChild(GameObject *gameObject);
         std::vector<GameObject *> getChildren();
+        int getClass();
         virtual void start() = 0;
         virtual void update() = 0;
     };

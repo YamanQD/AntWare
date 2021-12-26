@@ -68,3 +68,7 @@ void Player::draw()
         bullets[i].draw();
     }
 }
+void Player::destroyBullet(int index)
+{
+    bullets.erase(bullets.begin() + index);
+}

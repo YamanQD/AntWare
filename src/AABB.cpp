@@ -28,7 +28,7 @@ bool AABB::isColliding(vec3 point)
     {
         intersectY = true;
     }
-    if (point.x <= right && point.y >= left)
+    if (point.x <= right && point.x >= left)
     {
         intersectX = true;
     }
