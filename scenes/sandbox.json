@@ -47,7 +47,7 @@
     "meshes": [
         {
             "path": "./Assets/Models/Ant.glb",
-            "texture": "Assets/Textures/ant_material_BaseColor.png",
+            "texture": "Assets/Textures/Ant.png",
             "color": [
                 1,
                 1,
@@ -87,7 +87,7 @@
         },
         {
             "path": "Assets/Models/Gun.glb",
-            "texture": "Assets/Textures/FN57_D.png",
+            "texture": "Assets/Textures/Gun.png",
             "color": [
                 1,
                 1,
@@ -97,7 +97,7 @@
         },
         {
             "path": "Assets/Models/Hands.glb",
-            "texture": "Assets/Textures/Hand_D.png",
+            "texture": "Assets/Textures/Hand.png",
             "color": [
                 1,
                 1,
@@ -107,7 +107,7 @@
         },
         {
             "path": "Assets/Models/Glove.glb",
-            "texture": "Assets/Textures/Glove_D.png",
+            "texture": "Assets/Textures/Glove.png",
             "color": [
                 1,
                 1,
