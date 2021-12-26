@@ -14,6 +14,7 @@ namespace aw
         GameObject *parent;
         std::vector<GameObject *> children;
         glm::mat4 transformationMat;
+        int classType;
 
         void constructAABB();
         void recalculateAABB();
@@ -24,8 +25,8 @@ namespace aw
         AABB aabb;
         bool isStatic;
 
-        GameObject(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr, bool isStatic = false);
-        GameObject(Mesh mesh, GameObject *parent = nullptr, bool isStatic = false);
+        GameObject(std::shared_ptr<Mesh> mesh, GameObject *parent = nullptr, bool isStatic = false,int type=1);
+        GameObject(Mesh mesh, GameObject *parent = nullptr, bool isStatic = false,int type=1);
         GameObject *getParent();
         void setParent(GameObject *parent);
         std::shared_ptr<Mesh> getMesh();

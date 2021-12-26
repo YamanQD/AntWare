@@ -3,7 +3,7 @@ using namespace aw;
 using namespace std;
 using namespace sf;
 using namespace glm;
-Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false)
+Player::Player(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, false,2)
 {
 }
 void Player::start()

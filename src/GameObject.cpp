@@ -3,14 +3,16 @@ using namespace aw;
 using namespace glm;
 using namespace std;
 
-GameObject::GameObject(shared_ptr<Mesh> mesh, GameObject *parent, bool isStatic) : meshPtr(mesh),
-																				   isStatic(isStatic)
+GameObject::GameObject(shared_ptr<Mesh> mesh, GameObject *parent, bool isStatic, int type) : meshPtr(mesh),
+																							 isStatic(isStatic),
+																							 classType(type)
 {
 	setParent(parent);
 	constructAABB();
 }
-GameObject::GameObject(Mesh mesh, GameObject *parent, bool isStatic) : meshPtr(make_shared<Mesh>(mesh)),
-																	   isStatic(isStatic)
+GameObject::GameObject(Mesh mesh, GameObject *parent, bool isStatic, int type) : meshPtr(make_shared<Mesh>(mesh)),
+																				 isStatic(isStatic),
+																				 classType(type)
 {
 	setParent(parent);
 	constructAABB();
