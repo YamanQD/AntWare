@@ -12,6 +12,7 @@
 #include <Physics.h>
 #include <Scene.h>
 #include <Player.h>
+#include <Ant.h>
 #define APP aw::App::instance()
 namespace aw
 {

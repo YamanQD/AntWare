@@ -46,8 +46,8 @@
     },
     "meshes": [
         {
-            "path": "./Assets/Ant.glb",
-            "texture": "Assets/ant_material_BaseColor.png",
+            "path": "./Assets/Models/Ant.glb",
+            "texture": "Assets/Textures/Ant.png",
             "color": [
                 1,
                 1,
@@ -56,7 +56,7 @@
             ]
         },
         {
-            "path": "./Assets/Plane.glb",
+            "path": "./Assets/Models/Plane.glb",
             "material": {
                 "ambient": [
                     1.0,
@@ -86,8 +86,8 @@
             ]
         },
         {
-            "path": "Assets/Gun.glb",
-            "texture": "Assets/FN57_D.png",
+            "path": "Assets/Models/Gun.glb",
+            "texture": "Assets/Textures/Gun.png",
             "color": [
                 1,
                 1,
@@ -96,8 +96,8 @@
             ]
         },
         {
-            "path": "Assets/Hands.glb",
-            "texture": "Assets/Hand_D.png",
+            "path": "Assets/Models/Hands.glb",
+            "texture": "Assets/Textures/Hand.png",
             "color": [
                 1,
                 1,
@@ -106,8 +106,8 @@
             ]
         },
         {
-            "path": "Assets/Glove.glb",
-            "texture": "Assets/Glove_D.png",
+            "path": "Assets/Models/Glove.glb",
+            "texture": "Assets/Textures/Glove.png",
             "color": [
                 1,
                 1,
@@ -116,7 +116,7 @@
             ]
         },
         {
-            "path": "Assets/Bullet.glb",
+            "path": "Assets/Models/Bullet.glb",
             "color": [
                 1,
                 1,
