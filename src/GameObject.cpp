@@ -140,6 +140,11 @@ void GameObject::setMesh(shared_ptr<Mesh> mesh)
 {
 	this->meshPtr = mesh;
 }
-int GameObject::getClass(){
+int GameObject::getClass()
+{
 	return classType;
+}
+std::shared_ptr<Mesh> GameObject::getMesh()
+{
+	return meshPtr;
 }

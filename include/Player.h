@@ -15,10 +15,8 @@ namespace aw
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
-        sf::SoundBuffer gunShotSoundBuffer;
-        sf::SoundBuffer footstepsSoundBuffer;
-        sf::Sound gunShotSound;
-        sf::Sound footstepsSound;
+        sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer;
+        sf::Sound gunShotSound, footstepsSound;
 
     public:
         std::vector<Bullet> bullets;
