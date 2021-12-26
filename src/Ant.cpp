@@ -7,11 +7,11 @@ Ant::Ant(shared_ptr<Mesh> mesh, GameObject *parent) : GameObject(mesh, parent, f
     {
         if (i < 4)
         {
-            aabb.bounds[i] -= 1.0f;
+            aabb.bounds[i].x -= 1.0f;
         }
         else
         {
-            aabb.bounds[i] += 1.0f;
+            aabb.bounds[i].x += 1.0f;
         }
     }
 }
