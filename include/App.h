@@ -13,6 +13,7 @@
 #include <Scene.h>
 #include <Player.h>
 #include <Ant.h>
+#include <SoundBuffers.h>
 #define APP aw::App::instance()
 namespace aw
 {

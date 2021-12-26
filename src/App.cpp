@@ -13,6 +13,7 @@ void App::init(int argc, char **argv)
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
+    SoundBuffers::init();
     currentScene = new Scene(argv[1]);
     start();
 }
