@@ -9,8 +9,10 @@ namespace aw
     {
     private:
         Hud();
-        GLuint Y;
-        void loadTexture(const char *path);
+        GLuint crosshair;
+        GLuint digits[10];
+        GLuint transperncyTex;
+        void loadTexture(const char *path, GLuint &tex);
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
 
     public:

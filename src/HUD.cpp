@@ -3,8 +3,8 @@ using namespace aw;
 using namespace sf;
 Hud::Hud()
 {
-    const char *path = "Assets/Textures/crosshair.png";
-    loadTexture(path);
+    loadTexture("Assets/Textures/crosshair.png", crosshair);
+    loadTexture("./Assets/Textures/transparent.png", transperncyTex);
 }
 Hud &Hud::instance()
 {
@@ -27,8 +27,9 @@ void Hud::draw()
     glLoadIdentity();
 
     // Draw here
-    drawQuad(Y, glm::vec2(0.1f, 0.0f), {1,1});
+    drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
 
+    glBindTexture(GL_TEXTURE_2D, 0);
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
     glEnable(GL_LIGHTING);
@@ -36,7 +37,7 @@ void Hud::draw()
     glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
 }
-void Hud::loadTexture(const char *path)
+void Hud::loadTexture(const char *path, GLuint &tex)
 {
     Image image;
     if (!image.loadFromFile(path))
@@ -48,8 +49,8 @@ void Hud::loadTexture(const char *path)
     int imgWidth = image.getSize().x;
     const Uint8 *imgData = image.getPixelsPtr();
 
-    glGenTextures(1, &Y);
-    glBindTexture(GL_TEXTURE_2D, Y);
+    glGenTextures(1, &tex);
+    glBindTexture(GL_TEXTURE_2D, tex);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -80,5 +81,4 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
     glVertex2f(pos.x - size.x, pos.y + size.y);
 
     glEnd();
-    glBindTexture(GL_TEXTURE_2D, 0);
 }
