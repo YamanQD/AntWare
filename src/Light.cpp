@@ -69,6 +69,11 @@ Light::Light(unsigned id, glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specul
 }
 void Light::update()
 {
+	if (enabled)
+		glEnable(GL_LIGHT0 + id);
+	else
+		glDisable(GL_LIGHT0 + id);
+
 	glPushMatrix();
 	if (parent)
 	{
