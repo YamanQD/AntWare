@@ -61,8 +61,11 @@ void App::loop()
                     }
                     else
                     {
-                        reloadTimer.restart();
-                        player->reload();
+                        if (player->totalAmmo > 0)
+                        {
+                            reloadTimer.restart();
+                            player->reload();
+                        }
                     }
                 }
                 break;
@@ -73,8 +76,11 @@ void App::loop()
                 }
                 if (event.key.code == sf::Keyboard::R)
                 {
-                    reloadTimer.restart();
-                    player->reload();
+                    if (player->totalAmmo > 0)
+                    {
+                        reloadTimer.restart();
+                        player->reload();
+                    }
                 }
                 break;
             case sf::Event::KeyPressed:
