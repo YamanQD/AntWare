@@ -14,10 +14,15 @@ namespace aw
         float speed = 10.0f;
         float mouseSenstivity = 15.0f;
         glm::vec3 eularAngles = {0, 0, 0};
+        glm::vec3 childrenEular = {0, 0, 0}, childrenTranslation = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
         sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer;
         sf::Sound gunShotSound, footstepsSound;
+        bool isRecoiling = false;
+        float recoilImpact = 25.0f;
+        float recoilTimeOut = 1.0f / 5.0f;
+        float recoilTime;
 
     public:
         std::vector<Bullet> bullets;

@@ -89,6 +89,34 @@ void Player::fixedUpdate(float deltaTime)
     {
         bullets[i].fixedUpdate(deltaTime);
     }
+    if (isRecoiling)
+    {
+        if (recoilTimeOut <= recoilTime)
+        {
+            isRecoiling = false;
+            childrenEular = {0, 0, 0};
+            childrenTranslation = {0, 0, 0};
+        }
+        else
+        {
+            recoilTime += deltaTime;
+            if (recoilTime < (recoilTimeOut / 2.0f))
+            {
+                childrenEular.x += recoilImpact * deltaTime;
+                childrenTranslation.z += recoilImpact * deltaTime*0.05f;
+            }
+            else
+            {
+                childrenEular.x -= recoilImpact * deltaTime;
+                childrenTranslation.z -= recoilImpact * deltaTime*0.05f;
+            }
+        }
+        for (unsigned i = 0; i < children.size(); ++i)
+        {
+            children[i]->transform.setRotation(childrenEular);
+            children[i]->transform.setPosition(childrenTranslation);
+        }
+    }
 }
 void Player::dispatchBullet()
 {
@@ -96,11 +124,8 @@ void Player::dispatchBullet()
     bullets.push_back(Bullet(bulletMesh, Material(), nullptr, vec3(0, 0, -1))); // TODO custom mat
     bullets[bullets.size() - 1].transform = transform;
     bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
-    float yRecoil = -(((float)(rand() % 100)) / 100.0f);
-    float xRecoil = ((float)(rand() % 300)) / 100.0f;
-    eularAngles.x += xRecoil;
-    eularAngles.y += yRecoil;
-    transform.setRotation(eularAngles);
+    isRecoiling = true;
+    recoilTime = 0.0f;
 }
 void Player::draw()
 {

@@ -102,6 +102,15 @@
                 1,
                 1
             ]
+        },
+        {
+            "path": "./Assets/Models/PlayerCube.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "lights": [
@@ -256,7 +265,29 @@
                     1
                 ]
             },
-            "mesh": 4
+            "mesh": 6
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 4,
+            "parent": 0
         },
         {
             "class": 1,
