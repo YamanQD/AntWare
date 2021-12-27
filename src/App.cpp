@@ -47,6 +47,12 @@ void App::loop()
                     shootClock.restart();
                 }
                 break;
+            case sf::Event::KeyReleased:
+                if (event.key.code == sf::Keyboard::F)
+                {
+                    currentScene->lights[0].toggle();
+                }
+                break;
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape)
                 {

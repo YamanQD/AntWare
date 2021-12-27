@@ -106,16 +106,16 @@
     ],
     "lights": [
         {
-            "class": 0,
+            "class": 2,
             "position": [
                 0,
                 0,
-                0
+                5
             ],
             "ambient": [
-                0.1,
-                0.1,
-                0.1,
+                0.8,
+                0.8,
+                0.8,
                 1
             ],
             "diffuse": [
@@ -132,6 +132,34 @@
             ],
             "direction": [
                 0,
+                0,
+                -5
+            ],
+            "angle": 35.0,
+            "parent": 0
+        },
+        {
+            "class": 0,
+            "ambient": [
+                0.4,
+                0.4,
+                0.4,
+                1
+            ],
+            "diffuse": [
+                0.1,
+                0.1,
+                0.1,
+                1
+            ],
+            "specular": [
+                0.0,
+                0.0,
+                0.0,
+                1
+            ],
+            "direction": [
+                -1,
                 -1,
                 -1
             ]
@@ -158,6 +186,27 @@
                 1.0
             ],
             "shininess": 2.0
+        },
+        {
+            "ambient": [
+                0.2,
+                0.2,
+                0.2,
+                1.0
+            ],
+            "diffuse": [
+                0.4,
+                0.4,
+                0.4,
+                1.0
+            ],
+            "specular": [
+                0.9,
+                0.9,
+                0.9,
+                1.0
+            ],
+            "shininess": 120.0
         }
     ],
     "gameobjects": [
@@ -249,6 +298,7 @@
                 ]
             },
             "mesh": 0,
+            "material": 1,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -296,6 +346,7 @@
                 ]
             },
             "mesh": 0,
+            "material": 1,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -343,27 +394,6 @@
             },
             "mesh": 1,
             "material": 0
-        },
-        {
-            "class": 1,
-            "mesh": 5,
-            "transform": {
-                "position": [
-                    0,
-                    0,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ]
-            }
         }
     ]
 }
