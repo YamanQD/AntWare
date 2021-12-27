@@ -39,7 +39,15 @@ void Renderer::renderScene(Scene *scene)
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         if (i == 1)
-            continue; //muzzle
+            continue; // muzzle
+        if (scene->gameObjects[i]->getClass() == CLASSES::ANT)
+            continue; // Draw ants last for better transpernecy
+        scene->gameObjects[i]->draw();
+    }
+    for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
+    {
+        if (scene->gameObjects[i]->getClass() != CLASSES::ANT)
+            continue;
         scene->gameObjects[i]->draw();
     }
     glDisable(GL_LIGHTING);
