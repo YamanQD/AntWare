@@ -44,3 +44,33 @@ vec3 AABB::getCenter()
     vec3 oppisite = {right, up, forward};
     return (corner + oppisite) * 0.5f;
 }
+void AABB::minmize(float factor)
+{
+    for (unsigned i = 0; i < 8; ++i)
+    {
+        if (i < 4)
+        {
+            bounds[i].x -= factor;
+        }
+        else
+        {
+            bounds[i].x += factor;
+        }
+        if (i < 2 || i == 4 || i == 5)
+        {
+            bounds[i].y -= factor;
+        }
+        else
+        {
+            bounds[i].y += factor;
+        }
+        if (i % 2 == 0)
+        {
+            bounds[i].z -= factor;
+        }
+        else
+        {
+            bounds[i].z += factor;
+        }
+    }
+}

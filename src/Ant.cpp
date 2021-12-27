@@ -8,11 +8,27 @@ Ant::Ant(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObj
     {
         if (i < 4)
         {
-            aabb.bounds[i].x -= 1.0f;
+            aabb.bounds[i].x -= 2.5f;
         }
         else
         {
-            aabb.bounds[i].x += 1.0f;
+            aabb.bounds[i].x += 2.5f;
+        }
+        if (i < 2 || i == 4 || i == 5)
+        {
+            aabb.bounds[i].y -= 0.4f;
+        }
+        else
+        {
+            aabb.bounds[i].y += 0.8f;
+        }
+        if (i % 2 == 0)
+        {
+            aabb.bounds[i].z -= 0.5f;
+        }
+        else
+        {
+            aabb.bounds[i].z += 1.3f;
         }
     }
 }

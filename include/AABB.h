@@ -12,6 +12,7 @@ namespace aw
         bool isColliding(const AABB &other);
         bool isColliding(glm::vec3 point);
         glm::vec3 getCenter();
+        void minmize(float factor);
         friend class GameObject;
     };
 }
