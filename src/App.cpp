@@ -111,6 +111,7 @@ void App::update()
                 {
                     player->damage(1.0f);
                     player->timeSinceDamage = getTime();
+                    HUD.setHP(player->hp*10);
                 }
             }
         }

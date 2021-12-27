@@ -3,8 +3,14 @@ using namespace aw;
 using namespace sf;
 Hud::Hud()
 {
+    char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
     loadTexture("./Assets/Textures/transparent.png", transperncyTex);
+    for (unsigned i = 0; i < 10; ++i)
+    {
+        sprintf(buffer, "./Assets/Textures/%d.png", i);
+        loadTexture(buffer, digits[i]);
+    }
 }
 Hud &Hud::instance()
 {
@@ -28,6 +34,7 @@ void Hud::draw()
 
     // Draw here
     drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
+    drawHP();
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glPopMatrix();
@@ -81,4 +88,28 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
     glVertex2f(pos.x - size.x, pos.y + size.y);
 
     glEnd();
+}
+void Hud::drawHP()
+{
+    if (hp >= 100)
+    {
+        drawQuad(digits[hp / 100], {6, -4}, {1, 1});
+    }
+    else
+    {
+        drawQuad(transperncyTex, {6, -4}, {1, 1});
+    }
+    if (hp >= 10)
+    {
+        drawQuad(digits[(hp / 10) % 10], {6.6f, -4.0f}, {1, 1});
+    }
+    else
+    {
+        drawQuad(transperncyTex, {6.6f, -4.0f}, {1, 1});
+    }
+    drawQuad(digits[hp % 10], {7.2f, -4.0f}, {1, 1});
+}
+void Hud::setHP(int hp)
+{
+    this->hp = hp;
 }
