@@ -11,17 +11,19 @@ namespace aw
         Hud();
         GLuint crosshair;
         GLuint digits[10];
+        GLuint backSlash;
         void loadTexture(const char *path, GLuint &tex);
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();
         void drawAmmo();
-        unsigned hp = 100;
-        unsigned ammo = 10;
+        unsigned hp;
+        unsigned inHandAmmo, totalAmmo;
 
     public:
         static Hud &instance();
         void draw();
         void setHP(unsigned hp);
-        void setAmmo(unsigned ammo);
+        void setInHandAmmo(unsigned ammo);
+        void setTotalAmmo(unsigned ammo);
     };
 }

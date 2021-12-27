@@ -15,6 +15,10 @@ void App::init(int argc, char **argv)
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
     currentScene = new Scene(argv[1]);
+    auto player = ((Player *)(currentScene->gameObjects[0]));
+    HUD.setHP(player->hp * 10);
+    HUD.setInHandAmmo(player->inHandAmmo);
+    HUD.setTotalAmmo(player->totalAmmo);
     start();
 }
 void App::terminate()
@@ -49,7 +53,8 @@ void App::loop()
                         player->dispatchBullet();
                         player->inHandAmmo--;
                         shootClock.restart();
-                        HUD.setAmmo(player->inHandAmmo);
+                        HUD.setInHandAmmo(player->inHandAmmo);
+                        HUD.setTotalAmmo(player->totalAmmo);
                     }
                 }
                 break;

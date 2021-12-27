@@ -5,6 +5,7 @@ Hud::Hud()
 {
     char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
+    loadTexture("Assets/Textures/backSlash.png", backSlash);
     for (unsigned i = 0; i < 10; ++i)
     {
         sprintf(buffer, "./Assets/Textures/%d.png", i);
@@ -91,33 +92,83 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
 }
 void Hud::drawAmmo()
 {
-    if (ammo >= 100)
+    float y = -3.8f;
+
+    if (inHandAmmo >= 100)
     {
-        drawQuad(digits[ammo / 100], {6, -4}, {1, 1});
+        drawQuad(digits[inHandAmmo / 100], {6, y}, {1, 1});
+        drawQuad(digits[(inHandAmmo / 10) % 10], {6.6f, y}, {1, 1});
+        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+
+        drawQuad(backSlash, {5.4f, y}, {1, 1});
+
+        if (totalAmmo >= 100)
+        {
+            drawQuad(digits[totalAmmo / 100], {3.6f, y}, {1, 1});
+        }
+        if (totalAmmo >= 10)
+        {
+            drawQuad(digits[(totalAmmo / 10) % 10], {4.2f, y}, {1, 1});
+        }
+        drawQuad(digits[totalAmmo % 10], {4.8f, y}, {1, 1});
     }
-    if (ammo >= 10)
+    else if (inHandAmmo >= 10)
     {
-        drawQuad(digits[(ammo / 10) % 10], {6.6f, -4.0f}, {1, 1});
+        drawQuad(digits[(inHandAmmo / 10) % 10], {6.6f, y}, {1, 1});
+        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+
+        drawQuad(backSlash, {6.0f, y}, {1, 1});
+
+        if (totalAmmo >= 100)
+        {
+            drawQuad(digits[totalAmmo / 100], {4.2f, y}, {1, 1});
+        }
+        if (totalAmmo >= 10)
+        {
+            drawQuad(digits[(totalAmmo / 10) % 10], {4.8f, y}, {1, 1});
+        }
+        drawQuad(digits[totalAmmo % 10], {5.4f, y}, {1, 1});
     }
-    drawQuad(digits[ammo % 10], {7.2f, -4.0f}, {1, 1});
+    else
+    {
+        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+
+        drawQuad(backSlash, {6.6f, y}, {1, 1});
+
+        if (totalAmmo >= 100)
+        {
+            drawQuad(digits[totalAmmo / 100], {4.8f, y}, {1, 1});
+        }
+        if (totalAmmo >= 10)
+        {
+            drawQuad(digits[(totalAmmo / 10) % 10], {5.4f, y}, {1, 1});
+        }
+        drawQuad(digits[totalAmmo % 10], {6.0f, y}, {1, 1});
+    }
 }
 void Hud::drawHP()
 {
+    float y = -3.8f;
+
     if (hp >= 100)
     {
-        drawQuad(digits[hp / 100], {-7.2f, -4.0f}, {1, 1});
+        drawQuad(digits[hp / 100], {-7.2f, y}, {1, 1});
     }
     if (hp >= 10)
     {
-        drawQuad(digits[(hp / 10) % 10], {-6.6f, -4.0f}, {1, 1});
+        drawQuad(digits[(hp / 10) % 10], {-6.6f, y}, {1, 1});
     }
-    drawQuad(digits[hp % 10], {-6, -4}, {1, 1});
+    drawQuad(digits[hp % 10], {-6, y}, {1, 1});
 }
 void Hud::setHP(unsigned hp)
 {
     this->hp = hp;
 }
-void Hud::setAmmo(unsigned ammo)
+void Hud::setInHandAmmo(unsigned ammo)
 {
-    this->ammo = ammo;
+    this->inHandAmmo = ammo;
+}
+void Hud::setTotalAmmo(unsigned ammo)
+{
+    this->totalAmmo = ammo;
 }

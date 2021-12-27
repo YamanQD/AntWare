@@ -144,6 +144,8 @@ void Player::reload()
         inHandAmmo = totalAmmo;
         totalAmmo = 0;
     }
+    HUD.setInHandAmmo(inHandAmmo);
+    HUD.setTotalAmmo(totalAmmo);
 }
 void Player::draw()
 {

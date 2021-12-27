@@ -6,6 +6,7 @@
 #include <Window.h>
 #include <GameObject.h>
 #include <Bullet.h>
+#include <HUD.h>
 namespace aw
 {
     class Player : public GameObject
@@ -29,7 +30,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
-        unsigned totalAmmo = 10, inHandAmmo = 5, maxAmmo = 5;
+        unsigned totalAmmo = 100, inHandAmmo = 10, maxAmmo = 5;
 
         Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
         void start() override;
