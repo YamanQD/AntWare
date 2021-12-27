@@ -137,7 +137,10 @@ void Player::dispatchBullet()
 }
 void Player::reload()
 {
-    reloadSound.play();
+
+    if (totalAmmo > 0)
+        reloadSound.play();
+
     if (totalAmmo > maxAmmo)
     {
         inHandAmmo = maxAmmo;
