@@ -213,5 +213,6 @@ Scene::~Scene()
 }
 void Scene::destroyGameObject(int index)
 {
+    delete gameObjects[index];
     gameObjects.erase(gameObjects.begin() + index);
 }
