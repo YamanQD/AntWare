@@ -12,7 +12,6 @@ namespace aw
     protected:
         std::shared_ptr<Mesh> meshPtr;
         GameObject *parent;
-        Material material;
         std::vector<GameObject *> children;
         glm::mat4 transformationMat;
         int classType;
@@ -23,6 +22,7 @@ namespace aw
     public:
         Transform transform;
         Rigidbody rigidbody;
+        Material material;
         AABB aabb;
         bool isStatic;
 
