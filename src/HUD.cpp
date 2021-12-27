@@ -89,29 +89,29 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
 
     glEnd();
 }
-void Hud::drawHP()
-{
-    if (hp >= 100)
-    {
-        drawQuad(digits[hp / 100], {6, -4}, {1, 1});
-    }
-    if (hp >= 10)
-    {
-        drawQuad(digits[(hp / 10) % 10], {6.6f, -4.0f}, {1, 1});
-    }
-    drawQuad(digits[hp % 10], {7.2f, -4.0f}, {1, 1});
-}
 void Hud::drawAmmo()
 {
     if (ammo >= 100)
     {
-        drawQuad(digits[ammo / 100], {-7.2f, -4.0f}, {1, 1});
+        drawQuad(digits[ammo / 100], {6, -4}, {1, 1});
     }
     if (ammo >= 10)
     {
-        drawQuad(digits[(ammo / 10) % 10], {-6.6f, -4.0f}, {1, 1});
+        drawQuad(digits[(ammo / 10) % 10], {6.6f, -4.0f}, {1, 1});
     }
-    drawQuad(digits[ammo % 10], {-6, -4}, {1, 1});
+    drawQuad(digits[ammo % 10], {7.2f, -4.0f}, {1, 1});
+}
+void Hud::drawHP()
+{
+    if (hp >= 100)
+    {
+        drawQuad(digits[hp / 100], {-7.2f, -4.0f}, {1, 1});
+    }
+    if (hp >= 10)
+    {
+        drawQuad(digits[(hp / 10) % 10], {-6.6f, -4.0f}, {1, 1});
+    }
+    drawQuad(digits[hp % 10], {-6, -4}, {1, 1});
 }
 void Hud::setHP(unsigned hp)
 {
