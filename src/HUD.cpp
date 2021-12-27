@@ -27,7 +27,7 @@ void Hud::draw()
     glLoadIdentity();
 
     // Draw here
-    drawQuad(Y, glm::vec2(8.0f, 4.0f), glm::vec2(4.0f, 4.0f));
+    drawQuad(Y, glm::vec2(0.0f, 0.0f), glm::vec2(4.0f, 4.0f));
 
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
@@ -61,42 +61,24 @@ void Hud::loadTexture(const char *path)
 }
 void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
 {
+    size /= 2.0f;
     glBindTexture(GL_TEXTURE_2D, texture);
     glColor3f(1.0f, 1.0f, 1.0f);
 
     glBegin(GL_QUADS);
 
     glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(pos.x, pos.y);
+    glVertex2f(pos.x - size.x, pos.y - size.y);
 
     glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(pos.x + size.x, pos.y);
+    glVertex2f(pos.x + size.x, pos.y - size.y);
 
     glTexCoord2f(1.0f, 1.0f);
     glVertex2f(pos.x + size.x, pos.y + size.y);
 
     glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(pos.x, pos.y + size.y);
+    glVertex2f(pos.x - size.x, pos.y + size.y);
 
     glEnd();
     glBindTexture(GL_TEXTURE_2D, 0);
-} // FIXME - Commented code below works, but code above doesn't
-
-// {
-//     glBindTexture(GL_TEXTURE_2D, texture);
-//     glColor3f(1.0f, 1.0f, 1.0f);
-//     glBegin(GL_QUADS);
-//     glTexCoord2f(0.0f, 0.0f);
-//     glVertex2f(-8.0f / 2.0f, -4.5f / 2.0f);
-
-//     glTexCoord2f(1.0f, 0.0f);
-//     glVertex2f(8.0f / 2.0f, -4.5f / 2.0f);
-
-//     glTexCoord2f(1.0f, 1.0f);
-//     glVertex2f(8.0f / 2.0f, 4.5f / 2.0f);
-
-//     glTexCoord2f(0.0f, 1.0f);
-//     glVertex2f(-8.0f / 2.0f, 4.5f / 2.0f);
-//     glEnd();
-//     glBindTexture(GL_TEXTURE_2D, 0);
-// }
+}
