@@ -27,6 +27,17 @@ void Material::setShininess(float shininess)
 {
 	this->shininess = shininess;
 }
+void Material::setAlpha(float alpha)
+{
+	this->alpha = alpha;
+	ambient.a = alpha;
+	diffuse.a = alpha;
+	specular.a = alpha;
+}
+float Material::getAlpha()
+{
+	return alpha;
+}
 void Material::apply()
 {
 	GLfloat mat_ambient[] = {ambient.r, ambient.g, ambient.b, ambient.a};

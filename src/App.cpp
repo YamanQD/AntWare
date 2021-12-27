@@ -81,7 +81,7 @@ void App::update()
         if (currentScene->gameObjects[i]->getClass() == 3)
         {
             auto ant = ((Ant *)(currentScene->gameObjects[i]));
-            if (ant->getHp() == 0)
+            if (ant->timeToDestroy())
             {
                 currentScene->destroyGameObject(i);
                 --i;

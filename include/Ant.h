@@ -5,10 +5,12 @@ namespace aw
 {
     class Ant : public GameObject
     {
-        unsigned hp = 4;
-        sf::Clock timeSinceDamage;
+        unsigned hp = 2;
+        sf::Clock timeSinceDamage, timeSinceLastAlphaDecrease;
         Material originalMaterial;
         bool isHurting = false;
+        bool isAlive = true;
+        void die();
 
     public:
         Ant(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent);
@@ -16,5 +18,6 @@ namespace aw
         void update() override;
         void damage(unsigned amount);
         unsigned getHp();
+        bool timeToDestroy();
     };
 }
