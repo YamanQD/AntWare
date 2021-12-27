@@ -25,7 +25,7 @@ void App::terminate()
 }
 void App::loop()
 {
-    sf::Clock clock;
+    sf::Clock clock, shootClock;
     float deltaTime = 0.0f;
     while (true)
     {
@@ -41,8 +41,11 @@ void App::loop()
                 // TODO
                 break;
             case sf::Event::MouseButtonReleased:
-                if (event.mouseButton.button == sf::Mouse::Left)
+                if (event.mouseButton.button == sf::Mouse::Left && shootClock.getElapsedTime().asSeconds() > 0.2f)
+                {
                     ((Player *)(currentScene->gameObjects[0]))->dispatchBullet();
+                    shootClock.restart();
+                }
                 break;
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape)
