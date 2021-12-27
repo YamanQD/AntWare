@@ -21,14 +21,7 @@ void Hud::draw()
     glPushMatrix();
     glLoadIdentity();
 
-
-    glBegin(GL_TRIANGLES);
-    glColor3f(1, 0, 1);
-    glVertex3f(3, 0, 0);
-    glVertex3f(-3, 0, 0);
-    glVertex3f(0, 3, 0);
-    glEnd();
-
+    // Draw here
 
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
