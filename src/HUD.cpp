@@ -5,7 +5,6 @@ Hud::Hud()
 {
     char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
-    loadTexture("./Assets/Textures/transparent.png", transperncyTex);
     for (unsigned i = 0; i < 10; ++i)
     {
         sprintf(buffer, "./Assets/Textures/%d.png", i);
@@ -95,17 +94,9 @@ void Hud::drawHP()
     {
         drawQuad(digits[hp / 100], {6, -4}, {1, 1});
     }
-    else
-    {
-        drawQuad(transperncyTex, {6, -4}, {1, 1});
-    }
     if (hp >= 10)
     {
         drawQuad(digits[(hp / 10) % 10], {6.6f, -4.0f}, {1, 1});
-    }
-    else
-    {
-        drawQuad(transperncyTex, {6.6f, -4.0f}, {1, 1});
     }
     drawQuad(digits[hp % 10], {7.2f, -4.0f}, {1, 1});
 }
