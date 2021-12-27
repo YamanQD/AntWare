@@ -80,25 +80,25 @@ void App::update()
     {
         if (currentScene->gameObjects[i]->getClass() == 3)
         {
+            auto ant = ((Ant *)(currentScene->gameObjects[i]));
+            if (ant->getHp() == 0)
+            {
+                currentScene->destroyGameObject(i);
+                --i;
+                --gameObjectsSize;
+            }
             for (unsigned j = 0; j < bulletsSize; ++j)
             {
-                if (currentScene->gameObjects[i]->aabb.isColliding(bullets[j].transform.getPosition()))
+                if (ant->aabb.isColliding(bullets[j].transform.getPosition()))
                 {
-                    auto ant = ((Ant *)(currentScene->gameObjects[i]));
                     ant->damage(1);
-                    if (ant->getHp() == 0)
-                    {
-                        currentScene->destroyGameObject(i);
-                        --i;
-                        --gameObjectsSize;
-                    }
                     player->destroyBullet(j);
                     --j;
                     --bulletsSize;
                 }
             }
 
-            if (currentScene->gameObjects[i]->aabb.isColliding(currentScene->gameObjects[0]->aabb) &&
+            if (ant->aabb.isColliding(currentScene->gameObjects[0]->aabb) &&
                 getTime() > 2.0f)
             {
                 if (getTime() - player->timeSinceDamage > 1.0f)
