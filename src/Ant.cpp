@@ -19,7 +19,7 @@ Ant::Ant(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObj
 void Ant::start() {}
 void Ant::update()
 {
-    if (isHurting && hurtingTimer.getElapsedTime().asSeconds() >= 0.3f)
+    if (isHurting && timeSinceDamage.getElapsedTime().asSeconds() >= 0.3f)
     {
         isHurting = false;
         material = originalMaterial;
@@ -28,7 +28,7 @@ void Ant::update()
 void Ant::damage(unsigned amount)
 {
     isHurting = true;
-    hurtingTimer.restart();
+    timeSinceDamage.restart();
     material.setDiffuse({1, 0, 0, 1});
 
     hp -= amount;
