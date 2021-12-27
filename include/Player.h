@@ -29,6 +29,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
+        unsigned ammo = 5;
 
         Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
         void start() override;

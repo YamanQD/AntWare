@@ -25,6 +25,7 @@ void App::terminate()
 }
 void App::loop()
 {
+    auto player = ((Player *)(currentScene->gameObjects[0]));
     sf::Clock clock, shootClock;
     float deltaTime = 0.0f;
     while (true)
@@ -43,8 +44,12 @@ void App::loop()
             case sf::Event::MouseButtonReleased:
                 if (event.mouseButton.button == sf::Mouse::Left && shootClock.getElapsedTime().asSeconds() > 0.2f)
                 {
-                    ((Player *)(currentScene->gameObjects[0]))->dispatchBullet();
-                    shootClock.restart();
+                    if (player->ammo > 0)
+                    {
+                        player->dispatchBullet();
+                        player->ammo--;
+                        shootClock.restart();
+                    }
                 }
                 break;
             case sf::Event::KeyReleased:
@@ -111,7 +116,7 @@ void App::update()
                 {
                     player->damage(1.0f);
                     player->timeSinceDamage = getTime();
-                    HUD.setHP(player->hp*10);
+                    HUD.setHP(player->hp * 10);
                 }
             }
         }
