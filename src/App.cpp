@@ -61,6 +61,7 @@ void App::loop()
                     }
                     else
                     {
+                        reloadTimer.restart();
                         player->reload();
                     }
                 }
