@@ -3,7 +3,7 @@ using namespace aw;
 using namespace sf;
 Hud::Hud()
 {
-    const char *path = "Assets/Textures/Y.png";
+    const char *path = "Assets/Textures/crosshair.png";
     loadTexture(path);
 }
 Hud &Hud::instance()
@@ -27,7 +27,7 @@ void Hud::draw()
     glLoadIdentity();
 
     // Draw here
-    drawQuad(Y, glm::vec2(0.0f, 0.0f), glm::vec2(4.0f, 4.0f));
+    drawQuad(Y, glm::vec2(0.1f, 0.0f), {1,1});
 
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
