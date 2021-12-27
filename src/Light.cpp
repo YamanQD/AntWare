@@ -98,6 +98,14 @@ void Light::update()
 	glLightfv(GL_LIGHT0 + id, GL_SPECULAR, light_specular);
 	glPopMatrix();
 }
+void Light::toggle()
+{
+	enabled = !enabled;
+	if (enabled)
+		glEnable(GL_LIGHT0 + id);
+	else
+		glDisable(GL_LIGHT0 + id);
+}
 Light::~Light()
 {
 	glDisable(GL_LIGHT0 + id);
