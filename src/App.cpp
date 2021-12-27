@@ -105,7 +105,7 @@ void App::update()
             }
 
             if (ant->aabb.isColliding(currentScene->gameObjects[0]->aabb) &&
-                getTime() > 2.0f)
+                getTime() > 2.0f) // TODO check player's children collisions with ant too
             {
                 if (getTime() - player->timeSinceDamage > 1.0f)
                 {

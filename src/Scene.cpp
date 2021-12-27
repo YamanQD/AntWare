@@ -169,7 +169,7 @@ static inline vector<Light> parseLights(GenericArray<false, Value> array, const 
             direction = parseVec(array[i]["direction"].GetArray());
             angle = array[i]["angle"].GetFloat();
             lights.push_back(Light(i, ambient, diffuse, specular, position, direction, angle, parent));
-            glEnable(GL_LIGHT0 + i); // FIXME not working
+            glEnable(GL_LIGHT0 + i);
             break;
         default:
             printf("Unknown lightType %d, ignoring light", i);

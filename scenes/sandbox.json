@@ -111,6 +111,15 @@
                 1,
                 1
             ]
+        },
+        {
+            "path": "./Assets/Models/MuzzleQuad.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "lights": [
@@ -267,6 +276,29 @@
                 ]
             },
             "mesh": 6
+        },
+        {
+            "tag": "muzzle fire & required",
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 7,
+            "parent": 0
         },
         {
             "class": 1,

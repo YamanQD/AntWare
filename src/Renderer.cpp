@@ -38,8 +38,13 @@ void Renderer::renderScene(Scene *scene)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
+        if (i == 1)
+            continue; //muzzle
         scene->gameObjects[i]->draw();
     }
+    glDisable(GL_LIGHTING);
+    scene->gameObjects[1]->draw();
+    glEnable(GL_LIGHTING);
     HUD.draw();
     glFlush();
     WINDOW.internal.display();

@@ -19,6 +19,7 @@ namespace aw
         std::shared_ptr<Mesh> bulletMesh;
         sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer;
         sf::Sound gunShotSound, footstepsSound;
+        int transparentTexture, flashTexture;
         bool isRecoiling = false;
         float recoilImpact = 25.0f;
         float recoilTimeOut = 1.0f / 5.0f;

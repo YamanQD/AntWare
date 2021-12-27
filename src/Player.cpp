@@ -24,6 +24,9 @@ static inline bool isMoving()
 void Player::start()
 {
     bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", {1, 1, 1}));
+    transparentTexture = Mesh::createTexture("./Assets/Textures/transparent.png");
+    flashTexture = Mesh::createTexture("./Assets/Textures/flash.png");
+    children[0]->getMesh()->setTexture(transparentTexture);
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
@@ -109,6 +112,7 @@ void Player::fixedUpdate(float deltaTime)
             {
                 childrenEular.x -= recoilImpact * deltaTime;
                 childrenTranslation.z -= recoilImpact * deltaTime * 0.05f;
+                children[0]->getMesh()->setTexture(transparentTexture);
             }
         }
         for (unsigned i = 0; i < children.size(); ++i)
@@ -126,6 +130,7 @@ void Player::dispatchBullet()
     bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
     isRecoiling = true;
     recoilTime = 0.0f;
+    children[0]->getMesh()->setTexture(flashTexture);
 }
 void Player::draw()
 {
