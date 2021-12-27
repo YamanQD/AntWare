@@ -115,6 +115,7 @@
     ],
     "lights": [
         {
+            "tag": "flashlight & required",
             "class": 2,
             "position": [
                 0,
@@ -246,7 +247,7 @@
     ],
     "gameobjects": [
         {
-            "tag": "player's base",
+            "tag": "player's base & required",
             "class": 2,
             "transform": {
                 "position": [

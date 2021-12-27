@@ -103,12 +103,12 @@ void Player::fixedUpdate(float deltaTime)
             if (recoilTime < (recoilTimeOut / 2.0f))
             {
                 childrenEular.x += recoilImpact * deltaTime;
-                childrenTranslation.z += recoilImpact * deltaTime*0.05f;
+                childrenTranslation.z += recoilImpact * deltaTime * 0.05f;
             }
             else
             {
                 childrenEular.x -= recoilImpact * deltaTime;
-                childrenTranslation.z -= recoilImpact * deltaTime*0.05f;
+                childrenTranslation.z -= recoilImpact * deltaTime * 0.05f;
             }
         }
         for (unsigned i = 0; i < children.size(); ++i)
