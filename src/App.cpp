@@ -30,7 +30,7 @@ void App::terminate()
 void App::loop()
 {
     auto player = ((Player *)(currentScene->gameObjects[0]));
-    sf::Clock clock, shootClock;
+    sf::Clock clock, shootClock, reloadTimer;
     float deltaTime = 0.0f;
     while (true)
     {
@@ -46,7 +46,10 @@ void App::loop()
                 // TODO
                 break;
             case sf::Event::MouseButtonReleased:
-                if (event.mouseButton.button == sf::Mouse::Left && shootClock.getElapsedTime().asSeconds() > 0.2f)
+                if (
+                    event.mouseButton.button == sf::Mouse::Left &&
+                    reloadTimer.getElapsedTime().asSeconds() > 1.5f &&
+                    shootClock.getElapsedTime().asSeconds() > 0.2f)
                 {
                     if (player->inHandAmmo > 0)
                     {
@@ -65,6 +68,7 @@ void App::loop()
                 }
                 if (event.key.code == sf::Keyboard::R)
                 {
+                    reloadTimer.restart();
                     player->reload();
                 }
                 break;

@@ -18,8 +18,8 @@ namespace aw
         glm::vec3 childrenEular = {0, 0, 0}, childrenTranslation = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
-        sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer;
-        sf::Sound gunShotSound, footstepsSound;
+        sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer, reloadSoundBuffer;
+        sf::Sound gunShotSound, footstepsSound, reloadSound;
         int transparentTexture, flashTexture;
         bool isRecoiling = false;
         float recoilImpact = 25.0f;
@@ -30,7 +30,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
-        unsigned totalAmmo = 100, inHandAmmo = 10, maxAmmo = 5;
+        unsigned totalAmmo = 10, inHandAmmo = 5, maxAmmo = 5;
 
         Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
         void start() override;

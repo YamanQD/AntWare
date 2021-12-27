@@ -7,10 +7,13 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
 {
     if (!gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav"))
         throw "Error loading gunshot.wav";
+    if (!reloadSoundBuffer.loadFromFile("Assets/Audio/reload.wav"))
+        throw "Error loading reload.wav";
     if (!footstepsSoundBuffer.loadFromFile("Assets/Audio/playerFootsteps.ogg"))
         throw "Error loading playerFootsteps.wav";
 
     gunShotSound.setBuffer(gunShotSoundBuffer);
+    reloadSound.setBuffer(reloadSoundBuffer);
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
 }
@@ -134,6 +137,7 @@ void Player::dispatchBullet()
 }
 void Player::reload()
 {
+    reloadSound.play();
     if (totalAmmo > maxAmmo)
     {
         inHandAmmo = maxAmmo;
