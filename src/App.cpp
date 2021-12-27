@@ -49,6 +49,7 @@ void App::loop()
                         player->dispatchBullet();
                         player->ammo--;
                         shootClock.restart();
+                        HUD.setAmmo(player->ammo);
                     }
                 }
                 break;

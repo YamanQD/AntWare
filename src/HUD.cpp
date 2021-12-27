@@ -34,6 +34,7 @@ void Hud::draw()
     // Draw here
     drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
     drawHP();
+    drawAmmo();
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glPopMatrix();
@@ -100,7 +101,23 @@ void Hud::drawHP()
     }
     drawQuad(digits[hp % 10], {7.2f, -4.0f}, {1, 1});
 }
+void Hud::drawAmmo()
+{
+    if (ammo >= 100)
+    {
+        drawQuad(digits[ammo / 100], {-7.2f, -4.0f}, {1, 1});
+    }
+    if (ammo >= 10)
+    {
+        drawQuad(digits[(ammo / 10) % 10], {-6.6f, -4.0f}, {1, 1});
+    }
+    drawQuad(digits[ammo % 10], {-6, -4}, {1, 1});
+}
 void Hud::setHP(int hp)
 {
     this->hp = hp;
+}
+void Hud::setAmmo(unsigned ammo)
+{
+    this->ammo = ammo;
 }
