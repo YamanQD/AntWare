@@ -59,6 +59,10 @@ void App::loop()
                         HUD.setInHandAmmo(player->inHandAmmo);
                         HUD.setTotalAmmo(player->totalAmmo);
                     }
+                    else
+                    {
+                        player->reload();
+                    }
                 }
                 break;
             case sf::Event::KeyReleased:
