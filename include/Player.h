@@ -29,7 +29,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
-        unsigned ammo = 10;
+        unsigned totalAmmo = 10, inHandAmmo = 5, maxAmmo = 5;
 
         Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
         void start() override;
@@ -37,6 +37,7 @@ namespace aw
         void fixedUpdate(float deltaTime) override;
         void draw() override;
         void dispatchBullet();
+        void reload();
         void destroyBullet(int index);
         bool damage(float amount);
     };

@@ -132,6 +132,19 @@ void Player::dispatchBullet()
     recoilTime = 0.0f;
     children[0]->getMesh()->setTexture(flashTexture);
 }
+void Player::reload()
+{
+    if (totalAmmo > maxAmmo)
+    {
+        inHandAmmo = maxAmmo;
+        totalAmmo -= maxAmmo;
+    }
+    else if (totalAmmo > 0)
+    {
+        inHandAmmo = totalAmmo;
+        totalAmmo = 0;
+    }
+}
 void Player::draw()
 {
     GameObject::draw();

@@ -44,12 +44,12 @@ void App::loop()
             case sf::Event::MouseButtonReleased:
                 if (event.mouseButton.button == sf::Mouse::Left && shootClock.getElapsedTime().asSeconds() > 0.2f)
                 {
-                    if (player->ammo > 0)
+                    if (player->inHandAmmo > 0)
                     {
                         player->dispatchBullet();
-                        player->ammo--;
+                        player->inHandAmmo--;
                         shootClock.restart();
-                        HUD.setAmmo(player->ammo);
+                        HUD.setAmmo(player->inHandAmmo);
                     }
                 }
                 break;
@@ -57,6 +57,10 @@ void App::loop()
                 if (event.key.code == sf::Keyboard::F)
                 {
                     currentScene->lights[0].toggle();
+                }
+                if (event.key.code == sf::Keyboard::R)
+                {
+                    player->reload();
                 }
                 break;
             case sf::Event::KeyPressed:
