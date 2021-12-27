@@ -15,13 +15,13 @@ namespace aw
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();
         void drawAmmo();
-        int hp = 100;
+        unsigned hp = 100;
         unsigned ammo = 10;
 
     public:
         static Hud &instance();
         void draw();
-        void setHP(int hp);
+        void setHP(unsigned hp);
         void setAmmo(unsigned ammo);
     };
 }

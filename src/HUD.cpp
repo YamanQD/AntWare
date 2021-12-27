@@ -113,7 +113,7 @@ void Hud::drawAmmo()
     }
     drawQuad(digits[ammo % 10], {-6, -4}, {1, 1});
 }
-void Hud::setHP(int hp)
+void Hud::setHP(unsigned hp)
 {
     this->hp = hp;
 }
