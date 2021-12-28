@@ -92,58 +92,72 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
 }
 void Hud::drawAmmo()
 {
-    float y = -3.8f;
+    float inHandAmmoY = -3.9f, totalAmmoY = -4.0f;
+    float inHandAmmoSize = 0.8f, totalAmmoSize = 0.5f;
+    float inHandDiff = 0.6 * inHandAmmoSize;
+    float totalDiff = 0.6 * totalAmmoSize;
+    float slashX = 6.0f;
+    float inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
+    float total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
 
-    if (inHandAmmo >= 100)
+    if (totalAmmo >= 100)
     {
-        drawQuad(digits[inHandAmmo / 100], {6, y}, {1, 1});
-        drawQuad(digits[(inHandAmmo / 10) % 10], {6.6f, y}, {1, 1});
-        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+        drawQuad(digits[totalAmmo / 100], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
+        drawQuad(digits[(totalAmmo / 10) % 10], {total2X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
+        drawQuad(digits[totalAmmo % 10], {total3X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
 
-        drawQuad(backSlash, {5.4f, y}, {1, 1});
+        drawQuad(backSlash, {slashX, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
 
-        if (totalAmmo >= 100)
+        if (inHandAmmo >= 100)
         {
-            drawQuad(digits[totalAmmo / 100], {3.6f, y}, {1, 1});
+            drawQuad(digits[inHandAmmo / 100], {inHand1X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        if (totalAmmo >= 10)
+        if (inHandAmmo >= 10)
         {
-            drawQuad(digits[(totalAmmo / 10) % 10], {4.2f, y}, {1, 1});
+            drawQuad(digits[(inHandAmmo / 10) % 10], {inHand2X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        drawQuad(digits[totalAmmo % 10], {4.8f, y}, {1, 1});
+        drawQuad(digits[inHandAmmo % 10], {inHand3X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
     }
-    else if (inHandAmmo >= 10)
+    else if (totalAmmo >= 10)
     {
-        drawQuad(digits[(inHandAmmo / 10) % 10], {6.6f, y}, {1, 1});
-        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+        slashX += totalDiff;
+        inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
+        total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
 
-        drawQuad(backSlash, {6.0f, y}, {1, 1});
+        drawQuad(digits[(totalAmmo / 10) % 10], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
+        drawQuad(digits[totalAmmo % 10], {total2X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
 
-        if (totalAmmo >= 100)
+        drawQuad(backSlash, {slashX, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
+
+        if (inHandAmmo >= 100)
         {
-            drawQuad(digits[totalAmmo / 100], {4.2f, y}, {1, 1});
+            drawQuad(digits[inHandAmmo / 100], {inHand1X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        if (totalAmmo >= 10)
+        if (inHandAmmo >= 10)
         {
-            drawQuad(digits[(totalAmmo / 10) % 10], {4.8f, y}, {1, 1});
+            drawQuad(digits[(inHandAmmo / 10) % 10], {inHand2X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        drawQuad(digits[totalAmmo % 10], {5.4f, y}, {1, 1});
+        drawQuad(digits[inHandAmmo % 10], {inHand3X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
     }
     else
     {
-        drawQuad(digits[inHandAmmo % 10], {7.2f, y}, {1, 1});
+        slashX += totalDiff * 2;
+        inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
+        total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
 
-        drawQuad(backSlash, {6.6f, y}, {1, 1});
+        drawQuad(digits[totalAmmo % 10], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
 
-        if (totalAmmo >= 100)
+        drawQuad(backSlash, {slashX, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
+
+        if (inHandAmmo >= 100)
         {
-            drawQuad(digits[totalAmmo / 100], {4.8f, y}, {1, 1});
+            drawQuad(digits[inHandAmmo / 100], {inHand1X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        if (totalAmmo >= 10)
+        if (inHandAmmo >= 10)
         {
-            drawQuad(digits[(totalAmmo / 10) % 10], {5.4f, y}, {1, 1});
+            drawQuad(digits[(inHandAmmo / 10) % 10], {inHand2X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
         }
-        drawQuad(digits[totalAmmo % 10], {6.0f, y}, {1, 1});
+        drawQuad(digits[inHandAmmo % 10], {inHand3X, inHandAmmoY}, {inHandAmmoSize, inHandAmmoSize});
     }
 }
 void Hud::drawHP()
