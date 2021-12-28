@@ -61,7 +61,7 @@ void App::loop()
                     }
                     else
                     {
-                        if (player->totalAmmo > 0)
+                        if (player->totalAmmo > 0 && reloadTimer.getElapsedTime().asSeconds() > 1.5f)
                         {
                             reloadTimer.restart();
                             player->reload();
@@ -74,7 +74,7 @@ void App::loop()
                 {
                     currentScene->lights[0].toggle();
                 }
-                if (event.key.code == sf::Keyboard::R)
+                if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f)
                 {
                     if (player->totalAmmo > 0)
                     {
