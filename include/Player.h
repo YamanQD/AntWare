@@ -12,7 +12,7 @@ namespace aw
     class Player : public GameObject
     {
 
-        float speed = 10.0f;
+        float speed = 10.0f, runningSpeed = 20.0f;
         float mouseSenstivity = 15.0f;
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec3 childrenEular = {0, 0, 0}, childrenTranslation = {0, 0, 0};

@@ -60,7 +60,8 @@ void Player::update()
 
     if (length(rigidbody.velocity) > 0)
         rigidbody.velocity = normalize(rigidbody.velocity);
-    rigidbody.velocity *= speed;
+
+    rigidbody.velocity *= Keyboard::isKeyPressed(Keyboard::LShift) ? runningSpeed : speed;
 
     auto mousePos = Mouse::getPosition(WINDOW.internal);
     mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
