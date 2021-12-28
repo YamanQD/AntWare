@@ -5,7 +5,7 @@ namespace aw
 {
     class Ant : public GameObject
     {
-        unsigned hp = 2;
+        unsigned hp = 5;
         sf::Clock timeSinceDamage, timeSinceLastAlphaDecrease;
         Material originalMaterial;
         bool isHurting = false;
