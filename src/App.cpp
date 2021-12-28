@@ -15,6 +15,7 @@ void App::init(int argc, char **argv)
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
     currentScene = new Scene(argv[1]);
+    currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);
     HUD.setInHandAmmo(player->inHandAmmo);
