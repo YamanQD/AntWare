@@ -50,6 +50,7 @@ void Player::update()
 
     if (rigidbody.velocity != glm::vec3(0, 0, 0))
     {
+        footstepsSound.setPitch(Keyboard::isKeyPressed(Keyboard::LShift) ? 1.5f : 1.0f);
         if (footstepsSound.getStatus() != sf::Sound::Playing)
             footstepsSound.play();
     }
