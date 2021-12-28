@@ -17,13 +17,6 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
 }
-static inline bool isMoving()
-{
-    return (Keyboard::isKeyPressed(Keyboard::A) ||
-            Keyboard::isKeyPressed(Keyboard::S) ||
-            Keyboard::isKeyPressed(Keyboard::D) ||
-            Keyboard::isKeyPressed(Keyboard::W));
-}
 void Player::start()
 {
     bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", {1, 1, 1}));
@@ -55,7 +48,7 @@ void Player::update()
         rigidbody.velocity.x -= 1;
     }
 
-    if (isMoving())
+    if (rigidbody.velocity != glm::vec3(0, 0, 0))
     {
         if (footstepsSound.getStatus() != sf::Sound::Playing)
             footstepsSound.play();
