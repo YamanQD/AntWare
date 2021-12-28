@@ -17,7 +17,7 @@ namespace aw
         void drawHP();
         void drawAmmo();
         int hp;
-        unsigned inHandAmmo, totalAmmo;
+        int inHandAmmo, totalAmmo;
 
     public:
         static Hud &instance();

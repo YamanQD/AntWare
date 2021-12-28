@@ -100,6 +100,11 @@ void Hud::drawAmmo()
     float inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
     float total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
 
+    if (totalAmmo < 0)
+        totalAmmo = 0;
+    if (inHandAmmo < 0)
+        inHandAmmo = 0;
+
     if (totalAmmo >= 100)
     {
         drawQuad(digits[totalAmmo / 100], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
