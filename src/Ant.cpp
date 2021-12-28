@@ -20,7 +20,7 @@ Ant::Ant(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObj
         }
         else
         {
-            aabb.bounds[i].y += 0.8f;
+            aabb.bounds[i].y += 0.6f;
         }
         if (i % 2 == 0)
         {

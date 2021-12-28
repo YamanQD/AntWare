@@ -120,6 +120,16 @@
                 1,
                 1
             ]
+        },
+        {
+            "path": "Assets/Models/Motherboar - 1.glb",
+            "texture": "Assets/Textures/mobo - 1.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "lights": [
@@ -468,7 +478,7 @@
             "transform": {
                 "position": [
                     0,
-                    -1,
+                    -2,
                     0
                 ],
                 "rotation": [
@@ -482,7 +492,7 @@
                     1
                 ]
             },
-            "mesh": 1,
+            "mesh": 8,
             "material": 0
         }
     ]
