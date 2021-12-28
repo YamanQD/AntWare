@@ -16,7 +16,7 @@ namespace aw
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();
         void drawAmmo();
-        unsigned hp;
+        int hp;
         unsigned inHandAmmo, totalAmmo;
 
     public:

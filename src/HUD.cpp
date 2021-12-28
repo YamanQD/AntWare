@@ -164,6 +164,9 @@ void Hud::drawHP()
 {
     float y = -3.8f;
 
+    if (hp < 0)
+        hp = 0;
+
     if (hp >= 100)
     {
         drawQuad(digits[hp / 100], {-7.2f, y}, {1, 1});
