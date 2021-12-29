@@ -16,10 +16,11 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
     reloadSound.setBuffer(reloadSoundBuffer);
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
+    aabb.maximize(0.2f);
 }
 void Player::start()
 {
-    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", {1, 1, 1}));
+    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", "Assets/Textures/Bullet.png"));
     transparentTexture = Mesh::createTexture("./Assets/Textures/transparent.png");
     flashTexture = Mesh::createTexture("./Assets/Textures/flash.png");
     children[0]->getMesh()->setTexture(transparentTexture);
@@ -104,7 +105,7 @@ void Player::dispatchBullet()
     gunShotSound.play();
     bullets.push_back(Bullet(bulletMesh, Material(), nullptr, vec3(0, 0, -1))); // TODO custom mat
     bullets[bullets.size() - 1].transform = transform;
-    bullets[bullets.size() - 1].transform.translate({0.23931f, 0.449318f, -1.22097f});
+    bullets[bullets.size() - 1].transform.translate({0.249067f, 0.47149f, -1.25759f});
     isRecoiling = true;
     recoilTime = 0.0f;
     children[0]->getMesh()->setTexture(flashTexture);
