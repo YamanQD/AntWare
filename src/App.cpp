@@ -32,7 +32,6 @@ void App::loop()
 {
     auto player = ((Player *)(currentScene->gameObjects[0]));
     sf::Clock clock, shootTimer, reloadTimer;
-    float deltaTime = 0.0f;
     while (true)
     {
         sf::Event event;
@@ -50,7 +49,8 @@ void App::loop()
                 if (
                     event.mouseButton.button == sf::Mouse::Left &&
                     reloadTimer.getElapsedTime().asSeconds() > 1.5f &&
-                    shootTimer.getElapsedTime().asSeconds() > 0.2f)
+                    shootTimer.getElapsedTime().asSeconds() > 0.2f &&
+                    !ended)
                 {
                     if (player->inHandAmmo > 0)
                     {
@@ -71,11 +71,11 @@ void App::loop()
                 }
                 break;
             case sf::Event::KeyReleased:
-                if (event.key.code == sf::Keyboard::F)
+                if (event.key.code == sf::Keyboard::F && !ended)
                 {
                     currentScene->lights[0].toggle();
                 }
-                if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f)
+                if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f && !ended)
                 {
                     if (player->totalAmmo > 0)
                     {
@@ -94,10 +94,13 @@ void App::loop()
                 break;
             }
         }
-        PHYSICS.apply(currentScene, deltaTime);
-        update();
-        RENDERER.renderScene(currentScene);
-        deltaTime = clock.restart().asSeconds();
+        if (!ended)
+        {
+            PHYSICS.apply(currentScene, deltaTime);
+            update();
+            RENDERER.renderScene(currentScene);
+            deltaTime = clock.restart().asSeconds();
+        }
     }
 }
 void App::update()
@@ -113,10 +116,12 @@ void App::update()
     auto bullets = player->bullets;
     auto gameObjectsSize = currentScene->gameObjects.size();
     auto bulletsSize = player->bullets.size();
+    isWin = true;
     for (unsigned i = 0; i < gameObjectsSize; ++i)
     {
         if (currentScene->gameObjects[i]->getClass() == 3)
         {
+            isWin = false;
             auto ant = ((Ant *)(currentScene->gameObjects[i]));
             if (ant->timeToDestroy())
             {
@@ -146,6 +151,10 @@ void App::update()
                 }
             }
         }
+    }
+    if (isWin)
+    {
+        ended = true;
     }
 }
 void App::start()
