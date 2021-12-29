@@ -16,6 +16,7 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
     reloadSound.setBuffer(reloadSoundBuffer);
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
+    aabb.maximize(0.2f);
 }
 void Player::start()
 {

@@ -19,6 +19,23 @@ bool AABB::isColliding(const AABB &other)
     {
         intersectZ = true;
     }
+
+    if ((up <= other.up && up >= other.down) ||
+        (down <= other.up && down >= other.down))
+    {
+        intersectY = true;
+    }
+    if ((right <= other.right && right >= other.left) ||
+        (left <= other.right && left >= other.left))
+    {
+        intersectX = true;
+    }
+    if ((forward <= other.forward && forward >= other.backward) ||
+        (backward <= other.forward && backward >= other.backward))
+    {
+        intersectZ = true;
+    }
+
     return intersectZ && intersectY && intersectX;
 }
 bool AABB::isColliding(vec3 point)
