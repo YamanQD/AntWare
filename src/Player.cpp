@@ -204,3 +204,9 @@ void Player::reloadAnim(float deltaTime)
         children[i]->transform.setPosition(childrenTranslation);
     }
 }
+void Player::killSound()
+{
+    footstepsSound.resetBuffer();
+    reloadSound.resetBuffer();
+    gunShotSound.resetBuffer();
+}

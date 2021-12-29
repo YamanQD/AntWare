@@ -48,5 +48,6 @@ namespace aw
         void reload();
         void destroyBullet(int index);
         bool damage(float amount);
+        void killSound();
     };
 }

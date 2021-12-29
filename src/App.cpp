@@ -170,11 +170,13 @@ void App::update()
     {
         gameStatus = WIN;
         HUD.setStatus(WIN);
+        player->killSound();
     }
     else if (isLose)
     {
         gameStatus = LOSE;
         HUD.setStatus(LOSE);
+        player->killSound();
     }
 }
 void App::start()
