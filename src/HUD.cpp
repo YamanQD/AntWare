@@ -6,6 +6,8 @@ Hud::Hud()
     char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
     loadTexture("Assets/Textures/backSlash.png", backSlash);
+    loadTexture("Assets/Textures/lose.png", lose);
+    loadTexture("Assets/Textures/win.png", win);
     for (unsigned i = 0; i < 10; ++i)
     {
         sprintf(buffer, "./Assets/Textures/%d.png", i);
@@ -33,9 +35,20 @@ void Hud::draw()
     glLoadIdentity();
 
     // Draw here
-    drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
-    drawHP();
-    drawAmmo();
+    if (status == ONGOING)
+    {
+        drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
+        drawHP();
+        drawAmmo();
+    }
+    else if (status == WIN)
+    {
+        drawQuad(win, glm::vec2(0.0f, 0.0f), {16.0f, 9.0f});
+    }
+    else if (status == LOSE)
+    {
+        drawQuad(lose, glm::vec2(0.0f, 0.0f), {16.0f, 9.0f});
+    }
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glPopMatrix();
@@ -193,4 +206,8 @@ void Hud::setInHandAmmo(unsigned ammo)
 void Hud::setTotalAmmo(unsigned ammo)
 {
     this->totalAmmo = ammo;
+}
+void Hud::setStatus(Status status)
+{
+    this->status = status;
 }

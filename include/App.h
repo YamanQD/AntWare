@@ -33,7 +33,7 @@ namespace aw
         sf::Clock timeSinceStart;
         Scene *currentScene;
         float deltaTime = 0.0f;
-        float isWin = false, ended = false;
+        Status gameStatus;
 
     public:
         static App &instance();

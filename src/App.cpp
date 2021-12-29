@@ -20,6 +20,8 @@ void App::init(int argc, char **argv)
     HUD.setHP(player->hp * 10);
     HUD.setInHandAmmo(player->inHandAmmo);
     HUD.setTotalAmmo(player->totalAmmo);
+    HUD.setStatus(ONGOING);
+    gameStatus = ONGOING;
     start();
 }
 void App::terminate()
@@ -50,7 +52,7 @@ void App::loop()
                     event.mouseButton.button == sf::Mouse::Left &&
                     reloadTimer.getElapsedTime().asSeconds() > 1.5f &&
                     shootTimer.getElapsedTime().asSeconds() > 0.2f &&
-                    !ended)
+                    gameStatus == ONGOING)
                 {
                     if (player->inHandAmmo > 0)
                     {
@@ -71,11 +73,11 @@ void App::loop()
                 }
                 break;
             case sf::Event::KeyReleased:
-                if (event.key.code == sf::Keyboard::F && !ended)
+                if (event.key.code == sf::Keyboard::F && gameStatus == ONGOING)
                 {
                     currentScene->lights[0].toggle();
                 }
-                if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f && !ended)
+                if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f && gameStatus == ONGOING)
                 {
                     if (player->totalAmmo > 0)
                     {
@@ -94,12 +96,16 @@ void App::loop()
                 break;
             }
         }
-        if (!ended)
+        if (gameStatus == ONGOING)
         {
             PHYSICS.apply(currentScene, deltaTime);
             update();
             RENDERER.renderScene(currentScene);
             deltaTime = clock.restart().asSeconds();
+        }
+        else
+        {
+            HUD.draw();
         }
     }
 }
@@ -116,7 +122,8 @@ void App::update()
     auto bullets = player->bullets;
     auto gameObjectsSize = currentScene->gameObjects.size();
     auto bulletsSize = player->bullets.size();
-    isWin = true;
+    bool isWin = true;
+    bool isLose = false;
     for (unsigned i = 0; i < gameObjectsSize; ++i)
     {
         if (currentScene->gameObjects[i]->getClass() == 3)
@@ -148,13 +155,26 @@ void App::update()
                     player->damage(1.0f);
                     player->timeSinceDamage = getTime();
                     HUD.setHP(player->hp * 10);
+                    if (player->hp <= 0)
+                    {
+                        isLose = true;
+                    }
                 }
             }
         }
     }
+    if (player->inHandAmmo <= 0 && player->totalAmmo <= 0)
+        isLose = true;
+
     if (isWin)
     {
-        ended = true;
+        gameStatus = WIN;
+        HUD.setStatus(WIN);
+    }
+    else if (isLose)
+    {
+        gameStatus = LOSE;
+        HUD.setStatus(LOSE);
     }
 }
 void App::start()
