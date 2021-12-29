@@ -106,7 +106,7 @@ void App::loop()
         else
         {
             HUD.draw();
-            WINDOW.internal.display();
+            RENDERER.renderScene(currentScene);
         }
     }
 }
