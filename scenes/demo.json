@@ -1,0 +1,692 @@
+{
+    "camera": {
+        "fov": 45.0,
+        "transform": {
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "velocity": [
+                0,
+                0,
+                0
+            ],
+            "angularVelocity": [
+                0,
+                0,
+                0
+            ],
+            "acceleration": [
+                0,
+                0,
+                0
+            ],
+            "angularAcceleration": [
+                0,
+                0,
+                0
+            ],
+            "mass": 1.0,
+            "linearLock": 0,
+            "angularLock": 0
+        }
+    },
+    "meshes": [
+        {
+            "path": "./Assets/Models/Ant.glb",
+            "texture": "Assets/Textures/Ant.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/Plane.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Gun.glb",
+            "texture": "Assets/Textures/Gun.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Hands.glb",
+            "texture": "Assets/Textures/Hand.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Glove.glb",
+            "texture": "Assets/Textures/Glove.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Bullet.glb",
+            "texture": "Assets/Textures/Bullet.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/PlayerCube.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/MuzzleQuad.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Motherboar - 1.glb",
+            "texture": "Assets/Textures/mobo - 1.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "lights": [
+        {
+            "tag": "flashlight & required",
+            "class": 2,
+            "position": [
+                0,
+                0.5,
+                5
+            ],
+            "ambient": [
+                0.8,
+                0.8,
+                0.8,
+                1
+            ],
+            "diffuse": [
+                1.0,
+                1.0,
+                1.0,
+                1
+            ],
+            "specular": [
+                1.0,
+                1.0,
+                1.0,
+                1
+            ],
+            "direction": [
+                0,
+                0,
+                -5
+            ],
+            "angle": 35.0,
+            "parent": 0
+        },
+        {
+            "class": 0,
+            "ambient": [
+                0.4,
+                0.4,
+                0.4,
+                1
+            ],
+            "diffuse": [
+                0.1,
+                0.1,
+                0.1,
+                1
+            ],
+            "specular": [
+                0.0,
+                0.0,
+                0.0,
+                1
+            ],
+            "direction": [
+                -1,
+                -1,
+                -1
+            ]
+        },
+        {
+            "class": 0,
+            "ambient": [
+                0.2,
+                0.2,
+                0.2,
+                1
+            ],
+            "diffuse": [
+                0.9,
+                0.9,
+                0.9,
+                1
+            ],
+            "specular": [
+                0.6,
+                0.6,
+                0.6,
+                1
+            ],
+            "direction": [
+                -1,
+                -1,
+                -1
+            ]
+        }
+    ],
+    "materials": [
+        {
+            "ambient": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "diffuse": [
+                0.6,
+                0.6,
+                0.6,
+                1.0
+            ],
+            "specular": [
+                0.3,
+                0.3,
+                0.3,
+                1.0
+            ],
+            "shininess": 2.0
+        },
+        {
+            "ambient": [
+                0.2,
+                0.2,
+                0.2,
+                1.0
+            ],
+            "diffuse": [
+                0.4,
+                0.4,
+                0.4,
+                1.0
+            ],
+            "specular": [
+                0.9,
+                0.9,
+                0.9,
+                1.0
+            ],
+            "shininess": 120.0
+        }
+    ],
+    "gameobjects": [
+        {
+            "tag": "player's base & required",
+            "class": 2,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 6
+        },
+        {
+            "tag": "muzzle fire & required",
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 7,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 4,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 3,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "tag": "gun",
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 2,
+            "parent": 0
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -4.51015,
+                    -0.958875,
+                    -11.3365
+                ],
+                "rotation": [
+                    0,
+                    -99.2301,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    37.3897,
+                    0.984789,
+                    -6.37182
+                ],
+                "rotation": [
+                    -8.8833,
+                    -273.031,
+                    -0.474208
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -28.8081,
+                    10.6768,
+                    -53.7393
+                ],
+                "rotation": [
+                    -94.6161,
+                    -140.165,
+                    0.000002
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -30.5417,
+                    26.252,
+                    -52.1184
+                ],
+                "rotation": [
+                    -78.6409,
+                    -137.582,
+                    18.2588
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    0.96841,
+                    -0.936797,
+                    -65.1214
+                ],
+                "rotation": [
+                    0,
+                    86.7699,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    8.77879,
+                    1.26601,
+                    -29.9745
+                ],
+                "rotation": [
+                    -90,
+                    -180,
+                    80.7699
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 8,
+            "material": 0
+        }
+    ]
+}

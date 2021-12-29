@@ -20,7 +20,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/ant-warrior",
-            "args": ["./scenes/sandbox.json"],
+            "args": ["./scenes/demo.json"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
