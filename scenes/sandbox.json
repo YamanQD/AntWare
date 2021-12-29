@@ -96,6 +96,7 @@
         },
         {
             "path": "Assets/Models/Bullet.glb",
+            "texture": "Assets/Textures/Bullet.png",
             "color": [
                 1,
                 1,
