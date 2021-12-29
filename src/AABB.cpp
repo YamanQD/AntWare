@@ -74,3 +74,7 @@ void AABB::minmize(float factor)
         }
     }
 }
+void AABB::maximize(float factor)
+{
+    minmize(-factor);
+}
