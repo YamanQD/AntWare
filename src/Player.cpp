@@ -92,32 +92,11 @@ void Player::fixedUpdate(float deltaTime)
     }
     if (isRecoiling)
     {
-        if (recoilTimeOut <= recoilTime)
-        {
-            isRecoiling = false;
-            childrenEular = {0, 0, 0};
-            childrenTranslation = {0, 0, 0};
-        }
-        else
-        {
-            recoilTime += deltaTime;
-            if (recoilTime < (recoilTimeOut / 2.0f))
-            {
-                childrenEular.x += recoilImpact * deltaTime;
-                childrenTranslation.z += recoilImpact * deltaTime * 0.05f;
-            }
-            else
-            {
-                childrenEular.x -= recoilImpact * deltaTime;
-                childrenTranslation.z -= recoilImpact * deltaTime * 0.05f;
-                children[0]->getMesh()->setTexture(transparentTexture);
-            }
-        }
-        for (unsigned i = 0; i < children.size(); ++i)
-        {
-            children[i]->transform.setRotation(childrenEular);
-            children[i]->transform.setPosition(childrenTranslation);
-        }
+        recoilAnim(deltaTime);
+    }
+    if (isReloading)
+    {
+        reloadAnim(deltaTime);
     }
 }
 void Player::dispatchBullet()
@@ -132,7 +111,7 @@ void Player::dispatchBullet()
 }
 void Player::reload()
 {
-
+    isReloading = true;
     if (totalAmmo > 0)
         reloadSound.play();
 
@@ -165,4 +144,62 @@ bool Player::damage(float amount)
 {
     hp -= amount;
     return hp <= 0.0f;
+}
+void Player::recoilAnim(float deltaTime)
+{
+    if (recoilTimeOut <= recoilTime)
+    {
+        isRecoiling = false;
+        childrenEular = {0, 0, 0};
+        childrenTranslation = {0, 0, 0};
+    }
+    else
+    {
+        recoilTime += deltaTime;
+        if (recoilTime < (recoilTimeOut / 2.0f))
+        {
+            childrenEular.x += recoilImpact * deltaTime;
+            childrenTranslation.z += recoilImpact * deltaTime * 0.05f;
+        }
+        else
+        {
+            childrenEular.x -= recoilImpact * deltaTime;
+            childrenTranslation.z -= recoilImpact * deltaTime * 0.05f;
+            children[0]->getMesh()->setTexture(transparentTexture);
+        }
+    }
+    for (unsigned i = 0; i < children.size(); ++i)
+    {
+        children[i]->transform.setRotation(childrenEular);
+        children[i]->transform.setPosition(childrenTranslation);
+    }
+}
+void Player::reloadAnim(float deltaTime)
+{
+    if (reloadTimeOut <= reloadTime)
+    {
+        isReloading = false;
+        childrenEular = {0, 0, 0};
+        childrenTranslation = {0, 0, 0};
+        reloadTime = 0.0f;
+    }
+    else
+    {
+        reloadTime += deltaTime;
+        if (reloadTime < (reloadTimeOut / 2.0f))
+        {
+            childrenEular.x -= reloadPlaybackSpeed * deltaTime;
+            childrenTranslation.z += reloadPlaybackSpeed * deltaTime * 0.005f;
+        }
+        else
+        {
+            childrenEular.x += reloadPlaybackSpeed * deltaTime;
+            childrenTranslation.z -= reloadPlaybackSpeed * deltaTime * 0.005f;
+        }
+    }
+    for (unsigned i = 0; i < children.size(); ++i)
+    {
+        children[i]->transform.setRotation(childrenEular);
+        children[i]->transform.setPosition(childrenTranslation);
+    }
 }

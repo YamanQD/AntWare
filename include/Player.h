@@ -26,6 +26,13 @@ namespace aw
         float recoilTimeOut = 1.0f / 5.0f;
         float recoilTime;
 
+        bool isReloading = false;
+        float reloadTime;
+        float reloadTimeOut = 1.5f; // mod me to change animation length
+        float reloadPlaybackSpeed = 50.0f;
+        void recoilAnim(float deltaTime);
+        void reloadAnim(float deltaTime);
+
     public:
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
