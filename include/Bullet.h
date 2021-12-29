@@ -8,10 +8,10 @@ namespace aw
     private:
         sf::Clock timer;
         float lifeSpan = 1.0f;
-        float speed = 20.0f;
+        float speed = 80.0f;
 
     public:
-        Bullet(std::shared_ptr<Mesh> mesh,Material material, GameObject *parent, glm::vec3 projectVec);
+        Bullet(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent, glm::vec3 projectVec);
         void start() override;
         void update() override;
         bool timeOut();
