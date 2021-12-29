@@ -112,6 +112,7 @@ void Player::dispatchBullet()
 void Player::reload()
 {
     isReloading = true;
+    reloadTime = 0.0f;
     if (totalAmmo > 0)
         reloadSound.play();
 
@@ -181,7 +182,6 @@ void Player::reloadAnim(float deltaTime)
         isReloading = false;
         childrenEular = {0, 0, 0};
         childrenTranslation = {0, 0, 0};
-        reloadTime = 0.0f;
     }
     else
     {
