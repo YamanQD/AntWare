@@ -78,7 +78,7 @@ void Ant::die()
     isHurting = false;
     material = originalMaterial;
     transform.rotate({1, 0, 0}, 180.0f);
-    transform.translateGlobal({0, 2.0f, 0});
+    transform.translateGlobal({0, 1.0f, 0});
 }
 bool Ant::timeToDestroy()
 {
