@@ -151,3 +151,34 @@ std::shared_ptr<Mesh> GameObject::getMesh()
 {
 	return meshPtr;
 }
+void GameObject::drawAABB(vec3 color)
+{
+	vec3 corners[8];
+	for (unsigned i = 0; i < 8; ++i)
+		corners[i] = {0, 0, 0};
+	corners[0] = {aabb.right, aabb.up, aabb.forward};
+	corners[1] = {aabb.right, aabb.up, aabb.backward};
+	corners[2] = {aabb.right, aabb.down, aabb.forward};
+	corners[3] = {aabb.right, aabb.down, aabb.backward};
+	for (unsigned i = 4; i < 8; ++i)
+	{
+		corners[i] = corners[i - 4];
+		corners[i].x = aabb.left;
+	}
+	glPushMatrix();
+	glLoadIdentity();
+	for (unsigned i = 0; i < 8; ++i)
+	{
+		vec3 first = corners[i];
+		for (unsigned j = 0; j < 7; ++j)
+		{
+			vec3 second = corners[j];
+			glBegin(GL_LINES);
+			glColor3f(color.r, color.g, color.b);
+			glVertex3fv(&first[0]);
+			glVertex3fv(&second[0]);
+			glEnd();
+		}
+	}
+	glPopMatrix();
+}

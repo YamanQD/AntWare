@@ -430,9 +430,9 @@
             "tag": "an ant",
             "transform": {
                 "position": [
-                    4,
+                    6,
                     -1,
-                    -5
+                    -8
                 ],
                 "rotation": [
                     0,

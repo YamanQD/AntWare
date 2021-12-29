@@ -16,7 +16,7 @@ Ant::Ant(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObj
         }
         if (i < 2 || i == 4 || i == 5)
         {
-            aabb.bounds[i].y -= 0.4f;
+            aabb.bounds[i].y -= 0.3f;
         }
         else
         {

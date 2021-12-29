@@ -24,6 +24,7 @@ namespace aw
         Rigidbody rigidbody;
         Material material;
         AABB aabb;
+        std::vector<GameObject *> getChildren();
         bool isStatic;
 
         GameObject(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr, bool isStatic = false, int type = 1);
@@ -34,9 +35,9 @@ namespace aw
         void setMesh(std::shared_ptr<Mesh> mesh);
         glm::mat4 applyTransform();
         virtual void draw();
+        void drawAABB(glm::vec3 color);
         virtual void fixedUpdate(float deltaTime);
         void addChild(GameObject *gameObject);
-        std::vector<GameObject *> getChildren();
         int getClass();
         virtual void start() = 0;
         virtual void update() = 0;
