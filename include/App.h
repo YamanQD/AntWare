@@ -32,6 +32,8 @@ namespace aw
 
         sf::Clock timeSinceStart;
         Scene *currentScene;
+        float deltaTime = 0.0f;
+        float isWin = false, ended = false;
 
     public:
         static App &instance();
