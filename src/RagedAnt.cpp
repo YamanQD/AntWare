@@ -13,7 +13,8 @@ RagedAnt::RagedAnt(shared_ptr<Mesh> mesh,
 void RagedAnt::update()
 {
     Ant::update();
-    if (isAlive)
+    if (isAlive &&
+        distance(transform.getPosition(), target->transform.getPosition()) <= detectionRaduis)
     {
         vec3 targetPos = target->transform.getPosition();
         targetPos.y = transform.getPosition().y;
@@ -24,6 +25,10 @@ void RagedAnt::update()
             rigidbody.velocity = {0, 0, 0};
         else
             rigidbody.velocity = {0, 0, -speed};
+    }
+    else
+    {
+        rigidbody.velocity = {0, 0, 0};
     }
 }
 void RagedAnt::die()
