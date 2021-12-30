@@ -43,11 +43,11 @@ void Hud::draw()
     }
     else if (status == WIN)
     {
-        drawQuad(win, glm::vec2(0.0f, 0.0f), {16.0f, 9.0f});
+        drawQuad(win, glm::vec2(0.0f, 0.0f), {16.0f, 16.0f});
     }
     else if (status == LOSE)
     {
-        drawQuad(lose, glm::vec2(0.0f, 0.0f), {16.0f, 9.0f});
+        drawQuad(lose, glm::vec2(0.0f, 0.0f), {16.0f, 16.0f});
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);
