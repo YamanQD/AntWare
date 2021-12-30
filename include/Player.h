@@ -22,7 +22,7 @@ namespace aw
         sf::Sound gunShotSound, footstepsSound, reloadSound;
         int transparentTexture, flashTexture;
         bool isRecoiling = false;
-        float recoilImpact = 25.0f;
+        float recoilImpact = 40.0f;
         float recoilTimeOut = 1.0f / 5.0f;
         float recoilTime;
 
@@ -37,7 +37,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
-        unsigned totalAmmo = 24, inHandAmmo = 12, maxAmmo = 12;
+        unsigned totalAmmo = 30, inHandAmmo = 12, maxAmmo = 10;
 
         Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
         void start() override;
