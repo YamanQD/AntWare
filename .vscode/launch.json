@@ -9,7 +9,9 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/ant-warrior.exe",
-            "args": ["./scenes/sandbox.json"],
+            "args": [
+                "./scenes/sandbox.json"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -20,7 +22,9 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/ant-warrior",
-            "args": ["./scenes/demo.json"],
+            "args": [
+                "./scenes/sandbox.json"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
