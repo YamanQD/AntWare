@@ -1,7 +1,7 @@
 #include <Skybox.h>
 using namespace aw;
 Skybox::Skybox(Camera *camera, const char *texture) : GameObject(
-                                                          Mesh("Assets/Models/Cube.glb", texture),
+                                                          Mesh("Assets/Models/Skybox.glb", texture),
                                                           Material(),
                                                           nullptr,
                                                           true,
