@@ -7,6 +7,7 @@
 #include <StaticGO.h>
 #include <Player.h>
 #include <Ant.h>
+#include<RagedAnt.h>
 #include <Light.h>
 #include <Skybox.h>
 namespace aw
@@ -16,7 +17,8 @@ namespace aw
         STATICGO = 1,
         PLAYER = 2,
         ANT = 3,
-        SKYBOX = 4
+        SKYBOX = 4,
+        RAGED_ANT=5
     };
     class Scene
     {

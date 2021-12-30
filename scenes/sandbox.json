@@ -380,13 +380,13 @@
             "parent": 0
         },
         {
-            "class": 3,
+            "class": 5,
             "tag": "an ant",
             "transform": {
                 "position": [
-                    0,
+                    3,
                     -1,
-                    0
+                    -4
                 ],
                 "rotation": [
                     0,

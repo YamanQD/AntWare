@@ -120,6 +120,9 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
         case CLASSES::ANT:
             gameObject = new Ant(mesh, material, parent);
             break;
+        case CLASSES::RAGED_ANT:
+            gameObject = new RagedAnt(mesh, material, parent, gameObjects[0]);
+            break;
         default:
             printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
                    i);
