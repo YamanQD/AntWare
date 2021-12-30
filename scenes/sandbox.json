@@ -1,4 +1,5 @@
 {
+    "skybox": "Assets/Textures/Gun.png",
     "camera": {
         "fov": 45.0,
         "transform": {

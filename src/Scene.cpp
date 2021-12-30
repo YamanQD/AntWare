@@ -203,6 +203,8 @@ Scene::Scene(const char *path) : camera(45.0f)
     auto meshes = parseMeshes(json["meshes"].GetArray());
     gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
+    if (json.HasMember("skybox"))
+        skybox = Skybox(&camera, json["skybox"].GetString());
 }
 Scene::~Scene()
 {
