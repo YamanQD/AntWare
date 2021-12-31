@@ -6,6 +6,8 @@ Hud::Hud()
     char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
     loadTexture("Assets/Textures/backSlash.png", backSlash);
+    loadTexture("Assets/Textures/plus.png", plus);
+    loadTexture("Assets/Textures/ammo.png", ammo);
     loadTexture("Assets/Textures/loading.png", loading);
     loadTexture("Assets/Textures/lose.png", lose);
     loadTexture("Assets/Textures/win.png", win);
@@ -115,8 +117,9 @@ void Hud::drawAmmo()
     float inHandDiff = 0.6 * inHandAmmoSize;
     float totalDiff = 0.6 * totalAmmoSize;
     float slashX = 6.0f;
-    float inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
-    float total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
+    float inHand3X = slashX - inHandDiff, inHand2X = inHand3X - inHandDiff, inHand1X = inHand2X - inHandDiff;
+    float total1X = slashX + totalDiff, total2X = total1X + totalDiff, total3X = total2X + totalDiff;
+    float bulletDiff = totalDiff - 0.18f, bulletX = total3X + totalDiff + 0.1f, bulletY = totalAmmoY - 0.1f, bulletSize = 0.4f;
 
     if (totalAmmo < 0)
         totalAmmo = 0;
@@ -125,6 +128,8 @@ void Hud::drawAmmo()
 
     if (totalAmmo >= 100)
     {
+        drawQuad(ammo, {bulletX, bulletY}, {bulletSize, bulletSize});
+
         drawQuad(digits[totalAmmo / 100], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
         drawQuad(digits[(totalAmmo / 10) % 10], {total2X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
         drawQuad(digits[totalAmmo % 10], {total3X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
@@ -144,8 +149,11 @@ void Hud::drawAmmo()
     else if (totalAmmo >= 10)
     {
         slashX += totalDiff;
-        inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
-        total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
+        inHand3X = slashX - inHandDiff, inHand2X = inHand3X - inHandDiff, inHand1X = inHand2X - inHandDiff;
+        total1X = slashX + totalDiff, total2X = total1X + totalDiff, total3X = total2X + totalDiff;
+        bulletDiff = totalDiff - 0.18f, bulletX = total2X + totalDiff + 0.1f, bulletY = totalAmmoY - 0.1f, bulletSize = 0.4f;
+
+        drawQuad(ammo, {bulletX, bulletY}, {bulletSize, bulletSize});
 
         drawQuad(digits[(totalAmmo / 10) % 10], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
         drawQuad(digits[totalAmmo % 10], {total2X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
@@ -165,8 +173,11 @@ void Hud::drawAmmo()
     else
     {
         slashX += totalDiff * 2;
-        inHand1X = slashX - inHandDiff * 3, inHand2X = slashX - inHandDiff * 2, inHand3X = slashX - inHandDiff;
-        total1X = slashX + totalDiff, total2X = slashX + totalDiff * 2, total3X = slashX + totalDiff * 3;
+        inHand3X = slashX - inHandDiff, inHand2X = inHand3X - inHandDiff, inHand1X = inHand2X - inHandDiff;
+        total1X = slashX + totalDiff, total2X = total1X + totalDiff, total3X = total2X + totalDiff;
+        bulletDiff = totalDiff - 0.18f, bulletX = total1X + totalDiff + 0.1f, bulletY = totalAmmoY - 0.1f, bulletSize = 0.4f;
+
+        drawQuad(ammo, {bulletX, bulletY}, {bulletSize, bulletSize});
 
         drawQuad(digits[totalAmmo % 10], {total1X, totalAmmoY}, {totalAmmoSize, totalAmmoSize});
 
@@ -185,20 +196,24 @@ void Hud::drawAmmo()
 }
 void Hud::drawHP()
 {
-    float y = -3.8f;
+    float hpY = -3.9f, hpSize = 0.9f;
+    float hpDiff = 0.6f * hpSize;
+    float plusX = -7.0f, plusY = -3.75f, plusSize = 1.8f;
+    float hp1X = plusX + hpDiff + 0.1f, hp2X = hp1X + hpDiff, hp3X = hp2X + hpDiff;
 
     if (hp < 0)
         hp = 0;
 
+    drawQuad(plus, {plusX, plusY}, {plusSize, plusSize});
     if (hp >= 100)
     {
-        drawQuad(digits[hp / 100], {-7.2f, y}, {1, 1});
+        drawQuad(digits[hp / 100], {hp1X, hpY}, {hpSize, hpSize});
     }
     if (hp >= 10)
     {
-        drawQuad(digits[(hp / 10) % 10], {-6.6f, y}, {1, 1});
+        drawQuad(digits[(hp / 10) % 10], {hp2X, hpY}, {hpSize, hpSize});
     }
-    drawQuad(digits[hp % 10], {-6, y}, {1, 1});
+    drawQuad(digits[hp % 10], {hp3X, hpY}, {hpSize, hpSize});
 }
 void Hud::setHP(unsigned hp)
 {

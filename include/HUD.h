@@ -18,7 +18,7 @@ namespace aw
         Hud();
         GLuint crosshair;
         GLuint digits[10];
-        GLuint backSlash;
+        GLuint backSlash, plus, ammo;
         GLuint lose, win, loading;
         void loadTexture(const char *path, GLuint &tex);
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
