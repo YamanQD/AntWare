@@ -11,6 +11,7 @@ Hud::Hud()
     loadTexture("Assets/Textures/loading.png", loading);
     loadTexture("Assets/Textures/lose.png", lose);
     loadTexture("Assets/Textures/win.png", win);
+    loadTexture("Assets/Textures/hurt.png", hurt);
     for (unsigned i = 0; i < 10; ++i)
     {
         sprintf(buffer, "./Assets/Textures/%d.png", i);
@@ -43,6 +44,8 @@ void Hud::draw()
         drawQuad(crosshair, glm::vec2(0.1f, 0.0f), {1, 1});
         drawHP();
         drawAmmo();
+        if (isHurting)
+            drawQuad(hurt, glm::vec2(0.0f, 0.0f), {16.0f, 16.0f});
     }
     else if (status == WIN)
     {
@@ -215,6 +218,17 @@ void Hud::drawHP()
     }
     drawQuad(digits[hp % 10], {hp3X, hpY}, {hpSize, hpSize});
 }
+void Hud::drawHurtEffect()
+{
+    glColor4f(1.0f, 0.0f, 0.0f, 0.3f);
+    glBegin(GL_QUADS);
+    glVertex2f(-16, 9);
+    glVertex2f(16, 9);
+    glVertex2f(16, -9);
+    glVertex2f(-16, -9);
+    glEnd();
+    glColor3f(1, 1, 1);
+}
 void Hud::setHP(unsigned hp)
 {
     this->hp = hp;
@@ -230,4 +244,8 @@ void Hud::setTotalAmmo(unsigned ammo)
 void Hud::setStatus(Status status)
 {
     this->status = status;
+}
+void Hud::setIsHurting(bool isHurting)
+{
+    this->isHurting = isHurting;
 }

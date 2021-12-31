@@ -162,6 +162,7 @@ void App::update()
             {
                 if (getTime() - player->timeSinceDamage > 1.0f)
                 {
+                    HUD.setIsHurting(true);
                     player->damage(1.0f);
                     player->timeSinceDamage = getTime();
                     HUD.setHP(player->hp * 10);
@@ -172,6 +173,10 @@ void App::update()
                 }
             }
         }
+    }
+    if (getTime() - player->timeSinceDamage > 0.5f)
+    {
+        HUD.setIsHurting(false);
     }
     if (player->inHandAmmo <= 0 && player->totalAmmo <= 0)
         isLose = true;

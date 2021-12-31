@@ -19,13 +19,16 @@ namespace aw
         GLuint crosshair;
         GLuint digits[10];
         GLuint backSlash, plus, ammo;
+        GLuint hurt;
         GLuint lose, win, loading;
         void loadTexture(const char *path, GLuint &tex);
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();
         void drawAmmo();
+        void drawHurtEffect();
         int hp;
         int inHandAmmo, totalAmmo;
+        bool isHurting = false;
         Status status;
 
     public:
@@ -35,5 +38,6 @@ namespace aw
         void setInHandAmmo(unsigned ammo);
         void setTotalAmmo(unsigned ammo);
         void setStatus(Status);
+        void setIsHurting(bool isHurting);
     };
 }
