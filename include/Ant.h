@@ -5,12 +5,13 @@ namespace aw
 {
     class Ant : public GameObject
     {
+    protected:
         unsigned hp = 5;
         sf::Clock timeSinceDamage, timeSinceLastAlphaDecrease;
         Material originalMaterial;
         bool isHurting = false;
         bool isAlive = true;
-        void die();
+        virtual void die();
 
     public:
         Ant(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent);
