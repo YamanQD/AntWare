@@ -3,6 +3,8 @@ using namespace aw;
 using namespace std;
 Ant::Ant(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObject(mesh, material, parent, false, 3)
 {
+    hurtSoundBuffer.loadFromFile("Assets/Audio/antHurt.ogg");
+    hurtSound.setBuffer(hurtSoundBuffer);
     originalMaterial = material;
     for (unsigned i = 0; i < 8; ++i)
     {
@@ -55,6 +57,7 @@ void Ant::damage(unsigned amount)
         return;
 
     isHurting = true;
+    hurtSound.play();
     timeSinceDamage.restart();
     material.setDiffuse({1, 0, 0, 1});
 

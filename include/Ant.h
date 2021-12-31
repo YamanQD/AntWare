@@ -1,6 +1,7 @@
 #pragma once
 #include <GameObject.h>
 #include <SFML/System/Clock.hpp>
+#include <SFML/Audio.hpp>
 namespace aw
 {
     class Ant : public GameObject
@@ -11,6 +12,8 @@ namespace aw
         Material originalMaterial;
         bool isHurting = false;
         bool isAlive = true;
+        sf::SoundBuffer hurtSoundBuffer;
+        sf::Sound hurtSound;
         virtual void die();
 
     public:
