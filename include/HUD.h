@@ -9,7 +9,8 @@ namespace aw
     {
         WIN,
         LOSE,
-        ONGOING
+        ONGOING,
+        LOADING
     };
     class Hud
     {
@@ -18,7 +19,7 @@ namespace aw
         GLuint crosshair;
         GLuint digits[10];
         GLuint backSlash;
-        GLuint lose, win;
+        GLuint lose, win, loading;
         void loadTexture(const char *path, GLuint &tex);
         void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();

@@ -6,6 +6,7 @@ Hud::Hud()
     char buffer[128];
     loadTexture("Assets/Textures/crosshair.png", crosshair);
     loadTexture("Assets/Textures/backSlash.png", backSlash);
+    loadTexture("Assets/Textures/loading.png", loading);
     loadTexture("Assets/Textures/lose.png", lose);
     loadTexture("Assets/Textures/win.png", win);
     for (unsigned i = 0; i < 10; ++i)
@@ -48,6 +49,10 @@ void Hud::draw()
     else if (status == LOSE)
     {
         drawQuad(lose, glm::vec2(0.0f, 0.0f), {16.0f, 16.0f});
+    }
+    else if (status == LOADING)
+    {
+        drawQuad(loading, glm::vec2(0.0f, 0.0f), {16.0f, 16.0f});
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);

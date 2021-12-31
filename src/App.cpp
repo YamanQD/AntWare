@@ -14,6 +14,9 @@ void App::init(int argc, char **argv)
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
+    HUD.setStatus(LOADING);
+    HUD.draw();
+    WINDOW.internal.display();
     currentScene = new Scene(argv[1]);
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
