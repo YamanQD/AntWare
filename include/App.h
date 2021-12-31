@@ -6,6 +6,7 @@
 #include <rapidjson/document.h>
 #include <GL/glew.h>
 #include <SFML/System/Clock.hpp>
+#include <SFML/Audio.hpp>
 #include <Window.h>
 #include <Renderer.h>
 #include <Mesh.h>
@@ -34,6 +35,7 @@ namespace aw
         Scene *currentScene;
         float deltaTime = 0.0f;
         Status gameStatus;
+        sf::Music music01;
 
     public:
         static App &instance();

@@ -14,9 +14,15 @@ void App::init(int argc, char **argv)
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
+
     HUD.setStatus(LOADING);
     HUD.draw();
     WINDOW.internal.display();
+
+    music01.openFromFile("Assets/Audio/music01.ogg");
+    music01.setVolume(25);
+    music01.play();
+
     currentScene = new Scene(argv[1]);
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
