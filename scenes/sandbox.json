@@ -134,6 +134,15 @@
             ]
         }
     ],
+    "animations": [
+        {
+            "path": "Assets/Animations/Ant-Walkcycle",
+            "name": "Ant-Walkcycle",
+            "format": "obj",
+            "count": 41,
+            "texture":"Assets/Textures/Ant.png"
+        }
+    ],
     "lights": [
         {
             "tag": "flashlight & required",
@@ -400,6 +409,7 @@
                 ]
             },
             "mesh": 0,
+            "animation": 0,
             "material": 1,
             "rigidbody": {
                 "velocity": [

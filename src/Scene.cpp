@@ -73,6 +73,31 @@ static inline Mesh parseMesh(GenericObject<false, Value> object)
         return Mesh(path, texturePath);
     }
 }
+static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value> object)
+{
+    vector<shared_ptr<Mesh>> animation;
+    const char *path = object["path"].GetString();
+    const char *name = object["name"].GetString();
+    const char *format = object["format"].GetString();
+    int count = object["count"].GetInt();
+    char buffer[256];
+    for (unsigned i = 1; i <= count; ++i)
+    {
+        sprintf(buffer, "%s/%s_%06d.%s", path, name, i, format);
+        shared_ptr<Mesh> mesh(new Mesh(buffer));
+        animation.push_back(mesh);
+    }
+    return animation;
+}
+static inline vector<vector<shared_ptr<Mesh>>> parseAnimations(GenericArray<false, Value> array)
+{
+    vector<vector<shared_ptr<Mesh>>> animations;
+    for (unsigned i = 0; i < array.Size(); ++i)
+    {
+        animations.push_back(parseAnimation(array[i].GetObject()));
+    }
+    return animations;
+}
 static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> array)
 {
     vector<shared_ptr<Mesh>> meshes;
@@ -84,7 +109,8 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
 }
 static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> array,
                                                     const vector<shared_ptr<Mesh>> &meshes,
-                                                    const vector<Material> &materials)
+                                                    const vector<Material> &materials,
+                                                    const vector<vector<shared_ptr<Mesh>>> &animations)
 {
     vector<GameObject *> gameObjects;
     for (unsigned i = 0; i < array.Size(); ++i)
@@ -108,6 +134,11 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
         {
             material = materials[array[i]["material"].GetInt()];
         }
+        int animationIndex = -1;
+        if (array[i].HasMember("animation"))
+        {
+            animationIndex = array[i]["animation"].GetInt();
+        }
         GameObject *gameObject;
         switch (classType)
         {
@@ -121,7 +152,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new Ant(mesh, material, parent);
             break;
         case CLASSES::RAGED_ANT:
-            gameObject = new RagedAnt(mesh, material, parent, gameObjects[0]);
+            gameObject = new RagedAnt(animations[animationIndex], mesh, material, parent, gameObjects[0]);
             break;
         default:
             printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
@@ -204,7 +235,8 @@ Scene::Scene(const char *path) : camera(45.0f)
     parseCamera(json["camera"].GetObject(), camera);
     auto materials = parseMaterials(json["materials"].GetArray());
     auto meshes = parseMeshes(json["meshes"].GetArray());
-    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials);
+    auto animations = parseAnimations(json["animations"].GetArray());
+    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials, animations);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     if (json.HasMember("skybox"))
         skybox = Skybox(&camera, json["skybox"].GetString());
