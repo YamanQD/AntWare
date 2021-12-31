@@ -5,20 +5,17 @@ using namespace sf;
 using namespace glm;
 Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObject(mesh, material, parent, false, 2)
 {
-    if (!gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav"))
-        throw "Error loading gunshot.wav";
-    if (!reloadSoundBuffer.loadFromFile("Assets/Audio/reload.wav"))
-        throw "Error loading reload.wav";
-    if (!hurtSoundBuffer.loadFromFile("Assets/Audio/playerHurt.wav"))
-        throw "Error loading playerHurt.wav";
-    if (!footstepsSoundBuffer.loadFromFile("Assets/Audio/playerFootsteps.ogg"))
-        throw "Error loading playerFootsteps.wav";
+    gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav");
+    reloadSoundBuffer.loadFromFile("Assets/Audio/reload.wav");
+    hurtSoundBuffer.loadFromFile("Assets/Audio/playerHurt.wav");
+    footstepsSoundBuffer.loadFromFile("Assets/Audio/playerFootsteps.ogg");
 
     gunShotSound.setBuffer(gunShotSoundBuffer);
     reloadSound.setBuffer(reloadSoundBuffer);
     hurtSound.setBuffer(hurtSoundBuffer);
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
+
     aabb.maximize(0.2f);
 }
 void Player::start()
