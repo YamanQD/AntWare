@@ -52,3 +52,31 @@ void RagedAnt::die()
     Ant::die();
     rigidbody.velocity = {0, 0, 0};
 }
+void RagedAnt::fixedUpdate(float deltaTime)
+{
+    Ant::fixedUpdate(deltaTime);
+    if (length(rigidbody.velocity) > 0.0f)
+    {
+        animate(deltaTime);
+    }
+    else
+    {
+        meshPtr = baseMesh;
+    }
+}
+void RagedAnt::animate(float deltaTime)
+{
+    animTime += deltaTime;
+    if (animTime > walkcycleLength)
+    {
+        animTime = 0.0f;
+    }
+    float progress = animTime / walkcycleLength;
+    progress *= walkcycleAnim.size();
+    int index = round(progress);
+    if (index >= walkcycleAnim.size())
+    {
+        index = 0;
+    }
+    meshPtr = walkcycleAnim[index];
+}

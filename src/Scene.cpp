@@ -84,7 +84,7 @@ static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value
     for (unsigned i = 1; i <= count; ++i)
     {
         sprintf(buffer, "%s/%s_%06d.%s", path, name, i, format);
-        shared_ptr<Mesh> mesh(new Mesh(buffer));
+        shared_ptr<Mesh> mesh(new Mesh(buffer)); //FIXME loading times can be reduced that way
         animation.push_back(mesh);
     }
     return animation;
