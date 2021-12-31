@@ -55,7 +55,7 @@ static inline vector<Material> parseMaterials(GenericArray<false, Value> array)
     }
     return materials;
 }
-static inline Mesh parseMesh(GenericObject<false, Value> object)
+static inline Mesh *parseMesh(GenericObject<false, Value> object)
 {
     const char *path = object["path"].GetString();
     const char *texturePath = nullptr;
@@ -66,11 +66,11 @@ static inline Mesh parseMesh(GenericObject<false, Value> object)
     if (object.HasMember("color"))
     {
         vec4 color = parseVec4(object["color"].GetArray());
-        return Mesh(path, color, texturePath);
+        return new Mesh(path, color, texturePath);
     }
     else
     {
-        return Mesh(path, texturePath);
+        return new Mesh(path, texturePath);
     }
 }
 static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value> object)
@@ -84,7 +84,7 @@ static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value
     for (unsigned i = 1; i <= count; ++i)
     {
         sprintf(buffer, "%s/%s_%06d.%s", path, name, i, format);
-        shared_ptr<Mesh> mesh(new Mesh(buffer)); //FIXME loading times can be reduced that way
+        shared_ptr<Mesh> mesh(new Mesh(buffer));
         animation.push_back(mesh);
     }
     return animation;
@@ -103,7 +103,8 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
     vector<shared_ptr<Mesh>> meshes;
     for (unsigned i = 0; i < array.Size(); ++i)
     {
-        meshes.push_back(make_shared<Mesh>(parseMesh(array[i].GetObject())));
+        shared_ptr<Mesh> mesh(parseMesh(array[i].GetObject()));
+        meshes.push_back(mesh);
     }
     return meshes;
 }

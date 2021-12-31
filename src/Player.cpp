@@ -20,7 +20,7 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
 }
 void Player::start()
 {
-    bulletMesh = make_shared<Mesh>(Mesh("./Assets/Models/Bullet.glb", "Assets/Textures/Bullet.png"));
+    bulletMesh = shared_ptr<Mesh>(new Mesh("./Assets/Models/Bullet.glb", "Assets/Textures/Bullet.png"));
     transparentTexture = Mesh::createTexture("./Assets/Textures/transparent.png");
     flashTexture = Mesh::createTexture("./Assets/Textures/flash.png");
     children[0]->getMesh()->setTexture(transparentTexture);
