@@ -174,7 +174,7 @@ void App::update()
             }
         }
     }
-    if (getTime() - player->timeSinceDamage > 0.5f)
+    if (getTime() - player->timeSinceDamage > 0.25f)
     {
         HUD.setIsHurting(false);
     }
