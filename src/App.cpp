@@ -29,9 +29,9 @@ void App::init(int argc, char **argv)
     HUD.setHP(player->hp * 10);
     HUD.setInHandAmmo(player->inHandAmmo);
     HUD.setTotalAmmo(player->totalAmmo);
+    start();
     HUD.setStatus(ONGOING);
     gameStatus = ONGOING;
-    start();
 }
 void App::terminate()
 {
