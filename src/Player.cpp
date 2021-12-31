@@ -9,11 +9,14 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : G
         throw "Error loading gunshot.wav";
     if (!reloadSoundBuffer.loadFromFile("Assets/Audio/reload.wav"))
         throw "Error loading reload.wav";
+    if (!hurtSoundBuffer.loadFromFile("Assets/Audio/playerHurt.wav"))
+        throw "Error loading playerHurt.wav";
     if (!footstepsSoundBuffer.loadFromFile("Assets/Audio/playerFootsteps.ogg"))
         throw "Error loading playerFootsteps.wav";
 
     gunShotSound.setBuffer(gunShotSoundBuffer);
     reloadSound.setBuffer(reloadSoundBuffer);
+    hurtSound.setBuffer(hurtSoundBuffer);
     footstepsSound.setBuffer(footstepsSoundBuffer);
     footstepsSound.setLoop(true);
     aabb.maximize(0.2f);
@@ -144,6 +147,7 @@ void Player::destroyBullet(int index)
 }
 bool Player::damage(float amount)
 {
+    hurtSound.play();
     hp -= amount;
     return hp <= 0.0f;
 }

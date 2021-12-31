@@ -18,8 +18,8 @@ namespace aw
         glm::vec3 childrenEular = {0, 0, 0}, childrenTranslation = {0, 0, 0};
         glm::vec2 mouseDelta;
         std::shared_ptr<Mesh> bulletMesh;
-        sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer, reloadSoundBuffer;
-        sf::Sound gunShotSound, footstepsSound, reloadSound;
+        sf::SoundBuffer gunShotSoundBuffer, footstepsSoundBuffer, reloadSoundBuffer, hurtSoundBuffer;
+        sf::Sound gunShotSound, footstepsSound, reloadSound, hurtSound;
         int transparentTexture, flashTexture;
         bool isRecoiling = false;
         float recoilImpact = 40.0f;

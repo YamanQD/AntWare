@@ -162,8 +162,8 @@ void App::update()
             {
                 if (getTime() - player->timeSinceDamage > 1.0f)
                 {
-                    HUD.setIsHurting(true);
                     player->damage(1.0f);
+                    HUD.setIsHurting(true);
                     player->timeSinceDamage = getTime();
                     HUD.setHP(player->hp * 10);
                     if (player->hp <= 0)
