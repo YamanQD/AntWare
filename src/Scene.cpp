@@ -150,6 +150,10 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             break;
         case CLASSES::PLAYER:
             gameObject = new Player(mesh, material, mapMinLimit, mapMaxLimit, parent);
+            if (array[i].HasMember("ammo"))
+            {
+                ((Player *)gameObject)->totalAmmo = array[i]["ammo"].GetInt();
+            }
             break;
         case CLASSES::ANT:
             gameObject = new Ant(mesh, material, parent);
