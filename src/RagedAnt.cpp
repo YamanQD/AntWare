@@ -31,12 +31,13 @@ void RagedAnt::update()
         vec3 targetPos = target->transform.getPosition();
         targetPos.y = transform.getPosition().y;
         mat3 lookAt = glm::lookAt(transform.getPosition(), targetPos, {0, 1, 0});
-        quat rotation = quat(lookAt);
-        if (!(rotation != rotation))
-        {
-            transform.setRotation(quat(lookAt));
+        dquat rotation = dquat(lookAt);
+        transform.setRotation(rotation);
+        vec3 rotationAxis = transform.getRotationAxis();
+        if (length(rotationAxis) > 0)
             transform.setRotation(transform.getRotationAxis(), -transform.getRotationAngle());
-        }
+        else
+            transform.setRotation(vec3{1, 0, 0}, 0);
         if (aabb.isColliding(target->aabb))
             rigidbody.velocity = {0, 0, 0};
         else
