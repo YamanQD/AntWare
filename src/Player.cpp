@@ -97,7 +97,8 @@ void Player::update()
     }
     if (fallingTime >= dieAfter)
     {
-        // TODO kil
+        damage(10);
+        killSound();
     }
 }
 void Player::fixedUpdate(float deltaTime)
@@ -228,6 +229,10 @@ void Player::reloadAnim(float deltaTime)
         children[i]->transform.setRotation(childrenEular);
         children[i]->transform.setPosition(childrenTranslation);
     }
+}
+bool Player::isDead()
+{
+    return hp <= 0.0f;
 }
 void Player::killSound()
 {

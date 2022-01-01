@@ -133,7 +133,6 @@ void App::update()
     auto gameObjectsSize = currentScene->gameObjects.size();
     auto bulletsSize = player->bullets.size();
     bool isWin = true;
-    bool isLose = false;
     for (unsigned i = 0; i < gameObjectsSize; ++i)
     {
         if (currentScene->gameObjects[i]->getClass() == 3)
@@ -166,10 +165,6 @@ void App::update()
                     HUD.setIsHurting(true);
                     player->timeSinceDamage = getTime();
                     HUD.setHP(player->hp * 10);
-                    if (player->hp <= 0)
-                    {
-                        isLose = true;
-                    }
                 }
             }
         }
@@ -178,8 +173,6 @@ void App::update()
     {
         HUD.setIsHurting(false);
     }
-    if (player->inHandAmmo <= 0 && player->totalAmmo <= 0)
-        isLose = true;
 
     if (isWin)
     {
@@ -187,7 +180,7 @@ void App::update()
         HUD.setStatus(WIN);
         player->killSound();
     }
-    else if (isLose)
+    else if (player->isDead() || (player->inHandAmmo <= 0 && player->totalAmmo <= 0))
     {
         gameStatus = LOSE;
         HUD.setStatus(LOSE);
