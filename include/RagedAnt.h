@@ -7,7 +7,7 @@ namespace aw
     private:
         GameObject *target;
         float speed = 8.0f;
-        float detectionRaduis = 30.0f;
+        float detectionRaduis = 25.0f;
         std::vector<std::shared_ptr<Mesh>> walkcycleAnim;
         std::shared_ptr<Mesh> baseMesh;
         float animTime = 0.0f;
