@@ -1,0 +1,742 @@
+{
+    "mapMinLimit": [
+        -43.7407,
+        -23.5681
+    ],
+    "mapMaxLimit": [
+        44.7394,
+        37.7488
+    ],
+    "camera": {
+        "fov": 45.0,
+        "transform": {
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "velocity": [
+                0,
+                0,
+                0
+            ],
+            "angularVelocity": [
+                0,
+                0,
+                0
+            ],
+            "acceleration": [
+                0,
+                0,
+                0
+            ],
+            "angularAcceleration": [
+                0,
+                0,
+                0
+            ],
+            "mass": 1.0,
+            "linearLock": 0,
+            "angularLock": 0
+        }
+    },
+    "meshes": [
+        {
+            "path": "./Assets/Models/Ant.glb",
+            "texture": "Assets/Textures/Ant.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/Plane.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Gun.glb",
+            "texture": "Assets/Textures/Gun.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Hands.glb",
+            "texture": "Assets/Textures/Hand.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Glove.glb",
+            "texture": "Assets/Textures/Glove.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/Bullet.glb",
+            "texture": "Assets/Textures/Bullet.png",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/PlayerCube.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "./Assets/Models/MuzzleQuad.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 1.glb",
+            "texture": "Assets/Textures/LaptopKeys_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 2.glb",
+            "texture": "Assets/Textures/LaptopFront_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 3.glb",
+            "texture": "Assets/Textures/LaptopScreen_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 4.glb",
+            "texture": "Assets/Textures/LapTopMisc_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 5.glb",
+            "texture": "Assets/Textures/LaptopFront_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 6.glb",
+            "texture": "Assets/Textures/LaptopKeys_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 7.glb",
+            "texture": "Assets/Textures/LapTopMisc_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "path": "Assets/Models/laptop - 8.glb",
+            "texture": "Assets/Textures/LaptopFront_albedo.jpg",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "animations": [
+        {
+            "path": "Assets/Animations/Ant-Walkcycle",
+            "name": "Ant-Walkcycle",
+            "format": "obj",
+            "count": 41,
+            "texture": "Assets/Textures/Ant.png"
+        }
+    ],
+    "lights": [
+        {
+            "tag": "flashlight & required",
+            "class": 2,
+            "position": [
+                0,
+                0.5,
+                5
+            ],
+            "ambient": [
+                0.8,
+                0.8,
+                0.8,
+                1
+            ],
+            "diffuse": [
+                1.0,
+                1.0,
+                1.0,
+                1
+            ],
+            "specular": [
+                1.0,
+                1.0,
+                1.0,
+                1
+            ],
+            "direction": [
+                0,
+                0,
+                -5
+            ],
+            "angle": 35.0,
+            "parent": 0
+        },
+        {
+            "class": 0,
+            "ambient": [
+                0.4,
+                0.4,
+                0.4,
+                1
+            ],
+            "diffuse": [
+                0.1,
+                0.1,
+                0.1,
+                1
+            ],
+            "specular": [
+                0.0,
+                0.0,
+                0.0,
+                1
+            ],
+            "direction": [
+                -1,
+                -1,
+                -1
+            ]
+        },
+        {
+            "class": 0,
+            "ambient": [
+                0.2,
+                0.2,
+                0.2,
+                1
+            ],
+            "diffuse": [
+                0.9,
+                0.9,
+                0.9,
+                1
+            ],
+            "specular": [
+                0.6,
+                0.6,
+                0.6,
+                1
+            ],
+            "direction": [
+                -1,
+                -1,
+                -1
+            ]
+        }
+    ],
+    "materials": [
+        {
+            "ambient": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "diffuse": [
+                0.6,
+                0.6,
+                0.6,
+                1.0
+            ],
+            "specular": [
+                0.3,
+                0.3,
+                0.3,
+                1.0
+            ],
+            "shininess": 2.0
+        },
+        {
+            "ambient": [
+                0.2,
+                0.2,
+                0.2,
+                1.0
+            ],
+            "diffuse": [
+                0.4,
+                0.4,
+                0.4,
+                1.0
+            ],
+            "specular": [
+                0.9,
+                0.9,
+                0.9,
+                1.0
+            ],
+            "shininess": 120.0
+        }
+    ],
+    "gameobjects": [
+        {
+            "tag": "player's base & required",
+            "class": 2,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    5
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 6
+        },
+        {
+            "tag": "muzzle fire & required",
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 7,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 4,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 3,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "tag": "gun",
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 2,
+            "parent": 0
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    3,
+                    -1,
+                    -4
+                ],
+                "rotation": [
+                    0,
+                    45,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "animation": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 3,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    6,
+                    -1,
+                    -8
+                ],
+                "rotation": [
+                    0,
+                    180,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 8,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 9,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 10,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 11,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 12,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 13,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 14,
+            "material": 0
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    -1,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 15,
+            "material": 0
+        }
+    ]
+}
