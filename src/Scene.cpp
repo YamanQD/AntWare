@@ -111,7 +111,9 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
 static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> array,
                                                     const vector<shared_ptr<Mesh>> &meshes,
                                                     const vector<Material> &materials,
-                                                    const vector<vector<shared_ptr<Mesh>>> &animations)
+                                                    const vector<vector<shared_ptr<Mesh>>> &animations,
+                                                    vec2 mapMinLimit,
+                                                    vec2 mapMaxLimit)
 {
     vector<GameObject *> gameObjects;
     for (unsigned i = 0; i < array.Size(); ++i)
@@ -147,7 +149,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new StaticGO(mesh, material, parent);
             break;
         case CLASSES::PLAYER:
-            gameObject = new Player(mesh, material, parent);
+            gameObject = new Player(mesh, material, mapMinLimit, mapMaxLimit, parent);
             break;
         case CLASSES::ANT:
             gameObject = new Ant(mesh, material, parent);
@@ -237,7 +239,12 @@ Scene::Scene(const char *path) : camera(45.0f)
     auto materials = parseMaterials(json["materials"].GetArray());
     auto meshes = parseMeshes(json["meshes"].GetArray());
     auto animations = parseAnimations(json["animations"].GetArray());
-    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials, animations);
+    auto mapMinLimitData = json["mapMinLimit"].GetArray();
+    auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
+    vec2 mapMinLimit = {mapMinLimitData[0].GetFloat(), mapMinLimitData[1].GetFloat()};
+    vec2 mapMaxLimit = {mapMaxLimitData[0].GetFloat(), mapMaxLimitData[1].GetFloat()};
+    gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials,
+                                   animations, mapMinLimit, mapMaxLimit);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     if (json.HasMember("skybox"))
         skybox = Skybox(&camera, json["skybox"].GetString());

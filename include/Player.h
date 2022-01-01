@@ -33,13 +33,21 @@ namespace aw
         void recoilAnim(float deltaTime);
         void reloadAnim(float deltaTime);
 
+        glm::vec2 mapMinLimit;
+        glm::vec2 mapMaxLimit;
+        bool hasFallen = false;
+        float fallingTime = 0.0f;
+        float dieAfter = 5.0f;
+
     public:
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
         unsigned totalAmmo = 30, inHandAmmo = 12, maxAmmo = 10;
 
-        Player(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent = nullptr);
+        Player(std::shared_ptr<Mesh> mesh, Material material,
+               glm::vec2 mapMinLimit, glm::vec2 mapMaxLimit,
+               GameObject *parent = nullptr);
         void start() override;
         void update() override;
         void fixedUpdate(float deltaTime) override;

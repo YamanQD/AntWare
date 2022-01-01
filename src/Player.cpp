@@ -3,7 +3,10 @@ using namespace aw;
 using namespace std;
 using namespace sf;
 using namespace glm;
-Player::Player(shared_ptr<Mesh> mesh, Material material, GameObject *parent) : GameObject(mesh, material, parent, false, 2)
+Player::Player(shared_ptr<Mesh> mesh, Material material, vec2 mapMinLimit, vec2 mapMaxLimit,
+               GameObject *parent) : GameObject(mesh, material, parent, false, 2),
+                                     mapMinLimit(mapMinLimit),
+                                     mapMaxLimit(mapMaxLimit)
 {
     gunShotSoundBuffer.loadFromFile("Assets/Audio/gunshot.wav");
     reloadSoundBuffer.loadFromFile("Assets/Audio/reload.wav");
@@ -79,6 +82,20 @@ void Player::update()
             --bulletsSize;
         }
     }
+    vec2 positionOnY = {transform.getPosition().x, transform.getPosition().z};
+    if (positionOnY.x < mapMinLimit.x || positionOnY.y < mapMinLimit.y ||
+        positionOnY.x > mapMaxLimit.x || positionOnY.y > mapMaxLimit.y)
+    {
+        hasFallen = true;
+        rigidbody.lockLinear(AXIS::x);
+        rigidbody.lockLinear(AXIS::z);
+        rigidbody.unlockLinear(AXIS::y);
+        rigidbody.acceleration = {0, -1000.0f, 0};
+    }
+    if (fallingTime >= dieAfter)
+    {
+        // TODO kil
+    }
 }
 void Player::fixedUpdate(float deltaTime)
 {
@@ -98,6 +115,10 @@ void Player::fixedUpdate(float deltaTime)
     if (isReloading)
     {
         reloadAnim(deltaTime);
+    }
+    if (hasFallen)
+    {
+        fallingTime += deltaTime;
     }
 }
 void Player::dispatchBullet()

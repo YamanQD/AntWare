@@ -1,4 +1,12 @@
 {
+    "mapMinLimit": [
+        -20,
+        -20
+    ],
+    "mapMaxLimit": [
+        20,
+        20
+    ],
     "skybox": "Assets/Textures/Gun.png",
     "camera": {
         "fov": 45.0,
@@ -140,7 +148,7 @@
             "name": "Ant-Walkcycle",
             "format": "obj",
             "count": 41,
-            "texture":"Assets/Textures/Ant.png"
+            "texture": "Assets/Textures/Ant.png"
         }
     ],
     "lights": [
