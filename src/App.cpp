@@ -23,7 +23,7 @@ void App::init(int argc, char **argv)
     music01.setVolume(25);
     music01.play();
 
-    currentScene = new Scene(argv[1]);
+    currentScene = new Scene(settings.levels[0].c_str());
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);
@@ -231,4 +231,9 @@ void App::readSettingsFile()
     settingsFileJSON.Parse(fileData.data(), fileData.size());
     settings.resHeight = settingsFileJSON["resolution"]["height"].GetInt();
     settings.resWidth = settingsFileJSON["resolution"]["width"].GetInt();
+    auto levels = settingsFileJSON["levels"].GetArray();
+    for (unsigned i = 0; i < levels.Size(); ++i)
+    {
+        settings.levels.push_back(levels[i].GetString());
+    }
 }

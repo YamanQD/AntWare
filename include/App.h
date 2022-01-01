@@ -24,6 +24,7 @@ namespace aw
         struct Settings
         {
             int resHeight, resWidth;
+            std::vector<std::string> levels;
         } settings;
 
         App();
