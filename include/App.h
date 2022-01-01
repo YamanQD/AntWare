@@ -31,11 +31,15 @@ namespace aw
         void start();
         void update();
         void readSettingsFile();
+        void switchScene(int index);
 
         sf::Clock timeSinceStart;
-        Scene *currentScene;
+        Scene *currentScene = nullptr;
+        int currentSceneIndex;
         float deltaTime = 0.0f;
         Status gameStatus;
+        float waitToSwitchLevel = 0.5f;
+        float timeSinceWon = 0.0f;
         sf::Music music01;
 
     public:
