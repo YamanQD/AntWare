@@ -23,7 +23,7 @@
             "request": "launch",
             "program": "${workspaceRoot}/build/ant-warrior",
             "args": [
-                "./scenes/sandbox.json"
+                "./scenes/cpu.json"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",

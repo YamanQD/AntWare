@@ -83,14 +83,15 @@ void Player::update()
         }
     }
     vec2 positionOnY = {transform.getPosition().x, transform.getPosition().z};
-    if (positionOnY.x < mapMinLimit.x || positionOnY.y < mapMinLimit.y ||
-        positionOnY.x > mapMaxLimit.x || positionOnY.y > mapMaxLimit.y)
+    if ((positionOnY.x < mapMinLimit.x || positionOnY.y < mapMinLimit.y ||
+         positionOnY.x > mapMaxLimit.x || positionOnY.y > mapMaxLimit.y) &&
+        !hasFallen)
     {
         hasFallen = true;
         rigidbody.lockLinear(AXIS::x);
         rigidbody.lockLinear(AXIS::z);
         rigidbody.unlockLinear(AXIS::y);
-        rigidbody.acceleration = {0, -1000.0f, 0};
+        rigidbody.acceleration = {0, -fallingAcceleration, 0};
     }
     if (fallingTime >= dieAfter)
     {

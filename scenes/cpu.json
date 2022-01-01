@@ -7,7 +7,6 @@
         200,
         200
     ],
-    "skybox": "Assets/Textures/Gun.png",
     "camera": {
         "fov": 45.0,
         "transform": {
@@ -65,7 +64,8 @@
             ]
         },
         {
-            "path": "./Assets/Models/Plane.glb",
+            "path": "./Assets/Models/CPU.glb",
+            "texture": "Assets/Textures/CPU.jpg",
             "color": [
                 1,
                 1,
@@ -130,16 +130,6 @@
                 1,
                 1
             ]
-        },
-        {
-            "path": "Assets/Models/Motherboar - 1.glb",
-            "texture": "Assets/Textures/mobo - 1.jpg",
-            "color": [
-                1,
-                1,
-                1,
-                1
-            ]
         }
     ],
     "animations": [
@@ -185,58 +175,6 @@
             ],
             "angle": 35.0,
             "parent": 0
-        },
-        {
-            "class": 0,
-            "ambient": [
-                0.4,
-                0.4,
-                0.4,
-                1
-            ],
-            "diffuse": [
-                0.1,
-                0.1,
-                0.1,
-                1
-            ],
-            "specular": [
-                0.0,
-                0.0,
-                0.0,
-                1
-            ],
-            "direction": [
-                -1,
-                -1,
-                -1
-            ]
-        },
-        {
-            "class": 0,
-            "ambient": [
-                0.2,
-                0.2,
-                0.2,
-                1
-            ],
-            "diffuse": [
-                0.9,
-                0.9,
-                0.9,
-                1
-            ],
-            "specular": [
-                0.6,
-                0.6,
-                0.6,
-                1
-            ],
-            "direction": [
-                -1,
-                -1,
-                -1
-            ]
         }
     ],
     "materials": [
@@ -281,6 +219,28 @@
                 1.0
             ],
             "shininess": 120.0
+        },
+        {
+            "tag": "Polished Gold",
+            "ambient": [
+                0.24725,
+                0.2245,
+                0.0645,
+                1.0
+            ],
+            "diffuse": [
+                0.34615,
+                0.3143,
+                0.0903,
+                1.0
+            ],
+            "specular": [
+                0.797357,
+                0.723991,
+                0.208006,
+                1.0
+            ],
+            "shininess": 83.2
         }
     ],
     "gameobjects": [
@@ -397,7 +357,7 @@
             "parent": 0
         },
         {
-            "class": 5,
+            "class": 3,
             "tag": "an ant",
             "transform": {
                 "position": [
@@ -512,8 +472,8 @@
                     1
                 ]
             },
-            "mesh": 8,
-            "material": 0
+            "mesh": 1,
+            "material": 2
         }
     ]
 }

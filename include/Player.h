@@ -36,6 +36,7 @@ namespace aw
         glm::vec2 mapMinLimit;
         glm::vec2 mapMaxLimit;
         bool hasFallen = false;
+        float fallingAcceleration = 1000.0f;
         float fallingTime = 0.0f;
         float dieAfter = 5.0f;
 
