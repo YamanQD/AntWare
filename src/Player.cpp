@@ -35,23 +35,25 @@ void Player::update()
 {
     rigidbody.velocity = {0, 0, 0};
     rigidbody.angularVelocity = {0, 0, 0};
-    if (Keyboard::isKeyPressed(Keyboard::W))
+    if (!hasFallen)
     {
-        rigidbody.velocity.z -= 1;
+        if (Keyboard::isKeyPressed(Keyboard::W))
+        {
+            rigidbody.velocity.z -= 1;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::S))
+        {
+            rigidbody.velocity.z += 1;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::D))
+        {
+            rigidbody.velocity.x += 1;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::A))
+        {
+            rigidbody.velocity.x -= 1;
+        }
     }
-    if (Keyboard::isKeyPressed(Keyboard::S))
-    {
-        rigidbody.velocity.z += 1;
-    }
-    if (Keyboard::isKeyPressed(Keyboard::D))
-    {
-        rigidbody.velocity.x += 1;
-    }
-    if (Keyboard::isKeyPressed(Keyboard::A))
-    {
-        rigidbody.velocity.x -= 1;
-    }
-
     if (rigidbody.velocity != glm::vec3(0, 0, 0))
     {
         footstepsSound.setPitch(Keyboard::isKeyPressed(Keyboard::LShift) ? 1.5f : 1.0f);
