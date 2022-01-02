@@ -1,11 +1,11 @@
 {
     "mapMinLimit": [
-        -43.7407,
-        -23.5681
+        -44,
+        -24
     ],
     "mapMaxLimit": [
-        44.7394,
-        37.7488
+        45,
+        38
     ],
     "camera": {
         "fov": 45.0,
@@ -712,7 +712,7 @@
         },
         {
             "class": 1,
-            "tag":"keyboard",
+            "tag": "keyboard",
             "transform": {
                 "position": [
                     0,
@@ -735,7 +735,7 @@
         },
         {
             "class": 1,
-            "tag":"ports",
+            "tag": "ports",
             "transform": {
                 "position": [
                     0,
@@ -758,7 +758,7 @@
         },
         {
             "class": 1,
-            "tag":"display",
+            "tag": "display",
             "transform": {
                 "position": [
                     0,
@@ -781,7 +781,7 @@
         },
         {
             "class": 1,
-            "tag":"led",
+            "tag": "led",
             "transform": {
                 "position": [
                     0,
@@ -804,7 +804,7 @@
         },
         {
             "class": 1,
-            "tag":"display frame",
+            "tag": "display frame",
             "transform": {
                 "position": [
                     0,
@@ -827,7 +827,7 @@
         },
         {
             "class": 1,
-            "tag":"touchpad",
+            "tag": "touchpad",
             "transform": {
                 "position": [
                     0,
@@ -850,7 +850,7 @@
         },
         {
             "class": 1,
-            "tag":"body down side",
+            "tag": "body down side",
             "transform": {
                 "position": [
                     0,
@@ -873,7 +873,7 @@
         },
         {
             "class": 1,
-            "tag":"body top side",
+            "tag": "body top side",
             "transform": {
                 "position": [
                     0,
