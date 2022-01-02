@@ -54,7 +54,7 @@ void App::loop()
                 terminate();
                 return;
             case sf::Event::Resized:
-                // TODO
+                glViewport(0, 0, event.size.width, event.size.height);
                 break;
             case sf::Event::MouseButtonReleased:
                 if (
