@@ -1,4 +1,12 @@
 {
+    "mapMinLimit": [
+        -200,
+        -200
+    ],
+    "mapMaxLimit": [
+        200,
+        200
+    ],
     "camera": {
         "fov": 45.0,
         "transform": {

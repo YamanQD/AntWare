@@ -157,15 +157,14 @@ void App::update()
             }
 
             if (ant->aabb.isColliding(currentScene->gameObjects[0]->aabb) &&
-                getTime() > 2.0f) // TODO check player's children collisions with ant too
+                getTime() > 2.0f &&
+                ant->timeSinceDealtDamage.getElapsedTime().asSeconds() >= 1.0f) // TODO check player's children collisions with ant too
             {
-                if (getTime() - player->timeSinceDamage > 1.0f)
-                {
-                    player->damage(1.0f);
-                    HUD.setIsHurting(true);
-                    player->timeSinceDamage = getTime();
-                    HUD.setHP(player->hp * 10);
-                }
+                ant->timeSinceDealtDamage.restart();
+                player->damage(1.0f);
+                HUD.setIsHurting(true);
+                player->timeSinceDamage = getTime();
+                HUD.setHP(player->hp * 10);
             }
         }
     }

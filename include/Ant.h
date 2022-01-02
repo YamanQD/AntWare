@@ -17,6 +17,8 @@ namespace aw
         virtual void die();
 
     public:
+        sf::Clock timeSinceDealtDamage;
+
         Ant(std::shared_ptr<Mesh> mesh, Material material, GameObject *parent);
         void start() override;
         void update() override;
