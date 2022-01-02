@@ -55,6 +55,7 @@ void App::loop()
                 return;
             case sf::Event::Resized:
                 glViewport(0, 0, event.size.width, event.size.height);
+                currentScene->camera.setAspectRatio((float)WINDOW.internal.getSize().x / (float)WINDOW.internal.getSize().y);
                 break;
             case sf::Event::MouseButtonReleased:
                 if (
