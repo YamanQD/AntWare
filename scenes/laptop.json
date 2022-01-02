@@ -356,6 +356,7 @@
         {
             "tag": "player's base & required",
             "class": 2,
+            "ammo": 60,
             "transform": {
                 "position": [
                     0,
@@ -470,13 +471,160 @@
             "tag": "an ant",
             "transform": {
                 "position": [
-                    3,
+                    -3.15716,
                     -1,
-                    -4
+                    27.8372
                 ],
                 "rotation": [
                     0,
-                    45,
+                    -6.87719,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "animation": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -26.5041,
+                    -1,
+                    -15.5358
+                ],
+                "rotation": [
+                    0,
+                    -139.223,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "animation": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    34.7816,
+                    -1,
+                    -10.806
+                ],
+                "rotation": [
+                    0,
+                    125.93,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "animation": 0,
+            "material": 1,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -35.6617,
+                    -1,
+                    18.3777
+                ],
+                "rotation": [
+                    0,
+                    -37.7533,
                     0
                 ],
                 "scale": [
@@ -519,14 +667,14 @@
             "tag": "an ant",
             "transform": {
                 "position": [
-                    6,
-                    -1,
-                    -8
+                    -26.5041,
+                    4.47183,
+                    -26.4918
                 ],
                 "rotation": [
-                    0,
+                    -63.7168,
                     180,
-                    0
+                    56.3082
                 ],
                 "scale": [
                     1,
@@ -564,6 +712,7 @@
         },
         {
             "class": 1,
+            "tag":"keyboard",
             "transform": {
                 "position": [
                     0,
@@ -586,6 +735,7 @@
         },
         {
             "class": 1,
+            "tag":"ports",
             "transform": {
                 "position": [
                     0,
@@ -608,6 +758,7 @@
         },
         {
             "class": 1,
+            "tag":"display",
             "transform": {
                 "position": [
                     0,
@@ -630,6 +781,7 @@
         },
         {
             "class": 1,
+            "tag":"led",
             "transform": {
                 "position": [
                     0,
@@ -652,6 +804,7 @@
         },
         {
             "class": 1,
+            "tag":"display frame",
             "transform": {
                 "position": [
                     0,
@@ -674,6 +827,7 @@
         },
         {
             "class": 1,
+            "tag":"touchpad",
             "transform": {
                 "position": [
                     0,
@@ -696,6 +850,7 @@
         },
         {
             "class": 1,
+            "tag":"body down side",
             "transform": {
                 "position": [
                     0,
@@ -718,6 +873,7 @@
         },
         {
             "class": 1,
+            "tag":"body top side",
             "transform": {
                 "position": [
                     0,
