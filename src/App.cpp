@@ -23,14 +23,7 @@ void App::init(int argc, char **argv)
     music01.setVolume(25);
     music01.play();
 
-    currentSceneIndex = 0;
-    switchScene(currentSceneIndex);
-}
-void App::switchScene(int index)
-{
-    if (currentScene)
-        delete currentScene;
-    currentScene = new Scene(settings.levels[index].c_str());
+    currentScene = new Scene(settings.levels[0].c_str());
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);
@@ -119,23 +112,6 @@ void App::loop()
             RENDERER.renderScene(currentScene);
             deltaTime = clock.restart().asSeconds();
         }
-        else if (gameStatus == WIN)
-        {
-            if (getTime() - timeSinceWon > waitToSwitchLevel)
-            {
-                if (currentSceneIndex != settings.levels.size() - 1)
-                {
-                    currentSceneIndex++;
-                    switchScene(currentSceneIndex);
-                }
-                else
-                {
-                    player->killSound();
-                }
-            }
-            HUD.draw();
-            RENDERER.renderScene(currentScene);
-        }
         else
         {
             HUD.draw();
@@ -200,9 +176,9 @@ void App::update()
 
     if (isWin)
     {
-        timeSinceWon = getTime();
         gameStatus = WIN;
         HUD.setStatus(WIN);
+        player->killSound();
     }
     else if (player->isDead() || (player->inHandAmmo <= 0 && player->totalAmmo <= 0))
     {
