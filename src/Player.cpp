@@ -97,7 +97,7 @@ void Player::update()
     }
     if (fallingTime >= dieAfter)
     {
-        damage(10);
+        damage(hp);
         killSound();
     }
 }
