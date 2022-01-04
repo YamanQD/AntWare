@@ -273,6 +273,15 @@
             "shininess": 120.0
         }
     ],
+    "animations": [
+        {
+            "path": "Assets/Animations/Ant-Walkcycle",
+            "name": "Ant-Walkcycle",
+            "format": "obj",
+            "count": 41,
+            "texture": "Assets/Textures/Ant.png"
+        }
+    ],
     "gameobjects": [
         {
             "tag": "player's base & required",
