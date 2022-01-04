@@ -6,8 +6,24 @@
     },
     "levels": [
         [
-            "scenes/demo.json",
-            "Assets/Textures/demo - label.png"
+            "scenes/cpu.json",
+            "Assets/Textures/cpu - label.png"
+        ],
+        [
+            "scenes/laptop.json",
+            "Assets/Textures/laptop - label.png"
+        ],
+        [
+            "scenes/cd drive.json",
+            "Assets/Textures/cd drive - label.png"
+        ],
+        [
+            "scenes/cpu top.json",
+            "Assets/Textures/cpu top - label.png"
+        ],
+        [
+            "scenes/mobo.json",
+            "Assets/Textures/mobo - label.png"
         ]
     ]
 }
