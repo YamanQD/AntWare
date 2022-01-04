@@ -13,11 +13,13 @@ namespace aw
         Menu();
         std::vector<std::string> levels;
         std::vector<GLuint> labels;
+        GLuint backgroundTex;
+        glm::vec2 backgroundSize = {12, 12};
         glm::vec3 clearColor = {0, 0, 0};
         glm::vec3 dimColor = {0.5f, 0.5f, 0.5f};
         int selectedLvl = 0;
         glm::vec2 firstLevelPos = {-6, 0};
-        glm::vec2 labelSize = {5,5};
+        glm::vec2 labelSize = {5, 5};
         float yMargain = -0.7f;
 
     public:

@@ -18,6 +18,7 @@ void Menu::init(vector<string> levels, vector<string> labels)
         Hud::loadTexture(labels[i].c_str(), tex);
         this->labels.push_back(tex);
     }
+    Hud::loadTexture("Assets/Textures/Main Menu BG.png", backgroundTex);
 }
 string Menu::loop()
 {
@@ -74,6 +75,7 @@ string Menu::loop()
         }
         vec2 labelPos = firstLevelPos;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        Hud::drawQuad(backgroundTex, {0, 0}, backgroundSize);
         for (unsigned i = 0; i < labels.size(); ++i)
         {
             if (i != selectedLvl)
