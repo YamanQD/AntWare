@@ -1,0 +1,28 @@
+#pragma once
+#include <vector>
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Event.hpp>
+#include <Window.h>
+#include <HUD.h>
+#define MENU Menu::instance()
+namespace aw
+{
+    class Menu
+    {
+    private:
+        Menu();
+        std::vector<std::string> levels;
+        std::vector<GLuint> labels;
+        glm::vec3 clearColor = {0, 0, 0};
+        glm::vec3 dimColor = {0.5f, 0.5f, 0.5f};
+        int selectedLvl = 0;
+        glm::vec2 firstLevelPos = {-6, 0};
+        glm::vec2 labelSize = {5,5};
+        float yMargain = -0.7f;
+
+    public:
+        static Menu &instance();
+        void init(std::vector<std::string> levels, std::vector<std::string> labels);
+        std::string loop();
+    };
+}

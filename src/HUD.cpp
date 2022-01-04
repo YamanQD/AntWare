@@ -91,11 +91,11 @@ void Hud::loadTexture(const char *path, GLuint &tex)
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imgWidth, imgHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
     gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, imgWidth, imgHeight, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
 }
-void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size)
+void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size, glm::vec3 color)
 {
     size /= 2.0f;
     glBindTexture(GL_TEXTURE_2D, texture);
-    glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(color.r, color.g, color.b);
 
     glBegin(GL_QUADS);
 

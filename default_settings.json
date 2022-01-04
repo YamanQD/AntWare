@@ -1,10 +1,13 @@
 {
-    "Note":"DO NOT MODIFY ME UNLESS YOU ARE ADDING A NEW FIELD OR CHANGING THE DEFAULTS",
+    "Note": "DO NOT MODIFY ME UNLESS YOU ARE ADDING A NEW FIELD OR CHANGING THE DEFAULTS",
     "resolution": {
         "height": 720,
         "width": 1280
     },
-    "levels":[
-        "scenes/demo.json"
+    "levels": [
+        [
+            "scenes/demo.json",
+            "Assets/Textures/demo - label.png"
+        ]
     ]
 }

@@ -9,6 +9,7 @@
 #include <SFML/Audio.hpp>
 #include <Window.h>
 #include <Renderer.h>
+#include <Menu.h>
 #include <Mesh.h>
 #include <Transform.h>
 #include <Physics.h>
@@ -25,6 +26,7 @@ namespace aw
         {
             int resHeight, resWidth;
             std::vector<std::string> levels;
+            std::vector<std::string> levelsLabels;
         } settings;
 
         App();
@@ -40,7 +42,7 @@ namespace aw
 
     public:
         static App &instance();
-        void init(int argc, char **argv);
+        bool init(int argc, char **argv);
         void loop();
         void terminate();
         float getTime();

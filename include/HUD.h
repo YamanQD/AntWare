@@ -21,8 +21,6 @@ namespace aw
         GLuint backSlash, plus, ammo;
         GLuint hurt;
         GLuint lose, win, loading;
-        void loadTexture(const char *path, GLuint &tex);
-        void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size);
         void drawHP();
         void drawAmmo();
         void drawHurtEffect();
@@ -33,6 +31,8 @@ namespace aw
 
     public:
         static Hud &instance();
+        static void loadTexture(const char *path, GLuint &tex);
+        static void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size, glm::vec3 color = {1, 1, 1});
         void draw();
         void setHP(unsigned hp);
         void setInHandAmmo(unsigned ammo);

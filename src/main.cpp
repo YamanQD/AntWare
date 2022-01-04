@@ -5,8 +5,8 @@ int main(int argc, char **argv)
 {
     try
     {
-        APP.init(argc, argv);
-        APP.loop();
+        if (APP.init(argc, argv))
+            APP.loop();
     }
     catch (const exception &err)
     {
