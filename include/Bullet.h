@@ -7,7 +7,7 @@ namespace aw
     {
     private:
         sf::Clock timer;
-        float lifeSpan = 1.0f;
+        float lifeSpan = 5.0f;
         float speed = 40.0f;
 
     public:
