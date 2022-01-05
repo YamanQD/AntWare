@@ -100,7 +100,7 @@ int Menu::loop()
             }
             else
             {
-                Hud::drawQuad(labels[i], labelPos, labelSize);
+                Hud::drawQuad(labels[i], {labelPos.x + 0.4f, labelPos.y}, labelSize);
             }
             labelPos.y += yMargain;
         }
