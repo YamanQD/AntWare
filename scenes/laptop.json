@@ -18,7 +18,7 @@
             ],
             "rotation": [
                 0,
-                0,
+                -45,
                 0
             ],
             "scale": [
@@ -257,55 +257,55 @@
             "parent": 0
         },
         {
-            "class": 0,
+            "class": 1,
             "ambient": [
                 0.0,
-                0.0,
-                0.0,
+                0.8,
+                1.0,
                 1
             ],
             "diffuse": [
-                1.0,
-                1.0,
+                0.0,
+                0.8,
                 1.0,
                 1
             ],
             "specular": [
-                0.5,
-                0.5,
-                0.5,
+                0.0,
+                0.0,
+                1.0,
                 1
             ],
-            "direction": [
-                0,
-                0,
-                -1
+            "position": [
+                -0.199729,
+                -36.5505,
+                25.7651
             ]
         },
         {
             "class": 0,
             "ambient": [
-                0.2,
-                0.2,
-                0.2,
+                0.5,
+                0.5,
+                0.5,
                 1
             ],
             "diffuse": [
-                0.7,
-                0.7,
-                0.7,
+                0.5,
+                0.5,
+                0.5,
                 1
             ],
             "specular": [
-                0.1,
-                0.1,
-                0.1,
+                0,
+                0,
+                0,
                 1
             ],
             "direction": [
-                0,
                 -1,
-                1
+                -1,
+                -1
             ]
         }
     ],
@@ -318,39 +318,60 @@
                 1.0
             ],
             "diffuse": [
-                0.6,
-                0.6,
-                0.6,
+                0.4,
+                0.4,
+                0.4,
                 1.0
             ],
             "specular": [
-                0.3,
-                0.3,
-                0.3,
+                0.2,
+                0.2,
+                0.2,
                 1.0
             ],
-            "shininess": 2.0
+            "shininess": 30.0
         },
         {
             "ambient": [
-                0.2,
-                0.2,
-                0.2,
+                1.0,
+                1.0,
+                1.0,
                 1.0
             ],
             "diffuse": [
-                0.4,
-                0.4,
-                0.4,
+                1.0,
+                1.0,
+                1.0,
                 1.0
             ],
             "specular": [
-                0.9,
-                0.9,
-                0.9,
+                1.0,
+                1.0,
+                1.0,
                 1.0
             ],
             "shininess": 120.0
+        },
+        {
+            "ambient": [
+                0.3,
+                0.3,
+                0.3,
+                1.0
+            ],
+            "diffuse": [
+                0.6,
+                0.6,
+                0.6,
+                1.0
+            ],
+            "specular": [
+                0.2,
+                0.2,
+                0.2,
+                1.0
+            ],
+            "shininess": 0.0
         }
     ],
     "gameobjects": [
@@ -489,7 +510,7 @@
             },
             "mesh": 0,
             "animation": 0,
-            "material": 1,
+            "material": 2,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -538,7 +559,7 @@
             },
             "mesh": 0,
             "animation": 0,
-            "material": 1,
+            "material": 2,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -587,7 +608,7 @@
             },
             "mesh": 0,
             "animation": 0,
-            "material": 1,
+            "material": 2,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -636,7 +657,7 @@
             },
             "mesh": 0,
             "animation": 0,
-            "material": 1,
+            "material": 2,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -684,7 +705,7 @@
                 ]
             },
             "mesh": 0,
-            "material": 1,
+            "material": 2,
             "rigidbody": {
                 "velocity": [
                     0,
@@ -778,7 +799,7 @@
                 ]
             },
             "mesh": 10,
-            "material": 0
+            "material": 1
         },
         {
             "class": 1,
@@ -801,7 +822,7 @@
                 ]
             },
             "mesh": 11,
-            "material": 0
+            "material": 1
         },
         {
             "class": 1,
