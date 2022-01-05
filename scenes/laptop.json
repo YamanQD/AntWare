@@ -1,4 +1,5 @@
 {
+    "skybox": "Assets/Textures/laptopSkybox.png",
     "mapMinLimit": [
         -44,
         -24
