@@ -13,6 +13,8 @@ namespace aw
     private:
         Menu();
         sf::Music music;
+        sf::SoundBuffer menuPickSoundBuffer, menuNavigateSoundBuffer;
+        sf::Sound menuPickSound, menuNavigateSound;
         std::vector<std::string> levels;
         std::vector<GLuint> labels;
         GLuint backgroundTex, gameLabelTex, creditsTex;

@@ -15,6 +15,10 @@ void Menu::init(vector<string> levels, vector<string> labels)
     music.setVolume(60);
     music.setLoop(true);
     music.play();
+    menuNavigateSoundBuffer.loadFromFile("Assets/Audio/menuNavigate.wav");
+    menuPickSoundBuffer.loadFromFile("Assets/Audio/menuPick.wav");
+    menuNavigateSound.setBuffer(menuNavigateSoundBuffer);
+    menuPickSound.setBuffer(menuPickSoundBuffer);
 
     this->levels = levels;
     for (unsigned i = 0; i < labels.size(); ++i)
@@ -58,15 +62,18 @@ int Menu::loop()
                 }
                 if (event.key.code == Keyboard::Enter)
                 {
+                    menuPickSound.play();
                     isSelecting = false;
                 }
                 else if (event.key.code == Keyboard::Down)
                 {
+                    menuNavigateSound.play();
                     selectedLvl++;
                     selectedLvl = selectedLvl % levels.size();
                 }
                 else if (event.key.code == Keyboard::Up)
                 {
+                    menuNavigateSound.play();
                     if (selectedLvl == 0)
                     {
                         selectedLvl = levels.size() - 1;
