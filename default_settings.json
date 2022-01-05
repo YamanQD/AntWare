@@ -8,7 +8,7 @@
         [
             "scenes/cpu.json",
             "Assets/Textures/cpu - label.png",
-            "Assets/Audio/music01.ogg"
+            "Assets/Audio/music02.ogg"
         ],
         [
             "scenes/laptop.json",
@@ -18,17 +18,17 @@
         [
             "scenes/cd drive.json",
             "Assets/Textures/cd drive - label.png",
-            "Assets/Audio/music01.ogg"
+            "Assets/Audio/music03.ogg"
         ],
         [
             "scenes/cpu top.json",
             "Assets/Textures/cpu top - label.png",
-            "Assets/Audio/music01.ogg"
+            "Assets/Audio/music04.ogg"
         ],
         [
             "scenes/mobo.json",
             "Assets/Textures/mobo - label.png",
-            "Assets/Audio/music01.ogg"
+            "Assets/Audio/music05.ogg"
         ]
     ]
 }
