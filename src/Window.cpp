@@ -14,7 +14,7 @@ void Window::init(int height, int width)
     ctxSettings.majorVersion = 1;
     ctxSettings.minorVersion = 5;
     ctxSettings.stencilBits = 0;
-    internal.create(sf::VideoMode(width, height), "Ants-Fighter: LEGACY EDITION", sf::Style::Default, ctxSettings);
+    internal.create(sf::VideoMode(width, height), "AntWare: LEGACY EDITION", sf::Style::Default, ctxSettings);
     internal.setMouseCursorVisible(false);
 }
 void Window::terminate()
