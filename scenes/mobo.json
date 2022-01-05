@@ -1,11 +1,11 @@
 {
     "mapMinLimit": [
-        -200,
-        -200
+        -42.7412,
+        -149.594
     ],
     "mapMaxLimit": [
-        200,
-        200
+        113.314,
+        43.7352
     ],
     "camera": {
         "fov": 45.0,
@@ -286,6 +286,7 @@
         {
             "tag": "player's base & required",
             "class": 2,
+            "ammo": 40,
             "transform": {
                 "position": [
                     0,
@@ -588,7 +589,7 @@
             }
         },
         {
-            "class": 3,
+            "class": 5,
             "tag": "an ant",
             "transform": {
                 "position": [
@@ -609,6 +610,105 @@
             },
             "mesh": 0,
             "material": 1,
+            "animation": 0,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    -35.7422,
+                    -0.936797,
+                    1.35726
+                ],
+                "rotation": [
+                    0,
+                    -91.8759,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "animation": 0,
+            "rigidbody": {
+                "velocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularVelocity": [
+                    0,
+                    0,
+                    0
+                ],
+                "acceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "angularAcceleration": [
+                    0,
+                    0,
+                    0
+                ],
+                "mass": 1.0,
+                "linearLock": 0,
+                "angularLock": 0
+            }
+        },
+        {
+            "class": 5,
+            "tag": "an ant",
+            "transform": {
+                "position": [
+                    13.2973,
+                    -0.936797,
+                    -103.393
+                ],
+                "rotation": [
+                    0,
+                    -182.403,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 0,
+            "material": 1,
+            "animation": 0,
             "rigidbody": {
                 "velocity": [
                     0,

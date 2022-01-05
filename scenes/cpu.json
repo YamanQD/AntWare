@@ -130,6 +130,15 @@
                 1,
                 1
             ]
+        },
+        {
+            "path": "./Assets/Models/Platform.glb",
+            "color": [
+                1,
+                1,
+                1,
+                1
+            ]
         }
     ],
     "animations": [
@@ -267,6 +276,28 @@
                 1.0
             ],
             "shininess": 83.2
+        },
+        {
+            "tag": "Polished Silver",
+            "ambient": [
+                0.19225,
+                0.19225,
+                0.19225,
+                1.0
+            ],
+            "diffuse": [
+                0.50754,
+                0.50754,
+                0.50754,
+                1.0
+            ],
+            "specular": [
+                0.508273,
+                0.508273,
+                0.508273,
+                1.0
+            ],
+            "shininess": 51.2
         }
     ],
     "gameobjects": [
@@ -845,6 +876,28 @@
             },
             "mesh": 1,
             "material": 2
+        },
+        {
+            "class": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 8,
+            "material": 3
         }
     ]
 }

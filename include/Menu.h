@@ -20,7 +20,7 @@ namespace aw
         GLuint backgroundTex, gameLabelTex, creditsTex;
         glm::vec2 backgroundSize = {12, 12};
         glm::vec2 gameLabelSize = {5, 5};
-        glm::vec2 gameLabelPos = {-5.2f, 1};
+        glm::vec2 gameLabelPos = {-5.5f, 1};
         glm::vec2 creditsSize = {5, 5};
         glm::vec2 creditsPos = {5.4f, -5.0f};
         glm::vec3 clearColor = {0, 0, 0};
