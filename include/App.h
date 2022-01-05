@@ -27,6 +27,7 @@ namespace aw
             int resHeight, resWidth;
             std::vector<std::string> levels;
             std::vector<std::string> levelsLabels;
+            std::vector<std::string> levelsMusic;
         } settings;
 
         App();
@@ -38,7 +39,7 @@ namespace aw
         Scene *currentScene;
         float deltaTime = 0.0f;
         Status gameStatus;
-        sf::Music music01;
+        sf::Music music;
 
     public:
         static App &instance();

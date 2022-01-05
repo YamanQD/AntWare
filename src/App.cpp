@@ -26,9 +26,10 @@ bool App::init(int argc, char **argv)
     HUD.draw();
     WINDOW.internal.display();
 
-    music01.openFromFile("Assets/Audio/music01.ogg");
-    music01.setVolume(25);
-    music01.play();
+    music.openFromFile(settings.levelsMusic[i]);
+    music.setVolume(60);
+    music.setLoop(true);
+    music.play();
 
     currentScene = new Scene(settings.levels[i].c_str());
     currentScene->lights[0].toggle();
@@ -244,5 +245,6 @@ void App::readSettingsFile()
     {
         settings.levels.push_back(levels[i][0].GetString());
         settings.levelsLabels.push_back(levels[i][1].GetString());
+        settings.levelsMusic.push_back(levels[i][2].GetString());
     }
 }

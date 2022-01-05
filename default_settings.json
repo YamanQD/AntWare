@@ -7,23 +7,28 @@
     "levels": [
         [
             "scenes/cpu.json",
-            "Assets/Textures/cpu - label.png"
+            "Assets/Textures/cpu - label.png",
+            "Assets/Audio/music01.ogg"
         ],
         [
             "scenes/laptop.json",
-            "Assets/Textures/laptop - label.png"
+            "Assets/Textures/laptop - label.png",
+            "Assets/Audio/music01.ogg"
         ],
         [
             "scenes/cd drive.json",
-            "Assets/Textures/cd drive - label.png"
+            "Assets/Textures/cd drive - label.png",
+            "Assets/Audio/music01.ogg"
         ],
         [
             "scenes/cpu top.json",
-            "Assets/Textures/cpu top - label.png"
+            "Assets/Textures/cpu top - label.png",
+            "Assets/Audio/music01.ogg"
         ],
         [
             "scenes/mobo.json",
-            "Assets/Textures/mobo - label.png"
+            "Assets/Textures/mobo - label.png",
+            "Assets/Audio/music01.ogg"
         ]
     ]
 }
