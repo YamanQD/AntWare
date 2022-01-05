@@ -40,6 +40,8 @@ namespace aw
         float deltaTime = 0.0f;
         Status gameStatus;
         sf::Music music;
+        sf::SoundBuffer easterEggSoundBuffer;
+        sf::Sound easterEggSound;
 
     public:
         static App &instance();

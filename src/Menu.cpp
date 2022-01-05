@@ -11,6 +11,11 @@ Menu &Menu::instance()
 }
 void Menu::init(vector<string> levels, vector<string> labels)
 {
+    music.openFromFile("Assets/Audio/music00.ogg");
+    music.setVolume(60);
+    music.setLoop(true);
+    music.play();
+
     this->levels = levels;
     for (unsigned i = 0; i < labels.size(); ++i)
     {
@@ -102,5 +107,7 @@ int Menu::loop()
     glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
     glClearColor(0, 0, 0, 1.0f);
+
+    music.stop();
     return selectedLvl;
 }

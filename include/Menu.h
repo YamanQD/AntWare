@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Event.hpp>
+#include <SFML/Audio.hpp>
 #include <Window.h>
 #include <HUD.h>
 #define MENU Menu::instance()
@@ -11,6 +12,7 @@ namespace aw
     {
     private:
         Menu();
+        sf::Music music;
         std::vector<std::string> levels;
         std::vector<GLuint> labels;
         GLuint backgroundTex, gameLabelTex, creditsTex;

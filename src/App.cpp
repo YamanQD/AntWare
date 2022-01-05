@@ -33,6 +33,8 @@ bool App::init(int argc, char **argv)
 
     currentScene = new Scene(settings.levels[i].c_str());
     currentScene->lights[0].toggle();
+    easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");
+    easterEggSound.setBuffer(easterEggSoundBuffer);
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);
     HUD.setInHandAmmo(player->inHandAmmo);
@@ -103,6 +105,10 @@ void App::loop()
                         reloadTimer.restart();
                         player->reload();
                     }
+                }
+                if (event.key.code == sf::Keyboard::M && gameStatus == ONGOING)
+                {
+                    easterEggSound.play();
                 }
                 break;
             case sf::Event::KeyPressed:
