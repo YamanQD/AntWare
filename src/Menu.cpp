@@ -12,7 +12,7 @@ Menu &Menu::instance()
 void Menu::init(vector<string> levels, vector<string> labels)
 {
     music.openFromFile("Assets/Audio/music00.ogg");
-    music.setVolume(60);
+    music.setVolume(40);
     music.setLoop(true);
     music.play();
     menuNavigateSoundBuffer.loadFromFile("Assets/Audio/menuNavigate.wav");
