@@ -100,7 +100,7 @@ void App::loop()
                 }
                 if (event.key.code == sf::Keyboard::R && reloadTimer.getElapsedTime().asSeconds() > 1.5f && gameStatus == ONGOING)
                 {
-                    if (player->totalAmmo > 0)
+                    if (player->totalAmmo > 0 && player->inHandAmmo < player->maxAmmo)
                     {
                         reloadTimer.restart();
                         player->reload();

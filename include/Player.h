@@ -13,7 +13,7 @@ namespace aw
     {
 
         float speed = 10.0f, runningSpeed = 20.0f;
-        float mouseSenstivity = 15.0f;
+        float mouseSenstivity = 10.0f;
         glm::vec3 eularAngles = {0, 0, 0};
         glm::vec3 childrenEular = {0, 0, 0}, childrenTranslation = {0, 0, 0};
         glm::vec2 mouseDelta;
@@ -44,7 +44,7 @@ namespace aw
         std::vector<Bullet> bullets;
         float timeSinceDamage = 0.0f;
         float hp = 10.0f;
-        unsigned totalAmmo = 30, inHandAmmo = 12, maxAmmo = 10;
+        unsigned totalAmmo = 36, inHandAmmo = 12, maxAmmo = 12;
 
         Player(std::shared_ptr<Mesh> mesh, Material material,
                glm::vec2 mapMinLimit, glm::vec2 mapMaxLimit,
