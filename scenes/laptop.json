@@ -356,7 +356,7 @@
         {
             "tag": "player's base & required",
             "class": 2,
-            "ammo": 60,
+            "ammo": 20,
             "transform": {
                 "position": [
                     0,
