@@ -137,9 +137,9 @@
         {
             "path": "Assets/Models/cd drive - tray.glb",
             "color": [
-                0.064,
-                0.064,
-                0.064,
+                1,
+                1,
+                1,
                 1
             ]
         },

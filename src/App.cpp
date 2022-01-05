@@ -8,13 +8,20 @@ App &App::instance()
     static App app;
     return app;
 }
-void App::init(int argc, char **argv)
+bool App::init(int argc, char **argv)
 {
     srandom(time(nullptr));
     readSettingsFile();
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
 
+    MENU.init(settings.levels, settings.levelsLabels);
+    string level = MENU.loop();
+    if (level == "exit")
+    {
+        terminate();
+        return false;
+    }
     HUD.setStatus(LOADING);
     HUD.draw();
     WINDOW.internal.display();
@@ -23,7 +30,7 @@ void App::init(int argc, char **argv)
     music01.setVolume(25);
     music01.play();
 
-    currentScene = new Scene(settings.levels[0].c_str());
+    currentScene = new Scene(level.c_str());
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);
@@ -32,6 +39,7 @@ void App::init(int argc, char **argv)
     start();
     HUD.setStatus(ONGOING);
     gameStatus = ONGOING;
+    return true;
 }
 void App::terminate()
 {
@@ -234,6 +242,7 @@ void App::readSettingsFile()
     auto levels = settingsFileJSON["levels"].GetArray();
     for (unsigned i = 0; i < levels.Size(); ++i)
     {
-        settings.levels.push_back(levels[i].GetString());
+        settings.levels.push_back(levels[i][0].GetString());
+        settings.levelsLabels.push_back(levels[i][1].GetString());
     }
 }

@@ -1,10 +1,29 @@
 {
-    "Note":"DO NOT MODIFY ME UNLESS YOU ARE ADDING A NEW FIELD OR CHANGING THE DEFAULTS",
+    "Note": "DO NOT MODIFY ME UNLESS YOU ARE ADDING A NEW FIELD OR CHANGING THE DEFAULTS",
     "resolution": {
         "height": 720,
         "width": 1280
     },
-    "levels":[
-        "scenes/demo.json"
+    "levels": [
+        [
+            "scenes/cpu.json",
+            "Assets/Textures/cpu - label.png"
+        ],
+        [
+            "scenes/laptop.json",
+            "Assets/Textures/laptop - label.png"
+        ],
+        [
+            "scenes/cd drive.json",
+            "Assets/Textures/cd drive - label.png"
+        ],
+        [
+            "scenes/cpu top.json",
+            "Assets/Textures/cpu top - label.png"
+        ],
+        [
+            "scenes/mobo.json",
+            "Assets/Textures/mobo - label.png"
+        ]
     ]
 }
