@@ -29,6 +29,6 @@ namespace aw
     public:
         static Menu &instance();
         void init(std::vector<std::string> levels, std::vector<std::string> labels);
-        std::string loop();
+        int loop();
     };
 }

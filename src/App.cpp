@@ -16,8 +16,8 @@ bool App::init(int argc, char **argv)
     RENDERER.init();
 
     MENU.init(settings.levels, settings.levelsLabels);
-    string level = MENU.loop();
-    if (level == "exit")
+    int i = MENU.loop();
+    if (i == -1)
     {
         terminate();
         return false;
@@ -30,7 +30,7 @@ bool App::init(int argc, char **argv)
     music01.setVolume(25);
     music01.play();
 
-    currentScene = new Scene(level.c_str());
+    currentScene = new Scene(settings.levels[i].c_str());
     currentScene->lights[0].toggle();
     auto player = ((Player *)(currentScene->gameObjects[0]));
     HUD.setHP(player->hp * 10);

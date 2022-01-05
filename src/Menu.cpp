@@ -22,7 +22,7 @@ void Menu::init(vector<string> levels, vector<string> labels)
     Hud::loadTexture("Assets/Textures/Game Label.png", gameLabelTex);
     Hud::loadTexture("Assets/Textures/Credits.png", creditsTex);
 }
-string Menu::loop()
+int Menu::loop()
 {
     glClearColor(clearColor.r, clearColor.g, clearColor.b, 1.0f);
     glMatrixMode(GL_PROJECTION);
@@ -45,11 +45,11 @@ string Menu::loop()
             switch (event.type)
             {
             case sf::Event::Closed:
-                return "exit";
+                return -1;
             case Event::KeyReleased:
                 if (event.key.code == Keyboard::Escape)
                 {
-                    return "exit";
+                    return -1;
                 }
                 if (event.key.code == Keyboard::Enter)
                 {
@@ -102,5 +102,5 @@ string Menu::loop()
     glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
     glClearColor(0, 0, 0, 1.0f);
-    return levels[selectedLvl];
+    return selectedLvl;
 }
