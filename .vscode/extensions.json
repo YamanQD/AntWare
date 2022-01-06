@@ -1,6 +1,5 @@
 {
     "recommendations": [
-        "ms-vscode.cpptools-extension-pack",
         "eamodio.gitlens",
         "pkief.material-icon-theme"
     ]
