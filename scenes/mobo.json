@@ -64,15 +64,6 @@
             ]
         },
         {
-            "path": "./Assets/Models/Plane.glb",
-            "color": [
-                1,
-                1,
-                1,
-                1
-            ]
-        },
-        {
             "path": "Assets/Models/Gun.glb",
             "texture": "Assets/Textures/Gun.png",
             "color": [
@@ -304,7 +295,7 @@
                     1
                 ]
             },
-            "mesh": 6
+            "mesh": 5
         },
         {
             "tag": "muzzle fire & required",
@@ -326,29 +317,7 @@
                     1
                 ]
             },
-            "mesh": 7,
-            "parent": 0
-        },
-        {
-            "class": 1,
-            "transform": {
-                "position": [
-                    0,
-                    0,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    0,
-                    0
-                ],
-                "scale": [
-                    1,
-                    1,
-                    1
-                ]
-            },
-            "mesh": 4,
+            "mesh": 6,
             "parent": 0
         },
         {
@@ -375,7 +344,6 @@
         },
         {
             "class": 1,
-            "tag": "gun",
             "transform": {
                 "position": [
                     0,
@@ -394,6 +362,29 @@
                 ]
             },
             "mesh": 2,
+            "parent": 0
+        },
+        {
+            "class": 1,
+            "tag": "gun",
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "mesh": 1,
             "parent": 0
         },
         {
@@ -802,7 +793,7 @@
                     1
                 ]
             },
-            "mesh": 8,
+            "mesh": 7,
             "material": 0
         }
     ]
