@@ -22,13 +22,18 @@
 
 //TODO @rami, update Windows instructions
 
-## Linux
+## Linux Debian
+
+### Installing Tools:
+
+```
+sudo apt install ninja-build
+```
 
 ### Installing Dependnecies:
 
-#### On Debian-based distros:
 ```
-sudo apt install libsfml-dev rapidjson-dev libassimp-dev libglm-dev libopenal-dev
+sudo apt install libsfml-dev rapidjson-dev libassimp-dev libglm-dev libopenal-dev libxrandr-dev libudev-dev libglu1-mesa-dev
 ```
 
 ### Building with Meson :
