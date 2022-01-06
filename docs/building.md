@@ -28,10 +28,7 @@
 
 #### On Debian-based distros:
 ```
-sudo apt install libsfml-dev
-sudo apt install rapidjson-dev
-sudo apt install libassimp-dev
-sudo apt install libglm-dev
+sudo apt install libsfml-dev rapidjson-dev libassimp-dev libglm-dev libopenal-dev
 ```
 
 ### Building with Meson :
