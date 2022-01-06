@@ -1,8 +1,6 @@
 
 # AntWare: LEGACY EDITION 🐜⚔
 
-> **Disclaimer ⚠** This is some bullshit university project.
-
 ## Story
 
 While working on your computer you got surprised by some quarrelsome ants attacking it.
