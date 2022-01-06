@@ -2,6 +2,7 @@
     "recommendations": [
         "eamodio.gitlens",
         "pkief.material-icon-theme",
-        "ms-vscode.cpptools-extension-pack"
+        "ms-vscode.cpptools-extension-pack",
+        "asabil.meson"
     ]
 }
