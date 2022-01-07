@@ -16,11 +16,7 @@ sources = src_assembler.stdout().strip().split('\n')
 
 executable('antware', sources,
     win_subsystem: 'windows',
-    override_options: [
-        'cpp_std=c++17',
-        'c_winlibs=glu32,kernel32,user32,gdi32,winspool,shell32,ole32,oleaut32,uuid,comdlg32,advapi32',
-        'cpp_winlibs=glu32,kernel32,user32,gdi32,winspool,shell32,ole32,oleaut32,uuid,comdlg32,advapi32',
-    ],
+    override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
     dependencies: [sfml_dep, glew_dep,
                    rapidjson_dep, assimp_dep,glu_dep]) #FIXME Windows builds are not working 
