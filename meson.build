@@ -1,6 +1,6 @@
-project('ant-warrior', 'cpp',
+project('antware', 'cpp',
     license: 'GPL-3.0-or-later',
-    version: '0.0.1',
+    version: '1.0.0',
     default_options: ['warning_level=3','default_library=static'])
 
 cmake = import('cmake')
