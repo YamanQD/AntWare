@@ -7,3 +7,5 @@ patch_url = https://wrapdb.mesonbuild.com/v2/rapidjson_1.1.0-1/get_patch
 patch_filename = rapidjson-1.1.0-1-wrap.zip
 patch_hash = 7e651680dc74da51b4d0ca4bd3de5d1cf2143dd6d81421b97a43d67536a84486
 
+[provide]
+rapidjson = rapidjson_dep
