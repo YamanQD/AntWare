@@ -29,3 +29,22 @@ Player loses if his HP reaches zero, he runs out of ammo, or he falls of the map
 ![CD Drive](Screenshots/cd-drive.png)
 ![CPU Top](Screenshots/cpu-top.png)
 ![Motherboard](Screenshots/motherboard.png)
+
+## Assets
+
+### 3D Models
+- [Player](https://skfb.ly/opxOo)
+- [Ant](https://skfb.ly/onZFU)
+- [CPU](https://skfb.ly/on9Ao)
+- [Laptop](https://skfb.ly/onRBU)
+- [CD Drive](https://skfb.ly/6FSsQ)
+- [CD](https://skfb.ly/6SAOI)
+- [Motherboard](https://skfb.ly/6VuN9)
+- [Bullet](https://skfb.ly/6WOKZ)
+
+### Music
+- [Playlist](https://youtube.com/playlist?list=PLq2aS32V3IdYErNVHD19SYDd0Jw0xeJ1h)
+
+### Artwork
+- Main Menu - by [RedDeadAlice](https://github.com/RedDeadAlice)
+- [Muzzle flash](https://pin.it/3HtyRTw)
