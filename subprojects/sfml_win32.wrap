@@ -1,0 +1,10 @@
+[wrap-file]
+directory = SFML-2.5.1
+source_url = https://www.sfml-dev.org/files/SFML-2.5.1-windows-vc15-32-bit.zip
+source_filename = SFML-2.5.1-windows-vc15-32-bit.zip
+source_hash = 9c7bef70ef481884756c9b52851c73caea11eeacb5cc83d03a3c157aee9e395f
+
+patch_directory = sfml_win-2.5.1
+
+[provide]
+sfml_win32 = sfml_dep
