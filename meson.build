@@ -14,7 +14,7 @@ endif
 src_assembler = run_command('src_assembler.py')
 sources = src_assembler.stdout().strip().split('\n')
 
-executable('ant-warrior', sources,
+executable('antware', sources,
     win_subsystem: 'windows',
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],

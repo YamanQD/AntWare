@@ -8,7 +8,7 @@
             "name": "(windows) Launch & Debug",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/ant-warrior.exe",
+            "program": "${workspaceFolder}/build/antware.exe",
             "args": [
                 "./scenes/sandbox.json"
             ],
@@ -21,12 +21,12 @@
             "name": "(linux) Launch & Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/build/ant-warrior",
+            "program": "${workspaceRoot}/build/antware",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
-            "preLaunchTask": "Meson: Build ant-warrior",
+            "preLaunchTask": "Meson: Build AntWare",
             "linux": {
                 "externalConsole": false,
                 "MIMode": "gdb",
