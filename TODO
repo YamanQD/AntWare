@@ -1,0 +1,3 @@
+☐ Cross-platform building.
+☐ Release build.
+    ☐ Meson should use the Release libs for SFML.
