@@ -73,7 +73,7 @@ void Player::update()
     auto mousePos = Mouse::getPosition(WINDOW.internal);
     mouseDelta = {mousePos.x - WINDOW.internal.getSize().x / 2.0f, mousePos.y - WINDOW.internal.getSize().y / 2.0f};
     mouseDelta *= -mouseSenstivity;
-    Mouse::setPosition(Vector2i{WINDOW.internal.getSize().x / 2.0f, WINDOW.internal.getSize().y / 2.0f}, WINDOW.internal);
+    Mouse::setPosition(Vector2i{static_cast<int>(WINDOW.internal.getSize().x / 2.0f), static_cast<int>(WINDOW.internal.getSize().y / 2.0f)}, WINDOW.internal);
     auto bulletsSize = bullets.size();
     for (unsigned i = 0; i < bulletsSize; ++i)
     {
