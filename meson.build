@@ -6,19 +6,23 @@ project('ant-warrior', 'cpp',
 cmake = import('cmake')
 compiler = meson.get_compiler('cpp')
 
-sfml_dep = subproject('sfml_win64').get_variable('sfml_dep')
-
 assimp_dep = cmake.subproject('assimp').dependency('assimp')
 
-rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
-glew_dep = subproject('glew').get_variable('glew_dep')
-
 glm_dep = dependency('glm')
+glew_dep = dependency('glew')
+rapidjson_dep = dependency('rapidjson')
 
 if host_machine.system() == 'linux'
     glu_dep = dependency('glu')
+    sfml_dep = dependency('sfml')
 elif host_machine.system() == 'windows'
     glu_dep = compiler.find_library('glu32')
+
+    if target_machine.cpu_family() == 'x86'
+        sfml_dep = dependency('sfml_win32')
+    elif target_machine.cpu_family() == 'x86_64'
+        sfml_dep = dependency('sfml_win64')
+    endif
 endif
 
 src_assembler = run_command('src_assembler.py')
