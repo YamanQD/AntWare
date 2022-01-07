@@ -33,7 +33,6 @@ settings.json
 # wrap subprojects
 /subprojects/*
 !/subprojects/*.wrap
-!/subprojects/packagefiles
 
 #-----#
 # C++ #
