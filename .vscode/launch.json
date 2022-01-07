@@ -15,7 +15,8 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "console": "externalTerminal"
+            "console": "internalConsole",
+            "preLaunchTask": "Meson: Build AntWare",
         },
         {
             "name": "(linux) Launch & Debug",
@@ -27,17 +28,15 @@
             "cwd": "${workspaceRoot}",
             "environment": [],
             "preLaunchTask": "Meson: Build AntWare",
-            "linux": {
-                "externalConsole": false,
-                "MIMode": "gdb",
-                "setupCommands": [
-                    {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    }
-                ],
-            }
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
         }
     ]
 }
