@@ -3,14 +3,15 @@ project('ant-warrior', 'cpp',
     version: '0.0.1',
     default_options: ['warning_level=3','default_library=static'])
 
-compiler = meson.get_compiler('cpp')
 cmake = import('cmake')
+compiler = meson.get_compiler('cpp')
 
-sfml_dep = subproject('sfml').get_variable('sfml_dep')
-rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
-glew_dep = subproject('glew').get_variable('glew_dep')
+sfml_dep = subproject('sfml_win64').get_variable('sfml_dep')
 
 assimp_dep = cmake.subproject('assimp').dependency('assimp')
+
+rapidjson_dep = subproject('rapidjson').get_variable('rapidjson_dep')
+glew_dep = subproject('glew').get_variable('glew_dep')
 
 glm_dep = dependency('glm')
 
