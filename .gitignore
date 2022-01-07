@@ -22,9 +22,9 @@ settings.json
 # Local History for Visual Studio Code
 .history/
 
-#-------#
-# Meson #
-#-------#
+#------------#
+# MesonBuild #
+#------------#
 
 # build directories
 /build
