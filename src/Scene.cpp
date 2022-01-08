@@ -55,7 +55,7 @@ static inline vector<Material> parseMaterials(GenericArray<false, Value> array)
     }
     return materials;
 }
-static inline Mesh *parseMesh(GenericObject<false, Value> object)
+static inline Mesh parseMesh(GenericObject<false, Value> object)
 {
     const char *path = object["path"].GetString();
     const char *texturePath = nullptr;
@@ -66,11 +66,11 @@ static inline Mesh *parseMesh(GenericObject<false, Value> object)
     if (object.HasMember("color"))
     {
         vec4 color = parseVec4(object["color"].GetArray());
-        return new Mesh(path, color, texturePath);
+        return Mesh(path, color, texturePath);
     }
     else
     {
-        return new Mesh(path, texturePath);
+        return Mesh(path, texturePath);
     }
 }
 static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value> object)
@@ -103,8 +103,9 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
     vector<shared_ptr<Mesh>> meshes;
     for (unsigned i = 0; i < array.Size(); ++i)
     {
-        shared_ptr<Mesh> mesh(parseMesh(array[i].GetObject()));
-        meshes.push_back(mesh);
+        Mesh mesh = parseMesh(array[i].GetObject());
+        shared_ptr<Mesh> meshPtr(new Mesh(mesh));
+        meshes.push_back(meshPtr);
     }
     return meshes;
 }
