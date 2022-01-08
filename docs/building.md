@@ -27,14 +27,14 @@
 ### Installing Tools:
 
 ```
-sudo apt install build-essential cmake ninja-build
+sudo apt install build-essential ninja-build
 sudo pip3 install meson
 ```
 
 ### Installing Dependnecies:
 
 ```
-sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev rapidjson-dev
+sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev
 sudo apt install libglu1-mesa-dev
 ```
 
