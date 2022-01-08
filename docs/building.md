@@ -34,7 +34,7 @@ sudo pip3 install meson
 ### Installing Dependnecies:
 
 ```
-sudo apt install libsfml-dev libglm-dev rapidjson-dev
+sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev rapidjson-dev
 sudo apt install libglu1-mesa-dev
 ```
 
