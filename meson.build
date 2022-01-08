@@ -12,8 +12,10 @@ assimp_opt.add_cmake_defines({
     'ASSIMP_BUILD_ASSIMP_TOOLS': false,
     'ASSIMP_BUILD_TESTS': false,
 })
-assimp_dep = cmake.subproject('assimp', options: assimp_opt).dependency('assimp')
-zlib_dep = dependency('zlib') # zlib is needed by assimp
+assimp_proj = cmake.subproject('assimp', options: assimp_opt)
+
+assimp_dep = assimp_proj.dependency('assimp')
+zlib_dep = assimp_proj.dependency('zlibstatic')
 
 glm_dep = dependency('glm')
 glew_dep = dependency('glew')
