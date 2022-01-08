@@ -28,6 +28,7 @@ settings.json
 # build directories
 /build
 /builddir
+/release
 
 # wrap subprojects
 /subprojects/*
