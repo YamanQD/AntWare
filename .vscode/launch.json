@@ -16,7 +16,7 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "internalConsole",
-            "preLaunchTask": "Meson: Build AntWare",
+            "preLaunchTask": "Meson: Build AntWare (Debug)",
         },
         {
             "name": "(linux) Launch & Debug",
@@ -27,7 +27,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
-            "preLaunchTask": "Meson: Build AntWare",
+            "preLaunchTask": "Meson: Build AntWare (Debug)",
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [

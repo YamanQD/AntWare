@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Meson: Build AntWare",
+            "label": "Meson: Build AntWare (Debug)",
             "type": "shell",
             "command": "meson compile -C build",
             "group": {
