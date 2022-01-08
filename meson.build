@@ -11,12 +11,11 @@ assimp_opt.add_cmake_defines({
     'BUILD_SHARED_LIBS': false,
     'ASSIMP_BUILD_ASSIMP_TOOLS': false,
     'ASSIMP_BUILD_TESTS': false,
+    'ASSIMP_BUILD_ZLIB': false
 })
-assimp_proj = cmake.subproject('assimp', options: assimp_opt)
+assimp_dep = cmake.subproject('assimp', options: assimp_opt).dependency('assimp')
 
-assimp_dep = assimp_proj.dependency('assimp')
-zlib_dep = assimp_proj.dependency('zlibstatic')
-
+zlib_dep = dependency('zlib')
 glm_dep = dependency('glm')
 glew_dep = dependency('glew')
 rapidjson_dep = dependency('rapidjson')
