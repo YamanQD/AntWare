@@ -27,6 +27,7 @@ elif host_machine.system() == 'windows'
     assimp_opt = cmake.subproject_options()
     assimp_opt.add_cmake_defines({
         'BUILD_SHARED_LIBS': false,
+        'CMAKE_BUILD_TYPE': get_option('buildtype') == 'debug' ? 'Debug' : 'Release',
         'ASSIMP_BUILD_ASSIMP_TOOLS': false,
         'ASSIMP_BUILD_TESTS': false,
         'ASSIMP_BUILD_ZLIB': false,
