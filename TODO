@@ -8,3 +8,5 @@
 ☐ Release build.
     ☐ Meson should use the Release libs for SFML.
     ☐ Apply optimizations where ever possible.
+        ☐ Optimize build size.
+            ✔ Disable unneeded assimp importers and exporters. @done(22-01-08 03:22)
