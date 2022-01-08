@@ -29,7 +29,7 @@ rapidjson_dep = dependency('rapidjson')
 
 if host_machine.system() == 'linux'
     glu_dep = dependency('glu')
-    sfml_dep = dependency('sfml')
+    sfml_dep = dependency('sfml-all')
 elif host_machine.system() == 'windows'
     glu_dep = compiler.find_library('glu32')
 
