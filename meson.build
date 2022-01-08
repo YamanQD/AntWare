@@ -6,7 +6,14 @@ project('antware', 'cpp',
 cmake = import('cmake')
 compiler = meson.get_compiler('cpp')
 
-assimp_dep = cmake.subproject('assimp').dependency('assimp')
+assimp_opt = cmake.subproject_options()
+assimp_opt.add_cmake_defines({
+    'BUILD_SHARED_LIBS': false,
+    'ASSIMP_BUILD_ASSIMP_TOOLS': false,
+    'ASSIMP_BUILD_TESTS': false,
+})
+assimp_dep = cmake.subproject('assimp', options: assimp_opt).dependency('assimp')
+zlib_dep = dependency('zlib') # zlib is needed by assimp
 
 glm_dep = dependency('glm')
 glew_dep = dependency('glew')
@@ -32,4 +39,4 @@ executable('antware', sources,
     win_subsystem: 'windows',
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, rapidjson_dep, assimp_dep])
+    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, rapidjson_dep, zlib_dep, assimp_dep])
