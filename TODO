@@ -1,3 +1,8 @@
 ☐ Cross-platform building.
+☐ Achieve a single-file build.
+    ☐ Static link all libraries.
+        ✔ Static link assimp. @done(22-01-08 02:09)
+        ☐ Static link openal.
 ☐ Release build.
     ☐ Meson should use the Release libs for SFML.
+    ☐ Apply optimizations where ever possible.
