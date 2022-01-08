@@ -1,4 +1,6 @@
 ☐ Cross-platform building.
+    ✔ Build on Windows. @done(22-01-08 02:10)
+    ☐ Build on Linux.
 ☐ Achieve a single-file build.
     ☐ Static link all libraries.
         ✔ Static link assimp. @done(22-01-08 02:09)
