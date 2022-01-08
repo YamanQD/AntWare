@@ -11,16 +11,25 @@
 
 ### Instructions
 
-- Make sure `python/python3, pip/pip3, ninja` are available in your PATH.
-- Install meson using pip/pip3 by running `pip install meson` under a command prompt with administrative privileges.
-- Make the `ant-warrior` repository your working directory.
-- Run `meson subprojects download` to fetch dependencies.
-- Run `meson setup build` to setup the build directory.
-- Run `meson build -C build` to compile the project and it's dependencies.
-- Copy `default_settings.json` to `build/settings.json` and modify it accourding to your preferences.
-- Run `ant-warrior.exe`.
+### Pre-requests
 
-//TODO @rami, update Windows instructions
+- Make sure `python3, pip3, ninja` are available in your PATH.
+- Install meson using pip3 by running `pip3 install meson` under a command prompt with administrative privileges.
+- Make the `antware` repository your working directory.
+
+### Building for development (`debug`)
+
+- Run `meson setup build --buildtype=debug` to setup the build directory.
+- Run `meson compile -C build` to compile the project and it's dependencies.
+- Copy `subprojects/sfml_winXX/SFML-X.X.X/bin/openal32.dll` to the root of the repository.
+- Run `build/ant-warrior.exe` with the working directory set to the repository root.
+
+### Building for production (`release`)
+
+- Run `meson setup release --buildtype=release` to setup the build directory.
+- Run `meson compile -C release` to compile the project and it's dependencies.
+- Copy `subprojects/sfml_winXX/SFML-X.X.X/bin/openal32.dll` to the root of the repository.
+- Run `release/ant-warrior.exe` with the working directory set to the repository root.
 
 ## Linux Debian
 
