@@ -13,7 +13,7 @@ But be careful... some of these ants were struck by cosmic lightning and now the
 ## Gameplay
 
 Player wins when all ants are dead.
-Player loses if his HP reaches zero, he runs out of ammo, or he falls of the map.
+Player loses if his HP reaches zero, he runs out of ammo, or he falls off the map.
 
 ### [Game Demo](https://youtu.be/YjLi0lY-T60)
 
