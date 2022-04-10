@@ -15,7 +15,7 @@ bool App::init(int argc, char **argv)
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
 
-    MENU.init(settings.levels, settings.levelsLabels);
+    /*MENU.init(settings.levels, settings.levelsLabels);
     int i = MENU.loop();
     if (i == -1)
     {
@@ -41,7 +41,7 @@ bool App::init(int argc, char **argv)
     HUD.setTotalAmmo(player->totalAmmo);
     start();
     HUD.setStatus(ONGOING);
-    gameStatus = ONGOING;
+    gameStatus = ONGOING;*/
     return true;
 }
 void App::terminate()

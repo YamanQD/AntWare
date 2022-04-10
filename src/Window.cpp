@@ -9,10 +9,10 @@ Window &Window::instance()
 void Window::init(int height, int width)
 {
     sf::ContextSettings ctxSettings;
-    ctxSettings.antialiasingLevel = 4;
+    ctxSettings.antialiasingLevel = 1;
     ctxSettings.depthBits = 24;
-    ctxSettings.majorVersion = 1;
-    ctxSettings.minorVersion = 5;
+    ctxSettings.majorVersion = 3;
+    ctxSettings.minorVersion = 3;
     ctxSettings.stencilBits = 0;
     internal.create(sf::VideoMode(width, height), "AntWare: LEGACY EDITION", sf::Style::Default, ctxSettings);
     internal.setMouseCursorVisible(false);
