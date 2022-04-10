@@ -6,13 +6,13 @@ project('antware', 'cpp',
 zlib_dep = dependency('zlib')
 glm_dep = dependency('glm')
 glew_dep = dependency('glew')
-rapidjson_dep = dependency('rapidjson')
 
 if host_machine.system() == 'linux'
     glu_dep = dependency('glu')
     sfml_dep = dependency('sfml-all')
     assimp_dep = dependency('assimp')
 elif host_machine.system() == 'windows'
+    rapidjson_dep = dependency('rapidjson')
     cmake = import('cmake')
     compiler = meson.get_compiler('cpp')
     
@@ -45,8 +45,16 @@ endif
 src_assembler = run_command('src_assembler.py')
 sources = src_assembler.stdout().strip().split('\n')
 
+
+if host_machine.system() == 'windows'
 executable('antware', sources,
     win_subsystem: 'windows',
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
     dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, rapidjson_dep, zlib_dep, assimp_dep])
+elif host_machine.system() == 'linux'
+executable('antware', sources,
+    override_options: ['cpp_std=c++17'],
+    include_directories: ['include'],
+    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, zlib_dep, assimp_dep])
+endif
