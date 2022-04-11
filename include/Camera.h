@@ -19,7 +19,7 @@ namespace aw
         Camera(float FOV);
         void setFOV(float FOV);
         void setAspectRatio(float aspectRatio);
-        //Call to update camera matrices
+        // Call to update camera matrices
         void update();
         void fixedUpdate(float deltaTime);
     };

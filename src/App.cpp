@@ -15,8 +15,8 @@ bool App::init(int argc, char **argv)
     WINDOW.init(settings.resHeight, settings.resWidth);
     RENDERER.init();
 
-    /*MENU.init(settings.levels, settings.levelsLabels);
-    int i = MENU.loop();
+    MENU.init(settings.levels, settings.levelsLabels);
+    /*int i = MENU.loop();
     if (i == -1)
     {
         terminate();

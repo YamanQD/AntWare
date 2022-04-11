@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glew.h>
+#include<helpers.h>
 #include <Window.h>
 #include <Camera.h>
 #include <Scene.h>
@@ -17,5 +18,6 @@ namespace aw
         void init();
         void renderScene(Scene *scene);
         void terminate();
+        GLuint loadShaderProgram(const char *vertexShaderPath, const char *fragmentShaderPath);
     };
 }
