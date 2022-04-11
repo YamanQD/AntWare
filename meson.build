@@ -56,5 +56,6 @@ elif host_machine.system() == 'linux'
 executable('antware', sources,
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, zlib_dep, assimp_dep])
+    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, zlib_dep, assimp_dep],
+    cpp_args:['-DDEBUG'])
 endif

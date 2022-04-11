@@ -16,6 +16,8 @@ namespace aw
     {
     private:
         Hud();
+        GLuint shaderProgram;
+        GLuint quadVAO,quadEBO;
         GLuint crosshair;
         GLuint digits[10];
         GLuint backSlash, plus, ammo;
@@ -29,8 +31,11 @@ namespace aw
         bool isHurting = false;
         Status status;
 
+        void createQuadVAO();
+
     public:
         static Hud &instance();
+        void setShaderProgram(GLuint program);
         static void loadTexture(const char *path, GLuint &tex);
         static void drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size, glm::vec3 color = {1, 1, 1});
         void draw();
