@@ -34,17 +34,8 @@ void Menu::init(vector<string> levels, vector<string> labels)
 int Menu::loop()
 {
     glClearColor(clearColor.r, clearColor.g, clearColor.b, 1.0f);
-    glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
-    glLoadIdentity();
-    gluOrtho2D((-16.0f / 2.0f),
-               (16.0f / 2.0f),
-               (-9.0f / 2.0f),
-               (9.0f / 2.0f));
-    glDisable(GL_LIGHTING);
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    glLoadIdentity();
+    glUseProgram(HUD.getShaderProgram());
+
     bool isSelecting = true;
     while (isSelecting)
     {
@@ -89,29 +80,25 @@ int Menu::loop()
         }
         vec2 labelPos = firstLevelPos;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        Hud::drawQuad(backgroundTex, {0, 0}, backgroundSize);
-        Hud::drawQuad(gameLabelTex, gameLabelPos, gameLabelSize);
-        Hud::drawQuad(creditsTex, creditsPos, creditsSize);
+        HUD.drawQuad(backgroundTex, {0, 0}, backgroundSize);
+        HUD.drawQuad(gameLabelTex, gameLabelPos, gameLabelSize);
+        HUD.drawQuad(creditsTex, creditsPos, creditsSize);
         for (unsigned i = 0; i < labels.size(); ++i)
         {
             if (i != selectedLvl)
             {
-                Hud::drawQuad(labels[i], labelPos, labelSize, dimColor);
+                HUD.drawQuad(labels[i], labelPos, labelSize, dimColor);
             }
             else
             {
-                Hud::drawQuad(labels[i], {labelPos.x + 0.4f, labelPos.y}, labelSize);
+                HUD.drawQuad(labels[i], {labelPos.x + 0.4f, labelPos.y}, labelSize);
             }
             labelPos.y += yMargain;
         }
         WINDOW.internal.display();
     }
+    glUseProgram(0);
     glBindTexture(GL_TEXTURE_2D, 0);
-    glPopMatrix();
-    glMatrixMode(GL_PROJECTION);
-    glEnable(GL_LIGHTING);
-    glPopMatrix();
-    glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
     glClearColor(0, 0, 0, 1.0f);
 

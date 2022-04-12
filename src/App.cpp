@@ -16,13 +16,13 @@ bool App::init(int argc, char **argv)
     RENDERER.init();
 
     MENU.init(settings.levels, settings.levelsLabels);
-    /*int i = MENU.loop();
+    int i = MENU.loop();
     if (i == -1)
     {
         terminate();
         return false;
     }
-    HUD.setStatus(LOADING);
+    /*HUD.setStatus(LOADING);
     HUD.draw();
     WINDOW.internal.display();
 

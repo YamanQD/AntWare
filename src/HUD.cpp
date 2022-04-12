@@ -1,6 +1,7 @@
 #include <HUD.h>
 using namespace aw;
 using namespace sf;
+using namespace glm;
 Hud::Hud()
 {
     char buffer[128];
@@ -98,23 +99,14 @@ void Hud::drawQuad(GLuint texture, glm::vec2 pos, glm::vec2 size, glm::vec3 colo
 {
     size /= 2.0f;
     glBindTexture(GL_TEXTURE_2D, texture);
-    glColor3f(color.r, color.g, color.b);
+    glUniform3f(uniformsLocations[COLOR_VEC], color.r, color.g, color.b);
 
-    glBegin(GL_QUADS);
+    mat4 model = translate(mat4(1.0f), vec3{pos, 0.01f}) * scale(mat4(1.0f), vec3{size, 0});
 
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(pos.x - size.x, pos.y - size.y);
+    glUniformMatrix4fv(uniformsLocations[MODEL_MAT], 1, GL_FALSE, &model[0][0]);
 
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(pos.x + size.x, pos.y - size.y);
-
-    glTexCoord2f(1.0f, 1.0f);
-    glVertex2f(pos.x + size.x, pos.y + size.y);
-
-    glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(pos.x - size.x, pos.y + size.y);
-
-    glEnd();
+    glBindVertexArray(quadVAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
 }
 void Hud::drawAmmo()
 {
@@ -255,6 +247,14 @@ void Hud::setIsHurting(bool isHurting)
 void Hud::setShaderProgram(GLuint program)
 {
     this->shaderProgram = program;
+    glUseProgram(program);
+    uniformsLocations[MODEL_MAT] = glGetUniformLocation(program, "model");
+    uniformsLocations[COLOR_VEC] = glGetUniformLocation(program, "color");
+    assert(glGetError() == 0);
+}
+GLuint Hud::getShaderProgram()
+{
+    return shaderProgram;
 }
 void Hud::createQuadVAO()
 {
@@ -263,7 +263,7 @@ void Hud::createQuadVAO()
         -1, 1,
         1, -1,
         1, 1};
-    GLbyte indices[] = {
+    GLubyte indices[] = {
         1, 0, 2,
         3, 1, 2};
     glGenVertexArrays(1, &quadVAO);
@@ -273,7 +273,7 @@ void Hud::createQuadVAO()
     glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[1]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 8, vertcies, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLbyte) * 6, indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLubyte) * 6, indices, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
