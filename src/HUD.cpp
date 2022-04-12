@@ -260,6 +260,5 @@ void Hud::createQuadVAO()
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
-    quadEBO = buffers[1];
     assert(glGetError() == 0);
 }

@@ -11,6 +11,8 @@ namespace aw
     private:
         float FOV;
         static float aspectRatio;
+        glm::mat4 viewPerspective;
+        GLint viewPerspectiveLocation;
 
     public:
         Transform transform;
@@ -22,5 +24,6 @@ namespace aw
         // Call to update camera matrices
         void update();
         void fixedUpdate(float deltaTime);
+        void setViewPerspectiveLocation(GLint location);
     };
 }

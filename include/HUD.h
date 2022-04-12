@@ -25,7 +25,7 @@ namespace aw
         Hud();
         GLuint shaderProgram;
         GLuint uniformsLocations[NumUniforms];
-        GLuint quadVAO, quadEBO;
+        GLuint quadVAO; // TODO switch to point sprites
         GLuint crosshair;
         GLuint digits[10];
         GLuint backSlash, plus, ammo;

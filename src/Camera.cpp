@@ -5,33 +5,15 @@ float Camera::aspectRatio;
 Camera::Camera(float FOV) : FOV(FOV)
 {
     aspectRatio = (float)WINDOW.internal.getSize().x / (float)WINDOW.internal.getSize().y;
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    gluPerspective(FOV, aspectRatio, 0.1f, 120.0f);
-
-    glPushMatrix();
-
-    glMatrixMode(GL_MODELVIEW);
 }
 void Camera::setFOV(float FOV)
 {
     this->FOV = FOV;
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glLoadIdentity();
-    gluPerspective(FOV, aspectRatio, 0.1f, 120.0f);
-    glPushMatrix();
     update();
 }
 void Camera::setAspectRatio(float aspectRatio)
 {
     this->aspectRatio = aspectRatio;
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glLoadIdentity();
-    gluPerspective(FOV, aspectRatio, 0.1f, 120.0f);
-    glPushMatrix();
     update();
 }
 void Camera::update()
@@ -43,13 +25,10 @@ void Camera::update()
     camDir = rotationMat * camDir;
     camUp = rotationMat * camUp;
     vec3 lookedAt = camDir + camPos;
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glPushMatrix();
-    gluLookAt(camPos.x, camPos.y, camPos.z,
-              lookedAt.x, lookedAt.y, lookedAt.z,
-              camUp.x, camUp.y, camUp.z);
-    glMatrixMode(GL_MODELVIEW);
+    mat4 viewPerspective = perspective(FOV, aspectRatio, 0.1f, 120.0f) *
+                           lookAt(camPos, lookedAt, camUp);
+    glUniformMatrix4fv(viewPerspectiveLocation, 1, GL_FALSE, &viewPerspective[0][0]);
+    assert(glGetError() == 0);
 }
 void Camera::fixedUpdate(float deltaTime)
 {
@@ -71,4 +50,8 @@ void Camera::fixedUpdate(float deltaTime)
         appliedAngularVelocity.z = 0;
     transform.translate(appliedVelocity * deltaTime);
     transform.rotate(appliedAngularVelocity * deltaTime);
+}
+void Camera::setViewPerspectiveLocation(GLint location)
+{
+    viewPerspectiveLocation = location;
 }
