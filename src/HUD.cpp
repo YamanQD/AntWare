@@ -28,18 +28,6 @@ Hud &Hud::instance()
 void Hud::draw()
 {
     glDisable(GL_DEPTH_TEST);
-    glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
-    glLoadIdentity();
-    gluOrtho2D((-16.0f / 2.0f),
-               (16.0f / 2.0f),
-               (-9.0f / 2.0f),
-               (9.0f / 2.0f));
-    glDisable(GL_LIGHTING);
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    glLoadIdentity();
-
     // Draw here
     if (status == ONGOING)
     {
@@ -63,11 +51,6 @@ void Hud::draw()
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);
-    glPopMatrix();
-    glMatrixMode(GL_PROJECTION);
-    glEnable(GL_LIGHTING);
-    glPopMatrix();
-    glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
 }
 void Hud::loadTexture(const char *path, GLuint &tex)

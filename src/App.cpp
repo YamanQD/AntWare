@@ -22,7 +22,7 @@ bool App::init(int argc, char **argv)
         terminate();
         return false;
     }
-    /*HUD.setStatus(LOADING);
+    HUD.setStatus(LOADING);
     HUD.draw();
     WINDOW.internal.display();
 
@@ -31,7 +31,7 @@ bool App::init(int argc, char **argv)
     music.setLoop(true);
     music.play();
 
-    currentScene = new Scene(settings.levels[i].c_str());
+    /*currentScene = new Scene(settings.levels[i].c_str());
     currentScene->lights[0].toggle();
     easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");
     easterEggSound.setBuffer(easterEggSoundBuffer);
