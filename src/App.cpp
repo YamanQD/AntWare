@@ -31,8 +31,8 @@ bool App::init(int argc, char **argv)
     music.setLoop(true);
     music.play();
 
-    /*currentScene = new Scene(settings.levels[i].c_str());
-    currentScene->lights[0].toggle();
+    currentScene = new Scene(settings.levels[i].c_str());
+    /*currentScene->lights[0].toggle();
     easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");
     easterEggSound.setBuffer(easterEggSoundBuffer);
     auto player = ((Player *)(currentScene->gameObjects[0]));

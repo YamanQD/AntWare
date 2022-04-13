@@ -6,10 +6,11 @@ Camera::Camera(float FOV) : FOV(FOV)
 {
     aspectRatio = (float)WINDOW.internal.getSize().x / (float)WINDOW.internal.getSize().y;
 }
-void Camera::setFOV(float FOV)
+void Camera::setFOV(float FOV, bool doUpdate)
 {
     this->FOV = FOV;
-    update();
+    if (doUpdate)
+        update();
 }
 void Camera::setAspectRatio(float aspectRatio)
 {

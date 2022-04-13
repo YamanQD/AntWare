@@ -34,7 +34,7 @@ static inline Rigidbody parseRigidbody(GenericObject<false, Value> object)
 }
 static inline void parseCamera(GenericObject<false, Value> object, Camera &camera)
 {
-    camera.setFOV(object["fov"].GetFloat());
+    camera.setFOV(object["fov"].GetFloat(),false);
     camera.transform = parseTransform(object["transform"].GetObject());
     camera.rigidbody = parseRigidbody(object["rigidbody"].GetObject());
 }
@@ -242,7 +242,7 @@ Scene::Scene(const char *path) : camera(45.0f)
     json.Parse(fileData.data(), fileData.size());
     parseCamera(json["camera"].GetObject(), camera);
     auto materials = parseMaterials(json["materials"].GetArray());
-    auto meshes = parseMeshes(json["meshes"].GetArray());
+    /*auto meshes = parseMeshes(json["meshes"].GetArray());
     auto animations = parseAnimations(json["animations"].GetArray());
     auto mapMinLimitData = json["mapMinLimit"].GetArray();
     auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
@@ -252,7 +252,7 @@ Scene::Scene(const char *path) : camera(45.0f)
                                    animations, mapMinLimit, mapMaxLimit);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     if (json.HasMember("skybox"))
-        skybox = Skybox(&camera, json["skybox"].GetString());
+        skybox = Skybox(&camera, json["skybox"].GetString());*/
 }
 Scene::~Scene()
 {

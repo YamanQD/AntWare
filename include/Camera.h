@@ -19,7 +19,7 @@ namespace aw
         Rigidbody rigidbody;
 
         Camera(float FOV);
-        void setFOV(float FOV);
+        void setFOV(float FOV, bool doUpdate = true);
         void setAspectRatio(float aspectRatio);
         // Call to update camera matrices
         void update();

@@ -2,6 +2,11 @@
 using namespace aw;
 using namespace glm;
 
+GLint Material::diffuseLoc;
+GLint Material::ambientLoc;
+GLint Material::specularLoc;
+GLint Material::shininessLoc;
+
 Material::Material(
 	vec4 ambient,
 	vec4 diffuse,
@@ -40,12 +45,16 @@ float Material::getAlpha()
 }
 void Material::apply()
 {
-	GLfloat mat_ambient[] = {ambient.r, ambient.g, ambient.b, ambient.a};
-	GLfloat mat_diffuse[] = {diffuse.r, diffuse.g, diffuse.b, diffuse.a};
-	GLfloat mat_specular[] = {specular.r, specular.g, specular.b, specular.a};
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+	glUniform4fv(ambientLoc, 1, &ambient.x);
+	glUniform4fv(diffuseLoc, 1, &diffuse.x);
+	glUniform4fv(specularLoc, 1, &specular.x);
+	glUniform1f(shininessLoc, shininess);
+	assert(glGetError() == 0);
+}
+void Material::setUniformsLocation(GLuint program)
+{
+	ambientLoc = glGetUniformLocation(program, "Material.ambient");
+	diffuseLoc = glGetUniformLocation(program, "Material.diffuse");
+	specularLoc = glGetUniformLocation(program, "Material.specular");
+	shininessLoc = glGetUniformLocation(program, "Material.shininess");
 }
