@@ -30,7 +30,7 @@ bool App::init(int argc, char **argv)
     music.setVolume(60);
     music.setLoop(true);
     music.play();
-
+    
     currentScene = new Scene(settings.levels[i].c_str());
     /*currentScene->lights[0].toggle();
     easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");

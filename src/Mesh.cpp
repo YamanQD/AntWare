@@ -4,7 +4,12 @@ using namespace glm;
 using namespace std;
 using namespace Assimp;
 using namespace sf;
+
 Importer Mesh::importer;
+GLuint Mesh::VAO;
+GLuint Mesh::VBO;
+GLuint Mesh::EBO;
+
 Mesh::Mesh(const char *path, const char *texPath)
 {
     const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate);
@@ -37,13 +42,6 @@ Mesh::Mesh(const char *path, const char *texPath)
     else
     {
         hasIndices = false;
-    }
-    if (mesh->HasVertexColors(0))
-    {
-        colors.resize(mesh->mNumVertices);
-        for (unsigned i = 0; i < colors.size(); ++i)
-            colors[i] = {mesh->mColors[0][i].r, mesh->mColors[0][i].g,
-                         mesh->mColors[0][i].b, mesh->mColors[0][i].a};
     }
     if (mesh->HasNormals())
     {
@@ -86,10 +84,10 @@ void Mesh::loadTexture(const char *path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imgWidth, imgHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
-    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, imgWidth, imgHeight, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+    glGenerateMipmap(GL_TEXTURE_2D);
 }
 int Mesh::createTexture(const char *path)
 {
@@ -112,7 +110,7 @@ int Mesh::createTexture(const char *path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imgWidth, imgHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
-    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, imgWidth, imgHeight, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+    glGenerateMipmap(GL_TEXTURE_2D);
     return texture;
 }
 void Mesh::draw()
@@ -120,35 +118,15 @@ void Mesh::draw()
     if (hasTexture)
     {
         glBindTexture(GL_TEXTURE_2D, texture);
+        // TODO set "has texture" uniform value
     }
-
-    glBegin(GL_TRIANGLES);
-    unsigned size = hasIndices ? indices.size() : vertices.size();
-    for (unsigned i = 0; i < size; i++)
+    else
     {
-        unsigned index = hasIndices ? indices[i] : i;
-
-        if (hasTexture)
-        {
-            glTexCoord2f(texCoords[index].x, texCoords[index].y);
-        }
-        else if (hasUniformColor)
-        {
-            glColor4f(uniformColor.r, uniformColor.g, uniformColor.b, uniformColor.a);
-        }
-        else if (colors.size() > 0)
-        {
-            glColor4f(colors[index].r, colors[index].g, colors[index].b, colors[index].a);
-        }
-        else
-        {
-            glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        }
-
-        glNormal3f(normals[index].x, normals[index].y, normals[index].z);
-        glVertex3f(vertices[index].x, vertices[index].y, vertices[index].z);
+        // TODO set "has texture" uniform value
     }
-    glEnd();
+
+    // TODO
+
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 bool Mesh::getTexture(GLuint &texture)
@@ -182,4 +160,69 @@ void Mesh::setUniformColor(vec4 color)
 const vector<vec3> &Mesh::getVertices()
 {
     return vertices;
+}
+
+void Mesh::constructVAO(vector<shared_ptr<Mesh>> meshes)
+{
+    vector<char> vertexBuffer, indexBuffer;
+    size_t vertexBufferSize = 0, indexBufferSize = 0,
+           normalsOffset = 0, texCoordsOffset = 0, indicesOffset = 0;
+    for (unsigned i = 0; i < meshes.size(); ++i)
+    {
+        for (unsigned j = 0; j < NumBuffers; ++j)
+        {
+            meshes[i]->offsets[j] = (i == 0) ? 0 : meshes[i - 1]->offsets[j] + meshes[i - 1]->sizes[j];
+        }
+        meshes[i]->sizes[VERTEX_BUFFER_POS] = meshes[i]->vertices.size() * sizeof(vec3);
+        meshes[i]->sizes[VERTEX_BUFFER_NORM] = meshes[i]->normals.size() * sizeof(vec3);
+        meshes[i]->sizes[VERTEX_BUFFER_TEX] = meshes[i]->texCoords.size() * sizeof(vec2);
+        meshes[i]->sizes[INDEX_BUFFER] = meshes[i]->indices.size() * sizeof(unsigned int);
+        vertexBufferSize += meshes[i]->sizes[VERTEX_BUFFER_POS] +
+                            meshes[i]->sizes[VERTEX_BUFFER_NORM] +
+                            meshes[i]->sizes[VERTEX_BUFFER_TEX];
+
+        meshes[i]->baseVertex = indicesOffset;
+        indicesOffset += meshes[i]->vertices.size();
+    }
+    indexBufferSize = meshes[meshes.size() - 1]->offsets[INDEX_BUFFER] +
+                      meshes[meshes.size() - 1]->sizes[INDEX_BUFFER];
+    normalsOffset = meshes[meshes.size() - 1]->offsets[VERTEX_BUFFER_POS] +
+                    meshes[meshes.size() - 1]->sizes[VERTEX_BUFFER_POS];
+    texCoordsOffset = normalsOffset +
+                      meshes[meshes.size() - 1]->offsets[VERTEX_BUFFER_NORM] +
+                      meshes[meshes.size() - 1]->sizes[VERTEX_BUFFER_NORM];
+
+    vertexBuffer.resize(vertexBufferSize);
+    indexBuffer.resize(indexBufferSize);
+    for (unsigned i = 0; i < meshes.size(); ++i)
+    {
+        memcpy(vertexBuffer.data() + meshes[i]->offsets[VERTEX_BUFFER_POS],
+               meshes[i]->vertices.data(), meshes[i]->sizes[VERTEX_BUFFER_POS]);
+        memcpy(vertexBuffer.data() + meshes[i]->offsets[VERTEX_BUFFER_NORM] + normalsOffset,
+               meshes[i]->normals.data(), meshes[i]->sizes[VERTEX_BUFFER_NORM]);
+        memcpy(vertexBuffer.data() + meshes[i]->offsets[VERTEX_BUFFER_TEX] + texCoordsOffset,
+               meshes[i]->texCoords.data(), meshes[i]->sizes[VERTEX_BUFFER_TEX]);
+        memcpy(indexBuffer.data() + meshes[i]->offsets[INDEX_BUFFER],
+               meshes[i]->indices.data(), meshes[i]->sizes[INDEX_BUFFER]);
+    }
+
+    glGenVertexArrays(1, &VAO);
+
+    glBindVertexArray(VAO);
+
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    glBufferData(GL_ARRAY_BUFFER, vertexBufferSize, vertexBuffer.data(), GL_STATIC_DRAW);
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBufferSize, indexBuffer.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)normalsOffset);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void *)texCoordsOffset);
+
+    assert(glGetError() == 0);
 }

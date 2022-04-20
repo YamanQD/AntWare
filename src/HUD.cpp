@@ -27,6 +27,7 @@ Hud &Hud::instance()
 }
 void Hud::draw()
 {
+    glUseProgram(shaderProgram);
     glDisable(GL_DEPTH_TEST);
     // Draw here
     if (status == ONGOING)

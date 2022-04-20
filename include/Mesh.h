@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include <stdexcept>
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
@@ -14,6 +15,14 @@ namespace aw
     class Mesh
     {
     private:
+        enum
+        {
+            VERTEX_BUFFER_POS,
+            VERTEX_BUFFER_NORM,
+            VERTEX_BUFFER_TEX,
+            INDEX_BUFFER,
+            NumBuffers
+        };
         static Assimp::Importer importer;
         bool hasTexture, hasUniformColor, hasIndices;
         GLuint texture;
@@ -21,9 +30,13 @@ namespace aw
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec3> normals;
         std::vector<glm::vec2> texCoords;
-        std::vector<glm::vec4> colors;
         glm::vec4 uniformColor;
         void loadTexture(const char *path);
+
+        static GLuint VAO, VBO, EBO;
+        GLuint offsets[NumBuffers];
+        GLuint sizes[NumBuffers];
+        unsigned baseVertex;
 
     public:
         Mesh(const char *path, const char *texPath = nullptr);
@@ -36,5 +49,6 @@ namespace aw
         void setUniformColor(glm::vec4 color);
         const std::vector<glm::vec3> &getVertices();
         static int createTexture(const char *path);
+        static void constructVAO(std::vector<std::shared_ptr<Mesh>> meshes);
     };
 }
