@@ -18,7 +18,6 @@ Light::Light(
 						  parent(parent)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
-	update();
 }
 Light::Light(
 	glm::vec4 ambient,
@@ -40,7 +39,6 @@ Light::Light(
 		throw "Light angle must be between 0 and 360 degrees.";
 
 	transform = Transform(position, direction, vec3(1, 1, 1));
-	update();
 }
 Light::Light(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction, GameObject *parent) : parent(parent)
 {
@@ -54,7 +52,6 @@ Light::Light(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType
 		this->lightStruct.type = DIRECTIONAL;
 		this->lightStruct.direction = direction;
 		transform = Transform(vec3(0, 0, 0), direction, vec3(1, 1, 1));
-		update();
 	}
 	else
 	{
@@ -63,6 +60,9 @@ Light::Light(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType
 }
 void Light::update()
 {
+	glBindBuffer(GL_UNIFORM_BUFFER, UBO);
+	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * index, sizeof(LightStruct), &lightStruct);
+	assert(glGetError() == 0);
 }
 void Light::toggle()
 {
@@ -72,7 +72,7 @@ void Light::toggle()
 Light::~Light()
 {
 }
-void Light::constructUniformBuffer(const vector<Light> &lights)
+void Light::constructUniformBuffer(vector<Light> &lights)
 {
 	if (lights.size() > 20)
 	{
@@ -84,6 +84,7 @@ void Light::constructUniformBuffer(const vector<Light> &lights)
 	{
 		memcpy(stagingBuffer.data() + i * sizeof(LightStruct),
 			   &lights[i].lightStruct, sizeof(lightStruct));
+		lights[i].index = i;
 	}
 	glGenBuffers(1, &UBO);
 	glBindBuffer(GL_UNIFORM_BUFFER, UBO);

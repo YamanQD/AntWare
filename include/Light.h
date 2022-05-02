@@ -26,6 +26,7 @@ namespace aw
 		} lightStruct;
 
 		GameObject *parent = nullptr;
+		int index;
 
 		static GLuint UBO;
 
@@ -42,6 +43,6 @@ namespace aw
 		void update();
 		void toggle();
 
-		static void constructUniformBuffer(const std::vector<Light> &lights);
+		static void constructUniformBuffer( std::vector<Light> &lights);
 	};
 }
