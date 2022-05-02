@@ -198,24 +198,20 @@ static inline vector<Light> parseLights(GenericArray<false, Value> array, const 
         {
         case LightType::POINT:
             position = parseVec(array[i]["position"].GetArray());
-            lights.push_back(Light(i, ambient, diffuse, specular, position, parent));
-            glEnable(GL_LIGHT0 + i);
+            lights.push_back(Light(ambient, diffuse, specular, position, parent));
             break;
         case LightType::DIRECTIONAL:
             direction = parseVec(array[i]["direction"].GetArray());
-            lights.push_back(Light(i, ambient, diffuse, specular, LightType::DIRECTIONAL, direction, parent));
-            glEnable(GL_LIGHT0 + i);
+            lights.push_back(Light( ambient, diffuse, specular, LightType::DIRECTIONAL, direction, parent));
             break;
         case LightType::SPOT:
             position = parseVec(array[i]["position"].GetArray());
             direction = parseVec(array[i]["direction"].GetArray());
             angle = array[i]["angle"].GetFloat();
-            lights.push_back(Light(i, ambient, diffuse, specular, position, direction, angle, parent));
-            glEnable(GL_LIGHT0 + i);
+            lights.push_back(Light( ambient, diffuse, specular, position, direction, angle, parent));
             break;
         default:
             printf("Unknown lightType %d, ignoring light", i);
-            i--;
             break;
         }
     }
@@ -252,8 +248,9 @@ Scene::Scene(const char *path) : camera(45.0f)
     vec2 mapMaxLimit = {mapMaxLimitData[0].GetFloat(), mapMaxLimitData[1].GetFloat()};
     gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials,
                                    mapMinLimit, mapMaxLimit);
-    /*lights = parseLights(json["lights"].GetArray(), gameObjects);
-    if (json.HasMember("skybox"))
+    lights = parseLights(json["lights"].GetArray(), gameObjects);
+    Light::constructUniformBuffer(lights);
+    /*if (json.HasMember("skybox"))
         skybox = Skybox(&camera, json["skybox"].GetString());*/
 }
 Scene::~Scene()
