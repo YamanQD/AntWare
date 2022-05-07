@@ -118,14 +118,10 @@ void Mesh::draw()
     if (hasTexture)
     {
         glBindTexture(GL_TEXTURE_2D, texture);
-        // TODO set "has texture" uniform value
-    }
-    else
-    {
-        // TODO set "has texture" uniform value
     }
 
-    // TODO
+    glBindVertexArray(VAO);
+    glDrawElementsBaseVertex(GL_TRIANGLES, sizes[INDEX_BUFFER] / sizeof(unsigned), GL_UNSIGNED_INT, 0, baseVertex);
 
     glBindTexture(GL_TEXTURE_2D, 0);
 }

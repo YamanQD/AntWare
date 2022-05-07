@@ -32,7 +32,7 @@ bool App::init(int argc, char **argv)
     music.play();
     
     currentScene = new Scene(settings.levels[i].c_str());
-    /*currentScene->lights[0].toggle();
+    currentScene->lights[0].toggle();
     easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");
     easterEggSound.setBuffer(easterEggSoundBuffer);
     auto player = ((Player *)(currentScene->gameObjects[0]));
@@ -41,7 +41,7 @@ bool App::init(int argc, char **argv)
     HUD.setTotalAmmo(player->totalAmmo);
     start();
     HUD.setStatus(ONGOING);
-    gameStatus = ONGOING;*/
+    gameStatus = ONGOING;
     return true;
 }
 void App::terminate()
