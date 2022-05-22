@@ -13,8 +13,16 @@ struct LightStruct
 	float angle;
 };
 
+struct Material{
+  vec4 ambient;
+  vec4 diffuse;
+  vec4 specular;
+  float shininess;
+  };
+
 uniform sampler2D albedo;
 uniform LightStruct lights[MAX_LIGHTS];
+uniform Material material;
 
 void main(){
   color=texture(albedo,texCoordOut);
