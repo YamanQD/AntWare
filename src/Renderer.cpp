@@ -35,7 +35,7 @@ void Renderer::renderScene(Scene *scene)
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // TODO scene->skybox.draw();
-    /*for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
+    for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         if (i == 1)
             continue; // muzzle
@@ -49,12 +49,15 @@ void Renderer::renderScene(Scene *scene)
             continue;
         scene->gameObjects[i]->draw();
     }
-    glDisable(GL_LIGHTING);
+    
     scene->gameObjects[1]->draw();
-    glEnable(GL_LIGHTING);*/
+    
     HUD.draw();
     assert(glGetError() == 0);
     WINDOW.internal.display();
+}
+GLuint Renderer::getMainShader(){
+    return mainShader;
 }
 void Renderer::terminate()
 {

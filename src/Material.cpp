@@ -53,8 +53,10 @@ void Material::apply()
 }
 void Material::setUniformsLocation(GLuint program)
 {
-	ambientLoc = glGetUniformLocation(program, "Material.ambient");
-	diffuseLoc = glGetUniformLocation(program, "Material.diffuse");
-	specularLoc = glGetUniformLocation(program, "Material.specular");
-	shininessLoc = glGetUniformLocation(program, "Material.shininess");
+	glUseProgram(program);
+	ambientLoc = glGetUniformLocation(program, "material.ambient");
+	diffuseLoc = glGetUniformLocation(program, "material.diffuse");
+	specularLoc = glGetUniformLocation(program, "material.specular");
+	shininessLoc = glGetUniformLocation(program, "material.shininess");
+		assert(glGetError() == 0);
 }

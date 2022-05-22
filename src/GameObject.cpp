@@ -42,11 +42,11 @@ mat4 GameObject::applyTransform()
 void GameObject::draw()
 {
 	material.apply();
-	glPushMatrix();
+	/*glPushMatrix(); //TODO
 	transformationMat = applyTransform();
 	recalculateAABB();
 	meshPtr->draw();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 void GameObject::fixedUpdate(float deltaTime)
 {
