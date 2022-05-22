@@ -20,5 +20,6 @@ namespace aw
         void renderScene(Scene *scene);
         void terminate();
         GLuint loadShaderProgram(const char *vertexShaderPath, const char *fragmentShaderPath);
+        GLuint getUniformLocation(const char* uniform);
     };
 }

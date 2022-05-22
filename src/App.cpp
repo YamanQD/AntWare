@@ -32,7 +32,11 @@ bool App::init(int argc, char **argv)
     music.play();
     
     currentScene = new Scene(settings.levels[i].c_str());
+    currentScene->camera.setViewPerspectiveLocation(RENDERER.getUniformLocation("VP"));
     currentScene->lights[0].toggle();
+
+    assert(glGetError() == 0);
+
     easterEggSoundBuffer.loadFromFile("Assets/Audio/easterEgg.ogg");
     easterEggSound.setBuffer(easterEggSoundBuffer);
     auto player = ((Player *)(currentScene->gameObjects[0]));

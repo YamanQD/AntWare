@@ -27,14 +27,15 @@ void Renderer::init()
 }
 void Renderer::renderScene(Scene *scene)
 {
+    glUseProgram(mainShader);
     scene->camera.update();
     for (unsigned i = 0; i < scene->lights.size(); ++i)
     {
         scene->lights[i].update();
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    scene->skybox.draw();
-    for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
+    // TODO scene->skybox.draw();
+    /*for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         if (i == 1)
             continue; // muzzle
@@ -50,13 +51,18 @@ void Renderer::renderScene(Scene *scene)
     }
     glDisable(GL_LIGHTING);
     scene->gameObjects[1]->draw();
-    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);*/
     HUD.draw();
-    glFlush();
+    assert(glGetError() == 0);
     WINDOW.internal.display();
 }
 void Renderer::terminate()
 {
+}
+GLuint Renderer::getUniformLocation(const char *uniform)
+{
+    glUseProgram(mainShader);
+    return glGetUniformLocation(mainShader, uniform);
 }
 GLuint Renderer::loadShaderProgram(const char *vertexShaderPath, const char *fragmentShaderPath)
 {
