@@ -124,6 +124,7 @@ void Mesh::draw()
     glDrawElementsBaseVertex(GL_TRIANGLES, sizes[INDEX_BUFFER] / sizeof(unsigned), GL_UNSIGNED_INT, 0, baseVertex);
 
     glBindTexture(GL_TEXTURE_2D, 0);
+    assert(glGetError() == 0);
 }
 bool Mesh::getTexture(GLuint &texture)
 {

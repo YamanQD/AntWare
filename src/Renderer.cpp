@@ -21,6 +21,8 @@ void Renderer::init()
     glEnable(GL_CULL_FACE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    mainShader = loadShaderProgram("Shaders/testing.vert", "Shaders/testing.frag");
+
     HUD.setShaderProgram(loadShaderProgram("Shaders/hud.vert", "Shaders/hud.frag"));
 }
 void Renderer::renderScene(Scene *scene)

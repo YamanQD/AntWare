@@ -12,6 +12,7 @@ namespace aw
     {
     private:
         Renderer();
+        GLuint mainShader;
 
     public:
         static Renderer &instance();
