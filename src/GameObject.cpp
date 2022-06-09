@@ -3,6 +3,8 @@ using namespace aw;
 using namespace glm;
 using namespace std;
 
+GLuint GameObject::modelLocation;
+
 GameObject::GameObject(shared_ptr<Mesh> mesh, Material material, GameObject *parent, bool isStatic, int type) : meshPtr(mesh),
 																												isStatic(isStatic),
 																												classType(type),
@@ -35,18 +37,16 @@ mat4 GameObject::applyTransform()
 
 	mat4 transform = transMat * rotationMat * scaleMat;
 
-	glMultMatrixf(&transform[0][0]);
 	return parentMat * transform;
 }
 
 void GameObject::draw()
 {
 	material.apply();
-	/*glPushMatrix(); //TODO
 	transformationMat = applyTransform();
+	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, &transformationMat[0][0]);
 	recalculateAABB();
 	meshPtr->draw();
-	glPopMatrix();*/
 }
 void GameObject::fixedUpdate(float deltaTime)
 {
@@ -150,6 +150,9 @@ int GameObject::getClass()
 std::shared_ptr<Mesh> GameObject::getMesh()
 {
 	return meshPtr;
+}
+void GameObject::setModelLocation(GLuint location){
+	modelLocation = location;
 }
 void GameObject::drawAABB(vec3 color)
 {
