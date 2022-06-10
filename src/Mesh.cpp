@@ -121,7 +121,7 @@ void Mesh::draw()
     }
 
     glBindVertexArray(VAO);
-    glDrawElementsBaseVertex(GL_TRIANGLES, sizes[INDEX_BUFFER] / sizeof(unsigned), GL_UNSIGNED_INT, 0, baseVertex);
+    glDrawElementsBaseVertex(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, (void *)(offsets[INDEX_BUFFER]), baseVertex);
 
     glBindTexture(GL_TEXTURE_2D, 0);
     assert(glGetError() == 0);

@@ -31,8 +31,8 @@ Light::Light(
 									  .ambient = (ambient),
 									  .diffuse = (diffuse),
 									  .specular = (specular),
-									  .angle = (angle / 2.0f),
-									  .direction = (direction)},
+									  .direction = (direction),
+									  .angle = (angle / 2.0f)},
 						  parent(parent)
 {
 	if (angle > 360.0f || angle < 0.0f)
