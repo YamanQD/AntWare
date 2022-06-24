@@ -3,8 +3,9 @@ using namespace aw;
 using namespace std;
 using namespace sf;
 using namespace glm;
-Player::Player(shared_ptr<Mesh> mesh, Material material, vec2 mapMinLimit, vec2 mapMaxLimit,
+Player::Player(shared_ptr<Mesh> mesh, Material material, shared_ptr<Mesh> bulletMesh, vec2 mapMinLimit, vec2 mapMaxLimit,
                GameObject *parent) : GameObject(mesh, material, parent, false, 2),
+                                     bulletMesh(bulletMesh),
                                      mapMinLimit(mapMinLimit),
                                      mapMaxLimit(mapMaxLimit)
 {
@@ -23,7 +24,6 @@ Player::Player(shared_ptr<Mesh> mesh, Material material, vec2 mapMinLimit, vec2 
 }
 void Player::start()
 {
-    bulletMesh = shared_ptr<Mesh>(new Mesh("./Assets/Models/Bullet.glb", "Assets/Textures/Bullet.png"));
     transparentTexture = Mesh::createTexture("./Assets/Textures/transparent.png");
     flashTexture = Mesh::createTexture("./Assets/Textures/flash.png");
     children[0]->getMesh()->setTexture(transparentTexture);

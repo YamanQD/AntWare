@@ -47,6 +47,7 @@ namespace aw
         unsigned totalAmmo = 36, inHandAmmo = 12, maxAmmo = 12;
 
         Player(std::shared_ptr<Mesh> mesh, Material material,
+               std::shared_ptr<Mesh> bulletMesh,
                glm::vec2 mapMinLimit, glm::vec2 mapMaxLimit,
                GameObject *parent = nullptr);
         void start() override;

@@ -149,7 +149,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new StaticGO(mesh, material, parent);
             break;
         case CLASSES::PLAYER:
-            gameObject = new Player(mesh, material, mapMinLimit, mapMaxLimit, parent);
+            gameObject = new Player(mesh, material,meshes[5], mapMinLimit, mapMaxLimit, parent);
             if (array[i].HasMember("ammo"))
             {
                 ((Player *)gameObject)->totalAmmo = array[i]["ammo"].GetInt();
