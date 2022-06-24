@@ -115,7 +115,14 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
                                                     vec2 mapMinLimit,
                                                     vec2 mapMaxLimit)
 {
-    vector<GameObject *> gameObjects;
+    int bulletMeshIdx;
+    for (unsigned i = 0; i < meshes.size();++i){
+        if(meshes[i]->getName()=="Bullet"){
+            bulletMeshIdx = i;
+            break;
+        }
+    }
+        vector<GameObject *> gameObjects;
     for (unsigned i = 0; i < array.Size(); ++i)
     {
         int classType = array[i]["class"].GetInt();
@@ -149,7 +156,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new StaticGO(mesh, material, parent);
             break;
         case CLASSES::PLAYER:
-            gameObject = new Player(mesh, material,meshes[5], mapMinLimit, mapMaxLimit, parent);
+            gameObject = new Player(mesh, material,meshes[bulletMeshIdx], mapMinLimit, mapMaxLimit, parent);
             if (array[i].HasMember("ammo"))
             {
                 ((Player *)gameObject)->totalAmmo = array[i]["ammo"].GetInt();

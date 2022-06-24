@@ -16,6 +16,7 @@ Mesh::Mesh(const char *path, const char *texPath)
     if (!scene)
         throw runtime_error(path); // TODO prettier formatting
     aiMesh *mesh = scene->mMeshes[0];
+    name = mesh->mName.C_Str();
     hasUniformColor = false;
     if (texPath)
     {
@@ -222,4 +223,7 @@ void Mesh::constructVAO(vector<shared_ptr<Mesh>> meshes)
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void *)texCoordsOffset);
 
     assert(glGetError() == 0);
+}
+const string Mesh::getName(){
+    return name;
 }

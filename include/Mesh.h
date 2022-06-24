@@ -25,6 +25,7 @@ namespace aw
         };
         static Assimp::Importer importer;
         bool hasTexture, hasUniformColor, hasIndices;
+        std::string name;
         GLuint texture;
         std::vector<unsigned> indices;
         std::vector<glm::vec3> vertices;
@@ -48,6 +49,7 @@ namespace aw
         bool getUniformColor(glm::vec4 &color);
         void setUniformColor(glm::vec4 color);
         const std::vector<glm::vec3> &getVertices();
+        const std::string getName();
         static int createTexture(const char *path);
         static void constructVAO(std::vector<std::shared_ptr<Mesh>> meshes);
     };
