@@ -56,3 +56,6 @@ void Camera::setViewPerspectiveLocation(GLint location)
 {
     viewPerspectiveLocation = location;
 }
+void Camera::setPosLoaction(GLint location){
+    posLocation = location;
+}
