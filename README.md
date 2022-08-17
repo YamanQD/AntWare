@@ -4,6 +4,8 @@
 A small game made by a couple of students as a university project.
 Built from scratch using C++ and Legacy OpenGL, hence the name.
 
+### [Available on itch.io](https://reddeadalice.itch.io/antware)
+
 ## Story
 
 While you're casually working on your PC, you're surprised by a bunch of ants in your PC's inner parts, working hard to destroy them.
