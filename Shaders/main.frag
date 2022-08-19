@@ -19,6 +19,7 @@ struct Material {
   vec4 diffuse;
   vec4 specular;
   float shininess;
+  float alpha;
 };
 
 uniform sampler2D albedo;
@@ -47,5 +48,5 @@ void main() {
       }
     }
   }
-  color.a = texColor.a;
+  color.a = texColor.a*material.alpha;
 }
