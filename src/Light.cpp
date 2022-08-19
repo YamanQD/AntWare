@@ -1,4 +1,5 @@
 #include <Light.h>
+#include<Renderer.h>
 using namespace aw;
 using namespace std;
 using namespace glm;
@@ -90,5 +91,8 @@ void Light::constructUniformBuffer(vector<Light> &lights)
 	glBindBuffer(GL_UNIFORM_BUFFER, UBO);
 	glBufferData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * lights.size(),
 				 stagingBuffer.data(), GL_DYNAMIC_DRAW);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 0, UBO);
+	int lightsIndex = glGetUniformBlockIndex(RENDERER.getMainShader(), "Lights");
+	glUniformBlockBinding(RENDERER.getMainShader(), lightsIndex, 0);
 	assert(glGetError() == 0);
 }
