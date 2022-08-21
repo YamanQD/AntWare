@@ -12,6 +12,7 @@ struct LightStruct {
   vec4 ambient, diffuse, specular;
   vec3 direction;
   float angle;
+  vec3 position;
 };
 
 struct Material {

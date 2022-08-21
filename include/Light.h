@@ -24,6 +24,8 @@ namespace aw
 			glm::vec4 ambient, diffuse, specular;
 			glm::vec3 direction;
 			float angle;
+			glm::vec3 position;
+			float padding2;
 		} lightStruct;
 
 		GameObject *parent = nullptr;

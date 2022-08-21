@@ -1,5 +1,5 @@
 #include <Light.h>
-#include<Renderer.h>
+#include <Renderer.h>
 using namespace aw;
 using namespace std;
 using namespace glm;
@@ -15,7 +15,8 @@ Light::Light(
 									  .ambient = (ambient),
 									  .diffuse = (diffuse),
 									  .specular = (specular),
-									  .angle = (180.0f)},
+									  .angle = (180.0f),
+									  .position = (position)},
 						  parent(parent)
 {
 	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
@@ -33,7 +34,8 @@ Light::Light(
 									  .diffuse = (diffuse),
 									  .specular = (specular),
 									  .direction = (direction),
-									  .angle = (angle / 2.0f)},
+									  .angle = (angle / 2.0f),
+									  .position = (position)},
 						  parent(parent)
 {
 	if (angle > 360.0f || angle < 0.0f)
