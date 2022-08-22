@@ -29,6 +29,7 @@ void Camera::update()
     mat4 viewPerspective = perspective(FOV, aspectRatio, 0.1f, 120.0f) *
                            lookAt(camPos, lookedAt, camUp);
     glUniformMatrix4fv(viewPerspectiveLocation, 1, GL_FALSE, &viewPerspective[0][0]);
+    glUniform3fv(posLocation, 1, &camPos.x);
     assert(glGetError() == 0);
 }
 void Camera::fixedUpdate(float deltaTime)
