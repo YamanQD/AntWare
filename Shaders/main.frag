@@ -36,20 +36,20 @@ void main() {
     if (lights[i].enabled) {
       if (lights[i].type == 0) {        // Directional
         vec3 fragToLight=-lights[i].direction;
-        float diffuseFactor = dot(fragToLight, normalWorld);
+        float diffuseFactor = max(dot(fragToLight, normalWorld),0);
         vec3 fragToObserver = normalize(-fragWorld + observerPos);
         vec3 halfWay = normalize(fragToLight + fragToObserver);
-        float specFactor = pow(dot(halfWay, normalWorld), material.shininess);
+        float specFactor = max(pow(dot(halfWay, normalWorld), material.shininess),0);
         color +=
             diffuseFactor * lights[i].diffuse * material.diffuse * texColor +
             specFactor * lights[i].specular * material.specular +
             ambientFactor * lights[i].ambient * material.ambient;
       } else if (lights[i].type == 1) { // Point
         vec3 fragToLight = normalize(-fragWorld + lights[i].position);
-        float diffuseFactor = dot(fragToLight, normalWorld);
+        float diffuseFactor = max(dot(fragToLight, normalWorld),0);
         vec3 fragToObserver = normalize(-fragWorld + observerPos);
         vec3 halfWay = normalize(fragToLight + fragToObserver);
-        float specFactor = pow(dot(halfWay, normalWorld), material.shininess);
+        float specFactor = max(pow(dot(halfWay, normalWorld), material.shininess),0);
         color +=
             diffuseFactor * lights[i].diffuse * material.diffuse * texColor +
             specFactor * lights[i].specular * material.specular +
