@@ -55,6 +55,17 @@ void main() {
             specFactor * lights[i].specular * material.specular +
             ambientFactor * lights[i].ambient * material.ambient;
       } else if (lights[i].type == 2) { // Spot
+        vec3 fragToLight=normalize(-fragWorld+lights[i].position);
+        float dirToLight=dot(-fragToLight,normalize(lights[i].direction));
+        if(dirToLight<cos(radians(lights[i].angle))) continue;
+        float diffuseFactor = max(dot(fragToLight, normalWorld),0);
+        vec3 fragToObserver = normalize(-fragWorld + observerPos);
+        vec3 halfWay = normalize(fragToLight + fragToObserver);
+        float specFactor = max(pow(dot(halfWay, normalWorld), material.shininess),0);
+        color +=
+            diffuseFactor * lights[i].diffuse * material.diffuse * texColor +
+            specFactor * lights[i].specular * material.specular +
+            ambientFactor * lights[i].ambient * material.ambient;
       }
     }
   }

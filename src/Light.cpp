@@ -9,7 +9,7 @@ Light::Light(vec4 ambient, vec4 diffuse, vec4 specular, LightType type, vec3 pos
 			 float angle, GameObject *parent) : parent(parent)
 {
 	lightStruct.ambient = ambient;
-	lightStruct.angle = angle/2.0f;
+	lightStruct.angle = angle / 2.0f;
 	lightStruct.diffuse = diffuse;
 	lightStruct.direction = direction;
 	lightStruct.enabled = true;
@@ -20,8 +20,14 @@ Light::Light(vec4 ambient, vec4 diffuse, vec4 specular, LightType type, vec3 pos
 }
 void Light::update()
 {
+	LightStruct tempStruct=lightStruct;
+	if (lightStruct.type == LightType::SPOT)
+	{
+		tempStruct.position = parent->applyTransform() * vec4(transform.getPosition(), 1);
+		tempStruct.direction = parent->applyTransform() * vec4(lightStruct.direction, 0);
+	}
 	glBindBuffer(GL_UNIFORM_BUFFER, UBO);
-	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * index, sizeof(LightStruct), &lightStruct);
+	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * index, sizeof(LightStruct), &tempStruct);
 	assert(glGetError() == 0);
 }
 void Light::toggle()
