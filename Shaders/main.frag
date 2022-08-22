@@ -45,7 +45,7 @@ void main() {
             specFactor * lights[i].specular * material.specular +
             ambientFactor * lights[i].ambient * material.ambient;
       } else if (lights[i].type == 1) { // Point
-        vec3 fragToLight = normalize(-fragWorld + lights[i].direction);
+        vec3 fragToLight = normalize(-fragWorld + lights[i].position);
         float diffuseFactor = dot(fragToLight, normalWorld);
         vec3 fragToObserver = normalize(-fragWorld + observerPos);
         vec3 halfWay = normalize(fragToLight + fragToObserver);

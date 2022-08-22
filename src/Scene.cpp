@@ -116,13 +116,15 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
                                                     vec2 mapMaxLimit)
 {
     int bulletMeshIdx;
-    for (unsigned i = 0; i < meshes.size();++i){
-        if(meshes[i]->getName()=="Bullet"){
+    for (unsigned i = 0; i < meshes.size(); ++i)
+    {
+        if (meshes[i]->getName() == "Bullet")
+        {
             bulletMeshIdx = i;
             break;
         }
     }
-        vector<GameObject *> gameObjects;
+    vector<GameObject *> gameObjects;
     for (unsigned i = 0; i < array.Size(); ++i)
     {
         int classType = array[i]["class"].GetInt();
@@ -156,7 +158,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new StaticGO(mesh, material, parent);
             break;
         case CLASSES::PLAYER:
-            gameObject = new Player(mesh, material,meshes[bulletMeshIdx], mapMinLimit, mapMaxLimit, parent);
+            gameObject = new Player(mesh, material, meshes[bulletMeshIdx], mapMinLimit, mapMaxLimit, parent);
             if (array[i].HasMember("ammo"))
             {
                 ((Player *)gameObject)->totalAmmo = array[i]["ammo"].GetInt();
@@ -205,17 +207,20 @@ static inline vector<Light> parseLights(GenericArray<false, Value> array, const 
         {
         case LightType::POINT:
             position = parseVec(array[i]["position"].GetArray());
-            lights.push_back(Light(ambient, diffuse, specular, position, parent));
+            lights.push_back(Light(ambient, diffuse, specular, LightType::POINT, position,
+                                   vec3(0, 1, 0), 0.0f, parent));
             break;
         case LightType::DIRECTIONAL:
             direction = parseVec(array[i]["direction"].GetArray());
-            lights.push_back(Light( ambient, diffuse, specular, LightType::DIRECTIONAL, direction, parent));
+            lights.push_back(Light(ambient, diffuse, specular, LightType::DIRECTIONAL, vec3(0, 0, 0),
+                                   direction, 0.0f, parent));
             break;
         case LightType::SPOT:
             position = parseVec(array[i]["position"].GetArray());
             direction = parseVec(array[i]["direction"].GetArray());
             angle = array[i]["angle"].GetFloat();
-            lights.push_back(Light( ambient, diffuse, specular, position, direction, angle, parent));
+            lights.push_back(Light(ambient, diffuse, specular, LightType::SPOT, position,
+                                   direction, angle, parent));
             break;
         default:
             printf("Unknown lightType %d, ignoring light", i);
