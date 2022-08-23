@@ -12,7 +12,7 @@ namespace aw
         float FOV;
         static float aspectRatio;
         glm::mat4 viewPerspective;
-        GLint viewPerspectiveLocation;
+        GLint viewPerspectiveLocation,posLocation;
 
     public:
         Transform transform;
@@ -25,5 +25,6 @@ namespace aw
         void update();
         void fixedUpdate(float deltaTime);
         void setViewPerspectiveLocation(GLint location);
+        void setPosLoaction(GLint location);
     };
 }

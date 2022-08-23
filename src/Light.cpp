@@ -1,67 +1,33 @@
 #include <Light.h>
+#include <Renderer.h>
 using namespace aw;
 using namespace std;
 using namespace glm;
 
 GLuint Light::UBO;
-Light::Light(
-	glm::vec4 ambient,
-	glm::vec4 diffuse,
-	glm::vec4 specular,
-	glm::vec3 position,
-	GameObject *parent) : lightStruct{.enabled = (true),
-									  .type = (POINT),
-									  .ambient = (ambient),
-									  .diffuse = (diffuse),
-									  .specular = (specular),
-									  .angle = (180.0f)},
-						  parent(parent)
+Light::Light(vec4 ambient, vec4 diffuse, vec4 specular, LightType type, vec3 position, vec3 direction,
+			 float angle, GameObject *parent) : parent(parent)
 {
-	transform = Transform(position, vec3(0, 0, 0), vec3(1, 1, 1));
-}
-Light::Light(
-	glm::vec4 ambient,
-	glm::vec4 diffuse,
-	glm::vec4 specular,
-	glm::vec3 position,
-	glm::vec3 direction,
-	float angle,
-	GameObject *parent) : lightStruct{.enabled = (true),
-									  .type = (SPOT),
-									  .ambient = (ambient),
-									  .diffuse = (diffuse),
-									  .specular = (specular),
-									  .direction = (direction),
-									  .angle = (angle / 2.0f)},
-						  parent(parent)
-{
-	if (angle > 360.0f || angle < 0.0f)
-		throw "Light angle must be between 0 and 360 degrees.";
-
-	transform = Transform(position, direction, vec3(1, 1, 1));
-}
-Light::Light(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction, GameObject *parent) : parent(parent)
-{
-	if (type == POINT)
-		*this = Light(ambient, diffuse, specular, direction, parent);
-	else if (type == DIRECTIONAL)
-	{
-		this->lightStruct.ambient = ambient;
-		this->lightStruct.diffuse = diffuse;
-		this->lightStruct.specular = specular;
-		this->lightStruct.type = DIRECTIONAL;
-		this->lightStruct.direction = direction;
-		transform = Transform(vec3(0, 0, 0), direction, vec3(1, 1, 1));
-	}
-	else
-	{
-		throw "Incorrect use of Light constructor with LightType::SPOT.";
-	}
+	lightStruct.ambient = ambient;
+	lightStruct.angle = angle / 2.0f;
+	lightStruct.diffuse = diffuse;
+	lightStruct.direction = direction;
+	lightStruct.enabled = true;
+	lightStruct.position = position;
+	lightStruct.specular = specular;
+	lightStruct.type = type;
+	transform = Transform(position, direction);
 }
 void Light::update()
 {
+	LightStruct tempStruct=lightStruct;
+	if (lightStruct.type == LightType::SPOT)
+	{
+		tempStruct.position = parent->applyTransform() * vec4(transform.getPosition(), 1);
+		tempStruct.direction = parent->applyTransform() * vec4(lightStruct.direction, 0);
+	}
 	glBindBuffer(GL_UNIFORM_BUFFER, UBO);
-	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * index, sizeof(LightStruct), &lightStruct);
+	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * index, sizeof(LightStruct), &tempStruct);
 	assert(glGetError() == 0);
 }
 void Light::toggle()
@@ -90,5 +56,8 @@ void Light::constructUniformBuffer(vector<Light> &lights)
 	glBindBuffer(GL_UNIFORM_BUFFER, UBO);
 	glBufferData(GL_UNIFORM_BUFFER, sizeof(LightStruct) * lights.size(),
 				 stagingBuffer.data(), GL_DYNAMIC_DRAW);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 0, UBO);
+	int lightsIndex = glGetUniformBlockIndex(RENDERER.getMainShader(), "Lights");
+	glUniformBlockBinding(RENDERER.getMainShader(), lightsIndex, 0);
 	assert(glGetError() == 0);
 }

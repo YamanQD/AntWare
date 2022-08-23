@@ -8,7 +8,7 @@ namespace aw
 	private:
 		glm::vec4 ambient, diffuse, specular;
 		float shininess, alpha = 1.0f;
-		static GLint ambientLoc, diffuseLoc, specularLoc, shininessLoc;
+		static GLint ambientLoc, diffuseLoc, specularLoc, shininessLoc,alphaLoc;
 
 	public:
 		Material(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, float shininess);

@@ -33,6 +33,7 @@ bool App::init(int argc, char **argv)
     
     currentScene = new Scene(settings.levels[i].c_str());
     currentScene->camera.setViewPerspectiveLocation(RENDERER.getUniformLocation("VP"));
+    currentScene->camera.setPosLoaction(RENDERER.getUniformLocation("observerPos"));
     GameObject::setModelLocation(RENDERER.getUniformLocation("M"));
     Material::setUniformsLocation(RENDERER.getMainShader());
     currentScene->lights[0].toggle();

@@ -20,9 +20,12 @@ namespace aw
 		{
 			bool enabled;
 			LightType type;
+			float padding0,padding1;
 			glm::vec4 ambient, diffuse, specular;
 			glm::vec3 direction;
 			float angle;
+			glm::vec3 position;
+			float padding2;
 		} lightStruct;
 
 		GameObject *parent = nullptr;
@@ -32,9 +35,8 @@ namespace aw
 
 	public:
 		Transform transform;
-		Light( glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, glm::vec3 position, GameObject *parent = nullptr);									  // point light
-		Light( glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, glm::vec3 position, glm::vec3 direction, float angle, GameObject *parent = nullptr); // spot light
-		Light( glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type, glm::vec3 direction, GameObject *parent = nullptr);				  // directional light
+		Light(glm::vec4 ambient, glm::vec4 diffuse, glm::vec4 specular, LightType type,
+			  glm::vec3 position, glm::vec3 direction, float angle, GameObject *parent = nullptr);
 		~Light();
 		void setAmbient(glm::vec4 ambient);
 		void setDiffuse(glm::vec4 diffuse);
@@ -43,6 +45,6 @@ namespace aw
 		void update();
 		void toggle();
 
-		static void constructUniformBuffer( std::vector<Light> &lights);
+		static void constructUniformBuffer(std::vector<Light> &lights);
 	};
 }

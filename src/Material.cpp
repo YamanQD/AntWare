@@ -6,6 +6,7 @@ GLint Material::diffuseLoc;
 GLint Material::ambientLoc;
 GLint Material::specularLoc;
 GLint Material::shininessLoc;
+GLint Material::alphaLoc;
 
 Material::Material(
 	vec4 ambient,
@@ -49,6 +50,7 @@ void Material::apply()
 	glUniform4fv(diffuseLoc, 1, &diffuse.x);
 	glUniform4fv(specularLoc, 1, &specular.x);
 	glUniform1f(shininessLoc, shininess);
+	glUniform1f(alphaLoc, alpha);
 	assert(glGetError() == 0);
 }
 void Material::setUniformsLocation(GLuint program)
@@ -58,5 +60,6 @@ void Material::setUniformsLocation(GLuint program)
 	diffuseLoc = glGetUniformLocation(program, "material.diffuse");
 	specularLoc = glGetUniformLocation(program, "material.specular");
 	shininessLoc = glGetUniformLocation(program, "material.shininess");
-		assert(glGetError() == 0);
+	alphaLoc = glGetUniformLocation(program, "material.alpha");
+	assert(glGetError() == 0);
 }

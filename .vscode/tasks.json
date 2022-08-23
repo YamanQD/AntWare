@@ -22,6 +22,11 @@
             "windows": {
                 "problemMatcher": "$msCompile"
             }
+        },
+        {
+            "label": "Format Shaders",
+            "type": "shell",
+            "command": "clang-format -i ./Shaders/*"
         }
     ]
 }
