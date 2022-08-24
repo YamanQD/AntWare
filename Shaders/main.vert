@@ -9,8 +9,8 @@ out vec3 normalWorld, fragWorld;
 uniform mat4 VP, M;
 
 void main() {
-  gl_Position = VP * M * vec4(positionModel, 1);
-  normalWorld = normalize(vec3(transpose(inverse(M)) * vec4(normalModel, 0)));
   fragWorld = vec3(M * vec4(positionModel, 1));
+  gl_Position = VP * vec4(fragWorld, 1);
+  normalWorld = vec3(transpose(inverse(M)) * vec4(normalModel, 0));
   texCoordOut = texCoord;
 }
