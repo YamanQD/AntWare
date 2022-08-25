@@ -112,6 +112,7 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
 static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> array,
                                                     const vector<shared_ptr<Mesh>> &meshes,
                                                     const vector<Material> &materials,
+                                                    const std::vector<std::vector<std::shared_ptr<aw::Mesh>>> &animations,
                                                     vec2 mapMinLimit,
                                                     vec2 mapMaxLimit)
 {
@@ -168,8 +169,7 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             gameObject = new Ant(mesh, material, parent);
             break;
         case CLASSES::RAGED_ANT:
-            // gameObject = new RagedAnt(animations[animationIndex], mesh, material, parent, gameObjects[0]);
-            gameObject = new Ant(mesh, material, parent);
+            gameObject = new RagedAnt(animations[animationIndex], mesh, material, parent, gameObjects[0]);
             break;
         default:
             printf("Unknown class ID was in the scene : %d,using StaticGO instead.\n GameObject ID: %d\n", classType,
@@ -252,14 +252,22 @@ Scene::Scene(const char *path) : camera(45.0f)
     parseCamera(json["camera"].GetObject(), camera);
     auto materials = parseMaterials(json["materials"].GetArray());
     auto meshes = parseMeshes(json["meshes"].GetArray());
-    Mesh::constructVAO(meshes);
-    // auto animations = parseAnimations(json["animations"].GetArray());
+    auto animations = parseAnimations(json["animations"].GetArray());
+    auto meshesNAnimations = meshes;
+    for (int i = 0; i < animations.size(); ++i)
+    {
+        for (int j = 0; j < animations[i].size(); ++j)
+        {
+            meshesNAnimations.push_back(animations[i][j]);
+        }
+    }
+    Mesh::constructVAO(meshesNAnimations);
     auto mapMinLimitData = json["mapMinLimit"].GetArray();
     auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
     vec2 mapMinLimit = {mapMinLimitData[0].GetFloat(), mapMinLimitData[1].GetFloat()};
     vec2 mapMaxLimit = {mapMaxLimitData[0].GetFloat(), mapMaxLimitData[1].GetFloat()};
     gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials,
-                                   mapMinLimit, mapMaxLimit);
+                                   animations, mapMinLimit, mapMaxLimit);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     Light::constructUniformBuffer(lights);
     /*if (json.HasMember("skybox"))
