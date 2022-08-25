@@ -3,12 +3,10 @@ project('antware', 'cpp',
     version: '1.0.0',
     default_options: ['warning_level=3','default_library=static'])
 
-zlib_dep = dependency('zlib')
 glm_dep = dependency('glm')
 glew_dep = dependency('glew')
 
 if host_machine.system() == 'linux'
-    glu_dep = dependency('glu')
     sfml_dep = dependency('sfml-all')
     assimp_dep = dependency('assimp')
 elif host_machine.system() == 'windows'
@@ -16,8 +14,6 @@ elif host_machine.system() == 'windows'
     cmake = import('cmake')
     compiler = meson.get_compiler('cpp')
     
-    glu_dep = compiler.find_library('glu32')
-
     if target_machine.cpu_family() == 'x86'
         sfml_dep = dependency('sfml_win32')
     elif target_machine.cpu_family() == 'x86_64'
@@ -51,11 +47,11 @@ executable('antware', sources,
     win_subsystem: 'windows',
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, rapidjson_dep, zlib_dep, assimp_dep])
+    dependencies: [sfml_dep, glew_dep, glm_dep, rapidjson_dep, assimp_dep])
 elif host_machine.system() == 'linux'
 executable('antware', sources,
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, glm_dep, glu_dep, zlib_dep, assimp_dep],
+    dependencies: [sfml_dep, glew_dep, glm_dep, assimp_dep],
     cpp_args:['-DDEBUG'])
 endif
