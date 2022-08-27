@@ -44,12 +44,11 @@ sudo pip3 install meson
 
 ```
 sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev
-sudo apt install libglu1-mesa-dev
 ```
 
 ### Building with Meson :
 ```
-meson <your build dir>
+meson <your build dir> --buildtype=release
 cd <your build dir>
 ninja
 ```
