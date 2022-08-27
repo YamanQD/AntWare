@@ -4,6 +4,8 @@
 A small game made by a couple of students as a university project.
 Built from scratch using C++ and Legacy OpenGL, hence the name.
 
+P.S: Starting of Version 2.0, the game fully uses OpenGL 3.3 .
+
 ### [Available on itch.io](https://reddeadalice.itch.io/antware)
 
 ## Story
@@ -17,7 +19,7 @@ But be careful... some of these ants were struck by cosmic lightning and now the
 Player wins when all ants are dead.
 Player loses if his HP reaches zero, he runs out of ammo, or he falls off the map.
 
-### [Game Demo](https://youtu.be/YjLi0lY-T60)
+### [Game Demo (V1) ](https://youtu.be/YjLi0lY-T60)
 
 
 ## Screenshots
@@ -26,11 +28,11 @@ Player loses if his HP reaches zero, he runs out of ammo, or he falls off the ma
 ![Main Menu](Screenshots/main-menu.png)
 
 ### Levels
-![CPU](Screenshots/cpu.png)
-![Laptop](Screenshots/laptop.png)
-![CD Drive](Screenshots/cd-drive.png)
-![CPU Top](Screenshots/cpu-top.png)
-![Motherboard](Screenshots/motherboard.png)
+![CPU (V1)](Screenshots/cpu.png)
+![Laptop (V1)](Screenshots/laptop.png)
+![CD Drive (V1)](Screenshots/cd-drive.png)
+![CPU Top (V1)](Screenshots/cpu-top.png)
+![Motherboard (V1)](Screenshots/motherboard.png)
 
 ## Assets
 
