@@ -15,12 +15,11 @@ void Skybox::draw()
     {
         transform.setPosition(camera->transform.getPosition());
         glDepthMask(GL_FALSE);
-        glDisable(GL_LIGHTING);
-        glPushMatrix();
-        applyTransform();
+        glCullFace(GL_FRONT);
+        transformationMat = applyTransform();
+        glUniformMatrix4fv(GameObject::modelLocation, 1, GL_FALSE, &transformationMat[0][0]);
         meshPtr->draw();
-        glPopMatrix();
-        glEnable(GL_LIGHTING);
         glDepthMask(GL_TRUE);
+        glCullFace(GL_BACK);
     }
 }

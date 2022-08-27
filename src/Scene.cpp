@@ -261,6 +261,11 @@ Scene::Scene(const char *path) : camera(45.0f)
             meshesNAnimations.push_back(animations[i][j]);
         }
     }
+    if (json.HasMember("skybox"))
+    {
+        skybox = Skybox(&camera, json["skybox"].GetString());
+        meshesNAnimations.push_back(skybox.getMesh());
+    }
     Mesh::constructVAO(meshesNAnimations);
     auto mapMinLimitData = json["mapMinLimit"].GetArray();
     auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
@@ -270,8 +275,6 @@ Scene::Scene(const char *path) : camera(45.0f)
                                    animations, mapMinLimit, mapMaxLimit);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     Light::constructUniformBuffer(lights);
-    /*if (json.HasMember("skybox"))
-        skybox = Skybox(&camera, json["skybox"].GetString());*/
 }
 Scene::~Scene()
 {

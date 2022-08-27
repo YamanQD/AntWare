@@ -34,7 +34,7 @@ void Renderer::renderScene(Scene *scene)
         scene->lights[i].update();
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    // TODO scene->skybox.draw();
+    scene->skybox.draw();
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         if (i == 1)
