@@ -1,6 +1,6 @@
 project('antware', 'cpp',
     license: 'GPL-3.0-or-later',
-    version: '1.0.0',
+    version: '2.0.0',
     default_options: ['warning_level=3','default_library=static'])
 
 glm_dep = dependency('glm')
