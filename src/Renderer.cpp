@@ -22,8 +22,11 @@ void Renderer::init()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     mainShader = loadShaderProgram("Shaders/main.vert", "Shaders/main.frag");
-
+    glUseProgram(mainShader);
+    shadelessLocation = getUniformLocation("shadeless");
+    glUseProgram(0);
     HUD.setShaderProgram(loadShaderProgram("Shaders/hud.vert", "Shaders/hud.frag"));
+    assert(glGetError() == 0);
 }
 void Renderer::renderScene(Scene *scene)
 {
@@ -34,7 +37,9 @@ void Renderer::renderScene(Scene *scene)
         scene->lights[i].update();
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glUniform1i(shadelessLocation, 1);
     scene->skybox.draw();
+    glUniform1i(shadelessLocation, 0);
     for (unsigned i = 0; i < scene->gameObjects.size(); ++i)
     {
         if (i == 1)
@@ -50,13 +55,16 @@ void Renderer::renderScene(Scene *scene)
         scene->gameObjects[i]->draw();
     }
     
+    glUniform1i(shadelessLocation, 1);
     scene->gameObjects[1]->draw();
-    
+    glUniform1i(shadelessLocation, 0);
+
     HUD.draw();
     assert(glGetError() == 0);
     WINDOW.internal.display();
 }
-GLuint Renderer::getMainShader(){
+GLuint Renderer::getMainShader()
+{
     return mainShader;
 }
 void Renderer::terminate()

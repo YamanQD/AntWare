@@ -13,6 +13,7 @@ namespace aw
     private:
         Renderer();
         GLuint mainShader;
+        GLuint shadelessLocation;
 
     public:
         static Renderer &instance();

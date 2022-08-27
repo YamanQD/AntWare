@@ -28,11 +28,16 @@ struct Material {
 uniform sampler2D albedo;
 uniform Material material;
 uniform vec3 observerPos;
+uniform bool shadeless = false;
 
 layout(std140) uniform Lights { LightStruct lights[MAX_LIGHTS]; };
 
 void main() {
   vec4 texColor = texture(albedo, texCoordOut);
+  if (shadeless) {
+    color = texColor;
+    return;
+  }
   color = vec4(0);
   vec3 nWorld = normalize(normalWorld);
   for (int i = 0; i < MAX_LIGHTS; i++) {
