@@ -18,7 +18,7 @@ namespace aw
 	private:
 		struct LightStruct
 		{
-			bool enabled;
+			int enabled;
 			LightType type;
 			float padding0,padding1;
 			glm::vec4 ambient, diffuse, specular;
