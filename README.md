@@ -50,5 +50,5 @@ Player loses if his HP reaches zero, he runs out of ammo, or he falls off the ma
 - [Playlist](https://youtube.com/playlist?list=PLq2aS32V3IdYErNVHD19SYDd0Jw0xeJ1h)
 
 ### Artwork
-- Main Menu - by [RedDeadAlice](https://github.com/RedDeadAlice)
+- Main Menu - by [RedDeadAlice](https://github.com/RedDeadAlice), all artwork created is public domain
 - [Muzzle flash](https://pin.it/3HtyRTw)
