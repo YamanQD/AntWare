@@ -1,10 +1,8 @@
 
-# AntWare: LEGACY EDITION 🐜⚔
+# AntWare 🐜⚔
 
 A small game made by a couple of students as a university project.
-Built from scratch using C++ and Legacy OpenGL, hence the name.
-
-P.S: Starting of Version 2.0, the game fully uses OpenGL 3.3 .
+Built from scratch using C++ and Legacy OpenGL, but starting from Version 2.0, the game fully uses OpenGL 3.3 .
 
 ### [Available on itch.io](https://reddeadalice.itch.io/antware)
 
