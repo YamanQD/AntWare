@@ -6,6 +6,8 @@ Built from scratch using C++ and Legacy OpenGL, but starting from Version 2.0, t
 
 ### [Available on itch.io](https://reddeadalice.itch.io/antware)
 
+### [Check out the Godot 3 remake](https://github.com/Red1C3/antware-godot-edition)
+
 ## Story
 
 While you're casually working on your PC, you're surprised by a bunch of ants in your PC's inner parts, working hard to destroy them.
