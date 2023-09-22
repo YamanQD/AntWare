@@ -18,8 +18,18 @@
 #include <Player.h>
 #include <Ant.h>
 #define APP aw::App::instance()
+/** \brief The namespace used across all of the game classes,
+ * short for AntWare.
+*/
 namespace aw
 {
+    /** \brief Game's lifecycle manager.
+     * 
+     * While it serves mainly as a lifecycle states manager,
+     * it also contains logic for inter-GameObjects interactions since game objects
+     * do not have access to one another.
+     * 
+    */
     class App
     {
     private:
