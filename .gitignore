@@ -71,3 +71,7 @@ settings.json
 *.exe
 *.out
 *.app
+
+
+# Temproray keep docs out of sync
+doc/
