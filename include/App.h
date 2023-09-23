@@ -45,13 +45,31 @@ namespace aw
         } settings;
 
         App();
+        /** \brief Sets up the GameObject instances from the created Scene.
+         * 
+         * Calls GameObject::start on all of the GameObject instances in ::currentScene,
+         * it also restarts ::timeSinceStart timer.
+        */
         void start();
+        /** \brief Calls %update function on ::currentScene updatable members, handle mutual
+         * interactions between GameObject instances and move game state from
+         * Status::ONGOING to Status::WIN or Status::LOSE.
+         * 
+        */
         void update();
+        /** \brief Reads "settings.json" and fills App::settings using it, falls back to
+         * "default_settings.json" if "settings.json" was not found.
+         * 
+        */
         void readSettingsFile();
 
+        /** \brief A timer since the ::currentScene start.*/
         sf::Clock timeSinceStart;
+
+        /** \brief The loaded and currently running Scene.*/
         Scene *currentScene;
         float deltaTime = 0.0f;
+        /** \brief The ::currentScene Status.*/
         Status gameStatus;
         sf::Music music;
         sf::SoundBuffer easterEggSoundBuffer;
@@ -59,7 +77,15 @@ namespace aw
 
     public:
         static App &instance();
-        bool init(int argc, char **argv);
+        /** \brief Initilizes the application and main menu, awaits user level selection.
+         * 
+         * Runs Menu::loop until the user selects a level, loads the selected scene and sets
+         * up ::currentScene and the HUD and sets ::gameStatus to Status::ONGOING.
+         * 
+         * \return false if the user closed the game while in the main menu.
+         * \return true if the user selected a level from the main menu.
+        */
+        bool init();
         void loop();
         void terminate();
         float getTime();

@@ -8,7 +8,7 @@ App &App::instance()
     static App app;
     return app;
 }
-bool App::init(int argc, char **argv)
+bool App::init()
 {
     srand(time(nullptr));
     readSettingsFile();

@@ -1,13 +1,13 @@
 #include <App.h>
 using namespace std;
 using namespace aw;
-int main(int argc, char **argv)
+int main()
 {
     try
     {
-        if (APP.init(argc, argv))
+        if (APP.init())
             APP.loop();
-            return 0;
+        return 0;
     }
     catch (const exception &err)
     {
