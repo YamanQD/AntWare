@@ -33,6 +33,9 @@ namespace aw
     class App
     {
     private:
+        /** \brief Game's resolution and levels labels textures, music and JSON files paths
+         * 
+        */
         struct Settings
         {
             int resHeight, resWidth;
