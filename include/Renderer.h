@@ -30,15 +30,32 @@ namespace aw
          * Hud::shaderProgram. 
         */
         void init();
-        /** \brief Renders the while \a scene plus the Hud.
+        /** \brief Renders the whole \a scene plus the Hud.
          * 
          * Calls Camera::update and Light::update on Scene::camera
-         * and Scene::lights instances //TODO continue...
+         * and Scene::lights instances, then it calls Scene::skybox::draw,
+         * Scene::gameObjects::draw and Hud::draw,
+         * it draws the CLASSES::ANT and CLASSES::RAGED_ANT in the end
+         * for better transpareny effects.
+         *
+         * \param scene A pointer to the to-be-rendered Scene.
         */
         void renderScene(Scene *scene);
+        /** \brief Does nothing.*/
         void terminate();
+        /** \brief Reads and compiles the vertex shader in \a vertexShaderPath
+        * and the fragment shader in \a fragmentShaderPath.
+        *
+        * \param vertexShaderPath A path to the vertex shader source code.
+        * \param fragementShaderPath A path to the fragment shader source code.
+        * \return A handle to the compiled shader program.
+        */
         GLuint loadShaderProgram(const char *vertexShaderPath, const char *fragmentShaderPath);
+        /** \param uniform The uniform variable name in ::mainShader.
+        * \return \a uniform handle.
+        */
         GLuint getUniformLocation(const char* uniform);
+        /** \return ::mainShader.*/
         GLuint getMainShader();
     };
 }
