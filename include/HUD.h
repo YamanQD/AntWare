@@ -6,6 +6,7 @@
 #define HUD aw::Hud::instance()
 namespace aw
 {
+    /** \brief The Game's possible states.*/
     enum Status
     {
         WIN,
@@ -13,6 +14,10 @@ namespace aw
         ONGOING,
         LOADING
     };
+    /** \brief Heads-Up Display manager for the game.
+     * 
+     * Handles drawing HUD elements on screen using a special shader.
+    */
     class Hud
     {
     private:
