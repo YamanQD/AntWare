@@ -12,6 +12,10 @@
 #include <Material.h>
 namespace aw
 {
+    /** \brief A textured mesh descriptor class, does not contain material info.
+     * 
+     * All meshes data are stored in a single vertex array object.
+    */
     class Mesh
     {
     private:
@@ -23,6 +27,9 @@ namespace aw
             INDEX_BUFFER,
             NumBuffers
         };
+        /** \brief Assimp library importer class, used to parse meshes from files
+         * to Assimp's representation.
+        */
         static Assimp::Importer importer;
         bool hasTexture, hasUniformColor, hasIndices;
         std::string name;
@@ -32,6 +39,11 @@ namespace aw
         std::vector<glm::vec3> normals;
         std::vector<glm::vec2> texCoords;
         glm::vec4 uniformColor;
+        /** \brief Loads and stores the textured parsed from \a path , stores the texture
+         * handle in ::texture.
+         * 
+         * \param path The path of the image to be loaded and parsed.
+        */
         void loadTexture(const char *path);
 
         static GLuint VAO, VBO, EBO;
@@ -40,6 +52,12 @@ namespace aw
         unsigned baseVertex;
 
     public:
+        /** \brief Parses the mesh data from \a path and texture data from \a texPath
+         * if it was provided.
+         * 
+         * \param path The path of the Assimp's supported mesh file.
+         * \param texPath The path of the sf::Image's supported image file, can be null for no texture.
+        */
         Mesh(const char *path, const char *texPath = nullptr);
         Mesh(const char *path, glm::vec4 color, const char *texPath = nullptr);
         Mesh(const char *path, glm::vec3 color, const char *texPath = nullptr);
