@@ -8,7 +8,13 @@
 #define RENDERER aw::Renderer::instance()
 namespace aw
 {
-    /** \brief Scene Renderer.*/
+    /** \brief Scene Renderer.
+     * 
+     * As of version 2.0, the rendering pipeline is a shaders-based, it uses Blinn-Phong
+     * implemented shaders with no shadows, the renderer is also a basic forward-shading one.
+     * 
+     * More info on Blinn-Phong shading [here](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model)
+    */
     class Renderer
     {
     private:
