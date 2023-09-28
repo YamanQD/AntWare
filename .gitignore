@@ -72,6 +72,8 @@ settings.json
 *.out
 *.app
 
+# Clangd Cache
+.cache/
 
 # Temproray keep docs out of sync
 doc/
