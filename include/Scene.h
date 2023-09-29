@@ -25,7 +25,7 @@ namespace aw
     };
     /** \brief Game level data descriptor, contains GameObject instances, Light instances
      * a camera instance and a skybox instance.
-    */
+     */
     class Scene
     {
     public:

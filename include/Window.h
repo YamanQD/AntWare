@@ -14,10 +14,10 @@ namespace aw
         sf::Window internal;
         static Window &instance();
         /** \brief Creates an OpenGL 3.3 capable window.
-         * 
+         *
          * \param height The height of the window.
          * \param width The width of the window.
-        */
+         */
         void init(int height, int width);
         /** \brief Closes ::internal window.*/
         void terminate();

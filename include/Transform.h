@@ -12,7 +12,7 @@ namespace aw
      *
      * NOTE: The rotation axis mentioned in many places passes through the object's
      * geometrical center (model-space origin).
-     * 
+     *
      * NOTE: Using Y as up vector, X as right vector and Z as forward vector.
      *
      * NOTE: The "global space" is actually the parent's space if the GameObject (or any other
