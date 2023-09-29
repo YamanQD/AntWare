@@ -49,8 +49,7 @@ sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev librapidjson-d
 ### Building with Meson :
 ```
 meson <your build dir> --buildtype=release
-cd <your build dir>
-ninja
+ninja -C<your build dir>
 ```
 
 # Setting up settings
