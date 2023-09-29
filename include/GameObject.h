@@ -71,7 +71,7 @@ public:
   /** \brief Draws the mesh after applying the transformations*/
   virtual void draw();
   /** \brief [DEPRECATED] Used to draw AABB for debugging, uses Legacy OpenGL so
-   * it doesn't work.
+   * it doesn't work since version 2.0.
    *
    * \param color The color of the AABB lines (unsigned normalized RGBA).
    */
