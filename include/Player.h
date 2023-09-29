@@ -88,15 +88,42 @@ public:
    * Locks the Player angular movement on the Z (forward) axis.
    */
   void start() override;
-  /** \brief Handle user input and Player and ::bullets state management.*/ // TODO details.
+  /** \brief Handle user input and Player and ::bullets state management.
+   *
+   * Handles the player movement input and mouse motion, destroys timedout
+   * Bullets, Kills the player if he ::fallingTime exceeds ::dieAfter.
+   */
   void update() override;
+  /** \brief In addition to GameObject::fixedUpdate, it handles camera movement
+   * correctly runs Bullet::fixedUpdate on ::bullets, updates fallingTime if
+   * ::hasFallen and runs animations if their bool values are true.
+   *
+   * \param deltaTime Passed to GameObject::fixedUpdate and Bullet::fixedUpdate.
+   */
   void fixedUpdate(float deltaTime) override;
+  /** \brief Draws the Player and ::bullets.*/
   void draw() override;
+  /** \brief Fires a Bullet and adds it to ::bullets.*/
   void dispatchBullet();
+  /** \brief Starts reloading */
   void reload();
+  /** \brief Destorys a Bullet from ::bullets.
+   *
+   * \param index The index of the Bullet to destory.
+   */
   void destroyBullet(int index);
+  /** \brief Deals \a amount damage to the Player.
+   *
+   * \param amount The amount of damage to deal.
+   * \return true if hp is equal or lower than zero.
+   * \return false if hp is greater than zero.
+   */
   bool damage(float amount);
+  /** \return true if hp is equal or lower than zero.
+   * \return false if hp is greater than zero.
+   */
   bool isDead();
+  /** \brief Stops Player from making any sound.*/
   void killSound();
 };
 } // namespace aw
