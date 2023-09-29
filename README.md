@@ -21,6 +21,9 @@ Player loses if his HP reaches zero, he runs out of ammo, or he falls off the ma
 
 ### [Game Demo (V1) ](https://youtu.be/YjLi0lY-T60)
 
+## Docs
+Install [doxygen](doxygen.nl/) and run ```doxygen``` at the root of the repo,
+documentation will be generated in ./docs/doc
 
 ## Screenshots
 
