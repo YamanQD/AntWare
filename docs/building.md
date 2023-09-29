@@ -37,7 +37,7 @@
 
 ```
 sudo apt install build-essential ninja-build pkgconf
-sudo pip3 install meson
+pip3 install meson
 ```
 
 ### Installing Dependnecies:
