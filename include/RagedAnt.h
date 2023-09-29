@@ -39,7 +39,14 @@ public:
          * animation
    * meshes to the Ant's texture.*/
   void start() override;
+  /** \brief In addition to Ant::update, setup the direction and velocity to
+   * chase ::target, if ::target is visible, does nothing otherwise.
+   */
   void update() override;
+  /** \brief In addition to Ant::fixedUpdate, call ::animate( \a deltaTime ) if
+   * the RagedAnt is moving, return to idle position if the RagedAnt is not
+   * moving.
+   */
   void fixedUpdate(float deltaTime) override;
 };
 }
