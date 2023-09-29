@@ -1,7 +1,7 @@
 
 # Building instructions
 
-## Windows
+## Windows (Out-of-date, works on version 1.0)
 
 ### Required tools
 
@@ -43,7 +43,7 @@ sudo pip3 install meson
 ### Installing Dependnecies:
 
 ```
-sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev
+sudo apt install libsfml-dev libglew-dev libglm-dev libassimp-dev librapidjson-dev
 ```
 
 ### Building with Meson :
@@ -52,10 +52,12 @@ meson <your build dir> --buildtype=release
 cd <your build dir>
 ninja
 ```
+
+# Setting up settings
 After these steps you should have your executable named ``ant-warrior`` within your build directory.
 
 Make a copy of ``default_settings.json`` and modify it for your settings.
 
 Rename your settings file to ``settings.json``.
 
-Place your settings file in your cwd.
+Place your settings file in the executable directory.
