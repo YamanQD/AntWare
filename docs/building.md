@@ -11,7 +11,7 @@
 
 ### Instructions
 
-### Pre-requests
+### Prerequisites
 
 - Make sure `python3, pip3, ninja` are available in your PATH.
 - Install meson using pip3 by running `pip3 install meson` under a command prompt with administrative privileges.
