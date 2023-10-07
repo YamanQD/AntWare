@@ -1,0 +1,22 @@
+app-id: io.github.yamanqd.antware
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: antware
+
+modules:
+  - name: SFML
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DSFML_BUILD_EXAMPLES=0
+        -DSFML_BUILD_DOC=0
+        -DSFML_BUILD_AUDIO=1
+        -DSFML_BUILD_WINDOW=1
+        -DSFML_INSTALL_PKGCONFIG_FILES=1
+    sources:
+      - type: git
+        url: https://github.com/SFML/SFML.git
+        tag: 2.6.0
+        disable-shallow-clone: false
