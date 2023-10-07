@@ -20,3 +20,17 @@ modules:
         url: https://github.com/SFML/SFML.git
         tag: 2.6.0
         disable-shallow-clone: false
+  - name: ASSIMP
+    buildsystem: cmake
+    config-opts:
+      - -DASSIMP_NO_EXPORT=0
+        -DASSIMP_BUILD_ALL_EXPORTERS_BY_DEFAULT=0
+        -DASSIMP_BUILD_TESTS=0
+        -DASSIMP_INJECT_DEBUG_POSTFIX=0
+        -DASSIMP_INSTALL_PDB=0
+    sources:
+      - type: git
+        url: https://github.com/assimp/assimp.git
+        tag: v5.3.1
+        disable-shallow-clone: false
+
