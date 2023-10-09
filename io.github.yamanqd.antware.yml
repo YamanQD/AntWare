@@ -5,6 +5,7 @@ sdk: org.freedesktop.Sdk
 command: antware
 
 modules:
+  - shared-modules/glew/glew.json
   - name: SFML
     buildsystem: cmake
     config-opts:
@@ -33,4 +34,3 @@ modules:
         url: https://github.com/assimp/assimp.git
         tag: v5.3.1
         disable-shallow-clone: false
-
