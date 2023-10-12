@@ -3,7 +3,6 @@ project('antware', 'cpp',
     version: '2.0.0',
     default_options: ['warning_level=3','default_library=static'])
 
-glm_dep = dependency('glm')
 glew_dep = dependency('glew')
 
 if host_machine.system() == 'linux'
@@ -11,6 +10,7 @@ if host_machine.system() == 'linux'
     assimp_dep = dependency('assimp')
 elif host_machine.system() == 'windows'
     rapidjson_dep = dependency('rapidjson')
+    glm_dep = dependency('glm')
     cmake = import('cmake')
     compiler = meson.get_compiler('cpp')
     
@@ -52,6 +52,6 @@ elif host_machine.system() == 'linux'
 executable('antware', sources,
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
-    dependencies: [sfml_dep, glew_dep, glm_dep, assimp_dep],
+    dependencies: [sfml_dep, glew_dep, assimp_dep],
     cpp_args:['-DDEBUG'])
 endif
