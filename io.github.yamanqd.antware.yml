@@ -37,7 +37,7 @@ modules:
   - name: GLM
     buildsystem: simple
     build-commands:
-      -  install -d glm ${FLATPAK_DEST}/include
+      -  install -d glm /app/include
     sources:
       - type: git
         url: https://github.com/g-truc/glm.git
@@ -46,9 +46,16 @@ modules:
   - name: rapidjson
     buildsystem: simple
     build-commands:
-      - install -d ./include/rapidjson ${FLATPAK_DEST}/include
+      - install -d ./include/rapidjson /app/include
     sources:
       - type: git
         url: https://github.com/Tencent/rapidjson.git
         tag: v1.1.0
+        disable-shallow-clone: false
+  - name: antware
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/YamanQD/AntWare.git
+        tag: flatpak-support-setup
         disable-shallow-clone: false
