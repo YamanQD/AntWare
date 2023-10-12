@@ -24,7 +24,7 @@ modules:
   - name: ASSIMP
     buildsystem: cmake
     config-opts:
-      - -DASSIMP_NO_EXPORT=0
+      - -DASSIMP_NO_EXPORT=1
         -DASSIMP_BUILD_ALL_EXPORTERS_BY_DEFAULT=0
         -DASSIMP_BUILD_TESTS=0
         -DASSIMP_INJECT_DEBUG_POSTFIX=0
