@@ -267,6 +267,7 @@ Scene::Scene(const char *path) : camera(45.0f)
         meshesNAnimations.push_back(skybox.getMesh());
     }
     Mesh::constructVAO(meshesNAnimations);
+    Mesh::freeLastImportedScene();
     auto mapMinLimitData = json["mapMinLimit"].GetArray();
     auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
     vec2 mapMinLimit = {mapMinLimitData[0].GetFloat(), mapMinLimitData[1].GetFloat()};

@@ -109,5 +109,6 @@ namespace aw
          * contain all the Scene meshes.
          */
         static void constructVAO(std::vector<std::shared_ptr<Mesh>> meshes);
+        static void freeLastImportedScene();
     };
 }

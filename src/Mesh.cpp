@@ -56,7 +56,6 @@ Mesh::Mesh(const char *path, const char *texPath)
         for (unsigned i = 0; i < texCoords.size(); ++i)
             texCoords[i] = {mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y};
     }
-    importer.FreeScene();
 }
 Mesh::Mesh(const char *path, glm::vec4 color, const char *texPath) : Mesh(path, texPath)
 {
@@ -226,4 +225,8 @@ void Mesh::constructVAO(vector<shared_ptr<Mesh>> meshes)
 }
 const string Mesh::getName(){
     return name;
+}
+
+void Mesh::freeLastImportedScene(){
+    importer.FreeScene();
 }
