@@ -27,6 +27,12 @@ namespace aw
             INDEX_BUFFER,
             NumBuffers
         };
+
+        static GLuint VAO, VBO, EBO;
+        GLuint offsets[NumBuffers];
+        GLuint sizes[NumBuffers];
+    
+    protected:
         /** \brief Assimp library importer class, used to parse meshes from files
          * to Assimp's representation.
          */
@@ -45,12 +51,7 @@ namespace aw
          * \param path The path of the image to be loaded and parsed.
          */
         void loadTexture(const char *path);
-
-        static GLuint VAO, VBO, EBO;
-        GLuint offsets[NumBuffers];
-        GLuint sizes[NumBuffers];
         unsigned baseVertex;
-
     public:
         /** \brief Parses the mesh data from \a path and texture data from \a texPath
          * if it was provided.
