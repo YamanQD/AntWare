@@ -1,5 +1,9 @@
+#include <assimp/matrix4x4.h>
+#include <glm/matrix.hpp>
 #include<helpers.h>
 using namespace std;
+using namespace glm;
+
 vector<char> aw::readBinFile(const char* path){
     vector<char> data;
     fstream fileStream(path, ios::binary | ios::ate | ios::in);
@@ -13,4 +17,11 @@ vector<char> aw::readBinFile(const char* path){
     fileStream.flush();
     fileStream.close();
     return data;
+}
+
+mat4 aw::convertAssimpMatToGLM(aiMatrix4x4& matrix){
+    mat4* reinterpretedMatrix=reinterpret_cast<mat4*>(&matrix);
+
+    //Assimp matrices are row-major while GLM's are column-major
+    return transpose(*reinterpretedMatrix);
 }

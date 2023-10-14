@@ -1,4 +1,6 @@
+#include <helpers.h>
 #include <SkinnedMesh.h>
+#include <cstddef>
 
 using namespace aw;
 
@@ -19,5 +21,8 @@ SkinnedMesh::SkinnedMesh(const char *path, const char *texPath)
     }
   }
 
-  //TODO read bones data into GLM structures
+  bonesInverseBindMats.resize(mesh->mNumBones);
+  for(size_t i=0;i<mesh->mNumBones;++i){
+    bonesInverseBindMats[i]=convertAssimpMatToGLM(mesh->mBones[i]->mOffsetMatrix);
+  }
 }

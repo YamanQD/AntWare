@@ -22,6 +22,7 @@ private:
 
   std::vector<unsigned> bonesIDs;
   
+  std::vector<glm::mat4> bonesInverseBindMats;
 
 public:
   SkinnedMesh(const char *path, const char *texPath = nullptr);
