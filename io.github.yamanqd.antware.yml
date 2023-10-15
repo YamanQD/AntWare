@@ -6,16 +6,17 @@ command: antware
 
 modules:
   - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
   - name: SFML
     buildsystem: cmake
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-        -DCMAKE_INSTALL_PREFIX=/usr
         -DSFML_BUILD_EXAMPLES=0
         -DSFML_BUILD_DOC=0
         -DSFML_BUILD_AUDIO=1
         -DSFML_BUILD_WINDOW=1
-        -DSFML_INSTALL_PKGCONFIG_FILES=1
+    post-install:
+      - cp /app/pkgconfig/*.pc /app/lib/pkgconfig/
     sources:
       - type: git
         url: https://github.com/SFML/SFML.git
@@ -37,7 +38,7 @@ modules:
   - name: GLM
     buildsystem: simple
     build-commands:
-      -  install -d glm /app/include
+      -  cp -r ./glm /app/include/
     sources:
       - type: git
         url: https://github.com/g-truc/glm.git
@@ -46,7 +47,7 @@ modules:
   - name: rapidjson
     buildsystem: simple
     build-commands:
-      - install -d ./include/rapidjson /app/include
+      - cp -r ./include/rapidjson /app/include
     sources:
       - type: git
         url: https://github.com/Tencent/rapidjson.git
