@@ -53,5 +53,12 @@ executable('antware', sources,
     override_options: ['cpp_std=c++17'],
     include_directories: ['include'],
     dependencies: [sfml_dep, glew_dep, assimp_dep],
-    cpp_args:['-DDEBUG'])
+    cpp_args:['-DDEBUG'],
+    install: true)
+
+install_subdir('Assets',install_dir:'share/antware')
+install_data('default_settings.json')
+install_subdir('scenes',install_dir:'share/antware')
+install_subdir('Shaders',install_dir:'share/antware')
+    
 endif
