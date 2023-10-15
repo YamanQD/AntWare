@@ -16,7 +16,7 @@ modules:
         -DSFML_BUILD_AUDIO=1
         -DSFML_BUILD_WINDOW=1
     post-install:
-      - cp /app/pkgconfig/*.pc /app/lib/pkgconfig/
+      - cp /app/pkgconfig/*.pc $FLATPAK_DEST/lib/pkgconfig/
     sources:
       - type: git
         url: https://github.com/SFML/SFML.git
@@ -38,7 +38,7 @@ modules:
   - name: GLM
     buildsystem: simple
     build-commands:
-      -  cp -r ./glm /app/include/
+      -  cp -r ./glm $FLATPAK_DEST/include/
     sources:
       - type: git
         url: https://github.com/g-truc/glm.git
@@ -47,7 +47,7 @@ modules:
   - name: rapidjson
     buildsystem: simple
     build-commands:
-      - cp -r ./include/rapidjson /app/include
+      - cp -r ./include/rapidjson $FLATPAK_DEST/include
     sources:
       - type: git
         url: https://github.com/Tencent/rapidjson.git
