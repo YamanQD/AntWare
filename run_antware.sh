@@ -1,3 +1,3 @@
 #!/bin/bash
 
-(cd $FLATPAK_DEST/share/antware; antware)
+(cd /app/share/antware; antware)
