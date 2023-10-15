@@ -1,3 +1,3 @@
 #!/bin/bash
 
-(cd share/antware; antware)
+(cd /share/antware; antware)
