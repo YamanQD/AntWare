@@ -2,7 +2,7 @@ app-id: io.github.yamanqd.antware
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: antware
+command: run_antware.sh
 
 modules:
   - shared-modules/glew/glew.json
@@ -60,3 +60,8 @@ modules:
         url: https://github.com/YamanQD/AntWare.git
         tag: flatpak-support-setup
         disable-shallow-clone: false
+
+finish-args:
+  - --socket=x11
+  - --device=dri
+  - --socket=pulseaudio
