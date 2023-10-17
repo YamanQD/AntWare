@@ -55,8 +55,6 @@ modules:
         disable-shallow-clone: false
   - name: antware
     buildsystem: meson
-    post-install:
-      -  update-desktop-database $FLATPAK_DEST/share/applications
     sources:
       - type: git
         url: https://github.com/YamanQD/AntWare.git
