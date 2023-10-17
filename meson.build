@@ -61,5 +61,7 @@ install_data('default_settings.json')
 install_subdir('scenes',install_dir:'share/antware')
 install_subdir('Shaders',install_dir:'share/antware')
 install_data('run_antware.sh',install_dir:'bin')
+install_data('antware.desktop',install_dir:'share/applications')
+install_data('antware.ico',install_dir:'share/pixmaps')
     
 endif

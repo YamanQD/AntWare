@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=AntWare
+Icon=antware
+Exec=run_antware.sh
+Comment=An FPS game.
+Categories=Game;
+Terminal=false
