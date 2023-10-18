@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2023 AntWare -->
+<component type="desktop-application">
+<id>io.github.yamanqd.antware</id>
+<name>AntWare</name>
+<summary>An FPS game.</summary>
+<url type="homepage">https://github.com/YamanQD/AntWare</url>
+<launchable type="desktop-id">io.github.yamanqd.antware.desktop</launchable>
+<metadata_license>FSFAP</metadata_license>
+<content_rating type="oars-1.1">
+  <content_attribute id="violence-fantasy">mild</content_attribute>
+</content_rating>
+<description>
+    <p>
+      While you're casually working on your PC, you're surprised by a bunch of ants in your PC's inner parts, working hard to destroy them.
+      So you grab your gun and get in there to SEARCH AND DESTROY every last one of them.
+      But be careful... some of these ants were struck by cosmic lightning and now they're HUNTING YOU DOWN.
+    </p>
+</description>
+<screenshots>
+    <screenshot>
+      <image>https://github.com/YamanQD/AntWare/blob/main/Screenshots/cpu.png?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/YamanQD/AntWare/blob/main/Screenshots/laptop.png?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/YamanQD/AntWare/blob/main/Screenshots/cd-drive.png?raw=true</image>
+    </screenshot>
+</screenshots>
+<releases>
+    <release version="2.1.0" date="2023-10-1">
+    </release>
+</releases>
+</component>
