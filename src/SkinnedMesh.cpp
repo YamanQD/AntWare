@@ -6,6 +6,10 @@ using namespace std;
 using namespace aw;
 using namespace glm;
 
+GLuint SkinnedMesh::skinnedVAO;
+GLuint SkinnedMesh::skinnedVBO;
+GLuint SkinnedMesh::skinnedEBO;
+
 SkinnedMesh::SkinnedMesh(const char *path, const char *texPath)
     : Mesh(path, texPath) {
   auto scene = importer.GetScene();
