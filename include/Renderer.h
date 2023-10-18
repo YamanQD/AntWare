@@ -26,6 +26,7 @@ namespace aw
          * the Bullet flash texture.
          */
         GLuint shadelessLocation;
+        GLuint skinnedLocation;
 
     public:
         static Renderer &instance();
@@ -63,5 +64,7 @@ namespace aw
         GLuint getUniformLocation(const char *uniform);
         /** \return ::mainShader.*/
         GLuint getMainShader();
+
+        GLuint getSkinnedToggleLocation();
     };
 }
