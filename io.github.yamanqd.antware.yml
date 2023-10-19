@@ -35,7 +35,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/assimp/assimp.git
-        tag: v5.3.1i
+        tag: v5.3.1
         commit: 6a08c39e3a91ef385e76515cfad86aca4bfd57ff
         disable-shallow-clone: false
   - name: GLM
@@ -66,6 +66,14 @@ modules:
         tag: main
         disable-shallow-clone: false
 
+cleanup:
+  -  lib/*.a
+  -  pkgconfig
+  -  include
+  -  lib/pkgconfig
+  -  lib/cmake
+  -  lib/debug
+  -  share/doc
 
 finish-args:
   - --socket=x11
