@@ -6,6 +6,7 @@
 <summary>An FPS game.</summary>
 <url type="homepage">https://github.com/YamanQD/AntWare</url>
 <launchable type="desktop-id">io.github.yamanqd.antware.desktop</launchable>
+<project_license>GPL-3.0-or-later</project_license>
 <metadata_license>FSFAP</metadata_license>
 <content_rating type="oars-1.1">
   <content_attribute id="violence-fantasy">mild</content_attribute>

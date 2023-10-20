@@ -68,4 +68,6 @@ install_data('metadata/antware_3_64x64x32.png',install_dir:'share/icons/hicolor/
 install_data('metadata/antware_4_128x128x32.png',install_dir:'share/icons/hicolor/128x128/apps',rename:'io.github.yamanqd.antware.png')
 install_data('metadata/antware_5_256x256x32.png',install_dir:'share/icons/hicolor/256x256/apps',rename:'io.github.yamanqd.antware.png')
 
+install_data('io.github.yamanqd.antware.metainfo.xml',install_dir:'share/metainfo')
+
 endif
