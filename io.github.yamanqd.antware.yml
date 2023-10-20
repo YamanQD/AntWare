@@ -13,7 +13,7 @@ cleanup:
   -  /share/doc
 
 finish-args:
-  - --socket=ipc
+  - --share=ipc
   - --socket=x11
   - --device=dri
   - --socket=pulseaudio
