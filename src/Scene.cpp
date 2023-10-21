@@ -1,4 +1,7 @@
+#include "SkinnedMesh.h"
 #include <Scene.h>
+#include <memory>
+#include <rapidjson/document.h>
 using namespace std;
 using namespace aw;
 using namespace rapidjson;
@@ -73,6 +76,17 @@ static inline Mesh parseMesh(GenericObject<false, Value> object)
         return Mesh(path, texturePath);
     }
 }
+static inline shared_ptr<SkinnedMesh> parseSkinnedMesh(GenericObject<false, Value> object){
+    const char *path = object["path"].GetString();
+    const char *texturePath = nullptr;
+    if (object.HasMember("texture"))
+    {
+        texturePath = object["texture"].GetString();
+    }
+    
+    return make_shared<SkinnedMesh>(path,texturePath);
+    
+}
 static inline vector<shared_ptr<Mesh>> parseAnimation(GenericObject<false, Value> object)
 {
     vector<shared_ptr<Mesh>> animation;
@@ -109,10 +123,20 @@ static inline vector<shared_ptr<Mesh>> parseMeshes(GenericArray<false, Value> ar
     }
     return meshes;
 }
+static inline vector<shared_ptr<SkinnedMesh>> parseSkinnedMeshes(GenericArray<false, Value> array){
+    vector<shared_ptr<SkinnedMesh>> meshes;
+
+    for(unsigned i=0;i<array.Size();++i){
+        meshes.push_back(parseSkinnedMesh(array[i].GetObject()));
+    }
+
+    return meshes;
+}
 static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> array,
                                                     const vector<shared_ptr<Mesh>> &meshes,
                                                     const vector<Material> &materials,
                                                     const std::vector<std::vector<std::shared_ptr<aw::Mesh>>> &animations,
+                                                    const std::vector<shared_ptr<SkinnedMesh>>& skinnedMeshes,
                                                     vec2 mapMinLimit,
                                                     vec2 mapMaxLimit)
 {
@@ -136,7 +160,16 @@ static inline vector<GameObject *> parseGameObjects(GenericArray<false, Value> a
             parent = gameObjects[parentIndex];
         }
         int meshIndex = array[i]["mesh"].GetInt();
-        shared_ptr<Mesh> mesh = meshes[meshIndex];
+        shared_ptr<Mesh> mesh;
+        if(array[i].HasMember("skinned")){
+            if(array[i]["skinned"].GetBool()){
+                mesh=skinnedMeshes[meshIndex];
+            }else{
+                mesh = meshes[meshIndex];
+            }
+        }else{
+            mesh = meshes[meshIndex];
+        }
         bool isStatic = true;
         if (array[i].HasMember("rigidbody"))
         {
@@ -252,6 +285,7 @@ Scene::Scene(const char *path) : camera(45.0f)
     parseCamera(json["camera"].GetObject(), camera);
     auto materials = parseMaterials(json["materials"].GetArray());
     auto meshes = parseMeshes(json["meshes"].GetArray());
+    auto skinnedMeshes=parseSkinnedMeshes(json["skinnedMeshes"].GetArray());
     auto animations = parseAnimations(json["animations"].GetArray());
     auto meshesNAnimations = meshes;
     for (int i = 0; i < animations.size(); ++i)
@@ -267,13 +301,14 @@ Scene::Scene(const char *path) : camera(45.0f)
         meshesNAnimations.push_back(skybox.getMesh());
     }
     Mesh::constructVAO(meshesNAnimations);
+    SkinnedMesh::constructSkinnedVAO(skinnedMeshes);
     Mesh::freeLastImportedScene();
     auto mapMinLimitData = json["mapMinLimit"].GetArray();
     auto mapMaxLimitData = json["mapMaxLimit"].GetArray();
     vec2 mapMinLimit = {mapMinLimitData[0].GetFloat(), mapMinLimitData[1].GetFloat()};
     vec2 mapMaxLimit = {mapMaxLimitData[0].GetFloat(), mapMaxLimitData[1].GetFloat()};
     gameObjects = parseGameObjects(json["gameobjects"].GetArray(), meshes, materials,
-                                   animations, mapMinLimit, mapMaxLimit);
+                                   animations,skinnedMeshes, mapMinLimit, mapMaxLimit);
     lights = parseLights(json["lights"].GetArray(), gameObjects);
     Light::constructUniformBuffer(lights);
 }

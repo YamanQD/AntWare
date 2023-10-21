@@ -53,6 +53,12 @@
             "angularLock": 0
         }
     },
+    "skinnedMeshes": [
+        {
+            "path": "./Assets/Models/Ant.glb",
+            "texture": "Assets/Textures/Ant.png"
+        }
+    ],
     "meshes": [
         {
             "path": "./Assets/Models/Ant.glb",
