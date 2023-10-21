@@ -71,7 +71,7 @@ namespace aw
          * Assumes the shader's uniform variables are set correctly (including
          * the model matrix) before calling this function.
          */
-        void draw();
+        virtual void draw();
         /** \param texture Overwritten with the mesh's ::texture value only if ::hasTexture is true.
          * \return true if \a texture was overwritten successfully.
          * \return false if ::hasTexture was false and \a texture was not unchanged.

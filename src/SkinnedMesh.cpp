@@ -1,3 +1,4 @@
+#include <Renderer.h>
 #include <SkinnedMesh.h>
 #include <cstddef>
 #include <helpers.h>
@@ -115,4 +116,26 @@ void SkinnedMesh::constructSkinnedVAO(
                         (void *)bonesIDsOffset);
 
   assert(glGetError() == 0);
+}
+
+
+//NOTE: Not tested.
+void SkinnedMesh::draw(){
+  glUniform1i(RENDERER.getSkinnedToggleLocation(),1);
+  glUniformMatrix4fv(RENDERER.getBonesLocation(),MAX_BONES,GL_FALSE,&bonesInverseBindMats[0][0][0]);
+
+
+  if (hasTexture)
+    {
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }
+
+    glBindVertexArray(skinnedVAO);
+    glDrawElementsBaseVertex(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, (void *)(offsets[INDEX_BUFFER]), baseVertex);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    glUniform1i(RENDERER.getSkinnedToggleLocation(),0);
+
+    assert(glGetError() == 0);
 }

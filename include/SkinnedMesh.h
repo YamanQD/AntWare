@@ -4,6 +4,12 @@
 #include <cstddef>
 #include <glm/common.hpp>
 #include <memory>
+#include<GL/glew.h>
+#include<Renderer.h>
+
+//Same in main.vert
+#define MAX_BONES 20
+
 namespace aw {
 class SkinnedMesh : public Mesh {
 private:
@@ -26,6 +32,8 @@ private:
 
 public:
   SkinnedMesh(const char *path, const char *texPath = nullptr);
+
+  void draw() override;
 
   static void constructSkinnedVAO(std::vector<std::shared_ptr<SkinnedMesh>> skinnedMeshes);
 };
