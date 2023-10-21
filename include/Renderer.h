@@ -27,6 +27,7 @@ namespace aw
          */
         GLuint shadelessLocation;
         GLuint skinnedLocation;
+        GLuint bonesLocation;
 
     public:
         static Renderer &instance();
@@ -66,5 +67,6 @@ namespace aw
         GLuint getMainShader();
 
         GLuint getSkinnedToggleLocation();
+        GLuint getBonesLocation();
     };
 }

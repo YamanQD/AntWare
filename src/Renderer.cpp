@@ -25,6 +25,7 @@ void Renderer::init()
     glUseProgram(mainShader);
     shadelessLocation = getUniformLocation("shadeless");
     skinnedLocation=getUniformLocation("skinned");
+    bonesLocation=getUniformLocation("bones");
     glUseProgram(0);
     HUD.setShaderProgram(loadShaderProgram("Shaders/hud.vert", "Shaders/hud.frag"));
     assert(glGetError() == 0);
@@ -128,4 +129,8 @@ GLuint Renderer::loadShaderProgram(const char *vertexShaderPath, const char *fra
 
 GLuint Renderer::getSkinnedToggleLocation(){
     return skinnedLocation;
+}
+
+GLuint Renderer::getBonesLocation(){
+    return bonesLocation;
 }
