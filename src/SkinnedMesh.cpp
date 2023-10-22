@@ -20,7 +20,7 @@ SkinnedMesh::SkinnedMesh(const char *path, const char *texPath)
   bonesIDs.resize(vertices.size(), 0);
 
   for (size_t i = 0; i < vertices.size(); ++i) {
-    for (size_t j = 0; j < bonesIDs.size(); ++j) {
+    for (size_t j = 0; j < mesh->mNumBones; ++j) {
       if (mesh->mBones[j]->mWeights[i].mWeight >
           mesh->mBones[bonesIDs[i]]->mWeights[i].mWeight) {
         bonesIDs[i] = j;
