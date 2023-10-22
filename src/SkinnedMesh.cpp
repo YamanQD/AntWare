@@ -19,8 +19,10 @@ SkinnedMesh::SkinnedMesh(const char *path, const char *texPath)
 
   bonesIDs.resize(vertices.size(), 0);
 
+  // Takes first MAX_BONES if bones count is greater than MAX_BONES
   for (size_t i = 0; i < vertices.size(); ++i) {
-    for (size_t j = 0; j < mesh->mNumBones; ++j) {
+    for (size_t j = 0; j < glm::min(mesh->mNumBones, (unsigned)MAX_BONES);
+         ++j) {
       if (mesh->mBones[j]->mWeights[i].mWeight >
           mesh->mBones[bonesIDs[i]]->mWeights[i].mWeight) {
         bonesIDs[i] = j;
@@ -118,24 +120,23 @@ void SkinnedMesh::constructSkinnedVAO(
   assert(glGetError() == 0);
 }
 
+// NOTE: Not tested.
+void SkinnedMesh::draw() {
+  glUniform1i(RENDERER.getSkinnedToggleLocation(), 1);
+  glUniformMatrix4fv(RENDERER.getBonesLocation(), bonesInverseBindMats.size(),
+                     GL_FALSE, &bonesInverseBindMats[0][0][0]);
 
-//NOTE: Not tested.
-void SkinnedMesh::draw(){
-  glUniform1i(RENDERER.getSkinnedToggleLocation(),1);
-  glUniformMatrix4fv(RENDERER.getBonesLocation(),MAX_BONES,GL_FALSE,&bonesInverseBindMats[0][0][0]);
+  if (hasTexture) {
+    glBindTexture(GL_TEXTURE_2D, texture);
+  }
 
+  glBindVertexArray(skinnedVAO);
+  glDrawElementsBaseVertex(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT,
+                           (void *)(offsets[INDEX_BUFFER]), baseVertex);
 
-  if (hasTexture)
-    {
-        glBindTexture(GL_TEXTURE_2D, texture);
-    }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
-    glBindVertexArray(skinnedVAO);
-    glDrawElementsBaseVertex(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, (void *)(offsets[INDEX_BUFFER]), baseVertex);
+  glUniform1i(RENDERER.getSkinnedToggleLocation(), 0);
 
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    glUniform1i(RENDERER.getSkinnedToggleLocation(),0);
-
-    assert(glGetError() == 0);
+  assert(glGetError() == 0);
 }
