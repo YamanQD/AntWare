@@ -55,7 +55,7 @@
     },
     "skinnedMeshes": [
         {
-            "path": "./Assets/Models/Ant.glb",
+            "path": "./Assets/Models/Ant-skinned.fbx",
             "texture": "Assets/Textures/Ant.png"
         }
     ],
