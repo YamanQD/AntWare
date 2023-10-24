@@ -1,9 +1,6 @@
 {
     "Note": "DO NOT MODIFY ME UNLESS YOU ARE ADDING A NEW FIELD OR CHANGING THE DEFAULTS",
-    "resolution": {
-        "height": 720,
-        "width": 1280
-    },
+    "fullscreen":true,
     "levels": [
         [
             "scenes/cpu.json",
