@@ -26,6 +26,7 @@ namespace aw
         struct Settings
         {
             int resHeight, resWidth;
+            bool fullScreen;
             std::vector<std::string> levels;
             std::vector<std::string> levelsLabels;
             std::vector<std::string> levelsMusic;

@@ -1,5 +1,5 @@
 #-------------------------#
-# AntWare: LEGACY EDITION #
+# AntWare: MODERN EDITION #
 #-------------------------#
 
 # Per user game settings
@@ -71,3 +71,6 @@ settings.json
 *.exe
 *.out
 *.app
+
+# Clangd cache
+.cache/

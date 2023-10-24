@@ -12,7 +12,7 @@ bool App::init(int argc, char **argv)
 {
     srand(time(nullptr));
     readSettingsFile();
-    WINDOW.init(settings.resHeight, settings.resWidth);
+    WINDOW.init(settings.resHeight, settings.resWidth,settings.fullScreen);
     RENDERER.init();
 
     MENU.init(settings.levels, settings.levelsLabels);
@@ -251,13 +251,23 @@ void App::readSettingsFile()
     }
     Document settingsFileJSON;
     settingsFileJSON.Parse(fileData.data(), fileData.size());
-    settings.resHeight = settingsFileJSON["resolution"]["height"].GetInt();
-    settings.resWidth = settingsFileJSON["resolution"]["width"].GetInt();
     auto levels = settingsFileJSON["levels"].GetArray();
     for (unsigned i = 0; i < levels.Size(); ++i)
     {
         settings.levels.push_back(levels[i][0].GetString());
         settings.levelsLabels.push_back(levels[i][1].GetString());
         settings.levelsMusic.push_back(levels[i][2].GetString());
+    }
+    if(settingsFileJSON.HasMember("fullscreen")){
+        settings.fullScreen=settingsFileJSON["fullscreen"].GetBool();
+    }else{
+        settings.fullScreen=false;
+    }
+    if(settingsFileJSON.HasMember("resolution")){
+settings.resHeight = settingsFileJSON["resolution"]["height"].GetInt();
+    settings.resWidth = settingsFileJSON["resolution"]["width"].GetInt();
+    }else{
+        settings.resWidth=-1;
+        settings.resHeight=-1;
     }
 }
