@@ -17,6 +17,13 @@
       So you grab your gun and get in there to SEARCH AND DESTROY every last one of them.
       But be careful... some of these ants were struck by cosmic lightning and now they're HUNTING YOU DOWN.
     </p>
+    <p>Controls:</p>
+    <ul>
+      <li>WASD for player movement.</li>
+      <li>Left-Shift for running.</li>
+      <li>R for reloading.</li>
+      <li>Left-Mouse-Button for shooting.</li>
+    </ul>
 </description>
 <screenshots>
     <screenshot>
@@ -30,7 +37,15 @@
     </screenshot>
 </screenshots>
 <releases>
+
+    <release version="2.1.3" date="2023-10-25">
+      <description>
+        <p>Launches game in fullscreen mode by default.</p>
+      </description>
+    </release>
+
     <release version="2.1.2" date="2023-10-20">
     </release>
+    
 </releases>
 </component>

@@ -1,6 +1,6 @@
 project('antware', 'cpp',
     license: 'GPL-3.0-or-later',
-    version: '2.1.1',
+    version: '2.1.3',
     default_options: ['warning_level=3','default_library=static'])
 
 glew_dep = dependency('glew')
