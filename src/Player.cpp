@@ -30,6 +30,9 @@ void Player::start()
     isStatic = false;
     rigidbody.lockLinear(AXIS::y);
     rigidbody.lockAngular(AXIS::z);
+
+    // Reset mouse's position on player (and therefore scene) start
+    Mouse::setPosition(Vector2i{static_cast<int>(WINDOW.internal.getSize().x / 2.0f), static_cast<int>(WINDOW.internal.getSize().y / 2.0f)}, WINDOW.internal);
 }
 void Player::update()
 {
